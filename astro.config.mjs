@@ -1,6 +1,5 @@
 // https://astro.build/config
 import sitemap from '@astrojs/sitemap';
-import node from '@astrojs/node';
 import { defineConfig } from 'astro/config';
 import rehypeExternalLinks from 'rehype-external-links';
 import { serializeSitemap, shouldIndexPage } from './sitemap.mjs';
@@ -10,7 +9,7 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://roadmap.sh/',
+  site: 'https://simonkolaaa.github.io/',
   redirects: {
     '/devops/devops-engineer': {
       status: 301,
@@ -60,10 +59,7 @@ export default defineConfig({
               '/',
               '#',
               'mailto:',
-              'https://github.com/kamranahmedse',
-              'https://thenewstack.io',
-              'https://kamranahmed.info',
-              'https://roadmap.sh',
+              'https://simonkolaaa.github.io',
             ];
             if (whiteListedStarts.some((start) => href.startsWith(start))) {
               return [];
@@ -74,10 +70,6 @@ export default defineConfig({
       ],
     ],
   },
-  output: 'server',
-  adapter: node({
-    mode: 'standalone',
-  }),
   trailingSlash: 'never',
   integrations: [
     sitemap({
@@ -90,9 +82,6 @@ export default defineConfig({
     plugins: [tailwindcss()],
     ssr: {
       noExternal: [/^@roadmapsh\/editor.*$/],
-    },
-    server: {
-      allowedHosts: ['roadmap.sh', 'port3k.kamranahmed.info'],
-    },
+    }
   },
 });
