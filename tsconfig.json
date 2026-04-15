@@ -4,7 +4,12 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "jsx": "react-jsx",
-    "jsxImportSource": "react"
+    "jsxImportSource": "react",
+    "baseUrl": ".",
+    "paths": {
+      "@roadmapsh/editor": ["src/lib/editor-stub.ts"]
+    }
+
   },
   "exclude": ["node_modules", "dist"]
 }

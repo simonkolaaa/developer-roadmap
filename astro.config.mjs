@@ -83,8 +83,14 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwindcss()],
+    resolve: {
+      alias: {
+        '@roadmapsh/editor': '/src/lib/editor-stub.ts'
+      }
+    },
     ssr: {
       noExternal: [/^@roadmapsh\/editor.*$/],
     }
+
   },
 });

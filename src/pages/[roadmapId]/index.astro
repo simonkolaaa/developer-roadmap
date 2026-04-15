@@ -1,11 +1,11 @@
 ---
-import { EditorRoadmap } from '../../components/EditorRoadmap/EditorRoadmap';
+// import { EditorRoadmap } from '../../components/EditorRoadmap/EditorRoadmap';
 import { FAQs } from '../../components/FAQs/FAQs';
 import RelatedRoadmaps from '../../components/RelatedRoadmaps.astro';
 import RoadmapHeader from '../../components/RoadmapHeader.astro';
 import { ShareIcons } from '../../components/ShareIcons/ShareIcons';
-import { TopicDetail } from '../../components/TopicDetail/TopicDetail';
-import { UserProgressModal } from '../../components/UserProgress/UserProgressModal';
+// import { TopicDetail } from '../../components/TopicDetail/TopicDetail';
+// import { UserProgressModal } from '../../components/UserProgress/UserProgressModal';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { isNewRoadmap } from '../../queries/official-roadmap';
 import {
@@ -101,13 +101,15 @@ const isNew = isNewRoadmap(roadmapData.createdAt);
     slot='after-header'
   />
 
-  <TopicDetail
+  {/* TopicDetail removed as it depends on missing @roadmapsh/editor */}
+  {/* <TopicDetail
     resourceId={roadmapId}
     resourceType='roadmap'
     renderer='editor'
     client:idle
     canSubmitContribution={true}
-  />
+  /> */}
+
 
   <div class='bg-gray-50'>
     <RoadmapHeader
@@ -147,20 +149,25 @@ const isNew = isNewRoadmap(roadmapData.createdAt);
         client:load
       />
 
-      <EditorRoadmap
+      {/* EditorRoadmap removed as it depends on missing @roadmapsh/editor */}
+      {/* <EditorRoadmap
         resourceId={roadmapId}
         resourceType='roadmap'
         dimensions={roadmapData.dimensions!}
         client:load
-      />
+      /> */}
+      <p class="text-center py-10 text-gray-400">Roadmap view simplified for personal use.</p>
+
     </div>
 
-    <UserProgressModal
+    {/* UserProgressModal removed as it depends on missing @roadmapsh/editor */}
+    {/* <UserProgressModal
       resourceId={roadmapId}
       resourceType='roadmap'
       renderer='editor'
       client:only='react'
-    />
+    /> */}
+
 
     {
       roadmapId === 'docker' && (
