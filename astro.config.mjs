@@ -7,6 +7,11 @@ import { serializeSitemap, shouldIndexPage } from './sitemap.mjs';
 import tailwindcss from '@tailwindcss/vite';
 
 import react from '@astrojs/react';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 
 // https://astro.build/config
 export default defineConfig({
@@ -85,8 +90,9 @@ export default defineConfig({
     plugins: [tailwindcss()],
     resolve: {
       alias: {
-        '@roadmapsh/editor': '/src/lib/editor-stub.ts'
+        '@roadmapsh/editor': path.resolve(__dirname, './src/lib/editor-stub.ts')
       }
+
     },
     ssr: {
       noExternal: [/^@roadmapsh\/editor.*$/],
