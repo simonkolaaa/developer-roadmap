@@ -38,12 +38,12 @@ if (!roadmapData) {
 
 let jsonLdSchema = [];
 
-const datePublished = DateTime.fromJSDate(
-  new Date(roadmapData?.createdAt),
-).toFormat('yyyy-MM-dd');
-const dateModified = DateTime.fromJSDate(
-  new Date(roadmapData?.updatedAt),
-).toFormat('yyyy-MM-dd');
+const createdAt = roadmapData?.createdAt ? new Date(roadmapData.createdAt) : new Date();
+const updatedAt = roadmapData?.updatedAt ? new Date(roadmapData.updatedAt) : new Date();
+
+const datePublished = DateTime.fromJSDate(createdAt).toFormat('yyyy-MM-dd');
+const dateModified = DateTime.fromJSDate(updatedAt).toFormat('yyyy-MM-dd');
+
 
 const baseUrl = import.meta.env.DEV
   ? `http://localhost:8080`
@@ -53,12 +53,13 @@ jsonLdSchema.push(
   generateArticleSchema({
     url: `https://roadmap.sh/${roadmapId}`,
     headline: roadmapData?.seo?.title || roadmapData?.title?.page,
-    description: roadmapData?.description,
+    description: roadmapData?.seo?.description || roadmapData?.description,
     datePublished,
     dateModified,
     imageUrl: `${baseUrl}/roadmaps/${roadmapId}.png`,
   }),
 );
+
 
 const ogImageUrl =
   roadmapData?.openGraph?.image ||
@@ -84,16 +85,17 @@ const isNew = isNewRoadmap(roadmapData.createdAt);
 
 <BaseLayout
   permalink={`/${roadmapId}`}
-  title={roadmapData?.seo?.title || roadmapData?.title.page}
-  briefTitle={roadmapData.title.card}
+  title={roadmapData?.seo?.title || roadmapData?.title?.page}
+  briefTitle={roadmapData?.title?.card}
   ogImageUrl={ogImageUrl}
-  description={roadmapData.seo.description}
-  keywords={roadmapData.seo.keywords}
+  description={roadmapData?.seo?.description || roadmapData?.description}
+  keywords={roadmapData?.seo?.keywords || []}
   noIndex={false}
   jsonLd={jsonLdSchema}
   resourceId={roadmapId}
   resourceType='roadmap'
 >
+
   <link
     rel='preload'
     href='/fonts/balsamiq.woff2'
@@ -115,9 +117,9 @@ const isNew = isNewRoadmap(roadmapData.createdAt);
 
   <div class='bg-gray-50'>
     <RoadmapHeader
-      title={roadmapData.title.page}
-      description={roadmapData.description}
-      partner={roadmapData.partner}
+      title={roadmapData?.title?.page}
+      description={roadmapData?.description}
+      partner={roadmapData?.partner}
       roadmapId={roadmapId}
       isForkable={true}
       isNew={isNew}
@@ -125,6 +127,7 @@ const isNew = isNewRoadmap(roadmapData.createdAt);
       coursesCount={courses.length}
       hasAIChat={true}
     />
+
 
     <div class='container mt-2.5'>
       <div class='rounded-md border bg-white'>
