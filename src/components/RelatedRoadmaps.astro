@@ -16,16 +16,16 @@ const relatedRoadmapsDetails = allRoadmaps.filter((roadmap) =>
 
 {
   relatedRoadmaps.length && (
-    <div class:list={['border-t bg-gray-100']}>
+    <div class:list={['border-t border-slate-800 bg-slate-950']}>
       <div class='container'>
         <div class='relative -top-5 flex justify-between'>
-          <span class='text-md flex items-center rounded-md border bg-white px-3 py-1 font-medium'>
-            <Map className='text-black mr-1.5' size='17px' />
+          <span class='text-md flex items-center rounded-md border border-slate-700 bg-slate-900 px-3 py-1 font-medium text-slate-100 font-orbitron'>
+            <Map className='text-blue-400 mr-1.5' size='17px' />
             Related <span class='hidden sm:inline'>Roadmaps</span>
           </span>
           <a
             href='/roadmaps'
-            class='text-md rounded-md border bg-white px-3 py-1 font-medium hover:bg-gray-50'
+            class='text-md rounded-md border border-slate-700 bg-slate-900 px-3 py-1 font-medium hover:bg-slate-800 text-slate-300 transition-colors'
           >
             <span class='hidden sm:inline'>All Roadmaps &rarr;</span>
             <span class='inline sm:hidden'>More &rarr;</span>
@@ -36,16 +36,17 @@ const relatedRoadmapsDetails = allRoadmaps.filter((roadmap) =>
           {relatedRoadmapsDetails.map((relatedRoadmap) => (
             <a
               href={`/${relatedRoadmap.slug}`}
-              class='flex flex-col gap-0.5 rounded-md border bg-white px-3.5 py-2 hover:bg-gray-50 sm:flex-row sm:gap-0'
+              class='flex flex-col gap-0.5 rounded-md border border-slate-800 bg-slate-900 px-3.5 py-3 hover:bg-slate-800 hover:border-blue-500/30 transition-all sm:flex-row sm:gap-4'
             >
-              <span class='inline-block min-w-[195px] font-medium'>
+              <span class='inline-block min-w-[195px] font-medium text-blue-400 font-orbitron text-sm'>
                 {relatedRoadmap.title.card}
               </span>
-              <span class='text-gray-500'>{relatedRoadmap.description}</span>
+              <span class='text-slate-400 text-sm'>{relatedRoadmap.description}</span>
             </a>
           ))}
         </div>
       </div>
     </div>
+
   )
 }

@@ -115,7 +115,7 @@ const isNew = isNewRoadmap(roadmapData.createdAt);
   /> */}
 
 
-  <div class='bg-gray-50'>
+  <div class='bg-slate-950'>
     <RoadmapHeader
       title={roadmapData?.title?.page}
       description={roadmapData?.description}
@@ -125,12 +125,12 @@ const isNew = isNewRoadmap(roadmapData.createdAt);
       isNew={isNew}
       projectCount={projects.length}
       coursesCount={courses.length}
-      hasAIChat={true}
     />
 
 
-    <div class='container mt-2.5'>
-      <div class='rounded-md border bg-white'>
+
+    <div class='container mt-2.5 px-0 sm:px-4'>
+      <div class='rounded-md border border-slate-800 bg-slate-900 neo-glow'>
         <ResourceProgressStats resourceId={roadmapId} resourceType='roadmap' />
         {
           question?.title && (
@@ -144,6 +144,7 @@ const isNew = isNewRoadmap(roadmapData.createdAt);
         }
       </div>
     </div>
+
 
     <div class='relative container max-w-[1000px]!'>
       <ShareIcons

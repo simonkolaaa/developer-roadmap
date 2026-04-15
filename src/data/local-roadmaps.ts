@@ -9,6 +9,7 @@ export interface LocalRoadmap {
   createdAt: string;
   updatedAt: string;
   order: number;
+  topics?: string[];
 }
 
 export const LOCAL_ROADMAPS: LocalRoadmap[] = [
@@ -23,7 +24,17 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
     type: 'role',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    order: 1
+    order: 1,
+    topics: [
+      'Introduzione agli Algoritmi',
+      'Variabili e Tipi di Dato',
+      'Strutture di Controllo (If, Else, Switch)',
+      'Cicli e Iterazioni (For, While)',
+      'Funzioni e Ricorsione',
+      'Array e Liste Lineari',
+      'Puntatori e Gestione Memoria',
+      'Complessità Computazionale'
+    ]
   },
   {
     slug: 'programmazione-oggetti',
@@ -35,7 +46,17 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
     type: 'role',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    order: 2
+    order: 2,
+    topics: [
+      'Classi e Oggetti',
+      'Incapsulamento e Modificatori di Accesso',
+      'Ereditarietà e Gerarchie',
+      'Polimorfismo e Dynamic Binding',
+      'Interfacce e Classi Astratte',
+      'Eccezioni e Gestione Errori',
+      'Design Patterns di Base',
+      'UML e Modellazione'
+    ]
   },
   {
     slug: 'sviluppo-web-database',
@@ -47,7 +68,17 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
     type: 'role',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    order: 3
+    order: 3,
+    topics: [
+      'Protocollo HTTP e Client/Server',
+      'HTML5 e CSS3 Moderno',
+      'Database Relazionali (SQL)',
+      'Normalizzazione delle Tabelle',
+      'NoSQL e Document Stores',
+      'API REST e JSON',
+      'Autenticazione e Sicurezza Web',
+      'Deployment e Cloud Hosting'
+    ]
   },
   
   // Linguaggi di Programmazione

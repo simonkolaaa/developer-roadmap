@@ -40,12 +40,12 @@ const {
   description,
   roadmapId,
   partner,
-  hasAIChat = false,
   projectCount = 0,
   activeTab = 'roadmap',
   coursesCount = 0,
   isNew = false,
 } = Astro.props;
+
 
 const hasCourses = coursesCount > 0;
 const hasProjects = projectCount > 0;
@@ -57,24 +57,26 @@ const hasProjects = projectCount > 0;
 <div class='container mt-0 flex flex-col gap-2.5 px-0 sm:mt-3 sm:px-4'>
   {
     partner && (
-      <div class='hidden rounded-md border bg-white px-2 py-1.5 sm:block'>
-        <p class='py-0.5 text-left text-sm'>
-          <span class='badge mr-1'>Partner</span>
+      <div class='hidden rounded-md border border-slate-800 bg-slate-900 px-2 py-1.5 sm:block neo-glow'>
+        <p class='py-0.5 text-left text-sm text-slate-300'>
+          <span class='badge mr-1 bg-blue-600'>Partner</span>
           {partner.description}
-          <a href={partner.link} target='_blank' class='font-medium underline'>
+          <a href={partner.link} target='_blank' class='font-medium underline text-blue-400'>
             {partner.linkText}
           </a>
         </p>
       </div>
     )
+
   }
 
   {isNew && <RoadmapFeedbackAlert roadmapId={roadmapId} title={title} />}
 
   <div
-    class='relative rounded-none border bg-white px-5 pt-4 pb-0 sm:rounded-lg'
+    class='relative rounded-none border border-slate-800 bg-slate-900 px-5 pt-4 pb-0 sm:rounded-lg neo-glow'
   >
     <div class='flex items-start justify-between'>
+
       <a
         class='inline-flex items-center justify-center rounded-md bg-gray-300 px-2 py-1.5 text-xs font-medium hover:bg-gray-400 sm:hidden sm:text-sm'
         aria-label='Back to roadmaps'
@@ -150,20 +152,12 @@ const hasProjects = projectCount > 0;
                 className='hidden md:flex'
               />
             )}
-            {hasAIChat && (
-              <TabLink
-                url={`/ai/roadmap-chat/${roadmapId}`}
-                icon={Bot}
-                text='AI Tutor'
-                mobileText='AI'
-                isActive={false}
-              />
-            )}
           </div>
 
-          <PersonalizedRoadmap roadmapId={roadmapId} client:load />
+
         </div>
       )
     }
+
   </div>
 </div>
