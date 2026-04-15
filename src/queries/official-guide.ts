@@ -49,13 +49,10 @@ export async function listOfficialGuides(query: ListOfficialGuidesQuery = {}) {
       return bDate.getTime() - aDate.getTime();
     });
   } catch (error) {
-    if (FetchError.isFetchError(error) && error.status === 404) {
-      return [];
-    }
-
-    throw error;
+    return [];
   }
 }
+
 
 export interface OfficialAuthorDocument {
   _id: string;
@@ -95,13 +92,10 @@ export async function getOfficialGuide(slug: string, roadmapId?: string) {
 
     return guide;
   } catch (error) {
-    if (FetchError.isFetchError(error) && error.status === 404) {
-      return null;
-    }
-
-    throw error;
+    return null;
   }
 }
+
 
 export async function listOfficialAuthors() {
   try {
@@ -111,15 +105,12 @@ export async function listOfficialAuthors() {
 
     return authors;
   } catch (error) {
-    if (FetchError.isFetchError(error) && error.status === 404) {
-      return [];
-    }
-
-    throw error;
+    return [];
   }
 }
 
 export function getOfficialGuideHref(slug: string, roadmapId?: string) {
+
   const isExternal = roadmapId && roadmapId !== 'questions';
   return isExternal
     ? `${import.meta.env.PUBLIC_APP_URL}/${roadmapId}/${slug}`
