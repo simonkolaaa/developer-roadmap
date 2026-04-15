@@ -1,3 +1,9 @@
+export interface LocalTopic {
+  title: string;
+  image?: string;
+  description?: string;
+}
+
 export interface LocalRoadmap {
   slug: string;
   title: {
@@ -9,7 +15,7 @@ export interface LocalRoadmap {
   createdAt: string;
   updatedAt: string;
   order: number;
-  topics?: string[];
+  topics?: (string | LocalTopic)[];
 }
 
 export const LOCAL_ROADMAPS: LocalRoadmap[] = [
@@ -26,7 +32,7 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
     updatedAt: new Date().toISOString(),
     order: 1,
     topics: [
-      'Introduzione agli Algoritmi',
+      { title: 'Introduzione agli Algoritmi', image: '/local-maps/programming-algorithms.png' },
       'Variabili e Tipi di Dato',
       'Strutture di Controllo (If, Else, Switch)',
       'Cicli e Iterazioni (For, While)',
@@ -48,9 +54,9 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
     updatedAt: new Date().toISOString(),
     order: 2,
     topics: [
-      'Classi e Oggetti',
+      { title: 'Classi e Oggetti', image: '/local-maps/oop-classes.png' },
       'Incapsulamento e Modificatori di Accesso',
-      'Ereditarietà e Gerarchie',
+      { title: 'Ereditarietà e Gerarchie', image: '/local-maps/oop-inheritance.png' },
       'Polimorfismo e Dynamic Binding',
       'Interfacce e Classi Astratte',
       'Eccezioni e Gestione Errori',
