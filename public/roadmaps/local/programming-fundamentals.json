@@ -1,0 +1,56 @@
+{
+  "title": "Fondamenti di Programmazione",
+  "description": "I mattoni fondamentali della logica di programmazione.",
+  "nodes": [
+    {
+      "id": "node-root",
+      "type": "topic",
+      "text": "Fondamenti",
+      "x": 400,
+      "y": 50
+    },
+    {
+      "id": "node-logic",
+      "type": "topic",
+      "text": "Logica e Algoritmi",
+      "x": 200,
+      "y": 150
+    },
+    {
+      "id": "node-data",
+      "type": "topic",
+      "text": "Dati e Variabili",
+      "x": 600,
+      "y": 150
+    },
+    {
+      "id": "node-control",
+      "type": "subtopic",
+      "text": "Flussi di Controllo",
+      "x": 400,
+      "y": 250
+    },
+    {
+      "id": "node-loops",
+      "type": "subtopic",
+      "text": "Cicli (For, While)",
+      "x": 200,
+      "y": 350
+    },
+    {
+      "id": "node-functions",
+      "type": "subtopic",
+      "text": "Funzioni e Scope",
+      "x": 600,
+      "y": 350
+    }
+  ],
+  "edges": [
+    { "id": "e1", "source": "node-root", "target": "node-logic" },
+    { "id": "e2", "source": "node-root", "target": "node-data" },
+    { "id": "e3", "source": "node-logic", "target": "node-control" },
+    { "id": "e4", "source": "node-data", "target": "node-control" },
+    { "id": "e5", "source": "node-control", "target": "node-loops" },
+    { "id": "e6", "source": "node-control", "target": "node-functions" }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "title": "Ereditarietà e Gerarchie",
+  "description": "Meccanismo di estensione delle classi e riutilizzo del codice.",
+  "nodes": [
+    {
+      "id": "node-root",
+      "type": "topic",
+      "text": "Ereditarietà",
+      "x": 400,
+      "y": 50
+    },
+    {
+      "id": "node-base",
+      "type": "topic",
+      "text": "Classe Base (Super)",
+      "x": 200,
+      "y": 150
+    },
+    {
+      "id": "node-derived",
+      "type": "topic",
+      "text": "Classe Derivata (Sub)",
+      "x": 600,
+      "y": 150
+    },
+    {
+      "id": "node-extends",
+      "type": "subtopic",
+      "text": "Parola chiave 'extends'",
+      "x": 400,
+      "y": 250
+    },
+    {
+      "id": "node-override",
+      "type": "subtopic",
+      "text": "@Override di Metodi",
+      "x": 200,
+      "y": 350
+    },
+    {
+      "id": "node-polymorphism",
+      "type": "subtopic",
+      "text": "Polimorfismo di Base",
+      "x": 600,
+      "y": 350
+    },
+    {
+      "id": "node-super",
+      "type": "subtopic",
+      "text": "Utilizzo di super()",
+      "x": 400,
+      "y": 450
+    }
+  ],
+  "edges": [
+    { "id": "e1", "source": "node-root", "target": "node-base" },
+    { "id": "e2", "source": "node-root", "target": "node-derived" },
+    { "id": "e3", "source": "node-base", "target": "node-extends" },
+    { "id": "e4", "source": "node-derived", "target": "node-extends" },
+    { "id": "e5", "source": "node-extends", "target": "node-override" },
+    { "id": "e6", "source": "node-extends", "target": "node-polymorphism" },
+    { "id": "e7", "source": "node-override", "target": "node-super" }
+  ]
+}

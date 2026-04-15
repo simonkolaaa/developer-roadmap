@@ -1,0 +1,118 @@
+import { useEffect, useRef, useState } from 'react';
+import { Spinner } from './ReactIcons/Spinner';
+import { replaceChildren } from '../lib/dom.ts';
+import { cn } from '../lib/classname.ts';
+
+export interface SubRoadmapRendererProps {
+  jsonUrl: string;
+  className?: string;
+}
+
+export function SubRoadmapRenderer(props: SubRoadmapRendererProps) {
+  const { jsonUrl, className } = props;
+  const containerEl = useRef<HTMLDivElement>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  async function fetchAndRender() {
+    try {
+      setIsLoading(true);
+      setError(null);
+
+      const res = await fetch(jsonUrl);
+      if (!res.ok) {
+        throw new Error(`Failed to fetch sub-roadmap data: ${res.statusText}`);
+      }
+      
+      const json = await res.json();
+      
+      const { wireframeJSONToSVG } = await import('roadmap-renderer');
+      
+      // Customize the JSON for the "cattivo" theme before rendering
+      // Note: wireframeJSONToSVG doesn't support full theme override easily, 
+      // but we can inject CSS to the resulting SVG.
+      
+      const svg: SVGElement | null = await wireframeJSONToSVG(json, {
+        fontURL: '/fonts/balsamiq.woff2',
+      });
+
+      if (svg && containerEl.current) {
+        // Apply "Simon Kola" dark/neon styling via classes
+        svg.classList.add('simon-kola-svg');
+        replaceChildren(containerEl.current, svg);
+        
+        // Post-process SVG colors
+        const rects = svg.querySelectorAll('rect');
+        rects.forEach(rect => {
+            rect.setAttribute('fill', '#0f172a'); // Slate-900
+            rect.setAttribute('stroke', '#3b82f6'); // Blue-500
+            rect.setAttribute('stroke-width', '2');
+        });
+        
+        const texts = svg.querySelectorAll('text');
+        texts.forEach(text => {
+            text.setAttribute('fill', '#f8fafc'); // Slate-50
+            text.style.fontFamily = "'Orbitron', sans-serif";
+            text.style.textTransform = "uppercase";
+            text.style.letterSpacing = "1px";
+        });
+
+        const lines = svg.querySelectorAll('line, path');
+        lines.forEach(line => {
+            line.setAttribute('stroke', '#1e293b'); // Slate-800 default
+            if (line.getAttribute('stroke') === '#000' || line.getAttribute('stroke') === 'black') {
+                line.setAttribute('stroke', '#3b82f6');
+            }
+        });
+      }
+    } catch (err: any) {
+      console.error('Sub-Roadmap rendering error:', err);
+      setError(err.message || 'Error rendering sub-roadmap.');
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    fetchAndRender();
+  }, [jsonUrl]);
+
+  return (
+    <div className={cn('relative w-full overflow-hidden bg-slate-950 rounded-lg border border-slate-800 min-h-[400px]', className)}>
+      {isLoading && (
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-slate-950/80 backdrop-blur-md">
+          <Spinner className="h-10 w-10 animate-spin text-blue-500" />
+          <span className="mt-4 font-orbitron text-xs text-slate-400 tracking-widest uppercase">Decrypting Map...</span>
+        </div>
+      )}
+      
+      {error && (
+        <div className="flex flex-col items-center justify-center py-20 text-center">
+          <p className="text-red-500 font-bold mb-2 font-orbitron">RENDER_FAILED</p>
+          <p className="text-slate-500 text-sm max-w-sm">{error}</p>
+        </div>
+      )}
+
+      <div 
+        ref={containerEl} 
+        className={cn("w-full h-full p-4 flex justify-center", isLoading ? "opacity-0" : "opacity-100 transition-opacity duration-700")}
+      />
+      
+      <style dangerouslySetInnerHTML={{ __html: `
+        .simon-kola-svg {
+          max-width: 100%;
+          height: auto;
+        }
+        .simon-kola-svg rect {
+          filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.2));
+          transition: all 0.3s ease;
+        }
+        .simon-kola-svg rect:hover {
+          stroke: #60a5fa;
+          filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.4));
+          cursor: pointer;
+        }
+      `}} />
+    </div>
+  );
+}

@@ -1,0 +1,63 @@
+{
+  "title": "Classi e Oggetti",
+  "description": "Le basi fondamentali dell'OOP:astrazione e istanziazione.",
+  "nodes": [
+    {
+      "id": "node-root",
+      "type": "topic",
+      "text": "Classi e Oggetti",
+      "x": 400,
+      "y": 50
+    },
+    {
+      "id": "node-class",
+      "type": "topic",
+      "text": "La Classe (Blueprint)",
+      "x": 200,
+      "y": 150
+    },
+    {
+      "id": "node-object",
+      "type": "topic",
+      "text": "L'Oggetto (Istanza)",
+      "x": 600,
+      "y": 150
+    },
+    {
+      "id": "node-attributes",
+      "type": "subtopic",
+      "text": "Attributi (Stato)",
+      "x": 200,
+      "y": 250
+    },
+    {
+      "id": "node-methods",
+      "type": "subtopic",
+      "text": "Metodi (Comportamento)",
+      "x": 400,
+      "y": 250
+    },
+    {
+      "id": "node-constructor",
+      "type": "subtopic",
+      "text": "Costruttori",
+      "x": 600,
+      "y": 250
+    },
+    {
+      "id": "node-this",
+      "type": "subtopic",
+      "text": "Parola chiave 'this'",
+      "x": 400,
+      "y": 350
+    }
+  ],
+  "edges": [
+    { "id": "e1", "source": "node-root", "target": "node-class" },
+    { "id": "e2", "source": "node-root", "target": "node-object" },
+    { "id": "e3", "source": "node-class", "target": "node-attributes" },
+    { "id": "e4", "source": "node-class", "target": "node-methods" },
+    { "id": "e5", "source": "node-object", "target": "node-constructor" },
+    { "id": "e6", "source": "node-methods", "target": "node-this" }
+  ]
+}

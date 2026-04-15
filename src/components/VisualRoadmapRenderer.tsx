@@ -5,7 +5,9 @@ import { cn } from '../lib/classname.ts';
 import { LOCAL_ROADMAPS } from '../data/local-roadmaps';
 import { Modal } from './Modal';
 import { MapIcon } from 'lucide-react';
+import { SubRoadmapRenderer } from './SubRoadmapRenderer';
 import './FrameRenderer/FrameRenderer.css';
+
 
 
 
@@ -67,8 +69,9 @@ export function VisualRoadmapRenderer(props: VisualRoadmapRendererProps) {
     fetchAndRender();
   }, [roadmapId]);
 
-  const [selectedMap, setSelectedMap] = useState<{ title: string; image: string } | null>(null);
+  const [selectedMap, setSelectedMap] = useState<{ title: string; image?: string; json?: string } | null>(null);
   const localData = LOCAL_ROADMAPS.find(r => r.slug === roadmapId);
+
 
   return (
     <div className={cn('relative w-full overflow-hidden rounded-xl bg-slate-900 p-6 border border-slate-800 neo-glow', className)}>
@@ -83,12 +86,17 @@ export function VisualRoadmapRenderer(props: VisualRoadmapRendererProps) {
               <h4 className="text-xl font-orbitron text-blue-400">{selectedMap.title}</h4>
             </div>
             <div className="rounded overflow-hidden bg-slate-950 border border-slate-800">
-              <img 
-                src={selectedMap.image} 
-                alt={selectedMap.title} 
-                className="w-full h-auto max-h-[80vh] object-contain mx-auto"
-              />
+              {selectedMap.json ? (
+                 <SubRoadmapRenderer jsonUrl={selectedMap.json} />
+              ) : selectedMap.image ? (
+                <img 
+                  src={selectedMap.image} 
+                  alt={selectedMap.title} 
+                  className="w-full h-auto max-h-[80vh] object-contain mx-auto"
+                />
+              ) : null}
             </div>
+
           </div>
         </Modal>
       )}
@@ -121,10 +129,21 @@ export function VisualRoadmapRenderer(props: VisualRoadmapRendererProps) {
                   key={index} 
                   className={cn(
                     "flex items-center p-4 bg-slate-950 border border-slate-800 rounded-lg group transition-all",
-                    topicImage ? "cursor-pointer hover:border-blue-500/50 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]" : "opacity-80"
+                    (topicImage || (topic as any).json) ? "cursor-pointer hover:border-blue-500/50 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]" : "opacity-80"
                   )}
-                  onClick={() => topicImage && setSelectedMap({ title: topicTitle, image: topicImage })}
+                  onClick={() => {
+                    if (typeof topic === 'object') {
+                      if (topic.json || topic.image) {
+                        setSelectedMap({ 
+                          title: topicTitle, 
+                          image: topic.image, 
+                          json: topic.json 
+                        });
+                      }
+                    }
+                  }}
                 >
+
                   <span className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-900 text-blue-400 font-orbitron text-xs mr-4 group-hover:bg-blue-500 group-hover:text-slate-950 transition-colors">
                     {index + 1}
                   </span>
