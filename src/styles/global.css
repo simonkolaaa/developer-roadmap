@@ -4,17 +4,11 @@
 @config '../../tailwind.config.cjs';
 @plugin 'tailwind-scrollbar';
 
-@font-face {
-  font-family: 'balsamiq';
-  src: url('/fonts/balsamiq.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+@theme {
+  --font-orbitron: 'Orbitron', sans-serif;
+  --font-rajdhani: 'Rajdhani', sans-serif;
 }
 
-@theme {
-  --font-balsamiq: 'balsamiq', sans-serif;
-}
 
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
@@ -27,7 +21,14 @@
 @layer base {
   body {
     @apply bg-slate-950 text-slate-200;
+    font-family: 'Rajdhani', sans-serif;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', sans-serif;
+    @apply tracking-wider uppercase font-bold;
+  }
+
 
   *,
   ::after,

@@ -19,6 +19,8 @@ import { CheckSubscriptionVerification } from '../../components/Billing/CheckSub
 import { officialRoadmapDetails } from '../../queries/official-roadmap';
 import { DateTime } from 'luxon';
 import { listOfficialProjects } from '../../queries/official-project';
+import { VisualRoadmapRenderer } from '../../components/VisualRoadmapRenderer';
+
 
 export const prerender = false;
 
@@ -149,14 +151,11 @@ const isNew = isNewRoadmap(roadmapData.createdAt);
         client:load
       />
 
-      {/* EditorRoadmap removed as it depends on missing @roadmapsh/editor */}
-      {/* <EditorRoadmap
-        resourceId={roadmapId}
-        resourceType='roadmap'
-        dimensions={roadmapData.dimensions!}
+      <VisualRoadmapRenderer
+        roadmapId={roadmapId}
         client:load
-      /> */}
-      <p class="text-center py-10 text-gray-400">Roadmap view simplified for personal use.</p>
+      />
+
 
     </div>
 
