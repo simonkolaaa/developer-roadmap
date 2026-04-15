@@ -1,6 +1,7 @@
 import { queryOptions } from '@tanstack/react-query';
 import { FetchError, httpGet } from '../lib/query-http';
 import { DateTime } from 'luxon';
+import { LOCAL_ROADMAPS } from '../data/local-roadmaps';
 
 export const allowedOfficialRoadmapType = ['skill', 'role', 'best-practice'] as const;
 export type AllowedOfficialRoadmapType =
@@ -101,22 +102,26 @@ export async function officialRoadmapDetails(roadmapSlug: string) {
       `/v1-official-roadmap/${roadmapSlug}`,
     );
 
-    return roadmap;
+    if (roadmap) return roadmap;
+    
+    // Fallback to local
+    const local = LOCAL_ROADMAPS.find(r => r.slug === roadmapSlug);
+    return local as unknown as OfficialRoadmapWithCourses;
   } catch (error) {
-    return null;
+    const local = LOCAL_ROADMAPS.find(r => r.slug === roadmapSlug);
+    return local as unknown as OfficialRoadmapWithCourses;
   }
 }
 
-
 export async function listOfficialRoadmaps() {
   try {
-    const roadmaps = await httpGet<OfficialRoadmapDocument[]>(
+    const roadmaps = (await httpGet<OfficialRoadmapDocument[]>(
       `/v1-list-official-roadmaps`,
-    );
+    )) || [];
 
-    return roadmaps;
+    return [...LOCAL_ROADMAPS, ...roadmaps] as OfficialRoadmapDocument[];
   } catch (error) {
-    return [];
+    return LOCAL_ROADMAPS as unknown as OfficialRoadmapDocument[];
   }
 }
 
@@ -131,7 +136,6 @@ export async function listOfficialBeginnerRoadmaps() {
     return [];
   }
 }
-
 
 export function isNewRoadmap(createdAt: Date) {
   return (
