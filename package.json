@@ -40,7 +40,7 @@
   "dependencies": {
     "@astrojs/react": "^4.2.7",
     "@astrojs/sitemap": "^3.4.0",
-    "@astrojs/vercel": "latest",
+    "@astrojs/vercel": "^9.0.0",
     "@fingerprintjs/fingerprintjs": "^4.6.2",
     "@microsoft/clarity": "^1.0.0",
     "@nanostores/react": "^1.0.0",
