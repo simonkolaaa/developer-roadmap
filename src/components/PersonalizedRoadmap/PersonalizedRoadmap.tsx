@@ -208,7 +208,7 @@ export function PersonalizedRoadmap(props: PersonalizedRoadmapProps) {
         />
       ) : (
         <button
-          className="group hidden sm:inline-flex items-center gap-1.5 border-b-2 border-b-transparent pb-2.5 text-sm font-normal text-gray-500 transition-colors hover:text-black"
+          className="group hidden sm:inline-flex items-center gap-1.5 border-b-2 border-b-transparent pb-2.5 text-sm font-normal text-slate-400 transition-colors hover:text-white"
           onClick={() => {
             if (!isLoggedIn()) {
               showLoginPopup();
@@ -222,25 +222,26 @@ export function PersonalizedRoadmap(props: PersonalizedRoadmapProps) {
           {isGenerating ? (
             <>
               <Loader2Icon className="h-4 w-4 shrink-0 animate-spin" />
-              <span>Personalizing...</span>
+              <span className="font-orbitron">Personalizing...</span>
             </>
           ) : (
             <>
               <PersonStandingIcon className="h-4 w-4 shrink-0" />
-              <span>Personalize</span>
+              <span className="font-orbitron">Personalize</span>
               <span
                 className={cn(
-                  'ml-0.5 hidden items-center gap-0.5 rounded-full bg-yellow-200 px-2 py-0.5 text-xs font-medium text-black transition-colors sm:flex',
+                  'ml-0.5 hidden items-center gap-0.5 rounded-full bg-blue-600 px-2 py-0.5 text-[10px] font-bold text-white transition-colors sm:flex uppercase tracking-tighter',
                   {
-                    'bg-yellow-200 text-black group-hover:bg-yellow-300': true,
+                    'bg-blue-600 group-hover:bg-blue-500': true,
                   },
                 )}
               >
-                New
+                PRO
               </span>
             </>
           )}
         </button>
+
       )}
     </>
   );
