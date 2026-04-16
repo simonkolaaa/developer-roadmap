@@ -30,14 +30,14 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
     updatedAt: new Date().toISOString(),
     order: 1,
     topics: [
-      { title: 'Introduzione agli Algoritmi', json: '/roadmaps/local/programming-fundamentals.json' },
+      { title: 'Introduzione agli Algoritmi', json: '/roadmaps/local/algorithms.json' },
       { title: 'Variabili e Tipi di Dato', json: '/roadmaps/local/variables-types.json' },
       { title: 'Strutture di Controllo (If, Else, Switch)', json: '/roadmaps/local/control-flow.json' },
       { title: 'Cicli e Iterazioni (For, While)', json: '/roadmaps/local/control-flow.json' },
       { title: 'Funzioni e Ricorsione', json: '/roadmaps/local/functions.json' },
-      { title: 'Array e Liste Lineari', json: '/roadmaps/local/variables-types.json' },
+      { title: 'Array e Liste Lineari', json: '/roadmaps/local/data-structures.json' },
       { title: 'Puntatori e Gestione Memoria', json: '/roadmaps/local/java-jvm.json' },
-      { title: 'Complessità Computazionale', json: '/roadmaps/local/programming-fundamentals.json' }
+      { title: 'Complessità Computazionale', json: '/roadmaps/local/algorithms.json' }
     ]
   },
 
@@ -57,8 +57,8 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
       { title: 'Polimorfismo e Dynamic Binding', json: '/roadmaps/local/oop-polymorphism.json' },
       { title: 'Interfacce e Classi Astratte', json: '/roadmaps/local/oop-inheritance.json' },
       { title: 'Eccezioni e Gestione Errori', json: '/roadmaps/local/rust-ownership.json' },
-      { title: 'Design Patterns di Base', json: '/roadmaps/local/oop-classes.json' },
-      { title: 'UML e Modellazione', json: '/roadmaps/local/oop-classes.json' }
+      { title: 'Design Patterns di Base', json: '/roadmaps/local/software-design.json' },
+      { title: 'UML e Modellazione', json: '/roadmaps/local/software-design.json' }
     ]
   },
 
