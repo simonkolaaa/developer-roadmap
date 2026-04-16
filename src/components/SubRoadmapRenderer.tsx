@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Spinner } from './ReactIcons/Spinner';
 import { replaceChildren } from '../lib/dom.ts';
 import { cn } from '../lib/classname.ts';
+import { MermaidRenderer } from './MermaidRenderer';
 
 export interface SubRoadmapRendererProps {
   jsonUrl: string;
@@ -13,11 +14,13 @@ export function SubRoadmapRenderer(props: SubRoadmapRendererProps) {
   const containerEl = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [mermaidData, setMermaidData] = useState<{ content: string; definitions: any } | null>(null);
 
   async function fetchAndRender() {
     try {
       setIsLoading(true);
       setError(null);
+      setMermaidData(null);
 
       const res = await fetch(jsonUrl);
       if (!res.ok) {
@@ -26,32 +29,38 @@ export function SubRoadmapRenderer(props: SubRoadmapRendererProps) {
       
       const json = await res.json();
       
+      // If the JSON contains a "mermaid" field, it's our new interactive format
+      if (json.type === 'mermaid' || json.mermaid) {
+        setMermaidData({
+          content: json.mermaid,
+          definitions: json.definitions || {}
+        });
+        setIsLoading(false);
+        return;
+      }
+
+      // Otherwise, use the old wireframe renderer
       const { wireframeJSONToSVG } = await import('roadmap-renderer');
-      
-      // Customize the JSON for the "cattivo" theme before rendering
-      // Note: wireframeJSONToSVG doesn't support full theme override easily, 
-      // but we can inject CSS to the resulting SVG.
       
       const svg: SVGElement | null = await wireframeJSONToSVG(json, {
         fontURL: '/fonts/balsamiq.woff2',
       });
 
       if (svg && containerEl.current) {
-        // Apply "Simon Kola" dark/neon styling via classes
         svg.classList.add('simon-kola-svg');
         replaceChildren(containerEl.current, svg);
         
         // Post-process SVG colors
         const rects = svg.querySelectorAll('rect');
         rects.forEach(rect => {
-            rect.setAttribute('fill', '#0f172a'); // Slate-900
-            rect.setAttribute('stroke', '#3b82f6'); // Blue-500
+            rect.setAttribute('fill', '#0f172a');
+            rect.setAttribute('stroke', '#3b82f6');
             rect.setAttribute('stroke-width', '2');
         });
         
         const texts = svg.querySelectorAll('text');
         texts.forEach(text => {
-            text.setAttribute('fill', '#f8fafc'); // Slate-50
+            text.setAttribute('fill', '#f8fafc');
             text.style.fontFamily = "'Orbitron', sans-serif";
             text.style.textTransform = "uppercase";
             text.style.letterSpacing = "1px";
@@ -59,7 +68,7 @@ export function SubRoadmapRenderer(props: SubRoadmapRendererProps) {
 
         const lines = svg.querySelectorAll('line, path');
         lines.forEach(line => {
-            line.setAttribute('stroke', '#1e293b'); // Slate-800 default
+            line.setAttribute('stroke', '#1e293b');
             if (line.getAttribute('stroke') === '#000' || line.getAttribute('stroke') === 'black') {
                 line.setAttribute('stroke', '#3b82f6');
             }
@@ -76,6 +85,15 @@ export function SubRoadmapRenderer(props: SubRoadmapRendererProps) {
   useEffect(() => {
     fetchAndRender();
   }, [jsonUrl]);
+
+  if (mermaidData) {
+    return (
+      <MermaidRenderer 
+        content={mermaidData.content} 
+        definitions={mermaidData.definitions} 
+      />
+    );
+  }
 
   return (
     <div className={cn('relative w-full overflow-hidden bg-slate-950 rounded-lg border border-slate-800 min-h-[400px]', className)}>

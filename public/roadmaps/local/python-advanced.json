@@ -1,0 +1,9 @@
+{
+  "type": "mermaid",
+  "mermaid": "graph TD\n    PY[Python Core] --> BS[Basi & Sintassi]\n    PY --> AD[Advanced Features]\n    PY --> LIB[Standard Library]\n    \n    BS --> BS1[Variabili & Tipi]\n    BS --> BS2[Control Flow]\n    \n    AD --> AD1[Decorators]\n    AD --> AD2[Generators]\n    AD --> AD3[AsyncIO]\n    \n    LIB --> LIB1[OS & Sys]\n    LIB --> LIB2[JSON & HTTP]",
+  "definitions": {
+    "AD1": { "title": "Decorators", "text": "Funzioni che modificano il comportamento di altre funzioni senza cambiarne il codice." },
+    "AD2": { "title": "Generators", "text": "Funzioni che restituiscono un iteratore che produce valori uno alla volta, risparmiando memoria." },
+    "AD3": { "title": "AsyncIO", "text": "Libreria per scrivere codice concorrente usando la sintassi async/await." }
+  }
+}

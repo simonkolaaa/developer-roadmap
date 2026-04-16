@@ -1,0 +1,9 @@
+{
+  "type": "mermaid",
+  "mermaid": "graph TD\n    JAVA[Java Ecosystem] --> JVM[JVM & Runtime]\n    JAVA --> CORE[Core Syntax]\n    JAVA --> ENT[Enterprise / Spring]\n    \n    JVM --> J1[JIT Compiler]\n    JVM --> J2[Garbage Collection]\n    \n    CORE --> C1[Collections API]\n    CORE --> C2[Streams & Lambda]\n    \n    ENT --> E1[Spring Boot]\n    ENT --> E2[Hibernate / JPA]",
+  "definitions": {
+    "JVM": { "title": "Java Virtual Machine", "text": "L'ambiente che permette ai programmi Java di girare su qualsiasi hardware, garantendo l'indipendenza dalla piattaforma." },
+    "J2": { "title": "Garbage Collection", "text": "Processo automatico di gestione della memoria che recupera lo spazio occupato da oggetti non più utilizzati." },
+    "E1": { "title": "Spring Boot", "text": "Framework leader per lo sviluppo di applicazioni enterprise rapide e scalabili in Java." }
+  }
+}

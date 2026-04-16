@@ -1,0 +1,9 @@
+{
+  "type": "mermaid",
+  "mermaid": "graph TD\n    GO[Go Core] --> CONC[Concurrency]\n    GO --> SYNC[Standard Tools]\n    \n    CONC --> C1[Goroutines]\n    CONC --> C2[Channels]\n    \n    SYNC --> S1[Structs]\n    SYNC --> S2[Interfaces]",
+  "definitions": {
+    "C1": { "title": "Goroutines", "text": "Thread leggeri gestiti dal runtime di Go, permettono migliaia di operazioni simultanee." },
+    "C2": { "title": "Channels", "text": "Meccanismo per far comunicare le goroutine in modo sicuro scambiando dati." },
+    "S2": { "title": "Interfaces", "text": "In Go sono implicite: se un tipo ha i metodi richiesti, implementa l'interfaccia automaticamente." }
+  }
+}

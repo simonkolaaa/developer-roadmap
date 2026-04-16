@@ -1,0 +1,9 @@
+{
+  "type": "mermaid",
+  "mermaid": "graph TD\n    RU[Rust Basics] --> MS[Memory Safety]\n    RU --> TP[Types & Patterns]\n    \n    MS --> MS1[Ownership]\n    MS --> MS2[Borrow Checker]\n    MS --> MS3[Lifetimes]\n    \n    TP --> TP1[Enums & Option]\n    TP --> TP2[Traits]",
+  "definitions": {
+    "MS1": { "title": "Ownership", "text": "Il sistema centrale di Rust per gestire la memoria senza garbage collector." },
+    "MS2": { "title": "Borrow Checker", "text": "Componente del compilatore che garantisce che i riferimenti siano sempre validi e sicuri." },
+    "TP2": { "title": "Traits", "text": "Definiscono interfacce per i tipi, simili alle interfacce in Java/C# ma più potenti." }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "mermaid",
+  "mermaid": "graph TD\n    DB[Databases] --> REL[Relazionale SQL]\n    DB --> NOSQL[NoSQL]\n    \n    REL --> R1[Normalizzazione]\n    REL --> R2[ACID Transactions]\n    \n    NOSQL --> N1[Document (Mongo)]\n    NOSQL --> N2[KV Store (Redis)]",
+  "definitions": {
+    "R1": { "title": "Normalizzazione", "text": "Processo di organizzazione dei dati per ridurre ridondanza e migliorare integrità." },
+    "R2": { "title": "ACID", "text": "Set di proprietà (Atomicity, Consistency, Isolation, Durability) che garantiscono transazioni database sicure." },
+    "N2": { "title": "Redis", "text": "Database Key-Value ultra rapido in memoria, spesso usato per caching." }
+  }
+}

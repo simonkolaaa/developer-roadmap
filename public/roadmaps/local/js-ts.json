@@ -1,0 +1,8 @@
+{
+  "type": "mermaid",
+  "mermaid": "graph TD\n    JS[JS Mastery] --> CORE[Core Language]\n    JS --> TS[TypeScript Addon]\n    \n    CORE --> C1[Closures]\n    CORE --> C2[Promises & Async]\n    \n    TS --> T1[Static Typing]\n    TS --> T2[Generics]",
+  "definitions": {
+    "C1": { "title": "Closures", "text": "Funzioni che 'ricordano' il loro ambiente lessicale anche dopo essere state eseguite." },
+    "T1": { "title": "TypeScript Types", "text": "Sistema che permette di definire i tipi di dati prima dell'esecuzione, prevenendo bug banali." }
+  }
+}

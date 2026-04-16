@@ -20,13 +20,10 @@ export interface LocalRoadmap {
 }
 
 export const LOCAL_ROADMAPS: LocalRoadmap[] = [
-  // Mappe dagli Appunti IT
+  // Mappe dagli Appunti IT & Basi
   {
     slug: 'fondamenti-programmazione',
-    title: {
-      card: 'Fondamenti di Programmazione',
-      page: 'Fondamenti di Programmazione'
-    },
+    title: { card: 'Fondamenti di Programmazione', page: 'Fondamenti di Programmazione' },
     description: 'Basi della programmazione, algoritmi e strutture dati.',
     type: 'role',
     createdAt: new Date().toISOString(),
@@ -45,10 +42,7 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
   },
   {
     slug: 'programmazione-oggetti',
-    title: {
-      card: 'Programmazione a Oggetti',
-      page: 'Programmazione a Oggetti (OOP)'
-    },
+    title: { card: 'Programmazione a Oggetti', page: 'Programmazione a Oggetti (OOP)' },
     description: 'Principi di OOP, classi, interfacce ed ereditarietà.',
     type: 'role',
     createdAt: new Date().toISOString(),
@@ -65,76 +59,102 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
       'UML e Modellazione'
     ]
   },
+
+  // Roadmap Linguaggi (Interattive Mermaid via JSON)
   {
-    slug: 'sviluppo-web-database',
-    title: {
-      card: 'Sviluppo Web e Database',
-      page: 'Sviluppo Web e Database'
-    },
-    description: 'Architetture web, SQL, NoSQL e sviluppo full-stack.',
-    type: 'role',
+    slug: 'java',
+    title: { card: 'Java', page: 'Java Developer Roadmap' },
+    description: 'Il percorso completo per padroneggiare l ecosystem Java.',
+    type: 'skill',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     order: 3,
     topics: [
-      'Protocollo HTTP e Client/Server',
-      'HTML5 e CSS3 Moderno',
-      'Database Relazionali (SQL)',
-      'Normalizzazione delle Tabelle',
-      'NoSQL e Document Stores',
-      'API REST e JSON',
-      'Autenticazione e Sicurezza Web',
-      'Deployment e Cloud Hosting'
+      { title: 'Java Core & Ecosystem', json: '/roadmaps/local/java.json' },
+      'JVM & Architecture',
+      'Spring Framework',
+      'Hibernate & Persistence',
+      'Concurrency in Java'
     ]
-  },
-  
-  // Linguaggi di Programmazione
-  {
-    slug: 'java',
-    title: {
-      card: 'Java',
-      page: 'Java Developer Roadmap'
-    },
-    description: 'Percorso completo per padroneggiare l ecosystem Java.',
-    type: 'skill',
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-    order: 4
   },
   {
     slug: 'python',
-    title: {
-      card: 'Python',
-      page: 'Python Developer Roadmap'
-    },
+    title: { card: 'Python', page: 'Python Developer Roadmap' },
     description: 'Dalle basi alla Data Science e Web Backend.',
     type: 'skill',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    order: 5
+    order: 3,
+    topics: [
+      { title: 'Python Core & Advanced', json: '/roadmaps/local/python-advanced.json' },
+      { title: 'Web Backend (Flask & Jinja2)', json: '/roadmaps/local/web-flask.json' },
+      'Data Analysis with Pandas',
+      'Machine Learning Basics',
+      'Automation & Scripting'
+    ]
+  },
+  {
+    slug: 'rust',
+    title: { card: 'Rust', page: 'Rust Developer Roadmap' },
+    description: 'Il linguaggio per performance e sicurezza di memoria.',
+    type: 'skill',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+    order: 4,
+    topics: [
+      { title: 'Rust Safety & Lifecycle', json: '/roadmaps/local/rust.json' },
+      'Ownership & Borrowing',
+      'Error Handling (Result/Option)',
+      'Systems Programming with Rust',
+      'WebAssembly (Wasm) Integration'
+    ]
+  },
+  {
+    slug: 'go',
+    title: { card: 'Go', page: 'Go Developer Roadmap' },
+    description: 'Semplicità e performance per microservizi.',
+    type: 'skill',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+    order: 5,
+    topics: [
+      { title: 'Go Concurrency & Internals', json: '/roadmaps/local/go.json' },
+      'Goroutines & Channels',
+      'Building Microservices',
+      'Testing in Go',
+      'Go and Kubernetes'
+    ]
   },
   {
     slug: 'javascript',
-    title: {
-      card: 'JavaScript',
-      page: 'JavaScript Mastery'
-    },
+    title: { card: 'JavaScript & React', page: 'Frontend Mastery' },
     description: 'Il linguaggio del web: moderne feature e framework.',
     type: 'skill',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    order: 6
+    order: 6,
+    topics: [
+      { title: 'Modern JS & TypeScript', json: '/roadmaps/local/js-ts.json' },
+      { title: 'React Ecosystem', json: '/roadmaps/local/react.json' },
+      'State Management (Redux/Zustand)',
+      'Next.js & Server Side Rendering',
+      'Modern CSS (Tailwind/Styled)'
+    ]
   },
   {
-    slug: 'sql',
-    title: {
-      card: 'SQL',
-      page: 'SQL & Database Design'
-    },
-    description: 'Mastery nelle query e nell architettura dei dati.',
-    type: 'skill',
+    slug: 'sviluppo-web-database',
+    title: { card: 'Web & Database', page: 'System Architecture' },
+    description: 'Architetture web, SQL, NoSQL e sviluppo full-stack.',
+    type: 'role',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    order: 7
+    order: 7,
+    topics: [
+      { title: 'System Overview', json: '/roadmaps/local/web-flask.json' },
+      { title: 'Database Relazionali & NoSQL', json: '/roadmaps/local/database.json' },
+      'API Design (REST/GraphQL)',
+      'System Scalability',
+      'Authentication & JWT'
+    ]
   }
 ];
