@@ -1,9 +1,12 @@
 {
   "type": "mermaid",
-  "mermaid": "graph TD\n    D[Data Analysis] --> P[Pandas]\n    D --> N[NumPy]\n    D --> V[Visualization]\n    P --> DF[DataFrames]\n    N --> AR[Arrays & Matrix]\n    V --> PL[Matplotlib / Seaborn]",
+  "mermaid": "graph TD\n    D[Data Science & Analysis] --> P[Data Manipulation]\n    D --> ML[Machine Learning]\n    D --> V[Visualization]\n    D --> DE[Deployment]\n    \n    P --> P1[Pandas - DataFrames]\n    P --> P2[NumPy - Matrix Ops]\n    P --> P3[Polars - Performance]\n    \n    V --> V1[Matplotlib / Seaborn]\n    V --> V2[Plotly / Dash]\n    \n    ML --> ML1[Scikit-Learn]\n    ML --> ML2[TensorFlow / PyTorch]\n    \n    DE --> DE1[Model Persistence - Joblib]\n    DE --> DE2[API Deployment - FastAPI]",
   "definitions": {
-    "DF": { "title": "DataFrame", "text": "Struttura dati bidimensionale simile a una tabella SQL o un foglio Excel (Pandas)." },
-    "AR": { "title": "NumPy Arrays", "text": "Contenitori ultra-performanti per calcoli numerici e matriciali." },
-    "V": { "title": "Data Visualization", "text": "Rappresentazione grafica dei dati per facilitare l'analisi e la comprensione dei pattern." }
+    "P1": { "title": "Pandas", "text": "Libreria leader per la manipolazione di dati tabellari tramite la potente struttura DataFrame." },
+    "P3": { "title": "Polars", "text": "Alternativa moderna e ultra-veloce a Pandas, scritta in Rust, ottimizzata per dataset enormi e multi-threading." },
+    "V1": { "title": "Static Viz", "text": "Matplotlib e Seaborn per creare grafici statici pronti per la pubblicazione e reportistica." },
+    "V2": { "title": "Interactive Viz", "text": "Plotly permette di creare dashboard interattive che possono essere esplorate direttamente dal browser." },
+    "ML1": { "title": "Scikit-Learn", "text": "La libreria standard per il machine learning classico (regressioni, classificazione, clustering)." },
+    "ML2": { "title": "Deep Learning", "text": "TensorFlow e PyTorch per lo sviluppo di reti neurali avanzate e intelligenza artificiale." }
   }
 }

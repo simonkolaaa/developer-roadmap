@@ -1,9 +1,12 @@
 {
   "type": "mermaid",
-  "mermaid": "graph TD\n    RU[Rust Basics] --> MS[Memory Safety]\n    RU --> TP[Types & Patterns]\n    \n    MS --> MS1[Ownership]\n    MS --> MS2[Borrow Checker]\n    MS --> MS3[Lifetimes]\n    \n    TP --> TP1[Enums & Option]\n    TP --> TP2[Traits]",
+  "mermaid": "graph TD\n    RU[Rust Mastery] --> MS[Memory Mastery]\n    RU --> ADV[Advanced Topics]\n    RU --> AS[Async & Concurrency]\n    RU --> ECO[Ecosystem]\n    \n    MS --> MS1[Ownership & Borrowing]\n    MS --> MS2[Lifetimes - Named & Elided]\n    MS --> MS3[Smart Pointers - Box/Rc/Arc]\n    \n    ADV --> ADV1[Generics & Traits]\n    ADV --> ADV2[Macros - Declarative & Proc]\n    ADV --> ADV3[Unsafe Rust & FFI]\n    \n    AS --> AS1[Tokio / Async-std]\n    AS --> AS2[Shared State - Mutex/RwLock]\n    \n    ECO --> ECO1[Cargo & Crates]\n    ECO --> ECO2[Testing & Benchmarking]",
   "definitions": {
-    "MS1": { "title": "Ownership", "text": "Il sistema centrale di Rust per gestire la memoria senza garbage collector." },
-    "MS2": { "title": "Borrow Checker", "text": "Componente del compilatore che garantisce che i riferimenti siano sempre validi e sicuri." },
-    "TP2": { "title": "Traits", "text": "Definiscono interfacce per i tipi, simili alle interfacce in Java/C# ma più potenti." }
+    "MS2": { "title": "Lifetimes", "text": "Regole del compilatore per tracciare quanto a lungo un riferimento è valido, prevenendo 'dangling pointers'." },
+    "MS3": { "title": "Smart Pointers", "text": "Box per allocazione heap, Rc/Arc per il conteggio dei riferimenti (Arc è thread-safe)." },
+    "ADV2": { "title": "Metaprogrammazione", "text": "Le macro permettono di scrivere codice che genera altro codice a tempo di compilazione, estendendo la sintassi di Rust." },
+    "ADV3": { "title": "Unsafe Rust", "text": "Blocchi di codice speciali dove si possono bypassare i controlli di sicurezza per performance estreme o interfacciamento con C (FFI)." },
+    "AS1": { "title": "Async Rust", "text": "Permette di gestire migliaia di task concorrenti con un solo thread OS, tramite i runtime Tokio o Async-std." },
+    "ECO2": { "title": "Tooling", "text": "L'ecosistema Rust include test integrati, documentazione automatica e tool di benchmark come Criterion." }
   }
 }
