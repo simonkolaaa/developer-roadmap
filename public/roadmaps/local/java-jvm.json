@@ -1,0 +1,9 @@
+{
+  "type": "mermaid",
+  "mermaid": "graph LR\n    J[JVM Architecture] --> C[ClassLoader]\n    J --> M[Memory Area]\n    J --> E[Execution Engine]\n    M --> S[Stack Area]\n    M --> H[Heap Area]\n    E --> G[Garbage Collector]",
+  "definitions": {
+    "H": { "title": "Heap Memory", "text": "Area di memoria dove risiedono gli oggetti creati a runtime, gestita dal Garbage Collector." },
+    "S": { "title": "Stack Memory", "text": "Area di memoria locale per il thread, dove risiedono le chiamate ai metodi e le variabili locali." },
+    "G": { "title": "Garbage Collector", "text": "Processo che libera memoria distruggendo oggetti non più raggiungibili dal programma." }
+  }
+}

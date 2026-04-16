@@ -1,0 +1,9 @@
+{
+  "type": "mermaid",
+  "mermaid": "graph TD\n    D[Data Analysis] --> P[Pandas]\n    D --> N[NumPy]\n    D --> V[Visualization]\n    P --> DF[DataFrames]\n    N --> AR[Arrays & Matrix]\n    V --> PL[Matplotlib / Seaborn]",
+  "definitions": {
+    "DF": { "title": "DataFrame", "text": "Struttura dati bidimensionale simile a una tabella SQL o un foglio Excel (Pandas)." },
+    "AR": { "title": "NumPy Arrays", "text": "Contenitori ultra-performanti per calcoli numerici e matriciali." },
+    "V": { "title": "Data Visualization", "text": "Rappresentazione grafica dei dati per facilitare l'analisi e la comprensione dei pattern." }
+  }
+}

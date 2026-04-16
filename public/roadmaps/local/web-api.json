@@ -1,0 +1,9 @@
+{
+  "type": "mermaid",
+  "mermaid": "graph TD\n    API[API Design] --> REST[RESTful]\n    API --> GQ[GraphQL]\n    API --> GR[gRPC]\n    REST --> ST[Stateless]\n    REST --> EP[Endpoints]\n    GQ --> SC[Schema & Queries]",
+  "definitions": {
+    "REST": { "title": "RESTful", "text": "Stile architetturale basato su HTTP e risorse, dove ogni risorsa è identificata da un URL." },
+    "GQ": { "title": "GraphQL", "text": "Linguaggio di query per API che permette al client di richiedere esattamente i dati di cui ha bisogno." },
+    "GR": { "title": "gRPC", "text": "Framework RPC ad alte prestazioni che usa Protocol Buffers per la serializzazione dei dati." }
+  }
+}

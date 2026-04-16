@@ -1,0 +1,8 @@
+{
+  "type": "mermaid",
+  "mermaid": "graph LR\n    AU[Authentication] --> JW[JWT]\n    AU --> SE[Sessions]\n    AU --> OA[OAuth2 / OIDC]\n    JW --> ST[Stateless]\n    SE --> HT[HTTP Only Cookies]",
+  "definitions": {
+    "JW": { "title": "JWT (JSON Web Token)", "text": "Standard compatto per scambiare informazioni in modo sicuro tra le parti come oggetto JSON, spesso usato per l'autenticazione stateless." },
+    "OA": { "title": "OAuth2", "text": "Protocollo standard di settore per l'autorizzazione delegata, usato per 'Accedi con Google/GitHub'." }
+  }
+}

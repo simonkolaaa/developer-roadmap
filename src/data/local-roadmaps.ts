@@ -20,7 +20,7 @@ export interface LocalRoadmap {
 }
 
 export const LOCAL_ROADMAPS: LocalRoadmap[] = [
-  // Mappe dagli Appunti IT & Basi
+  // Fondamenti di Programmazione
   {
     slug: 'fondamenti-programmazione',
     title: { card: 'Fondamenti di Programmazione', page: 'Fondamenti di Programmazione' },
@@ -31,15 +31,17 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
     order: 1,
     topics: [
       { title: 'Introduzione agli Algoritmi', json: '/roadmaps/local/programming-fundamentals.json' },
-      'Variabili e Tipi di Dato',
-      'Strutture di Controllo (If, Else, Switch)',
-      'Cicli e Iterazioni (For, While)',
-      'Funzioni e Ricorsione',
-      'Array e Liste Lineari',
-      'Puntatori e Gestione Memoria',
-      'Complessità Computazionale'
+      { title: 'Variabili e Tipi di Dato', json: '/roadmaps/local/variables-types.json' },
+      { title: 'Strutture di Controllo (If, Else, Switch)', json: '/roadmaps/local/control-flow.json' },
+      { title: 'Cicli e Iterazioni (For, While)', json: '/roadmaps/local/control-flow.json' },
+      { title: 'Funzioni e Ricorsione', json: '/roadmaps/local/functions.json' },
+      { title: 'Array e Liste Lineari', json: '/roadmaps/local/variables-types.json' },
+      { title: 'Puntatori e Gestione Memoria', json: '/roadmaps/local/java-jvm.json' },
+      { title: 'Complessità Computazionale', json: '/roadmaps/local/programming-fundamentals.json' }
     ]
   },
+
+  // Programmazione a Oggetti
   {
     slug: 'programmazione-oggetti',
     title: { card: 'Programmazione a Oggetti', page: 'Programmazione a Oggetti (OOP)' },
@@ -50,17 +52,17 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
     order: 2,
     topics: [
       { title: 'Classi e Oggetti', json: '/roadmaps/local/oop-classes.json' },
-      'Incapsulamento e Modificatori di Accesso',
+      { title: 'Incapsulamento e Modificatori di Accesso', json: '/roadmaps/local/oop-encapsulation.json' },
       { title: 'Ereditarietà e Gerarchie', json: '/roadmaps/local/oop-inheritance.json' },
-      'Polimorfismo e Dynamic Binding',
-      'Interfacce e Classi Astratte',
-      'Eccezioni e Gestione Errori',
-      'Design Patterns di Base',
-      'UML e Modellazione'
+      { title: 'Polimorfismo e Dynamic Binding', json: '/roadmaps/local/oop-polymorphism.json' },
+      { title: 'Interfacce e Classi Astratte', json: '/roadmaps/local/oop-inheritance.json' },
+      { title: 'Eccezioni e Gestione Errori', json: '/roadmaps/local/rust-ownership.json' },
+      { title: 'Design Patterns di Base', json: '/roadmaps/local/oop-classes.json' },
+      { title: 'UML e Modellazione', json: '/roadmaps/local/oop-classes.json' }
     ]
   },
 
-  // Roadmap Linguaggi (Interattive Mermaid via JSON)
+  // Java
   {
     slug: 'java',
     title: { card: 'Java', page: 'Java Developer Roadmap' },
@@ -71,12 +73,14 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
     order: 3,
     topics: [
       { title: 'Java Core & Ecosystem', json: '/roadmaps/local/java.json' },
-      'JVM & Architecture',
-      'Spring Framework',
-      'Hibernate & Persistence',
-      'Concurrency in Java'
+      { title: 'JVM & Architecture', json: '/roadmaps/local/java-jvm.json' },
+      { title: 'Spring Framework', json: '/roadmaps/local/java.json' },
+      { title: 'Hibernate & Persistence', json: '/roadmaps/local/java.json' },
+      { title: 'Concurrency in Java', json: '/roadmaps/local/go.json' }
     ]
   },
+
+  // Python
   {
     slug: 'python',
     title: { card: 'Python', page: 'Python Developer Roadmap' },
@@ -84,15 +88,17 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
     type: 'skill',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    order: 3,
+    order: 4,
     topics: [
       { title: 'Python Core & Advanced', json: '/roadmaps/local/python-advanced.json' },
       { title: 'Web Backend (Flask & Jinja2)', json: '/roadmaps/local/web-flask.json' },
-      'Data Analysis with Pandas',
-      'Machine Learning Basics',
-      'Automation & Scripting'
+      { title: 'Data Analysis with Pandas', json: '/roadmaps/local/python-data.json' },
+      { title: 'Machine Learning Basics', json: '/roadmaps/local/python-data.json' },
+      { title: 'Automation & Scripting', json: '/roadmaps/local/python-automation.json' }
     ]
   },
+
+  // Rust
   {
     slug: 'rust',
     title: { card: 'Rust', page: 'Rust Developer Roadmap' },
@@ -100,15 +106,17 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
     type: 'skill',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    order: 4,
+    order: 5,
     topics: [
       { title: 'Rust Safety & Lifecycle', json: '/roadmaps/local/rust.json' },
-      'Ownership & Borrowing',
-      'Error Handling (Result/Option)',
-      'Systems Programming with Rust',
-      'WebAssembly (Wasm) Integration'
+      { title: 'Ownership & Borrowing', json: '/roadmaps/local/rust-ownership.json' },
+      { title: 'Error Handling (Result/Option)', json: '/roadmaps/local/rust-ownership.json' },
+      { title: 'Systems Programming with Rust', json: '/roadmaps/local/rust.json' },
+      { title: 'WebAssembly (Wasm) Integration', json: '/roadmaps/local/rust.json' }
     ]
   },
+
+  // Go
   {
     slug: 'go',
     title: { card: 'Go', page: 'Go Developer Roadmap' },
@@ -116,15 +124,17 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
     type: 'skill',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    order: 5,
+    order: 6,
     topics: [
       { title: 'Go Concurrency & Internals', json: '/roadmaps/local/go.json' },
-      'Goroutines & Channels',
-      'Building Microservices',
-      'Testing in Go',
-      'Go and Kubernetes'
+      { title: 'Goroutines & Channels', json: '/roadmaps/local/go.json' },
+      { title: 'Building Microservices', json: '/roadmaps/local/web-api.json' },
+      { title: 'Testing in Go', json: '/roadmaps/local/go.json' },
+      { title: 'Go and Kubernetes', json: '/roadmaps/local/go-kubernetes.json' }
     ]
   },
+
+  // JavaScript & React
   {
     slug: 'javascript',
     title: { card: 'JavaScript & React', page: 'Frontend Mastery' },
@@ -132,15 +142,17 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
     type: 'skill',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    order: 6,
+    order: 7,
     topics: [
       { title: 'Modern JS & TypeScript', json: '/roadmaps/local/js-ts.json' },
       { title: 'React Ecosystem', json: '/roadmaps/local/react.json' },
-      'State Management (Redux/Zustand)',
-      'Next.js & Server Side Rendering',
-      'Modern CSS (Tailwind/Styled)'
+      { title: 'State Management (Redux/Zustand)', json: '/roadmaps/local/react-state.json' },
+      { title: 'Next.js & Server Side Rendering', json: '/roadmaps/local/react.json' },
+      { title: 'Modern CSS (Tailwind/Styled)', json: '/roadmaps/local/js-ts.json' }
     ]
   },
+
+  // Web Architecture & Database
   {
     slug: 'sviluppo-web-database',
     title: { card: 'Web & Database', page: 'System Architecture' },
@@ -148,13 +160,13 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
     type: 'role',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    order: 7,
+    order: 8,
     topics: [
-      { title: 'System Overview', json: '/roadmaps/local/web-flask.json' },
+      { title: 'System Overview', json: '/roadmaps/local/web-api.json' },
       { title: 'Database Relazionali & NoSQL', json: '/roadmaps/local/database.json' },
-      'API Design (REST/GraphQL)',
-      'System Scalability',
-      'Authentication & JWT'
+      { title: 'API Design (REST/GraphQL)', json: '/roadmaps/local/web-api.json' },
+      { title: 'System Scalability', json: '/roadmaps/local/database.json' },
+      { title: 'Authentication & JWT', json: '/roadmaps/local/web-auth.json' }
     ]
   }
 ];

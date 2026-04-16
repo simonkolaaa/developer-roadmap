@@ -1,0 +1,9 @@
+{
+  "type": "mermaid",
+  "mermaid": "graph TD\n    C[Controllo Flusso] --> S[Selezione]\n    C --> I[Iterazione]\n    S --> IF[If / Else]\n    S --> SW[Switch / Match]\n    I --> WL[While]\n    I --> FL[For]",
+  "definitions": {
+    "IF": { "title": "If / Else", "text": "Permette di eseguire rami di codice diversi in base a una condizione booleana." },
+    "SW": { "title": "Switch / Match", "text": "Selezione basata su pattern matching o valori discreti (JS switch / Python 3.10 match)." },
+    "FL": { "title": "For Loop", "text": "Iterazione su una sequenza (range, lista, array) con un numero di passi spesso predefinito." }
+  }
+}
