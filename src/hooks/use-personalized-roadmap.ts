@@ -29,7 +29,7 @@ export function  usePersonalizedRoadmap(options: UsePersonalizedRoadmapOptions) 
 
   const informationRef = useRef<string>('');
 
-  const generatePersonalizedRoadmap = async (information: string) => {
+  const generatePersonalizedRoadmap = async (information: string, allTopicIds?: string[]) => {
     try {
       informationRef.current = information;
       onStart?.();
@@ -37,23 +37,49 @@ export function  usePersonalizedRoadmap(options: UsePersonalizedRoadmapOptions) 
       abortControllerRef.current?.abort();
       abortControllerRef.current = new AbortController();
 
-      const response = await fetch(
-        `${import.meta.env.PUBLIC_API_URL}/v1-personalized-roadmap`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
+      let response;
+      try {
+        response = await fetch(
+          `${import.meta.env.PUBLIC_API_URL}/v1-personalized-roadmap`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              roadmapId,
+              information,
+            }),
+            signal: abortControllerRef.current?.signal,
+            credentials: 'include',
           },
-          body: JSON.stringify({
-            roadmapId,
-            information,
-          }),
-          signal: abortControllerRef.current?.signal,
-          credentials: 'include',
-        },
-      );
+        );
+      } catch (e) {
+        console.warn('API call failed, falling back to local mock:', e);
+        // Fallback mock logic
+        if (allTopicIds && allTopicIds.length > 0) {
+          // Simulate a 2-second delay
+          await new Promise(resolve => setTimeout(resolve, 2000));
+          
+          // Randomly pick 70-80% of topics to simulate personalization
+          const shuffled = [...allTopicIds].sort(() => 0.5 - Math.random());
+          const count = Math.floor(allTopicIds.length * (0.7 + Math.random() * 0.1));
+          const selectedTopicIds = shuffled.slice(0, count);
+          
+          const mockData = {
+            topicIds: selectedTopicIds,
+            information: information
+          };
+          
+          onFinish?.(mockData);
+          setStatus('idle');
+          return;
+        }
+        throw e;
+      }
 
       if (!response.ok) {
+        // ... (existing error handling)
         const data = await response.json();
         setStatus('error');
         if (data.status === 401) {

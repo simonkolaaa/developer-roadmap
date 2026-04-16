@@ -1,9 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { cn } from '../../lib/classname';
-import { FacebookIcon } from '../ReactIcons/FacebookIcon';
-import { HackerNewsIcon } from '../ReactIcons/HackerNewsIcon';
-import { RedditIcon } from '../ReactIcons/RedditIcon';
-import { TwitterIcon } from '../ReactIcons/TwitterIcon';
+import { GitHubIcon } from '../ReactIcons/GitHubIcon';
 
 type ShareIconsProps = {
   resourceId: string;
@@ -17,32 +14,14 @@ export function ShareIcons(props: ShareIconsProps) {
 
   const shareIconsRef = useRef<HTMLDivElement>(null);
 
-  const twitterUrl = `https://twitter.com/intent/tweet?text=${description}&url=${pageUrl}`;
-  const fbUrl = `https://www.facebook.com/sharer/sharer.php?quote=${description}&u=${pageUrl}`;
-  const hnUrl = `https://news.ycombinator.com/submitlink?t=${description}&u=${pageUrl}`;
-  const redditUrl = `https://www.reddit.com/submit?title=${description}&url=${pageUrl}`;
-
   const icons = [
     {
-      url: twitterUrl,
+      url: 'https://github.com/simonkolaaa',
       icon: (
-        <TwitterIcon
+        <GitHubIcon
           className="size-[24px] [&>path]:fill-[#E5E5E5]"
-          boxColor="currentColor"
         />
       ),
-    },
-    {
-      url: fbUrl,
-      icon: <FacebookIcon className="size-[26px]" />,
-    },
-    {
-      url: hnUrl,
-      icon: <HackerNewsIcon className="size-[26px]" />,
-    },
-    {
-      url: redditUrl,
-      icon: <RedditIcon className="size-[26px]" />,
     },
   ];
 

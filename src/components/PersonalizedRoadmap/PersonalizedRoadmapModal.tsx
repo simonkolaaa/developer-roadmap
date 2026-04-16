@@ -29,18 +29,13 @@ export function PersonalizedRoadmapModal(props: PersonalizedRoadmapModalProps) {
     queryClient,
   );
 
-  const hasReachedLimit =
-    limits?.used && limits?.limit ? limits.used >= limits.limit : false;
-  console.log(limits);
+  // No limits applied locally
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onSubmitProp(info);
   };
 
-  if (hasReachedLimit) {
-    return <UpgradeAccountModal onClose={onClose} />;
-  }
 
   return (
     <Modal

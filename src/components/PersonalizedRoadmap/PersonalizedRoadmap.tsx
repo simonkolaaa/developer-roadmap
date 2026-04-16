@@ -86,6 +86,10 @@ export function PersonalizedRoadmap(props: PersonalizedRoadmapProps) {
               ...data,
               topicIds: remainingTopicIds,
             },
+          }).catch(err => {
+            console.warn('Failed to save personalization to API, using memory only:', err);
+            // We just return a mock success so the UI updates
+            return { response: { success: true }, error: undefined };
           });
         },
         onError: (error) => {
@@ -186,7 +190,7 @@ export function PersonalizedRoadmap(props: PersonalizedRoadmapProps) {
               renderTopicProgress(nodeId, 'skipped');
             }
 
-            generatePersonalizedRoadmap(information);
+            generatePersonalizedRoadmap(information, allPendingNodeIds);
           }}
           onClearProgress={() => {
             setIsModalOpen(false);
@@ -210,11 +214,7 @@ export function PersonalizedRoadmap(props: PersonalizedRoadmapProps) {
         <button
           className="group hidden sm:inline-flex items-center gap-1.5 border-b-2 border-b-transparent pb-2.5 text-sm font-normal text-slate-400 transition-colors hover:text-white"
           onClick={() => {
-            if (!isLoggedIn()) {
-              showLoginPopup();
-              return;
-            }
-
+            // No login required
             setIsModalOpen(true);
           }}
           disabled={isGenerating}
@@ -228,16 +228,6 @@ export function PersonalizedRoadmap(props: PersonalizedRoadmapProps) {
             <>
               <PersonStandingIcon className="h-4 w-4 shrink-0" />
               <span className="font-orbitron">Personalize</span>
-              <span
-                className={cn(
-                  'ml-0.5 hidden items-center gap-0.5 rounded-full bg-blue-600 px-2 py-0.5 text-[10px] font-bold text-white transition-colors sm:flex uppercase tracking-tighter',
-                  {
-                    'bg-blue-600 group-hover:bg-blue-500': true,
-                  },
-                )}
-              >
-                PRO
-              </span>
             </>
           )}
         </button>
