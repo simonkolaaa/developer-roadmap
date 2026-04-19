@@ -67,16 +67,16 @@ export function VisualRoadmapRenderer(props: VisualRoadmapRendererProps) {
 
 
   useEffect(() => {
-    fetchAndRender();
-  }, [roadmapId]);
-
-  const [selectedMap, setSelectedMap] = useState<{ title: string; image?: string; json?: string } | null>(null);
-  const [localData, setLocalData] = useState<any>(null);
-
-  useEffect(() => {
     if (typeof window === 'undefined') return;
+    
     const data = LOCAL_ROADMAPS.find(r => r.slug === roadmapId);
     setLocalData(data);
+    
+    if (data?.topics) {
+      setIsLoading(false);
+    } else {
+      fetchAndRender();
+    }
   }, [roadmapId]);
 
 

@@ -22,8 +22,18 @@ export function SubRoadmapRenderer(props: SubRoadmapRendererProps) {
       setError(null);
       setMermaidData(null);
 
-      // Use a cache-buster timestamp to ensure we get the latest JSON data from Vercel
-      const res = await fetch(`${jsonUrl}?t=${Date.now()}`);
+      // Clean up the URL to avoid "undefined/" or malformed paths
+      const appUrl = import.meta.env.PUBLIC_APP_URL;
+      const baseUrl = (appUrl && appUrl !== 'undefined') ? appUrl : (typeof window !== 'undefined' ? window.location.origin : '');
+      let finalUrl = jsonUrl;
+      
+      if (finalUrl.startsWith('undefined/')) {
+        finalUrl = finalUrl.replace('undefined/', baseUrl ? `${baseUrl}/` : '/');
+      } else if (!finalUrl.startsWith('http') && !finalUrl.startsWith('/') && baseUrl) {
+        finalUrl = `${baseUrl.replace(/\/$/, '')}/${finalUrl.replace(/^\//, '')}`;
+      }
+
+      const res = await fetch(`${finalUrl}${finalUrl.includes('?') ? '&' : '?'}t=${Date.now()}`);
       if (!res.ok) {
         throw new Error(`Failed to fetch sub-roadmap data: ${res.statusText}`);
       }

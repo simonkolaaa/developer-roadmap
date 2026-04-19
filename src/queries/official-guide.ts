@@ -37,8 +37,10 @@ type ListOfficialGuidesQuery = {
 
 export async function listOfficialGuides(query: ListOfficialGuidesQuery = {}) {
   try {
+    const appUrl = import.meta.env.PUBLIC_APP_URL;
+    const baseUrl = (appUrl && appUrl !== 'undefined') ? appUrl : (typeof window !== 'undefined' ? window.location.origin : '');
     const guides = await httpGet<OfficialGuideDocument[]>(
-      `/v1-list-official-guides`,
+      `${baseUrl}/v1-list-official-guides`,
       query,
     );
 
