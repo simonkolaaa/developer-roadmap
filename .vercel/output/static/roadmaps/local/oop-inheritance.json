@@ -1,0 +1,9 @@
+{
+  "type": "mermaid",
+  "mermaid": "graph TD\n    E[Ereditarietà] --> S[Superclasse]\n    E --> SU[Sottoclasse]\n    S --> D[Metodi Comuni]\n    SU --> O[Override]\n    SU --> SP[Specializzazione]",
+  "definitions": {
+    "E": { "title": "Ereditarietà", "text": "Meccanismo che permette a una classe di derivare caratteristiche da un'altra (Relazione IS-A)." },
+    "O": { "title": "Method Override", "text": "Ridefinizione di un metodo della superclasse all'interno della sottoclasse per cambiarne la logica." },
+    "SP": { "title": "Specializzazione", "text": "Aggiunta di nuovi attributi o metodi specifici alla sottoclasse che non esistono nella superclasse." }
+  }
+}

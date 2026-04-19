@@ -1,0 +1,12 @@
+{
+  "type": "mermaid",
+  "mermaid": "graph TD\n    J[JVM Architecture] --> C[ClassLoader]\n    J --> M[Memory Area]\n    J --> E[Execution Engine]\n    J --> NC[Native Interface]\n    \n    M --> S[Stack Area]\n    M --> H[Heap Area]\n    M --> ME[Metaspace]\n    \n    E --> G[Garbage Collector]\n    E --> JIT[JIT Compiler]\n    \n    J --> ADV[Advanced JVM]\n    ADV --> VT[Virtual Threads - Loom]\n    ADV --> GVM[GraalVM]\n    ADV --> ZGC[Z Garbage Collector]",
+  "definitions": {
+    "H": { "title": "Heap Memory", "text": "Area di memoria dove risiedono gli oggetti creati a runtime, gestita dal Garbage Collector." },
+    "S": { "title": "Stack Memory", "text": "Area di memoria locale per il thread, dove risiedono le chiamate ai metodi e le variabili locali." },
+    "G": { "title": "Garbage Collector", "text": "Processo che libera memoria distruggendo oggetti non più raggiungibili dal programma." },
+    "VT": { "title": "Virtual Threads (Loom)", "text": "Thread leggeri gestiti dalla JVM che permettono di scalare ad alto throughput evitando il costo dei thread del sistema operativo." },
+    "GVM": { "title": "GraalVM", "text": "Runtime ad alte prestazioni che permette l'esecuzione di programmi Java tramite compilazione anticipata (AOT) per startup istantanei." },
+    "ME": { "title": "Metaspace", "text": "Introdotto in Java 8 per sostituire PermGen; memorizza i metadati delle classi caricati dal ClassLoader." }
+  }
+}

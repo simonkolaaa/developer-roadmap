@@ -1,0 +1,9 @@
+{
+  "type": "mermaid",
+  "mermaid": "graph TD\n    WEB[Flask Web Dev] --> ARCH[Architettura App]\n    WEB --> ROUTE[Routing & Request]\n    WEB --> TEMP[Templating: Jinja2]\n    \n    TEMP --> T1[Inheritance base.html]\n    TEMP --> T2[Variables & Filters]\n    TEMP --> T3[Control Structures]",
+  "definitions": {
+    "WEB": { "title": "Flask", "text": "Micro-framework per Python leggero e flessibile per costruire web app." },
+    "TEMP": { "title": "Jinja2", "text": "Motore di template moderno e veloce che permette di inserire logica Python nell'HTML." },
+    "T1": { "title": "Template Inheritance", "text": "Pratica di definire uno scheletro base (es. header/footer) e override solo i blocchi necessari nelle pagine figlie." }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "mermaid",
+  "mermaid": "graph TD\n    PY[Python Advanced] --> BS[Core Advanced]\n    PY --> OOP[Advanced OOP]\n    PY --> CONC[Concurrency]\n    PY --> DV[Dev / Test]\n    \n    BS --> BS1[Decorators]\n    BS --> BS2[Generators & Iterators]\n    BS --> BS3[Context Managers - with]\n    BS --> BS4[Static Typing - Mypy]\n    \n    OOP --> OOP1[Metaclasses]\n    OOP --> OOP2[Mixins]\n    OOP --> OOP3[Inheritance & MRO]\n    \n    CONC --> C1[AsyncIO]\n    CONC --> C2[Threading vs Multiprocessing]\n    \n    DV --> DV1[Testing - Pytest]\n    DV --> DV2[Packaging - uv/Poetry]\n    DV --> DV3[Virtual Environments]",
+  "definitions": {
+    "BS1": { "title": "Decorators", "text": "Funzioni che modificano il comportamento di altre funzioni senza cambiarne il codice, ideali per logging e permessi." },
+    "BS2": { "title": "Generators", "text": "Funzioni che restituiscono un iteratore che produce valori uno alla volta (yield), ottimizzando l'uso della memoria." },
+    "BS4": { "title": "Static Typing", "text": "L'uso di type hints (modulo typing) e tool come Mypy per aggiungere robustezza al codice Python tipicamente dinamico." },
+    "OOP1": { "title": "Metaclasses", "text": "Le 'classi delle classi': servono a definire come le classi stesse vengono create, permettendo manipolazioni avanzate." },
+    "OOP2": { "title": "Mixins", "text": "Classi progettate per fornire funzionalità aggiuntive ad altre classi tramite ereditarietà multipla senza essere istanziate da sole." },
+    "C1": { "title": "AsyncIO", "text": "Libreria fondamentale per scrivere codice asincrono ad alte prestazioni usando la sintassi async/await." },
+    "DV2": { "title": "Modern Packaging", "text": "Strumenti moderni come uv o Poetry che gestiscono le dipendenze in modo più veloce e sicuro rispetto al classico pip." }
+  }
+}

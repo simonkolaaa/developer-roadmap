@@ -1,0 +1,14 @@
+{
+  "type": "mermaid",
+  "mermaid": "graph TD\n    JAVA[Java Ecosystem] --> JVM[JVM & Runtime]\n    JAVA --> CORE[Core Syntax]\n    JAVA --> BT[Build Tools]\n    JAVA --> ENT[Enterprise / Spring]\n    JAVA --> TE[Testing]\n    \n    JVM --> J1[JIT Compiler]\n    JVM --> J2[Garbage Collection]\n    JVM --> J3[JMM - Java Memory Model]\n    \n    CORE --> C1[Collections API]\n    CORE --> C2[Streams & Lambda]\n    CORE --> C3[Records & Sealed Classes]\n    \n    BT --> BT1[Maven]\n    BT --> BT2[Gradle]\n    \n    ENT --> E1[Spring Boot]\n    ENT --> E2[Hibernate / JPA]\n    ENT --> E3[Spring Security / Cloud]\n\n    TE --> T1[JUnit 5]\n    TE --> T2[Mockito]",
+  "definitions": {
+    "JVM": { "title": "Java Virtual Machine", "text": "L'ambiente che permette ai programmi Java di girare su qualsiasi hardware, garantendo l'indipendenza dalla piattaforma." },
+    "J2": { "title": "Garbage Collection", "text": "Processo automatico di gestione della memoria che recupera lo spazio occupato da oggetti non più utilizzati." },
+    "J3": { "title": "Java Memory Model", "text": "Specifica come la JVM orchestra la visibilità e l'ordine delle operazioni in memoria tra i vari thread (keyword volatile)." },
+    "C3": { "title": "Modern Java Features", "text": "Introdotte dalle versioni 14-21: Records per dati immutabili, Sealed Classes per restrizioni gerarchiche, Pattern Matching." },
+    "BT1": { "title": "Maven", "text": "Strumento standard di gestione delle dipendenze e build basato su file XML (pom.xml)." },
+    "BT2": { "title": "Gradle", "text": "Strumento di build moderno basato su Groovy o Kotlin DSL, più flessibile e performante di Maven." },
+    "E1": { "title": "Spring Boot", "text": "Framework leader per lo sviluppo di applicazioni enterprise rapide e scalabili in Java." },
+    "T1": { "title": "JUnit 5", "text": "Lo standard per lo unit testing in Java, essenziale per garantire la qualità del codice." }
+  }
+}

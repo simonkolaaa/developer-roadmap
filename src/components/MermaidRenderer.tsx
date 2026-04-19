@@ -69,26 +69,35 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
 
   useEffect(() => {
     if (isLoaded && containerRef.current) {
-      try {
-        let enhancedContent = content;
-        
-        // Add class definitions for styling nodes with definitions
-        enhancedContent += '\n    classDef definedNode fill:#0f172a,stroke:#fbbf24,stroke-width:2px,color:#fbbf24,filter:drop-shadow(0 0 5px rgba(251, 191, 36, 0.4))';
-        
-        // Automatically append click events and styles for all defined nodes
-        Object.keys(definitions).forEach(nodeId => {
-          if (!enhancedContent.includes(`click ${nodeId}`)) {
-            enhancedContent += `\n    click ${nodeId} call showNodeDefinition("${nodeId}")`;
-            enhancedContent += `\n    class ${nodeId} definedNode`;
-          }
-        });
+      const renderMermaid = async () => {
+        try {
+          const id = `mermaid-svg-${Math.random().toString(36).substr(2, 9)}`;
+          let enhancedContent = content;
+          
+          // Add style and click commands for defined nodes at the very end
+          enhancedContent += '\n\n    %% Styles and Clicks';
+          Object.keys(definitions).forEach(nodeId => {
+            // Use style for direct attribute control and class for custom CSS targeting
+            enhancedContent += `\n    style ${nodeId} stroke:#fbbf24,stroke-width:3px,fill:#0f172a`;
+            
+            if (!enhancedContent.includes(`click ${nodeId}`)) {
+              enhancedContent += `\n    click ${nodeId} call showNodeDefinition("${nodeId}")`;
+              enhancedContent += `\n    class ${nodeId} definedNode`;
+            }
+          });
 
-        containerRef.current.innerHTML = enhancedContent;
-        window.mermaid.contentLoaded();
-        window.mermaid.init(undefined, containerRef.current);
-      } catch (err) {
-        console.error('Mermaid render error:', err);
-      }
+          // Use the modern render API
+          const { svg } = await window.mermaid.render(id, enhancedContent);
+          
+          if (containerRef.current) {
+            containerRef.current.innerHTML = svg;
+          }
+        } catch (err) {
+          console.error('Mermaid render error:', err);
+        }
+      };
+
+      renderMermaid();
     }
   }, [isLoaded, content, definitions]);
 
@@ -160,20 +169,21 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
           50% { filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.6)); }
           100% { filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.3)); }
         }
-        .mermaid g.definedNode rect, .mermaid g.definedNode circle, .mermaid g.definedNode polygon, .mermaid g.definedNode path {
+        .mermaid g.definedNode rect, .mermaid g.definedNode circle, .mermaid g.definedNode polygon, .mermaid g.definedNode path, .mermaid .node.definedNode rect {
           stroke: #fbbf24 !important;
           stroke-width: 3px !important;
-          fill: #1e293b !important;
+          fill: #0f172a !important;
           animation: pulse-gold 2s infinite !important;
+          cursor: pointer;
         }
-        .mermaid g.definedNode .label, .mermaid g.definedNode span, .mermaid g.definedNode div {
+        .mermaid g.definedNode .label, .mermaid g.definedNode span, .mermaid g.definedNode div, .mermaid .node.definedNode .label {
           color: #fbbf24 !important;
           font-weight: bold !important;
         }
         @keyframes pulse-gold {
-          0% { filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.3)); stroke: #fbbf24; }
-          50% { filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.8)); stroke: #fff; }
-          100% { filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.3)); stroke: #fbbf24; }
+          0% { filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.3)); }
+          50% { filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.9)); }
+          100% { filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.3)); }
         }
         .mermaid .edgePath path {
           stroke: #3b82f6 !important;

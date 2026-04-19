@@ -1,0 +1,11 @@
+{
+  "type": "mermaid",
+  "mermaid": "graph TD\n    FA[Fondamenti di Informatica] --> LO[Logica & Algoritmi] \n    FA --> DA[Sistemi di Dati]\n    FA --> HW[Architettura & Memory]\n    \n    LO --> AL[Complessità - Big O]\n    LO --> RE[Ricorsione]\n    \n    DA --> VA[Variabili & Scope]\n    DA --> TI[Tipi di Dato Primitive]\n    DA --> EN[Encodings - ASCII/UTF-8]\n    \n    HW --> ME[RAM & Stack/Heap]\n    HW --> CP[CPU & Registri]",
+  "definitions": {
+    "AL": { "title": "Algoritmi & Big O", "text": "Insieme di passi logici per risolvere un problema, misurati per efficienza tramite la notazione Big O." },
+    "EN": { "title": "Character Encodings", "text": "Standard come UTF-8 che mappano i byte ai caratteri. Essenziale per gestire testi internazionali e simboli." },
+    "ME": { "title": "Memory Management", "text": "Gestione della RAM tramite Stack (per variabili locali veloci) e Heap (per oggetti dinamici a lungo termine)." },
+    "CP": { "title": "CPU Basics", "text": "L'unità centrale di elaborazione che esegue le istruzioni caricate in memoria tramite registri e cicli di clock." },
+    "TI": { "title": "Tipi di Dato", "text": "Classificazione dei dati (Interi, Float, Booleani) che determina la memoria allocata e le operazioni possibili." }
+  }
+}
