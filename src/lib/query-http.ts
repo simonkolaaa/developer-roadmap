@@ -39,7 +39,7 @@ export async function httpCall<ResponseType = AppResponse>(
   url: string,
   options?: HttpOptionsType,
 ): Promise<ApiReturn<ResponseType>> {
-  const apiBaseUrl = import.meta.env.PUBLIC_API_URL || '';
+  const apiBaseUrl = import.meta.env.PUBLIC_API_URL || (isServer ? 'https://api.roadmap.sh' : '');
   const fullUrl = url.startsWith('http')
     ? url
     : `${apiBaseUrl}${url}`;
