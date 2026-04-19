@@ -6,6 +6,10 @@ type HttpOptionsType = RequestInit;
 
 type AppResponse = Record<string, any>;
 
+if (typeof window === 'undefined') {
+  // SSR Guard: Prevent any execution during server-side import
+}
+
 export class FetchError extends Error {
   status: number;
   message: string;
@@ -42,7 +46,7 @@ export async function httpCall<ResponseType = AppResponse>(
   const apiBaseUrl = import.meta.env.PUBLIC_API_URL || (isServer ? 'https://api.roadmap.sh' : '');
   const fullUrl = url.startsWith('http')
     ? url
-    : `${apiBaseUrl}${url}`;
+    : (apiBaseUrl.endsWith('/') ? `${apiBaseUrl}${url.startsWith('/') ? url.slice(1) : url}` : `${apiBaseUrl}${url.startsWith('/') ? url : `/${url}`}`);
 
   try {
     let visitorId = '';

@@ -29,7 +29,13 @@ interface Params extends Record<string, string | undefined> {
 }
 
 const { roadmapId } = Astro.params as Params;
-const roadmapData = await officialRoadmapDetails(roadmapId);
+let roadmapData = null;
+try {
+  roadmapData = await officialRoadmapDetails(roadmapId);
+} catch (e) {
+  console.error('Failed to fetch roadmap details:', e);
+}
+
 if (!roadmapData) {
   Astro.response.status = 404;
   Astro.response.statusText = 'Not found';
@@ -77,10 +83,15 @@ if (faqs.length) {
   jsonLdSchema.push(generateFAQSchema(faqs));
 }
 
-const projects = await listOfficialProjects({ roadmapId });
-const courses = roadmapData.courses || [];
+let projects = [];
+try {
+  projects = await listOfficialProjects({ roadmapId });
+} catch (e) {
+  console.error('Failed to fetch projects:', e);
+}
 
-const isNew = isNewRoadmap(roadmapData.createdAt);
+const courses = roadmapData?.courses || [];
+const isNew = roadmapData?.createdAt ? isNewRoadmap(roadmapData.createdAt) : false;
 ---
 
 <BaseLayout

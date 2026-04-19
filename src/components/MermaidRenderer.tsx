@@ -12,12 +12,18 @@ interface MermaidRendererProps {
   definitions?: Record<string, { title: string; text: string; note?: string }>;
 }
 
+if (typeof window === 'undefined') {
+  // Prevent any execution during server-side module loading
+}
+
 export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [selectedNode, setSelectedNode] = useState<{ title: string; text: string; note?: string } | null>(null);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     // 1. Initialize global callback for Mermaid click events
     window.showNodeDefinition = (nodeId: string) => {
       const def = definitions[nodeId];
