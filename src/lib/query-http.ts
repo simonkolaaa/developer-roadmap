@@ -43,15 +43,15 @@ export async function httpCall<ResponseType = AppResponse>(
   url: string,
   options?: HttpOptionsType,
 ): Promise<ApiReturn<ResponseType>> {
-  const apiBaseUrl = import.meta.env.PUBLIC_API_URL || (isServer ? 'https://api.roadmap.sh' : '');
+  const isServer = typeof window === 'undefined';
+  const apiBaseUrl = getBaseUrl();
   const fullUrl = url.startsWith('http')
     ? url
-    : (apiBaseUrl.endsWith('/') ? `${apiBaseUrl}${url.startsWith('/') ? url.slice(1) : url}` : `${apiBaseUrl}${url.startsWith('/') ? url : `/${url}`}`);
+    : `${apiBaseUrl}${url.startsWith('/') ? '' : '/'}${url}`;
 
   try {
     let visitorId = '';
 
-    const isServer = typeof window === 'undefined';
     if (!isServer) {
       const fingerprintPromise = await fp.load();
       const fingerprint = await fingerprintPromise.get();

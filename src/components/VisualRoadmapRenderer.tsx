@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Spinner } from './ReactIcons/Spinner';
 import { replaceChildren } from '../lib/dom.ts';
+import { cleanUrl } from '../lib/base-url';
+import { httpGet } from '../lib/query-http';
 import { cn } from '../lib/classname.ts';
 import { LOCAL_ROADMAPS } from '../data/local-roadmaps';
 import { Modal } from './Modal';
@@ -22,6 +24,8 @@ export function VisualRoadmapRenderer(props: VisualRoadmapRendererProps) {
   const containerEl = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [localData, setLocalData] = useState<any>(null);
+  const [selectedMap, setSelectedMap] = useState<any>(null);
 
   async function fetchAndRender() {
     try {
@@ -31,12 +35,18 @@ export function VisualRoadmapRenderer(props: VisualRoadmapRendererProps) {
       // Prioritize local roadmaps to avoid CORS and fetch issues
       const local = LOCAL_ROADMAPS.find(r => r.slug === roadmapId);
       if (local?.topics) {
-        setIsLoading(false);
-        return;
+        setLocalData(local.topics);
       }
 
       // Attempt to fetch the official JSON
       let roadmapJsonUrl = `https://roadmap.sh/${roadmapId}.json`;
+      
+      // If it's a local roadmap, we might want to prioritize its own JSON if topics are missing
+      // or just fetch it for definitions anyway.
+      const local = LOCAL_ROADMAPS.find(r => r.slug === roadmapId);
+      if (local?.json) {
+        roadmapJsonUrl = cleanUrl(local.json);
+      }
       
       const res = await fetch(roadmapJsonUrl);
       if (!res.ok) {
