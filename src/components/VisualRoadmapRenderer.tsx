@@ -43,7 +43,6 @@ export function VisualRoadmapRenderer(props: VisualRoadmapRendererProps) {
       
       // If it's a local roadmap, we might want to prioritize its own JSON if topics are missing
       // or just fetch it for definitions anyway.
-      const local = LOCAL_ROADMAPS.find(r => r.slug === roadmapId);
       if (local?.json) {
         roadmapJsonUrl = cleanUrl(local.json);
       }
