@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
-import { X } from 'lucide-react';
+import { Book, X } from 'lucide-react';
 
 declare global {
   interface Window {
@@ -10,13 +9,13 @@ declare global {
 
 interface MermaidRendererProps {
   content: string;
-  definitions?: Record<string, { title: string; text: string }>;
+  definitions?: Record<string, { title: string; text: string; note?: string }>;
 }
 
 export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [selectedNode, setSelectedNode] = useState<{ title: string; text: string } | null>(null);
+  const [selectedNode, setSelectedNode] = useState<{ title: string; text: string; note?: string } | null>(null);
 
   useEffect(() => {
     // 1. Initialize global callback for Mermaid click events
@@ -73,10 +72,14 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
       try {
         let enhancedContent = content;
         
-        // Automatically append click events for all defined nodes
+        // Add class definitions for styling nodes with definitions
+        enhancedContent += '\n    classDef definedNode fill:#0f172a,stroke:#fbbf24,stroke-width:2px,color:#fbbf24,filter:drop-shadow(0 0 5px rgba(251, 191, 36, 0.4))';
+        
+        // Automatically append click events and styles for all defined nodes
         Object.keys(definitions).forEach(nodeId => {
           if (!enhancedContent.includes(`click ${nodeId}`)) {
             enhancedContent += `\n    click ${nodeId} call showNodeDefinition("${nodeId}")`;
+            enhancedContent += `\n    class ${nodeId} definedNode`;
           }
         });
 
@@ -113,7 +116,18 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
             <p className="text-slate-300 leading-relaxed font-sans">
               {selectedNode.text}
             </p>
-            <div className="mt-6 pt-4 border-t border-slate-800 flex justify-end">
+            <div className="mt-6 pt-4 border-t border-slate-800 flex justify-between items-center">
+              {selectedNode.note ? (
+                <a 
+                  href={`obsidian://open?vault=IT_notes&file=${encodeURIComponent(selectedNode.note)}`}
+                  className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-blue-400 rounded font-orbitron text-[10px] transition-all uppercase tracking-widest border border-blue-500/20"
+                >
+                  <Book size={14} />
+                  Apri Appunti
+                </a>
+              ) : (
+                <div />
+              )}
               <button 
                 onClick={() => setSelectedNode(null)}
                 className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded font-orbitron text-xs transition-all uppercase tracking-widest shadow-[0_0_10px_rgba(59,130,246,0.4)]"
@@ -145,6 +159,16 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
           0% { filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.3)); }
           50% { filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.6)); }
           100% { filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.3)); }
+        }
+        .mermaid .definedNode rect, .mermaid .definedNode circle, .mermaid .definedNode polygon {
+          stroke: #fbbf24 !important;
+          stroke-width: 3px !important;
+          animation: pulse-gold 2s infinite;
+        }
+        @keyframes pulse-gold {
+          0% { filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.3)); }
+          50% { filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.6)); }
+          100% { filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.3)); }
         }
         .mermaid .edgePath path {
           stroke: #3b82f6 !important;
