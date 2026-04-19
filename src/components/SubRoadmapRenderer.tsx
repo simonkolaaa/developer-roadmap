@@ -22,7 +22,8 @@ export function SubRoadmapRenderer(props: SubRoadmapRendererProps) {
       setError(null);
       setMermaidData(null);
 
-      const res = await fetch(jsonUrl);
+      // Use a cache-buster timestamp to ensure we get the latest JSON data from Vercel
+      const res = await fetch(`${jsonUrl}?t=${Date.now()}`);
       if (!res.ok) {
         throw new Error(`Failed to fetch sub-roadmap data: ${res.statusText}`);
       }
@@ -124,6 +125,24 @@ export function SubRoadmapRenderer(props: SubRoadmapRendererProps) {
         .simon-kola-svg rect {
           filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.2));
           transition: all 0.3s ease;
+        }
+        /* Enhanced Golden Node Styles */
+        .mermaid g.definedNode rect, .mermaid g.definedNode circle, .mermaid g.definedNode polygon, .mermaid g.definedNode path, .mermaid [id*="definedNode"] rect, .mermaid .node.definedNode rect {
+          stroke: #fbbf24 !important;
+          stroke-width: 4px !important;
+          fill: #0f172a !important;
+          animation: pulse-gold 2s infinite !important;
+          cursor: pointer !important;
+        }
+        .mermaid g.definedNode .label, .mermaid g.definedNode span, .mermaid g.definedNode div, .mermaid .node.definedNode .label {
+          color: #fbbf24 !important;
+          font-weight: 800 !important;
+          text-shadow: 0 0 5px rgba(251, 191, 36, 0.4);
+        }
+        @keyframes pulse-gold {
+          0% { filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.3)); stroke: #fbbf24 !important; }
+          50% { filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.9)); stroke: #fff !important; }
+          100% { filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.3)); stroke: #fbbf24 !important; }
         }
         .simon-kola-svg rect:hover {
           stroke: #60a5fa;
