@@ -1,8 +1,0 @@
-{
-  "type": "mermaid",
-  "mermaid": "graph TD\n    RE[React.js] --> HOK[Hooks]\n    RE --> VDOM[Virtual DOM]\n    RE --> REND[Rendering]\n    \n    HOK --> H1[useState]\n    HOK --> H2[useEffect]\n    HOK --> H3[useContext]",
-  "definitions": {
-    "VDOM": { "title": "Virtual DOM", "text": "Copia leggera del DOM reale che React usa per calcolare i cambiamenti minimi da applicare, ottimizzando la velocità." },
-    "H2": { "title": "useEffect", "text": "Hook che permette di eseguire 'side effects' (chiamate API, sottoscrizioni) nel componente." }
-  }
-}

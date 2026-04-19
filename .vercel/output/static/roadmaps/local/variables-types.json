@@ -1,9 +1,0 @@
-{
-  "type": "mermaid",
-  "mermaid": "graph TD\n    V[Variabili] --> T[Tipizzazione]\n    V --> S[Scope]\n    T --> TD[Dinamica]\n    T --> TS[Statica]\n    S --> SL[Locale]\n    S --> SG[Globale]",
-  "definitions": {
-    "TD": { "title": "Tipizzazione Dinamica", "text": "Il tipo della variabile viene determinato a runtime (es. Python, JS)." },
-    "TS": { "title": "Tipizzazione Statica", "text": "Il tipo deve essere dichiarato esplicitamente o inferito a compile-time (es. Java, Rust)." },
-    "SG": { "title": "Scope Globale", "text": "Variabili accessibili da qualsiasi parte del codice, spesso sconsigliate se usate eccessivamente." }
-  }
-}

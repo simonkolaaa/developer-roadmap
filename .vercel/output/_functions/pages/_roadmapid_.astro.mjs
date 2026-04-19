@@ -6,7 +6,7 @@ import { c as cn, u as useOutsideClick, S as Spinner, $ as $$BaseLayout } from '
 import { g as guideRenderer } from '../chunks/guide-renderer_CRN7EnLG.mjs';
 import { Map, Info, ChevronDown, ChevronUp, X, Book, MapIcon } from 'lucide-react';
 import { l as listOfficialRoadmaps, L as LOCAL_ROADMAPS, o as officialRoadmapDetails, i as isNewRoadmap } from '../chunks/official-roadmap_piILD0GP.mjs';
-import { $ as $$RoadmapHeader } from '../chunks/RoadmapHeader_BcBYA4J4.mjs';
+import { $ as $$RoadmapHeader } from '../chunks/RoadmapHeader_Bd2hRXny.mjs';
 import { g as generateArticleSchema, a as generateFAQSchema, $ as $$ResourceProgressStats, S as ShareIcons, C as CheckSubscriptionVerification } from '../chunks/CheckSubscriptionVerification_B2Hz3DX1.mjs';
 import { g as getOpenGraphImageUrl } from '../chunks/open-graph_CUrL1jUv.mjs';
 import '../chunks/markdown_C4ic-9CU.mjs';
@@ -340,15 +340,20 @@ const MermaidRenderer = ({ content, definitions = {} }) => {
           50% { filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.6)); }
           100% { filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.3)); }
         }
-        .mermaid .definedNode rect, .mermaid .definedNode circle, .mermaid .definedNode polygon {
+        .mermaid g.definedNode rect, .mermaid g.definedNode circle, .mermaid g.definedNode polygon, .mermaid g.definedNode path {
           stroke: #fbbf24 !important;
           stroke-width: 3px !important;
-          animation: pulse-gold 2s infinite;
+          fill: #1e293b !important;
+          animation: pulse-gold 2s infinite !important;
+        }
+        .mermaid g.definedNode .label, .mermaid g.definedNode span, .mermaid g.definedNode div {
+          color: #fbbf24 !important;
+          font-weight: bold !important;
         }
         @keyframes pulse-gold {
-          0% { filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.3)); }
-          50% { filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.6)); }
-          100% { filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.3)); }
+          0% { filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.3)); stroke: #fbbf24; }
+          50% { filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.8)); stroke: #fff; }
+          100% { filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.3)); stroke: #fbbf24; }
         }
         .mermaid .edgePath path {
           stroke: #3b82f6 !important;
@@ -478,14 +483,14 @@ function VisualRoadmapRenderer(props) {
     try {
       setIsLoading(true);
       setError(null);
+      const local = LOCAL_ROADMAPS.find((r) => r.slug === roadmapId);
+      if (local?.topics) {
+        setIsLoading(false);
+        return;
+      }
       let roadmapJsonUrl = `https://roadmap.sh/${roadmapId}.json`;
       const res = await fetch(roadmapJsonUrl);
       if (!res.ok) {
-        const local = LOCAL_ROADMAPS.find((r) => r.slug === roadmapId);
-        if (local?.topics) {
-          setIsLoading(false);
-          return;
-        }
         throw new Error(`Failed to fetch roadmap data: ${res.statusText}`);
       }
       const json = await res.json();

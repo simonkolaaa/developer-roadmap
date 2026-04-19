@@ -71,7 +71,12 @@ export function VisualRoadmapRenderer(props: VisualRoadmapRendererProps) {
   }, [roadmapId]);
 
   const [selectedMap, setSelectedMap] = useState<{ title: string; image?: string; json?: string } | null>(null);
-  const localData = LOCAL_ROADMAPS.find(r => r.slug === roadmapId);
+  const [localData, setLocalData] = useState<any>(null);
+
+  useEffect(() => {
+    const data = LOCAL_ROADMAPS.find(r => r.slug === roadmapId);
+    setLocalData(data);
+  }, [roadmapId]);
 
 
   return (

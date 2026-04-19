@@ -1,8 +1,0 @@
-{
-  "type": "mermaid",
-  "mermaid": "graph LR\n    I[Incapsulamento] --> M[Modificatori Accesso]\n    M --> P[Public]\n    M --> PR[Protected _]\n    M --> PV[Private __]\n    I --> GS[Getter & Setter]",
-  "definitions": {
-    "PV": { "title": "Private", "text": "Membro accessibile solo all'interno della classe stessa; garantisce che i dati interni non siano corrotti dall'esterno." },
-    "GS": { "title": "Getter/Setter", "text": "Metodi usati per leggere o modificare in modo controllato gli attributi privati di un oggetto." }
-  }
-}

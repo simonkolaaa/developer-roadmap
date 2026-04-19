@@ -1,6 +1,6 @@
 import { e as createAstro, f as createComponent, k as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../../chunks/astro/server_qzXorVo3.mjs';
 import 'piccolore';
-import { $ as $$RoadmapHeader } from '../../chunks/RoadmapHeader_BcBYA4J4.mjs';
+import { $ as $$RoadmapHeader } from '../../chunks/RoadmapHeader_Bd2hRXny.mjs';
 import { jsxs, jsx, Fragment } from 'react/jsx-runtime';
 import { FolderKanbanIcon, Bell, Check, Users, Trash2 } from 'lucide-react';
 import { useState, useEffect, useMemo } from 'react';

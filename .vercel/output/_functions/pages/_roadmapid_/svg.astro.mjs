@@ -23,7 +23,7 @@ import { q as queryClient, M as Modal } from '../../chunks/query-client_Cw7dV90V
 import { u as useCopyText } from '../../chunks/use-copy-text_Bqwbcq8G.mjs';
 import { r as roadmapTreeMappingOptions, M as Markdown, u as useIsThinking, c as chatRoadmapTransport, a as useAIChatScroll, C as CLOSE_TOPIC_DETAIL_EVENT } from '../../chunks/TopicDetail_B-0_KKTk.mjs';
 import 'js-cookie';
-import { r as roadmapJSONOptions, u as useAuth, l as listBuiltInRoadmaps } from '../../chunks/roadmap_Pe5rBMe6.mjs';
+import { r as roadmapJSONOptions, u as useAuth, l as listBuiltInRoadmaps } from '../../chunks/roadmap_BtbCY3zQ.mjs';
 import { U as UpgradeAccountModal } from '../../chunks/UpgradeAccountModal_Cogelfxg.mjs';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { DateTime } from 'luxon';

@@ -1,6 +1,6 @@
 import { e as createAstro, f as createComponent, k as renderComponent, r as renderTemplate, m as maybeRenderHead, h as addAttribute, p as Fragment } from '../../chunks/astro/server_qzXorVo3.mjs';
 import 'piccolore';
-import { $ as $$RoadmapHeader } from '../../chunks/RoadmapHeader_BcBYA4J4.mjs';
+import { $ as $$RoadmapHeader } from '../../chunks/RoadmapHeader_Bd2hRXny.mjs';
 import { $ as $$BaseLayout } from '../../chunks/BaseLayout_DetAB5fP.mjs';
 import { g as getOpenGraphImageUrl } from '../../chunks/open-graph_CUrL1jUv.mjs';
 import { l as listOfficialProjects } from '../../chunks/official-project_D9TvOAl7.mjs';

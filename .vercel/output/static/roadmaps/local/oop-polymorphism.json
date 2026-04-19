@@ -1,8 +1,0 @@
-{
-  "type": "mermaid",
-  "mermaid": "graph TD\n    P[Polimorfismo] --> O[Overriding]\n    P --> DT[Duck Typing]\n    P --> DB[Dynamic Binding]\n    O --> S[Stesso Nome, Comportamento Diverso]",
-  "definitions": {
-    "P": { "title": "Polimorfismo", "text": "La capacità di oggetti di classi diverse di rispondere allo stesso messaggio (metodo) in modi differenti." },
-    "DT": { "title": "Duck Typing", "text": "Se un oggetto cammina come una papera e gracida come una papera, allora è una papera (tipico di Python/JS)." }
-  }
-}
