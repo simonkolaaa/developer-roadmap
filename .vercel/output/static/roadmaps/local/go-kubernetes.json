@@ -1,0 +1,9 @@
+{
+  "type": "mermaid",
+  "mermaid": "graph TD\n    K8S[Kubernetes] --> ARCH[Architettura Cluster]\n    K8S --> OBJ[Oggetti Principali]\n    ARCH --> CP[Control Plane]\n    ARCH --> WK[Worker Nodes]\n    OBJ --> PD[Pods]\n    OBJ --> SV[Services]\n    OBJ --> DP[Deployments]",
+  "definitions": {
+    "PD": { "title": "Pod", "text": "La più piccola unità di esecuzione in Kubernetes, contiene uno o più container." },
+    "SV": { "title": "Service", "text": "Un'astrazione che definisce un set logico di Pod e una politica per accedervi via rete." },
+    "DP": { "title": "Deployment", "text": "Gestisce il rollout e le repliche dei Pod, garantendo che lo stato desiderato sia mantenuto." }
+  }
+}

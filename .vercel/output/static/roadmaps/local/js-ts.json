@@ -1,0 +1,12 @@
+{
+  "type": "mermaid",
+  "mermaid": "graph TD\n    FE[Frontend Mastery] --> JS[JS & TS Core]\n    FE --> HTML_CSS[Modern HTML & CSS]\n    FE --> OPT[A11y & Performance]\n    \n    JS --> JS1[ES6+ Syntax]\n    JS --> JS2[Type Systems - Generics/Utility]\n    JS --> JS3[Asynchronous - Event Loop]\n    \n    HTML_CSS --> HC1[Semantic HTML & ARIA]\n    HTML_CSS --> HC2[Cascade Layers - @layer]\n    HTML_CSS --> HC3[Container Queries]\n    \n    OPT --> O1[Core Web Vitals - LCP/FID/CLS]\n    OPT --> O2[SEO Fundamentals]\n    OPT --> O3[Accessibility - WCAG/ARIA]",
+  "definitions": {
+    "JS2": { "title": "TypeScript Advanced", "text": "Uso di Generics e Utility Types (Record, Pick, Omit) per creare interfacce flessibili e tipizzazione sicura." },
+    "HC1": { "title": "Web Accessibility (A11y)", "text": "Insieme di pratiche (ARIA roles, contrasto, testi alternativi) per rendere il web inclusivo anche per chi usa screen reader." },
+    "HC3": { "title": "Container Queries", "text": "La nuova frontiera del design reattivo: permette agli elementi di cambiare stile in base alla dimensione del proprio contenitore invece dell'intera viewport." },
+    "O1": { "title": "Core Web Vitals", "text": "Metriche di Google (LCP, FID, CLS) che misurano velocità di caricamento, interattività e stabilità visiva delle pagine." },
+    "O2": { "title": "SEO Fundamentals", "text": "Ottimizzazione per i motori di ricerca tramite meta tag, semantica HTML5 e performance per migliorare il ranking del sito." },
+    "JS3": { "title": "Event Loop", "text": "Il cuore di JavaScript che gestisce l'esecuzione asincrona, permettendo di non bloccare il browser durante operazioni lunghe." }
+  }
+}

@@ -160,15 +160,20 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
           50% { filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.6)); }
           100% { filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.3)); }
         }
-        .mermaid .definedNode rect, .mermaid .definedNode circle, .mermaid .definedNode polygon {
+        .mermaid g.definedNode rect, .mermaid g.definedNode circle, .mermaid g.definedNode polygon, .mermaid g.definedNode path {
           stroke: #fbbf24 !important;
           stroke-width: 3px !important;
-          animation: pulse-gold 2s infinite;
+          fill: #1e293b !important;
+          animation: pulse-gold 2s infinite !important;
+        }
+        .mermaid g.definedNode .label, .mermaid g.definedNode span, .mermaid g.definedNode div {
+          color: #fbbf24 !important;
+          font-weight: bold !important;
         }
         @keyframes pulse-gold {
-          0% { filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.3)); }
-          50% { filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.6)); }
-          100% { filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.3)); }
+          0% { filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.3)); stroke: #fbbf24; }
+          50% { filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.8)); stroke: #fff; }
+          100% { filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.3)); stroke: #fbbf24; }
         }
         .mermaid .edgePath path {
           stroke: #3b82f6 !important;

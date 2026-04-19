@@ -1,0 +1,9 @@
+{
+  "type": "mermaid",
+  "mermaid": "graph TD\n    OW[Ownership System] --> R1[Move Semantics]\n    OW --> R2[Borrowing]\n    OW --> R3[Lifetimes]\n    R2 --> R2a[Immutable &]\n    R2 --> R2b[Mutable &mut]",
+  "definitions": {
+    "R1": { "title": "Move Semantics", "text": "Trasferimento della proprietà dei dati da una variabile all'altra senza duplicarli." },
+    "R2": { "title": "Borrowing", "text": "Permettere di accedere ai dati senza prenderne l'ownership, usando i riferimenti." },
+    "R3": { "title": "Lifetimes", "text": "Regole del compilatore che garantiscono che i riferimenti non sopravvivano ai dati a cui puntano." }
+  }
+}

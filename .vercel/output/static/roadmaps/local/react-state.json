@@ -1,0 +1,9 @@
+{
+  "type": "mermaid",
+  "mermaid": "graph TD\n    S[State Management] --> L[Local State]\n    S --> G[Global State]\n    L --> US[useState]\n    G --> RD[Redux / Toolkit]\n    G --> ZU[Zustand]\n    G --> CT[Context API]",
+  "definitions": {
+    "ZU": { "title": "Zustand", "text": "Libreria ultra-leggera e semplice per la gestione dello stato globale basata sugli Hook." },
+    "RD": { "title": "Redux Toolkit", "text": "Set di strumenti ufficiale per lo sviluppo Redux, semplifica boilerplate e configurazione." },
+    "CT": { "title": "Context API", "text": "Sistema nativo di React per passare dati attraverso l'albero dei componenti senza prop-drilling." }
+  }
+}

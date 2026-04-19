@@ -28,17 +28,18 @@ export function VisualRoadmapRenderer(props: VisualRoadmapRendererProps) {
       setIsLoading(true);
       setError(null);
 
+      // Prioritize local roadmaps to avoid CORS and fetch issues
+      const local = LOCAL_ROADMAPS.find(r => r.slug === roadmapId);
+      if (local?.topics) {
+        setIsLoading(false);
+        return;
+      }
+
       // Attempt to fetch the official JSON
       let roadmapJsonUrl = `https://roadmap.sh/${roadmapId}.json`;
       
       const res = await fetch(roadmapJsonUrl);
       if (!res.ok) {
-        // If fetch fails, we check for local topics
-        const local = LOCAL_ROADMAPS.find(r => r.slug === roadmapId);
-        if (local?.topics) {
-          setIsLoading(false);
-          return;
-        }
         throw new Error(`Failed to fetch roadmap data: ${res.statusText}`);
       }
       
