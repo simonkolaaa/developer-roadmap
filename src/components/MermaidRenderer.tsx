@@ -83,11 +83,10 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
           // Add style and click commands for defined nodes at the very end
           enhancedContent += '\n\n    %% Styles and Clicks';
           Object.keys(definitions).forEach(nodeId => {
-            // Use style for direct attribute control and class for custom CSS targeting
-            enhancedContent += `\n    style ${nodeId} stroke:#fbbf24,stroke-width:3px,fill:#0f172a`;
-            
             if (!enhancedContent.includes(`click ${nodeId}`)) {
               enhancedContent += `\n    click ${nodeId} call showNodeDefinition("${nodeId}")`;
+              // Use style for robust attribute control, class for pulsing animation
+              enhancedContent += `\n    style ${nodeId} fill:#0f172a,stroke:#fbbf24,stroke-width:2px,color:#fbbf24`;
               enhancedContent += `\n    class ${nodeId} definedNode`;
             }
           });

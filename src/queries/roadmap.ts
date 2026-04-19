@@ -23,7 +23,8 @@ export function roadmapJSONOptions(roadmapId: string) {
   return queryOptions({
     queryKey: ['roadmap-json', roadmapId],
     queryFn: async () => {
-      const baseUrl = import.meta.env.PUBLIC_APP_URL || (typeof window !== 'undefined' ? window.location.origin : '');
+      const appUrl = import.meta.env.PUBLIC_APP_URL;
+      const baseUrl = (appUrl && appUrl !== 'undefined') ? appUrl : (typeof window !== 'undefined' ? window.location.origin : '');
       const roadmapJSON = await httpGet<RoadmapJSON>(
         `${baseUrl}/${roadmapId}.json`,
       );
@@ -86,7 +87,8 @@ export function roadmapDetailsOptions(roadmapId: string) {
   return queryOptions({
     queryKey: ['roadmap-details', roadmapId],
     queryFn: async () => {
-      const baseUrl = import.meta.env.PUBLIC_APP_URL || (typeof window !== 'undefined' ? window.location.origin : '');
+      const appUrl = import.meta.env.PUBLIC_APP_URL;
+      const baseUrl = (appUrl && appUrl !== 'undefined') ? appUrl : (typeof window !== 'undefined' ? window.location.origin : '');
       const pagesJSON = await httpGet<PagesJSON>(`${baseUrl}/pages.json`);
 
       const roadmapDetails = pagesJSON.find(
@@ -118,7 +120,8 @@ export function roadmapContentOptions(roadmapId: string) {
   return queryOptions({
     queryKey: ['roadmap-content', { roadmapId }],
     queryFn: async () => {
-      const baseUrl = import.meta.env.PUBLIC_APP_URL || (typeof window !== 'undefined' ? window.location.origin : '');
+      const appUrl = import.meta.env.PUBLIC_APP_URL;
+      const baseUrl = (appUrl && appUrl !== 'undefined') ? appUrl : (typeof window !== 'undefined' ? window.location.origin : '');
       return httpGet<
         Record<
           string,
