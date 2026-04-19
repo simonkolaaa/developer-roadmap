@@ -1,9 +1,0 @@
-{
-  "type": "mermaid",
-  "mermaid": "graph TD\n    A[Automation] --> S[Scripting]\n    A --> W[Web Scraping]\n    A --> T[Testing]\n    W --> BS[Beautiful Soup]\n    W --> SE[Selenium]\n    S --> OS[os / subprocess]",
-  "definitions": {
-    "BS": { "title": "Beautiful Soup", "text": "Libreria per estrarre dati da file HTML e XML, ideale per scraper semplici." },
-    "SE": { "title": "Selenium", "text": "Tool per automatizzare i browser web, permette di interagire con siti JS dinamici." },
-    "OS": { "title": "os / subprocess", "text": "Moduli della standard library per interagire con il file system e i comandi di sistema." }
-  }
-}
