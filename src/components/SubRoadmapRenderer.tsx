@@ -3,6 +3,7 @@ import { Spinner } from './ReactIcons/Spinner';
 import { replaceChildren } from '../lib/dom.ts';
 import { cn } from '../lib/classname.ts';
 import { MermaidRenderer } from './MermaidRenderer';
+import { cleanUrl } from '../lib/base-url';
 
 export interface SubRoadmapRendererProps {
   jsonUrl: string;
