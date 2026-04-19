@@ -7,9 +7,6 @@ import { MermaidRenderer } from './MermaidRenderer';
 export interface SubRoadmapRendererProps {
   jsonUrl: string;
   className?: string;
-}
-
-export function SubRoadmapRenderer(props: SubRoadmapRendererProps) {
   roadmapId?: string;
 }
 
