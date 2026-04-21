@@ -66,7 +66,7 @@ const videos = await getAllVideos();
           {LOCAL_ROADMAPS.sort((a, b) => a.order - b.order).map((roadmap) => (
             <li>
               <a
-                href={`/local/${roadmap.slug}`}
+                href={`/${roadmap.slug}`}
                 class='flex min-h-[54px] w-full items-center gap-3 rounded-md border border-yellow-500/20 bg-slate-900 px-4 py-2 text-left text-sm font-medium text-slate-200 transition-all hover:border-yellow-400/60 hover:bg-slate-800 hover:text-yellow-300 hover:shadow-[0_0_10px_rgba(251,191,36,0.1)]'
               >
                 <span class='text-yellow-500 text-xs'>{'{'}</span>
