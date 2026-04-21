@@ -27,25 +27,19 @@ export function VisualRoadmapRenderer(props: VisualRoadmapRendererProps) {
   const [localData, setLocalData] = useState<any>(null);
   const [selectedMap, setSelectedMap] = useState<any>(null);
 
-  async function fetchAndRender() {
+  async function fetchAndRender(localRoadmap: any) {
+    // If we have local topics, we don't need to fetch from the network
+    if (localRoadmap?.topics) {
+      setIsLoading(false);
+      return;
+    }
+
     try {
       setIsLoading(true);
       setError(null);
 
-      // Prioritize local roadmaps to avoid CORS and fetch issues
-      const local = LOCAL_ROADMAPS.find(r => r.slug === roadmapId);
-      if (local?.topics) {
-        setLocalData(local.topics);
-      }
-
-      // Attempt to fetch the official JSON
-      let roadmapJsonUrl = `https://roadmap.sh/${roadmapId}.json`;
-      
-      // If it's a local roadmap, we might want to prioritize its own JSON if topics are missing
-      // or just fetch it for definitions anyway.
-      if (local?.json) {
-        roadmapJsonUrl = cleanUrl(local.json);
-      }
+      // Only attempt to fetch if this is NOT a local roadmap
+      const roadmapJsonUrl = `https://roadmap.sh/${roadmapId}.json`;
       
       const res = await fetch(roadmapJsonUrl);
       if (!res.ok) {
@@ -56,7 +50,7 @@ export function VisualRoadmapRenderer(props: VisualRoadmapRendererProps) {
       
       const { wireframeJSONToSVG } = await import('roadmap-renderer');
       const svg: SVGElement | null = await wireframeJSONToSVG(json, {
-        fontURL: '/fonts/balsamiq.woff2', // Fallback for old renderer logic
+        fontURL: '/fonts/balsamiq.woff2',
       });
 
       if (svg && containerEl.current) {
@@ -64,11 +58,7 @@ export function VisualRoadmapRenderer(props: VisualRoadmapRendererProps) {
       }
     } catch (err: any) {
       console.error('Roadmap rendering error:', err);
-      // Fallback to local if fetch crashed
-      const local = LOCAL_ROADMAPS.find(r => r.slug === roadmapId);
-      if (!local?.topics) {
-        setError(err.message || 'Something went wrong while rendering the roadmap.');
-      }
+      setError(err.message || 'Something went wrong while rendering the roadmap.');
     } finally {
       setIsLoading(false);
     }
@@ -81,11 +71,7 @@ export function VisualRoadmapRenderer(props: VisualRoadmapRendererProps) {
     const data = LOCAL_ROADMAPS.find(r => r.slug === roadmapId);
     setLocalData(data);
     
-    if (data?.topics) {
-      setIsLoading(false);
-    } else {
-      fetchAndRender();
-    }
+    fetchAndRender(data);
   }, [roadmapId]);
 
 
@@ -132,7 +118,7 @@ export function VisualRoadmapRenderer(props: VisualRoadmapRendererProps) {
         </div>
       )}
 
-      {!isLoading && !error && !containerEl.current?.hasChildNodes() && localData?.topics && (
+      {!isLoading && localData?.topics && (
         <div className="py-2">
           <h3 className="text-xl font-orbitron text-blue-400 mb-8 border-b border-slate-800 pb-2">Programma di Studio</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -165,7 +151,7 @@ export function VisualRoadmapRenderer(props: VisualRoadmapRendererProps) {
                   </span>
                   <div className="flex-1 flex items-center justify-between">
                     <span className="text-slate-200 group-hover:text-white font-medium">{topicTitle}</span>
-                    {topicImage && (
+                    {(topicImage || (typeof topic === 'object' && topic.json)) && (
                       <MapIcon className="w-4 h-4 text-slate-600 group-hover:text-blue-400 transition-colors" />
                     )}
                   </div>

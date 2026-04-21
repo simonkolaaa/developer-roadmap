@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { Book, X } from 'lucide-react';
 
 declare global {
@@ -96,6 +97,28 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
           
           if (containerRef.current) {
             containerRef.current.innerHTML = svg;
+
+            // POST-RENDER: Apply golden styles inline to definedNode elements
+            // Mermaid v11 SVG structure makes pure CSS selectors unreliable.
+            // We find every node group with class 'definedNode' and directly
+            // set stroke/fill on its child shapes.
+            const container = containerRef.current;
+            const definedNodes = container.querySelectorAll('g.definedNode, .node.definedNode');
+            definedNodes.forEach((nodeEl) => {
+              const shapes = nodeEl.querySelectorAll('rect, circle, polygon, path');
+              shapes.forEach((shape) => {
+                (shape as SVGElement).style.stroke = '#fbbf24';
+                (shape as SVGElement).style.strokeWidth = '3px';
+                (shape as SVGElement).style.fill = '#0f172a';
+                (shape as SVGElement).style.filter = 'drop-shadow(0 0 6px rgba(251,191,36,0.7))';
+                (shape as SVGElement).style.cursor = 'pointer';
+              });
+              const labels = nodeEl.querySelectorAll('.label, span, div, foreignObject');
+              labels.forEach((label) => {
+                (label as HTMLElement).style.color = '#fbbf24';
+                (label as HTMLElement).style.fontWeight = '800';
+              });
+            });
           }
         } catch (err) {
           console.error('Mermaid render error:', err);
