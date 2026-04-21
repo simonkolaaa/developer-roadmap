@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Book, X } from 'lucide-react';
 
 declare global {
@@ -8,32 +8,41 @@ declare global {
   }
 }
 
-interface MermaidRendererProps {
-  content: string;
-  definitions?: Record<string, { title: string; text: string; note?: string }>;
+interface NodeDef {
+  title: string;
+  text: string;
+  note?: string;
 }
 
-if (typeof window === 'undefined') {
-  // Prevent any execution during server-side module loading
+interface MermaidRendererProps {
+  content: string;
+  definitions?: Record<string, NodeDef>;
 }
 
 export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [selectedNode, setSelectedNode] = useState<{ title: string; text: string; note?: string } | null>(null);
+  const [selectedNode, setSelectedNode] = useState<NodeDef | null>(null);
 
+  // Use a ref so the global callback always sees the latest definitions
+  // without needing to re-register it every time definitions changes.
+  const definitionsRef = useRef(definitions);
+  useEffect(() => {
+    definitionsRef.current = definitions;
+  }, [definitions]);
+
+  // Register the global callback ONCE on mount
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    // 1. Initialize global callback for Mermaid click events
     window.showNodeDefinition = (nodeId: string) => {
-      const def = definitions[nodeId];
+      const def = definitionsRef.current[nodeId];
       if (def) {
         setSelectedNode(def);
       }
     };
 
-    // 2. Load Mermaid from CDN dynamically
+    // Load Mermaid from CDN dynamically
     if (!window.mermaid) {
       const script = document.createElement('script');
       script.src = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js';
@@ -54,7 +63,7 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
             nodeBorder: '#3b82f6',
             clusterBkg: '#1e293b',
             titleColor: '#f8fafc',
-            fontFamily: 'Orbitron, sans-serif',
+            fontFamily: 'Inter, sans-serif',
           },
           flowchart: {
             htmlLabels: true,
@@ -68,106 +77,155 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
       setIsLoaded(true);
     }
 
-    return () => {
-      // @ts-ignore
-      delete window.showNodeDefinition;
-    };
-  }, [definitions]);
+    // Do NOT delete window.showNodeDefinition on cleanup —
+    // doing so was causing click events to silently fail after re-renders.
+    return () => {};
+  }, []); // Empty deps: register only once
 
+  // Re-render the diagram whenever content, definitions, or mermaid loads
   useEffect(() => {
-    if (isLoaded && containerRef.current) {
-      const renderMermaid = async () => {
-        try {
-          const id = `mermaid-svg-${Math.random().toString(36).substr(2, 9)}`;
-          let enhancedContent = content;
-          
-          // Add style and click commands for defined nodes at the very end
-          enhancedContent += '\n\n    %% Styles and Clicks';
-          Object.keys(definitions).forEach(nodeId => {
-            if (!enhancedContent.includes(`click ${nodeId}`)) {
-              enhancedContent += `\n    click ${nodeId} call showNodeDefinition("${nodeId}")`;
-              // Use style for robust attribute control, class for pulsing animation
-              enhancedContent += `\n    style ${nodeId} fill:#0f172a,stroke:#fbbf24,stroke-width:2px,color:#fbbf24`;
-              enhancedContent += `\n    class ${nodeId} definedNode`;
-            }
+    if (!isLoaded || !containerRef.current) return;
+
+    const renderMermaid = async () => {
+      try {
+        const id = `mermaid-svg-${Math.random().toString(36).substr(2, 9)}`;
+        let enhancedContent = content;
+
+        // Append click + style + class directives for each defined node
+        enhancedContent += '\n\n    %% Styles and Clicks';
+        Object.keys(definitions).forEach(nodeId => {
+          if (!enhancedContent.includes(`click ${nodeId}`)) {
+            enhancedContent += `\n    click ${nodeId} call showNodeDefinition("${nodeId}")`;
+            enhancedContent += `\n    style ${nodeId} fill:#0f172a,stroke:#fbbf24,stroke-width:3px,color:#fbbf24`;
+            enhancedContent += `\n    class ${nodeId} definedNode`;
+          }
+        });
+
+        const { svg } = await window.mermaid.render(id, enhancedContent);
+
+        if (containerRef.current) {
+          containerRef.current.innerHTML = svg;
+
+          // POST-RENDER: Apply inline styles to golden nodes.
+          // Mermaid v11 SVG structure makes CSS class selectors unreliable.
+          const container = containerRef.current;
+          const definedNodeEls = container.querySelectorAll('g.definedNode, .node.definedNode');
+          definedNodeEls.forEach((nodeEl) => {
+            nodeEl.querySelectorAll('rect, circle, polygon, path').forEach((shape) => {
+              (shape as SVGElement).style.stroke = '#fbbf24';
+              (shape as SVGElement).style.strokeWidth = '3px';
+              (shape as SVGElement).style.fill = '#0f172a';
+              (shape as SVGElement).style.filter = 'drop-shadow(0 0 8px rgba(251,191,36,0.6))';
+              (shape as SVGElement).style.cursor = 'pointer';
+              (shape as SVGElement).style.transition = 'filter 0.3s ease';
+            });
+            nodeEl.querySelectorAll('.label, .nodeLabel, foreignObject p, foreignObject span').forEach((label) => {
+              (label as HTMLElement).style.color = '#fbbf24';
+              (label as HTMLElement).style.fontWeight = '800';
+            });
           });
 
-          // Use the modern render API
-          const { svg } = await window.mermaid.render(id, enhancedContent);
-          
-          if (containerRef.current) {
-            containerRef.current.innerHTML = svg;
-
-            // POST-RENDER: Apply golden styles inline to definedNode elements
-            // Mermaid v11 SVG structure makes pure CSS selectors unreliable.
-            // We find every node group with class 'definedNode' and directly
-            // set stroke/fill on its child shapes.
-            const container = containerRef.current;
-            const definedNodes = container.querySelectorAll('g.definedNode, .node.definedNode');
-            definedNodes.forEach((nodeEl) => {
-              const shapes = nodeEl.querySelectorAll('rect, circle, polygon, path');
-              shapes.forEach((shape) => {
-                (shape as SVGElement).style.stroke = '#fbbf24';
-                (shape as SVGElement).style.strokeWidth = '3px';
-                (shape as SVGElement).style.fill = '#0f172a';
-                (shape as SVGElement).style.filter = 'drop-shadow(0 0 6px rgba(251,191,36,0.7))';
-                (shape as SVGElement).style.cursor = 'pointer';
-              });
-              const labels = nodeEl.querySelectorAll('.label, span, div, foreignObject');
-              labels.forEach((label) => {
-                (label as HTMLElement).style.color = '#fbbf24';
-                (label as HTMLElement).style.fontWeight = '800';
-              });
+          // Fallback: if no g.definedNode found, try attaching click via data-id attribute
+          // This covers edge cases in Mermaid v11 where classes are applied differently
+          if (definedNodeEls.length === 0) {
+            Object.keys(definitions).forEach(nodeId => {
+              // Try finding by the SVG node id pattern Mermaid generates
+              const possibleSelectors = [
+                `#${id} g[id*="${nodeId}"]`,
+                `g[id*="${nodeId}"]`,
+                `[id="${nodeId}"]`,
+              ];
+              for (const sel of possibleSelectors) {
+                const el = container.querySelector(sel);
+                if (el) {
+                  el.querySelectorAll('rect, circle, polygon, path').forEach((shape) => {
+                    (shape as SVGElement).style.stroke = '#fbbf24';
+                    (shape as SVGElement).style.strokeWidth = '3px';
+                    (shape as SVGElement).style.fill = '#0f172a';
+                    (shape as SVGElement).style.filter = 'drop-shadow(0 0 8px rgba(251,191,36,0.6))';
+                    (shape as SVGElement).style.cursor = 'pointer';
+                  });
+                  // Add a direct click handler as backup
+                  (el as HTMLElement).style.cursor = 'pointer';
+                  el.addEventListener('click', () => {
+                    window.showNodeDefinition(nodeId);
+                  });
+                  break;
+                }
+              }
             });
           }
-        } catch (err) {
-          console.error('Mermaid render error:', err);
         }
-      };
+      } catch (err) {
+        console.error('Mermaid render error:', err);
+      }
+    };
 
-      renderMermaid();
-    }
+    renderMermaid();
   }, [isLoaded, content, definitions]);
+
+  const handleObsidianOpen = useCallback((note: string) => {
+    // Use window.open for custom protocol links — more reliable across browsers
+    // than plain <a href>. The blank target is intentional to avoid navigation.
+    const url = `obsidian://open?vault=IT_notes&file=${encodeURIComponent(note)}`;
+    window.open(url, '_blank');
+  }, []);
 
   return (
     <div className="mermaid-container relative w-full overflow-hidden bg-slate-950 p-6 rounded-xl border border-slate-800 shadow-2xl flex flex-col items-center min-h-[300px]">
-      <div 
-        ref={containerRef} 
-        className="mermaid w-full flex justify-center cursor-pointer"
+      <div
+        ref={containerRef}
+        className="mermaid w-full flex justify-center"
       >
-        {/* Mermaid renders here */}
+        {/* Mermaid SVG renders here */}
       </div>
 
+      {/* Definition Popup */}
       {selectedNode && (
-        <div className="absolute inset-0 z-50 flex items-center justify-center bg-slate-950/90 backdrop-blur-sm p-4 animate-in fade-in zoom-in duration-200">
-          <div className="max-w-md w-full bg-slate-900 border border-blue-500/30 rounded-lg p-6 shadow-[0_0_20px_rgba(59,130,246,0.2)] relative">
-            <button 
+        <div
+          className="absolute inset-0 z-50 flex items-center justify-center bg-slate-950/90 backdrop-blur-sm p-4"
+          onClick={(e) => {
+            // Close on backdrop click
+            if (e.target === e.currentTarget) setSelectedNode(null);
+          }}
+        >
+          <div className="max-w-md w-full bg-slate-900 border border-yellow-500/40 rounded-xl p-6 shadow-[0_0_30px_rgba(251,191,36,0.15)] relative animate-in fade-in zoom-in duration-200">
+            {/* Close button */}
+            <button
               onClick={() => setSelectedNode(null)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors"
+              className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors p-1 rounded hover:bg-slate-800"
+              aria-label="Chiudi"
             >
-              <X size={20} />
+              <X size={18} />
             </button>
-            <h3 className="text-xl font-orbitron text-blue-400 mb-4 uppercase tracking-tighter">
+
+            {/* Title */}
+            <h3 className="text-lg font-bold text-yellow-400 mb-3 pr-8 tracking-wide uppercase">
               {selectedNode.title}
             </h3>
-            <p className="text-slate-300 leading-relaxed font-sans">
+
+            {/* Definition text */}
+            <p className="text-slate-300 leading-relaxed text-sm">
               {selectedNode.text}
             </p>
-            <div className="mt-6 pt-4 border-t border-slate-800 flex justify-between items-center">
+
+            {/* Footer: Obsidian link + close */}
+            <div className="mt-5 pt-4 border-t border-slate-800 flex items-center justify-between gap-3">
               {selectedNode.note ? (
-                <a 
-                  href={`obsidian://open?vault=IT_notes&file=${encodeURIComponent(selectedNode.note)}`}
-                  className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-blue-400 rounded font-orbitron text-[10px] transition-all uppercase tracking-widest border border-blue-500/20"
+                <button
+                  onClick={() => handleObsidianOpen(selectedNode.note!)}
+                  className="flex items-center gap-2 px-3 py-2 bg-slate-800 hover:bg-yellow-500/10 text-yellow-400 hover:text-yellow-300 rounded-lg text-xs font-medium transition-all border border-yellow-500/20 hover:border-yellow-500/50"
+                  title={`Apri in Obsidian: ${selectedNode.note}`}
                 >
-                  <Book size={14} />
-                  Apri Appunti
-                </a>
+                  <Book size={13} />
+                  Apri in Obsidian
+                </button>
               ) : (
                 <div />
               )}
-              <button 
+              <button
                 onClick={() => setSelectedNode(null)}
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded font-orbitron text-xs transition-all uppercase tracking-widest shadow-[0_0_10px_rgba(59,130,246,0.4)]"
+                className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-medium transition-all"
               >
                 Chiudi
               </button>
@@ -181,49 +239,44 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
           height: auto !important;
           max-width: 100% !important;
         }
-        .mermaid .node rect, .mermaid .node circle, .mermaid .node polygon {
-          stroke-width: 2px !important;
-          filter: drop-shadow(0 0-8px-rgba(59, 130, 246, 0.3));
-          transition: all 0.3s ease;
+        /* Base node styles */
+        .mermaid .node rect,
+        .mermaid .node circle,
+        .mermaid .node polygon {
+          stroke-width: 2px;
+          transition: filter 0.3s ease;
           cursor: pointer;
         }
-        .mermaid .clickable-node rect, .mermaid .clickable-node circle, .mermaid .clickable-node polygon {
-          stroke: #60a5fa !important;
-          stroke-dasharray: 5, 5;
-          animation: pulse-border 2s infinite;
+        /* Golden pulse animation for defined nodes */
+        @keyframes pulse-gold {
+          0%   { filter: drop-shadow(0 0 3px rgba(251,191,36,0.4)); }
+          50%  { filter: drop-shadow(0 0 12px rgba(251,191,36,0.9)); }
+          100% { filter: drop-shadow(0 0 3px rgba(251,191,36,0.4)); }
         }
-        @keyframes pulse-border {
-          0% { filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.3)); }
-          50% { filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.6)); }
-          100% { filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.3)); }
-        }
-        /* Enhanced Golden Node Styles */
-        .mermaid g.definedNode rect, .mermaid g.definedNode circle, .mermaid g.definedNode polygon, .mermaid g.definedNode path, .mermaid [id*="definedNode"] rect, .mermaid .node.definedNode rect {
+        .mermaid g.definedNode rect,
+        .mermaid g.definedNode circle,
+        .mermaid g.definedNode polygon {
           stroke: #fbbf24 !important;
-          stroke-width: 4px !important;
+          stroke-width: 3px !important;
           fill: #0f172a !important;
-          animation: pulse-gold 2s infinite !important;
+          animation: pulse-gold 2.5s ease-in-out infinite;
           cursor: pointer !important;
         }
-        .mermaid g.definedNode .label, .mermaid g.definedNode span, .mermaid g.definedNode div, .mermaid .node.definedNode .label {
+        .mermaid g.definedNode .label,
+        .mermaid g.definedNode .nodeLabel {
           color: #fbbf24 !important;
-          font-weight: 800 !important;
-          text-shadow: 0 0 5px rgba(251, 191, 36, 0.4);
+          fill: #fbbf24 !important;
+          font-weight: 700 !important;
         }
-        @keyframes pulse-gold {
-          0% { filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.3)); stroke: #fbbf24 !important; }
-          50% { filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.9)); stroke: #fff !important; }
-          100% { filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.3)); stroke: #fbbf24 !important; }
-        }
+        /* Edges */
         .mermaid .edgePath path {
           stroke: #3b82f6 !important;
           stroke-width: 2px !important;
         }
+        /* Labels */
         .mermaid .label {
-          color: #f8fafc !important;
-          font-family: 'Orbitron', sans-serif !important;
-          text-transform: uppercase;
-          letter-spacing: 1px;
+          color: #f8fafc;
+          font-family: 'Inter', 'Orbitron', sans-serif;
         }
       `}} />
     </div>

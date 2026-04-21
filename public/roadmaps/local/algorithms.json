@@ -2,10 +2,30 @@
   "type": "mermaid",
   "mermaid": "graph TD\n    AL[Algoritmi] --> AN[Asymptotic Notation]\n    AL --> SO[Sorting]\n    AL --> SE[Searching]\n    AL --> RE[Recursion]\n    AN --> BO[Big O / Theta / Omega]\n    SO --> BU[Bubble / Insertion / Selection]\n    SO --> AD[Merge / Quick / Heap Sort]\n    SE --> LS[Linear Search]\n    SE --> BS[Binary Search]\n    AL --> GR[Graph Algorithms]\n    GR --> BFS[BFS / DFS]\n    GR --> DI[Dijkstra / A*]",
   "definitions": {
-    "BO": { "title": "Big O Notation", "text": "Linguaggio matematico per descrivere l'efficienza nel tempo e nello spazio di un algoritmo all'aumentare dell'input." },
-    "AD": { "title": "Ordinamento Avanzato", "text": "Algoritmi tipo Merge Sort o Quick Sort che usano il paradigma 'Divide et Impera' per efficienza O(n log n)." },
-    "BS": { "title": "Binary Search", "text": "Ricerca efficiente in array ordinati dimezzando lo spazio di ricerca ogni volta (O(log n))." },
-    "RE": { "title": "Ricorsione", "text": "Tecnica in cui una funzione chiama se stessa per risolvere sottoproblemi più piccoli." },
-    "DI": { "title": "Dijkstra / A*", "text": "Algoritmi per trovare il percorso minimo tra nodi in un grafo pesato." }
+    "BO": {
+      "title": "Big O Notation",
+      "text": "Linguaggio matematico per descrivere l'efficienza nel tempo e nello spazio di un algoritmo all'aumentare dell'input.",
+      "note": "01_Fondamenti_Programmazione/Algoritmi/Big_O_Notation.md"
+    },
+    "AD": {
+      "title": "Ordinamento Avanzato",
+      "text": "Algoritmi tipo Merge Sort o Quick Sort che usano il paradigma 'Divide et Impera' per efficienza O(n log n).",
+      "note": "01_Fondamenti_Programmazione/Algoritmi/Ordinamento_Avanzato.md"
+    },
+    "BS": {
+      "title": "Binary Search",
+      "text": "Ricerca efficiente in array ordinati dimezzando lo spazio di ricerca ogni volta (O(log n)).",
+      "note": "01_Fondamenti_Programmazione/Algoritmi/Binary_Search.md"
+    },
+    "RE": {
+      "title": "Ricorsione",
+      "text": "Tecnica in cui una funzione chiama se stessa per risolvere sottoproblemi più piccoli.",
+      "note": "01_Fondamenti_Programmazione/Algoritmi/Ricorsione.md"
+    },
+    "DI": {
+      "title": "Dijkstra / A*",
+      "text": "Algoritmi per trovare il percorso minimo tra nodi in un grafo pesato.",
+      "note": "01_Fondamenti_Programmazione/Algoritmi/Dijkstra_AStar.md"
+    }
   }
 }
