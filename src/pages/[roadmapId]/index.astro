@@ -17,6 +17,7 @@ import { officialRoadmapDetails } from '../../queries/official-roadmap';
 import { DateTime } from 'luxon';
 import { listOfficialProjects } from '../../queries/official-project';
 import { VisualRoadmapRenderer } from '../../components/VisualRoadmapRenderer';
+import { LOCAL_ROADMAPS } from '../../data/local-roadmaps';
 
 export const prerender = false;
 
@@ -25,6 +26,14 @@ interface Params extends Record<string, string | undefined> {
 }
 
 const { roadmapId } = Astro.params as Params;
+
+// If this slug matches a local roadmap, redirect to /local/[slug]
+// This keeps backward compatibility with old bookmarked URLs.
+const isLocal = LOCAL_ROADMAPS.some(r => r.slug === roadmapId);
+if (isLocal) {
+  return Astro.redirect(`/local/${roadmapId}`, 302);
+}
+
 let roadmapData = null;
 try {
   roadmapData = await officialRoadmapDetails(roadmapId);
