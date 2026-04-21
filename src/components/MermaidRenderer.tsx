@@ -93,21 +93,19 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
         const id = `mermaid-${Math.random().toString(36).substr(2, 9)}`;
         let diagram = content;
 
-        // ── Mermaid v11 click syntax ────────────────────────────────────────
-        // Correct:  click <nodeId> "callbackName"
-        // Mermaid calls window.callbackName(nodeId) when clicked.
-        //
-        // WRONG (Mermaid v9 style, breaks silently in v11):
-        //   click <nodeId> call callbackName("arg")
-        // ────────────────────────────────────────────────────────────────────
+        // ── Mermaid click syntax (securityLevel: 'loose') ──────────────────────
+        // WITHOUT quotes: click nodeId callbackFn
+        //   → Mermaid calls window.callbackFn(nodeId)  ✅
+        // WITH quotes:    click nodeId "callbackFn"
+        //   → Mermaid treats it as a URL → navigates → 404  ❌
+        // ────────────────────────────────────────────────────────────────────────
         const clickLines: string[] = [];
         const styleLines: string[] = [];
         const classLines: string[] = [];
 
         Object.keys(definitions).forEach(nodeId => {
-          // Only add if not already defined in the raw content
           if (!diagram.includes(`click ${nodeId}`)) {
-            clickLines.push(`    click ${nodeId} "showNodeDefinition"`);
+            clickLines.push(`    click ${nodeId} showNodeDefinition`);
             styleLines.push(`    style ${nodeId} fill:#0f172a,stroke:#fbbf24,stroke-width:3px,color:#fbbf24`);
             classLines.push(`    class ${nodeId} definedNode`);
           }
