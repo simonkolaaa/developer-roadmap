@@ -12,6 +12,7 @@ import {
   isNewRoadmap,
   listOfficialRoadmaps,
 } from '../queries/official-roadmap';
+import { LOCAL_ROADMAPS } from '../data/local-roadmaps';
 
 const roadmaps = await listOfficialRoadmaps();
 const roleRoadmaps = roadmaps.filter((roadmap) => roadmap.type === 'role');
@@ -54,6 +55,29 @@ const videos = await getAllVideos();
 
   <div class='bg-linear-to-b from-slate-900 to-black'>
     <HeroSection />
+
+    <!-- ══ PERCORSI PERSONALI (Local Roadmaps) ══════════════════════════════ -->
+    <div class='relative border-b border-b-yellow-500/20 bg-gradient-to-b from-slate-900 to-slate-950 py-10 sm:py-14'>
+      <div class='container'>
+        <h2 class='text-md font-regular absolute -top-[17px] flex rounded-lg border border-yellow-500/30 bg-slate-900 px-3 py-1 text-yellow-400 sm:left-1/2 sm:-translate-x-1/2'>
+          🎓 Percorsi Personali
+        </h2>
+        <ul class='grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3'>
+          {LOCAL_ROADMAPS.sort((a, b) => a.order - b.order).map((roadmap) => (
+            <li>
+              <a
+                href={`/${roadmap.slug}`}
+                class='flex min-h-[54px] w-full items-center gap-3 rounded-md border border-yellow-500/20 bg-slate-900 px-4 py-2 text-left text-sm font-medium text-slate-200 transition-all hover:border-yellow-400/60 hover:bg-slate-800 hover:text-yellow-300 hover:shadow-[0_0_10px_rgba(251,191,36,0.1)]'
+              >
+                <span class='text-yellow-500 text-xs'>{'{'}</span>
+                {roadmap.title.card}
+                <span class='text-yellow-500 text-xs'>{'}'}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
 
     <FeaturedItems
       heading='Role-based Roadmaps'
