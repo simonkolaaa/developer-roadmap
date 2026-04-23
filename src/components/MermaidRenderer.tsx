@@ -172,11 +172,6 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
     renderMermaid();
   }, [isLoaded, content, definitions]);
 
-  const handleObsidianOpen = useCallback((notePath: string) => {
-    // window.location.href is better for app protocols to prevent blank tabs
-    const url = `obsidian://open?vault=IT_notes&file=${encodeURIComponent(notePath)}`;
-    window.location.href = url;
-  }, []);
 
   return (
     <div className="mermaid-container relative w-full overflow-hidden bg-slate-950 p-6 rounded-xl border border-slate-800 shadow-2xl flex flex-col items-center min-h-[300px]">
@@ -218,14 +213,14 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
             {/* Footer row */}
             <div className="mt-5 pt-4 border-t border-slate-800 flex items-center justify-between gap-3">
               {selectedNode.note ? (
-                <button
-                  onClick={() => handleObsidianOpen(selectedNode.note!)}
+                <a
+                  href={`obsidian://open?vault=IT_notes&file=${encodeURIComponent(selectedNode.note)}`}
                   className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium transition-all bg-slate-800 hover:bg-yellow-500/10 text-yellow-400 hover:text-yellow-300 border border-yellow-500/20 hover:border-yellow-500/50"
                   title={`Apri in Obsidian: ${selectedNode.note}`}
                 >
                   <Book size={13} />
                   Apri in Obsidian
-                </button>
+                </a>
               ) : (
                 <span className="text-slate-600 text-xs italic">Nessun appunto collegato</span>
               )}
