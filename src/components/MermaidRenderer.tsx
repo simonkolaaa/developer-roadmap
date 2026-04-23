@@ -118,10 +118,13 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
           diagram += '\n' + classLines.join('\n');
         }
 
-        const { svg } = await window.mermaid.render(id, diagram);
+        const { svg, bindFunctions } = await window.mermaid.render(id, diagram);
 
         if (containerRef.current) {
           containerRef.current.innerHTML = svg;
+          if (bindFunctions) {
+            bindFunctions(containerRef.current);
+          }
 
           // POST-RENDER: Apply golden border styles inline.
           // Pure CSS selectors are unreliable in Mermaid v11's SVG output.
@@ -144,6 +147,7 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
           }
 
           definedNodeEls.forEach(nodeEl => {
+            nodeEl.classList.add('definedNode'); // Ensure animation class is present
             nodeEl.querySelectorAll('rect, circle, polygon, path').forEach(shape => {
               const el = shape as SVGElement;
               el.style.stroke = '#fbbf24';
@@ -169,10 +173,9 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
   }, [isLoaded, content, definitions]);
 
   const handleObsidianOpen = useCallback((notePath: string) => {
-    // window.open is more reliable than <a href> for custom protocol links
-    // because some browsers block navigation to unknown protocols.
+    // window.location.href is better for app protocols to prevent blank tabs
     const url = `obsidian://open?vault=IT_notes&file=${encodeURIComponent(notePath)}`;
-    window.open(url);
+    window.location.href = url;
   }, []);
 
   return (
