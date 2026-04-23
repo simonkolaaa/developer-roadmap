@@ -213,16 +213,26 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
             {/* Footer row */}
             <div className="mt-5 pt-4 border-t border-slate-800 flex items-center justify-between gap-3">
               {selectedNode.note ? (
-                <a
-                  href={`obsidian://open?vault=IT_notes&file=${encodeURIComponent(selectedNode.note)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={() => {
+                    const url = `obsidian://open?vault=IT_notes&file=${encodeURIComponent(selectedNode.note!)}`;
+                    // Use a hidden iframe to prevent the browser from opening blank tabs
+                    // or navigating away from the current page.
+                    let iframe = document.getElementById('obsidian-launcher') as HTMLIFrameElement;
+                    if (!iframe) {
+                      iframe = document.createElement('iframe');
+                      iframe.id = 'obsidian-launcher';
+                      iframe.style.display = 'none';
+                      document.body.appendChild(iframe);
+                    }
+                    iframe.src = url;
+                  }}
                   className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium transition-all bg-slate-800 hover:bg-yellow-500/10 text-yellow-400 hover:text-yellow-300 border border-yellow-500/20 hover:border-yellow-500/50"
                   title={`Apri in Obsidian: ${selectedNode.note}`}
                 >
                   <Book size={13} />
                   Apri in Obsidian
-                </a>
+                </button>
               ) : (
                 <span className="text-slate-600 text-xs italic">Nessun appunto collegato</span>
               )}
