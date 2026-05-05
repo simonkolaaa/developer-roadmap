@@ -168,5 +168,19 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
       { title: 'System Scalability', json: '/roadmaps/local/database.json' },
       { title: 'Authentication & JWT', json: '/roadmaps/local/web-auth.json' }
     ]
+  },
+
+  // Esame di Maturità
+  {
+    slug: 'maturita',
+    title: { card: 'Esame di Maturità', page: 'Esame di Maturità - Ciclo di Vita Web App' },
+    description: 'Ripasso completo per l\'esame: Python, Database, Web, Flask e Sicurezza.',
+    type: 'role',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+    order: 9,
+    topics: [
+      { title: 'Diagramma Completo', json: '/roadmaps/local/maturita.json' }
+    ]
   }
 ];
