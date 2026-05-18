@@ -3,7 +3,8 @@ import {
   ArrowRightIcon,
   CheckIcon,
   CircleAlertIcon,
-  Minus, XIcon
+  Minus,
+  XIcon,
 } from 'lucide-react';
 import type { QuestionState } from './AIQuizContent';
 

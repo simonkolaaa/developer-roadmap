@@ -60,7 +60,8 @@ export function BaseDropdown<T extends string>(props: BaseDropdownProps<T>) {
                 }}
                 className={cn(
                   'flex items-center gap-2 px-5 py-2 text-left text-sm capitalize hover:bg-gray-100',
-                  value === option && 'bg-gray-200 font-medium hover:bg-gray-200',
+                  value === option &&
+                    'bg-gray-200 font-medium hover:bg-gray-200',
                 )}
               >
                 {OptionIcon && <OptionIcon size={16} />}
@@ -72,4 +73,4 @@ export function BaseDropdown<T extends string>(props: BaseDropdownProps<T>) {
       )}
     </div>
   );
-} 
+}

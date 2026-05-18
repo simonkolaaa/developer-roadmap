@@ -176,10 +176,16 @@ export function EditorRoadmapRenderer(props: RoadmapRendererProps) {
       return;
     }
 
-    if (nodeType === 'checklist-item' && (target.tagName === 'text' || target.tagName === 'tspan')) {
+    if (
+      nodeType === 'checklist-item' &&
+      (target.tagName === 'text' || target.tagName === 'tspan')
+    ) {
       e.preventDefault();
 
-      const textElement = target.tagName === 'tspan' ? (target.closest('text') as SVGTextElement) : target;
+      const textElement =
+        target.tagName === 'tspan'
+          ? (target.closest('text') as SVGTextElement)
+          : target;
       const clickedText = textElement?.textContent?.trim();
       if (!clickedText) {
         return;
@@ -191,14 +197,14 @@ export function EditorRoadmapRenderer(props: RoadmapRendererProps) {
       }
 
       const parentChecklistGroup = roadmapRef.current?.querySelector(
-        `g[data-node-id="${parentChecklistId}"][data-type="checklist"]`
+        `g[data-node-id="${parentChecklistId}"][data-type="checklist"]`,
       );
       if (!parentChecklistGroup) {
         return;
       }
 
       const labelGroup = parentChecklistGroup.querySelector(
-        'g[data-type="checklist-label"]'
+        'g[data-type="checklist-label"]',
       );
       if (!labelGroup) {
         return;

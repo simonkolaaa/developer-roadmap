@@ -1,10 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
-import {
-    Bot,
-    GitPullRequest,
-    Star,
-    Users2,
-} from 'lucide-react';
+import { Bot, GitPullRequest, Star, Users2 } from 'lucide-react';
 import { cn } from '../../lib/classname';
 
 interface CredibilityItemProps {
@@ -80,4 +75,4 @@ export function CredibilityStats() {
       </div>
     </div>
   );
-} 
+}

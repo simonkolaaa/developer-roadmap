@@ -12,7 +12,6 @@ import path from 'node:path';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-
 // https://astro.build/config
 export default defineConfig({
   site: 'https://simonkolaaa.github.io/',
@@ -90,13 +89,14 @@ export default defineConfig({
     plugins: [tailwindcss()],
     resolve: {
       alias: {
-        '@roadmapsh/editor': path.resolve(__dirname, './src/lib/editor-stub.ts')
-      }
-
+        '@roadmapsh/editor': path.resolve(
+          __dirname,
+          './src/lib/editor-stub.ts',
+        ),
+      },
     },
     ssr: {
       noExternal: [/^@roadmapsh\/editor.*$/],
-    }
-
+    },
   },
 });

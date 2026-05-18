@@ -25,7 +25,7 @@ export function CircularProgress(props: CircularProgressProps) {
   };
 
   return (
-    <div className="relative flex max-md:hidden flex-shrink-0 self-center">
+    <div className="relative flex flex-shrink-0 self-center max-md:hidden">
       <svg
         className={cn(sizeClasses[size], '-rotate-90 transform')}
         viewBox="0 0 100 100"

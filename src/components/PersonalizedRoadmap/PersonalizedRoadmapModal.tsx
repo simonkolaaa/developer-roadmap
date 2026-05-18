@@ -36,7 +36,6 @@ export function PersonalizedRoadmapModal(props: PersonalizedRoadmapModalProps) {
     onSubmitProp(info);
   };
 
-
   return (
     <Modal
       onClose={onClose}

@@ -13,4 +13,4 @@ export function StatsItem(props: StatsItemProps) {
       <span className="text-gray-300">{props.text}</span>
     </div>
   );
-} 
+}

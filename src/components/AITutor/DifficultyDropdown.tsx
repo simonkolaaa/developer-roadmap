@@ -1,7 +1,7 @@
 import { BaseDropdown } from './BaseDropdown';
 import {
-    difficultyLevels,
-    type DifficultyLevel,
+  difficultyLevels,
+  type DifficultyLevel,
 } from '../GenerateCourse/AICourse';
 
 type DifficultyDropdownProps = {

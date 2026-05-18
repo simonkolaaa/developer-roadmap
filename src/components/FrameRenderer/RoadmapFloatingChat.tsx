@@ -320,7 +320,10 @@ export function RoadmapFloatingChat(props: RoadmapChatProps) {
         return;
       }
 
-      const roadmapTitle = roadmapDetail?.json?.title?.page || roadmapDetail?.json?.title?.card || 'this roadmap';
+      const roadmapTitle =
+        roadmapDetail?.json?.title?.page ||
+        roadmapDetail?.json?.title?.card ||
+        'this roadmap';
       const message = `Explain the '${roadmapTitle}' best practice '${labelText} > ${clickedText}'`;
 
       flushSync(() => {
@@ -347,11 +350,23 @@ export function RoadmapFloatingChat(props: RoadmapChatProps) {
       }, 100);
     };
 
-    window.addEventListener('roadmap.checklist.click', handleChecklistClick as EventListener);
+    window.addEventListener(
+      'roadmap.checklist.click',
+      handleChecklistClick as EventListener,
+    );
     return () => {
-      window.removeEventListener('roadmap.checklist.click', handleChecklistClick as EventListener);
+      window.removeEventListener(
+        'roadmap.checklist.click',
+        handleChecklistClick as EventListener,
+      );
     };
-  }, [roadmapId, roadmapDetail, sendMessage, activeChatHistoryId, scrollToBottom]);
+  }, [
+    roadmapId,
+    roadmapDetail,
+    sendMessage,
+    activeChatHistoryId,
+    scrollToBottom,
+  ]);
 
   function textToJSON(text: string): JSONContent {
     return {

@@ -19,11 +19,10 @@ export function FAQs(props: FAQsProps) {
     <div className="mt-8 border-t border-slate-800 bg-slate-950">
       <div className="container">
         <div className="relative -top-5 flex justify-between">
-          <h2 className="rounded-md border border-slate-700 bg-slate-900 px-3 py-1 text-sm font-medium sm:text-base text-slate-100 font-orbitron">
+          <h2 className="font-orbitron rounded-md border border-slate-700 bg-slate-900 px-3 py-1 text-sm font-medium text-slate-100 sm:text-base">
             Frequently Asked Questions
           </h2>
         </div>
-
 
         <div className="flex flex-col gap-1 pb-14">
           {faqs.map((faq, questionIndex) => {
@@ -40,7 +39,6 @@ export function FAQs(props: FAQsProps) {
               >
                 <div
                   className="text-md rounded-br-md rounded-bl-md border-t border-t-slate-800 bg-slate-900 p-2 text-left text-sm leading-relaxed text-slate-300 sm:p-4 sm:text-base [&>p:not(:last-child)]:mb-3 [&>p>a]:text-blue-400 [&>p>a]:underline"
-
                   {...(isTextDescription
                     ? {
                         dangerouslySetInnerHTML: {

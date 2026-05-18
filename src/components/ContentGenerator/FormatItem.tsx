@@ -17,8 +17,8 @@ export function FormatItem(props: FormatItemProps) {
       className={cn(
         'flex w-full flex-col items-center justify-center gap-2.5 rounded-xl border border-gray-200 p-2 py-8',
         isSelected
-          ? 'border-gray-400 font-medium bg-white'
-          : 'bg-white text-gray-400 hover:bg-white hover:border-gray-300',
+          ? 'border-gray-400 bg-white font-medium'
+          : 'bg-white text-gray-400 hover:border-gray-300 hover:bg-white',
       )}
       onClick={onClick}
     >

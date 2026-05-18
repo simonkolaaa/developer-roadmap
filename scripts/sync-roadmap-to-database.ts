@@ -16,13 +16,17 @@ const secret = args
 
 if (!roadmapSlug) {
   console.error('❌ Roadmap slug is required. Use --roadmap=<slug>');
-  console.error('   Example: npm run sync:roadmap -- --roadmap=frontend --secret=<secret>');
+  console.error(
+    '   Example: npm run sync:roadmap -- --roadmap=frontend --secret=<secret>',
+  );
   process.exit(1);
 }
 
 if (!secret) {
   console.error('❌ Secret is required. Use --secret=<secret>');
-  console.error('   Example: npm run sync:roadmap -- --roadmap=frontend --secret=<secret>');
+  console.error(
+    '   Example: npm run sync:roadmap -- --roadmap=frontend --secret=<secret>',
+  );
   process.exit(1);
 }
 

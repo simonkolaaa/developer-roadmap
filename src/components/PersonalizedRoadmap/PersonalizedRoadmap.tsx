@@ -86,8 +86,11 @@ export function PersonalizedRoadmap(props: PersonalizedRoadmapProps) {
               ...data,
               topicIds: remainingTopicIds,
             },
-          }).catch(err => {
-            console.warn('Failed to save personalization to API, using memory only:', err);
+          }).catch((err) => {
+            console.warn(
+              'Failed to save personalization to API, using memory only:',
+              err,
+            );
             // We just return a mock success so the UI updates
             return { response: { success: true }, error: undefined };
           });
@@ -212,7 +215,7 @@ export function PersonalizedRoadmap(props: PersonalizedRoadmapProps) {
         />
       ) : (
         <button
-          className="group hidden sm:inline-flex items-center gap-1.5 border-b-2 border-b-transparent pb-2.5 text-sm font-normal text-slate-400 transition-colors hover:text-white"
+          className="group hidden items-center gap-1.5 border-b-2 border-b-transparent pb-2.5 text-sm font-normal text-slate-400 transition-colors hover:text-white sm:inline-flex"
           onClick={() => {
             // No login required
             setIsModalOpen(true);
@@ -231,7 +234,6 @@ export function PersonalizedRoadmap(props: PersonalizedRoadmapProps) {
             </>
           )}
         </button>
-
       )}
     </>
   );

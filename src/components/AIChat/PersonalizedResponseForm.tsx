@@ -32,7 +32,7 @@ export const PersonalizedResponseForm = memo(
     const [expertise, setExpertise] = useState(defaultValues?.expertise ?? '');
     const [about, setAbout] = useState(defaultValues?.about ?? '');
     const [specialInstructions, setSpecialInstructions] = useState(
-      defaultValues?.specialInstructions ?? ''
+      defaultValues?.specialInstructions ?? '',
     );
 
     const goalOptions = [
@@ -96,7 +96,7 @@ export const PersonalizedResponseForm = memo(
           toast.error(error?.message ?? 'Something went wrong');
         },
       },
-      queryClient
+      queryClient,
     );
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -236,5 +236,5 @@ export const PersonalizedResponseForm = memo(
         </div>
       </Modal>
     );
-  }
+  },
 );

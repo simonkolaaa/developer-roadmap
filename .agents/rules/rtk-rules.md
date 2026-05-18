@@ -6,15 +6,17 @@ trigger: always_on
 
 REGOLE TASSATIVE PER L'USO DEL TERMINALE:
 
-1. PREFISSO OBBLIGATORIO PER ESEGUIBILI: 
-Quando devi eseguire programmi, package manager o tool di sviluppo (specialmente quelli verbosi come `git`, `npm`, `cargo`, `npx`, `pytest`, `tsc`, `lint`), devi SEMPRE anteporre il prefisso `rtk` al comando.
+1. PREFISSO OBBLIGATORIO PER ESEGUIBILI:
+   Quando devi eseguire programmi, package manager o tool di sviluppo (specialmente quelli verbosi come `git`, `npm`, `cargo`, `npx`, `pytest`, `tsc`, `lint`), devi SEMPRE anteporre il prefisso `rtk` al comando.
+
 - Esempi Corretti: `rtk git status`, `rtk npm run build`, `rtk cargo test`.
 
-2. ECCEZIONI (COMANDI INTERNI SHELL): 
-NON usare mai il prefisso `rtk` per i comandi interni nativi di PowerShell o CMD (come `cd`, `dir`, `echo`, `mkdir`, `rm`, `cat`). RTK funziona solo avvolgendo veri file eseguibili. Per esplorare le cartelle usa i comandi standard senza prefisso.
+2. ECCEZIONI (COMANDI INTERNI SHELL):
+   NON usare mai il prefisso `rtk` per i comandi interni nativi di PowerShell o CMD (come `cd`, `dir`, `echo`, `mkdir`, `rm`, `cat`). RTK funziona solo avvolgendo veri file eseguibili. Per esplorare le cartelle usa i comandi standard senza prefisso.
 
-3. COMPRENSIONE DELL'OUTPUT: 
-L'output che riceverai usando `rtk` sarà drasticamente compresso, sintetizzato e spesso incapsulato in delimitatori visivi o tag strutturati. Questo è il comportamento corretto, atteso e ottimizzato per te.
+3. COMPRENSIONE DELL'OUTPUT:
+   L'output che riceverai usando `rtk` sarà drasticamente compresso, sintetizzato e spesso incapsulato in delimitatori visivi o tag strutturati. Questo è il comportamento corretto, atteso e ottimizzato per te.
+
 - NON considerarlo un errore o un output troncato.
 - NON tentare di rieseguire il comando senza RTK per "vedere il log completo".
 - Estrai le informazioni necessarie dalla sintesi fornita e procedi con il tuo task.

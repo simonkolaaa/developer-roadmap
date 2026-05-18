@@ -46,13 +46,13 @@ export function PersonalizedRoadmapSwitcher(
           </button>
 
           {isDropdownOpen && (
-            <div className="absolute top-full left-0 z-20 mt-1 rounded-md border border-slate-800 bg-slate-900 shadow-xl overflow-hidden min-w-[120px]">
+            <div className="absolute top-full left-0 z-20 mt-1 min-w-[120px] overflow-hidden rounded-md border border-slate-800 bg-slate-900 shadow-xl">
               <button
                 onClick={() => {
                   onEdit();
                   setIsDropdownOpen(false);
                 }}
-                className="flex w-full items-center gap-2 px-3 py-2 text-sm text-slate-300 hover:bg-slate-800 transition-colors"
+                className="flex w-full items-center gap-2 px-3 py-2 text-sm text-slate-300 transition-colors hover:bg-slate-800"
               >
                 <PencilIcon className="h-3.5 w-3.5" />
                 Edit
@@ -62,19 +62,18 @@ export function PersonalizedRoadmapSwitcher(
                   onRemove();
                   setIsDropdownOpen(false);
                 }}
-                className="flex w-full items-center gap-2 px-3 py-2 text-sm text-red-400 hover:bg-red-400/10 transition-colors"
+                className="flex w-full items-center gap-2 px-3 py-2 text-sm text-red-400 transition-colors hover:bg-red-400/10"
               >
                 <XIcon className="h-3.5 w-3.5" />
                 Delete
               </button>
             </div>
-
           )}
         </div>
-        <div className="flex bg-slate-950 rounded-full border border-slate-800 p-0.5">
+        <div className="flex rounded-full border border-slate-800 bg-slate-950 p-0.5">
           <button
             className={cn(
-              'rounded-full px-2.5 py-1 text-[10px] font-bold transition-all uppercase tracking-wider',
+              'rounded-full px-2.5 py-1 text-[10px] font-bold tracking-wider uppercase transition-all',
               isPersonalized
                 ? 'bg-blue-600 text-white'
                 : 'text-slate-500 hover:text-slate-300',
@@ -85,7 +84,7 @@ export function PersonalizedRoadmapSwitcher(
           </button>
           <button
             className={cn(
-              'rounded-full px-2.5 py-1 text-[10px] font-bold transition-all uppercase tracking-wider',
+              'rounded-full px-2.5 py-1 text-[10px] font-bold tracking-wider uppercase transition-all',
               !isPersonalized
                 ? 'bg-blue-600 text-white'
                 : 'text-slate-500 hover:text-slate-300',
@@ -95,7 +94,6 @@ export function PersonalizedRoadmapSwitcher(
             Original
           </button>
         </div>
-
       </div>
     </div>
   );

@@ -14,7 +14,9 @@ const args = process.argv.slice(2);
 const roadmapSlug = args?.[0]?.replace('--roadmap-slug=', '');
 
 if (!roadmapSlug) {
-  console.error('Usage: tsx scripts/cleanup-orphaned-content.ts --roadmap-slug=<slug|__all__>');
+  console.error(
+    'Usage: tsx scripts/cleanup-orphaned-content.ts --roadmap-slug=<slug|__all__>',
+  );
   process.exit(1);
 }
 
@@ -66,7 +68,9 @@ async function getEditorRoadmapSlugs(): Promise<string[]> {
   const results: string[] = [];
 
   for (const dir of allDirs) {
-    const stat = await fs.stat(path.join(ROADMAP_CONTENT_DIR, dir)).catch(() => null);
+    const stat = await fs
+      .stat(path.join(ROADMAP_CONTENT_DIR, dir))
+      .catch(() => null);
     if (!stat?.isDirectory()) {
       continue;
     }
@@ -78,7 +82,9 @@ async function getEditorRoadmapSlugs(): Promise<string[]> {
   return results;
 }
 
-function parseContentFilename(filename: string): { slug: string; nodeId: string } | null {
+function parseContentFilename(
+  filename: string,
+): { slug: string; nodeId: string } | null {
   const match = filename.match(/^(.+)@([^.]+)\.md$/);
   if (!match) {
     return null;
@@ -126,7 +132,10 @@ async function cleanupRoadmap(slug: string): Promise<OrphanEntry[]> {
     if (!parsed) {
       continue;
     }
-    if (validNodeIds.has(parsed.nodeId) && nodeIdToExpectedSlug.get(parsed.nodeId) === parsed.slug) {
+    if (
+      validNodeIds.has(parsed.nodeId) &&
+      nodeIdToExpectedSlug.get(parsed.nodeId) === parsed.slug
+    ) {
       validFilesBySlug.set(parsed.slug, file);
     }
   }
@@ -190,7 +199,9 @@ async function cleanupRoadmap(slug: string): Promise<OrphanEntry[]> {
     if (orphan.action === 'renamed') {
       const newPath = path.join(contentDir, orphan.renamedTo!);
       await fs.rename(filePath, newPath);
-      console.log(`  Renamed: ${orphan.file} -> ${orphan.renamedTo} (${orphan.reason})`);
+      console.log(
+        `  Renamed: ${orphan.file} -> ${orphan.renamedTo} (${orphan.reason})`,
+      );
     } else {
       await fs.unlink(filePath);
       console.log(`  Deleted: ${orphan.file} (${orphan.reason})`);
@@ -206,9 +217,7 @@ async function cleanupRoadmap(slug: string): Promise<OrphanEntry[]> {
 
 async function main() {
   const slugs =
-    roadmapSlug === '__all__'
-      ? await getEditorRoadmapSlugs()
-      : [roadmapSlug];
+    roadmapSlug === '__all__' ? await getEditorRoadmapSlugs() : [roadmapSlug];
 
   if (roadmapSlug !== '__all__') {
     if (!(await isEditorRoadmap(roadmapSlug))) {
@@ -240,8 +249,12 @@ async function main() {
     summary += `| File | Action | Reason | Duplicate Of |\n`;
     summary += `|---|---|---|---|\n`;
     for (const orphan of orphans) {
-      const action = orphan.action === 'renamed' ? `Renamed to \`${orphan.renamedTo}\`` : 'Deleted';
-      const dupOf = orphan.duplicateOf === 'N/A' ? 'N/A' : `\`${orphan.duplicateOf}\``;
+      const action =
+        orphan.action === 'renamed'
+          ? `Renamed to \`${orphan.renamedTo}\``
+          : 'Deleted';
+      const dupOf =
+        orphan.duplicateOf === 'N/A' ? 'N/A' : `\`${orphan.duplicateOf}\``;
       summary += `| \`${orphan.file}\` | ${action} | ${orphan.reason} | ${dupOf} |\n`;
     }
     summary += `\n`;
@@ -250,7 +263,9 @@ async function main() {
   const summaryPath = path.join(__dirname, '..', '.cleanup-summary.md');
   await fs.writeFile(summaryPath, summary);
   console.log(`\nSummary written to .cleanup-summary.md`);
-  console.log(`Total: ${totalOrphans} orphaned file(s) cleaned up across ${roadmapsAffected} roadmap(s)`);
+  console.log(
+    `Total: ${totalOrphans} orphaned file(s) cleaned up across ${roadmapsAffected} roadmap(s)`,
+  );
 }
 
 main().catch((err) => {

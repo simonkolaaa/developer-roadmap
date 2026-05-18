@@ -10,7 +10,7 @@ import {
   Star,
   Swords,
   X,
-  Zap
+  Zap,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { getUrlParams } from '../../lib/browser';
@@ -292,7 +292,9 @@ function AITutorSidebarItem(props: AITutorSidebarItemProps) {
         !isActive && !hasChildren && 'hover:bg-gray-50 hover:text-gray-700',
         !isActive && hasChildren && 'hover:text-gray-700',
         isChild && 'border-r-transparent py-1.5 pl-11',
-        isChild && isActive && 'border-r-black border-r-2 bg-gray-100 text-black',
+        isChild &&
+          isActive &&
+          'border-r-2 border-r-black bg-gray-100 text-black',
         className,
       )}
     >

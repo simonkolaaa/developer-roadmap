@@ -20,7 +20,10 @@ interface MermaidRendererProps {
   definitions?: Record<string, NodeDef>;
 }
 
-export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererProps) => {
+export const MermaidRenderer = ({
+  content,
+  definitions = {},
+}: MermaidRendererProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [selectedNode, setSelectedNode] = useState<NodeDef | null>(null);
@@ -48,7 +51,8 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
     // Load Mermaid from CDN if not already loaded
     if (!window.mermaid) {
       const script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js';
+      script.src =
+        'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js';
       script.async = true;
       script.onload = () => {
         window.mermaid.initialize({
@@ -104,11 +108,28 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
         const styleLines: string[] = [];
         const classLines: string[] = [];
 
-        Object.keys(definitions).forEach(nodeId => {
+        let progress: string[] = [];
+        try {
+          const roadmapId =
+            window.location.pathname.split('/').pop() || 'default';
+          const storageKey = `simonkola-roadmap-progress-${roadmapId}`;
+          progress = JSON.parse(localStorage.getItem(storageKey) || '[]');
+        } catch (e) {}
+
+        Object.keys(definitions).forEach((nodeId) => {
           if (!diagram.includes(`click ${nodeId}`)) {
             clickLines.push(`    click ${nodeId} showNodeDefinition`);
-            styleLines.push(`    style ${nodeId} fill:#0f172a,stroke:#fbbf24,stroke-width:3px,color:#fbbf24`);
-            classLines.push(`    class ${nodeId} definedNode`);
+            if (progress.includes(nodeId)) {
+              styleLines.push(
+                `    style ${nodeId} fill:#0f172a,stroke:#22c55e,stroke-width:3px,color:#22c55e`,
+              );
+              classLines.push(`    class ${nodeId} completedNode`);
+            } else {
+              styleLines.push(
+                `    style ${nodeId} fill:#0f172a,stroke:#fbbf24,stroke-width:3px,color:#fbbf24`,
+              );
+              classLines.push(`    class ${nodeId} definedNode`);
+            }
           }
         });
 
@@ -133,36 +154,79 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
 
           // Strategy A: find by class .definedNode (works when Mermaid applies class correctly)
           let definedNodeEls = Array.from(
-            container.querySelectorAll('g.definedNode, .node.definedNode')
+            container.querySelectorAll('g.definedNode, .node.definedNode'),
           );
 
           // Strategy B (fallback): match node elements by their text label
           // In Mermaid v11 the node wrapper g gets id like "flowchart-BO-12"
           if (definedNodeEls.length === 0) {
-            Object.keys(definitions).forEach(nodeId => {
-              const byId = container.querySelector(`g[id*="flowchart-${nodeId}-"], g[id="${nodeId}"]`);
+            Object.keys(definitions).forEach((nodeId) => {
+              const byId = container.querySelector(
+                `g[id*="flowchart-${nodeId}-"], g[id="${nodeId}"]`,
+              );
               if (byId && !definedNodeEls.includes(byId)) {
                 definedNodeEls.push(byId);
               }
             });
           }
 
-          definedNodeEls.forEach(nodeEl => {
+          definedNodeEls.forEach((nodeEl) => {
             nodeEl.classList.add('definedNode'); // Ensure animation class is present
-            nodeEl.querySelectorAll('rect, circle, polygon, path').forEach(shape => {
-              const el = shape as SVGElement;
-              el.style.stroke = '#fbbf24';
-              el.style.strokeWidth = '3px';
-              el.style.fill = '#0f172a';
-              el.style.filter = 'drop-shadow(0 0 8px rgba(251,191,36,0.6))';
-              el.style.cursor = 'pointer';
+            nodeEl
+              .querySelectorAll('rect, circle, polygon, path')
+              .forEach((shape) => {
+                const el = shape as SVGElement;
+                el.style.stroke = '#fbbf24';
+                el.style.strokeWidth = '3px';
+                el.style.fill = '#0f172a';
+                el.style.filter = 'drop-shadow(0 0 8px rgba(251,191,36,0.6))';
+                el.style.cursor = 'pointer';
+              });
+            nodeEl
+              .querySelectorAll(
+                '.label, .nodeLabel, foreignObject p, foreignObject span, text',
+              )
+              .forEach((label) => {
+                const el = label as HTMLElement;
+                el.style.color = '#fbbf24';
+                el.style.fill = '#fbbf24';
+                el.style.fontWeight = '700';
+              });
+          });
+
+          // Strategy C: completed nodes
+          let completedNodeEls = Array.from(
+            container.querySelectorAll('g.completedNode, .node.completedNode'),
+          );
+          if (completedNodeEls.length === 0) {
+            progress.forEach((nodeId) => {
+              const byId = container.querySelector(
+                `g[id*="flowchart-${nodeId}-"], g[id="${nodeId}"]`,
+              );
+              if (byId && !completedNodeEls.includes(byId)) {
+                completedNodeEls.push(byId);
+              }
             });
-            nodeEl.querySelectorAll('.label, .nodeLabel, foreignObject p, foreignObject span, text').forEach(label => {
-              const el = label as HTMLElement;
-              el.style.color = '#fbbf24';
-              el.style.fill = '#fbbf24';
-              el.style.fontWeight = '700';
-            });
+          }
+          completedNodeEls.forEach((nodeEl) => {
+            nodeEl.classList.add('completedNode');
+            nodeEl.classList.remove('definedNode');
+            nodeEl
+              .querySelectorAll('rect, circle, polygon, path')
+              .forEach((shape) => {
+                const el = shape as SVGElement;
+                el.style.stroke = '#22c55e';
+                el.style.filter = 'drop-shadow(0 0 8px rgba(34,197,94,0.6))';
+              });
+            nodeEl
+              .querySelectorAll(
+                '.label, .nodeLabel, foreignObject p, foreignObject span, text',
+              )
+              .forEach((label) => {
+                const el = label as HTMLElement;
+                el.style.color = '#22c55e';
+                el.style.fill = '#22c55e';
+              });
           });
         }
       } catch (err) {
@@ -173,61 +237,49 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
     renderMermaid();
   }, [isLoaded, content, definitions]);
 
-
   return (
-    <div className="mermaid-container relative w-full overflow-hidden bg-slate-950 p-6 rounded-xl border border-slate-800 shadow-2xl flex flex-col items-center min-h-[300px]">
-
+    <div className="mermaid-container relative flex min-h-[300px] w-full flex-col items-center overflow-hidden rounded-xl border border-slate-800 bg-slate-950 p-6 shadow-2xl">
       {/* Mermaid SVG is injected here */}
-      <div
-        ref={containerRef}
-        className="mermaid w-full flex justify-center"
-      />
+      <div ref={containerRef} className="mermaid flex w-full justify-center" />
 
       {/* ── Definition Popup Overlay ─────────────────────────────────────── */}
       {selectedNode && (
         <div
-          className="absolute inset-0 z-50 flex items-center justify-center bg-slate-950/90 backdrop-blur-sm p-4"
+          className="absolute inset-0 z-50 flex items-center justify-center bg-slate-950/90 p-4 backdrop-blur-sm"
           onClick={(e) => {
             if (e.target === e.currentTarget) setSelectedNode(null);
           }}
         >
-          <div className="max-w-md w-full bg-slate-900 border border-yellow-500/40 rounded-xl p-6 shadow-[0_0_30px_rgba(251,191,36,0.15)] relative">
+          <div className="relative w-full max-w-md rounded-xl border border-yellow-500/40 bg-slate-900 p-6 shadow-[0_0_30px_rgba(251,191,36,0.15)]">
             {/* X close button */}
             <button
               onClick={() => setSelectedNode(null)}
-              className="absolute top-4 right-4 p-1 rounded text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+              className="absolute top-4 right-4 rounded p-1 text-slate-400 transition-colors hover:bg-slate-800 hover:text-white"
               aria-label="Chiudi"
             >
               <X size={18} />
             </button>
 
             {/* Node title */}
-            <h3 className="text-lg font-bold text-yellow-400 mb-3 pr-8 uppercase tracking-wide">
+            <h3 className="mb-3 pr-8 text-lg font-bold tracking-wide text-yellow-400 uppercase">
               {selectedNode.title}
             </h3>
 
             {/* Definition text */}
-            <p className="text-slate-300 leading-relaxed text-sm">
+            <p className="text-sm leading-relaxed text-slate-300">
               {selectedNode.text}
             </p>
 
             {/* Footer row */}
-            <div className="mt-5 pt-4 border-t border-slate-800 flex items-center justify-between gap-3">
+            <div className="mt-5 flex items-center justify-between gap-3 border-t border-slate-800 pt-4">
               <div className="flex flex-wrap gap-2">
                 {selectedNode.note ? (
                   <button
                     onClick={() => {
                       const url = `obsidian://open?vault=IT_notes&file=${encodeURIComponent(selectedNode.note!)}`;
-                      let iframe = document.getElementById('obsidian-launcher') as HTMLIFrameElement;
-                      if (!iframe) {
-                        iframe = document.createElement('iframe');
-                        iframe.id = 'obsidian-launcher';
-                        iframe.style.display = 'none';
-                        document.body.appendChild(iframe);
-                      }
-                      iframe.src = url;
+                      window.location.href = url;
                     }}
-                    className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium transition-all bg-slate-800 hover:bg-yellow-500/10 text-yellow-400 hover:text-yellow-300 border border-yellow-500/20 hover:border-yellow-500/50"
+                    className="flex items-center gap-2 rounded-lg border border-yellow-500/20 bg-slate-800 px-3 py-2 text-xs font-medium text-yellow-400 transition-all hover:border-yellow-500/50 hover:bg-yellow-500/10 hover:text-yellow-300"
                     title={`Apri in Obsidian: ${selectedNode.note}`}
                   >
                     <Book size={13} />
@@ -240,7 +292,7 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
                     href={selectedNode.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium transition-all bg-slate-800 hover:bg-blue-500/10 text-blue-400 hover:text-blue-300 border border-blue-500/20 hover:border-blue-500/50"
+                    className="flex items-center gap-2 rounded-lg border border-blue-500/20 bg-slate-800 px-3 py-2 text-xs font-medium text-blue-400 transition-all hover:border-blue-500/50 hover:bg-blue-500/10 hover:text-blue-300"
                     title="Apri su GitHub"
                   >
                     <Book size={13} />
@@ -249,23 +301,61 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
                 ) : null}
 
                 {!selectedNode.note && !selectedNode.githubUrl && (
-                  <span className="text-slate-600 text-xs italic mt-2">Nessun appunto collegato</span>
+                  <span className="mt-2 text-xs text-slate-600 italic">
+                    Nessun appunto collegato
+                  </span>
                 )}
               </div>
 
-              <button
-                onClick={() => setSelectedNode(null)}
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-medium transition-all"
-              >
-                Chiudi
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => {
+                    const roadmapId =
+                      window.location.pathname.split('/').pop() || 'default';
+                    const storageKey = `simonkola-roadmap-progress-${roadmapId}`;
+                    try {
+                      let progress = JSON.parse(
+                        localStorage.getItem(storageKey) || '[]',
+                      );
+                      const nodeId = (selectedNode as any).id;
+                      if (progress.includes(nodeId)) {
+                        progress = progress.filter(
+                          (id: string) => id !== nodeId,
+                        );
+                      } else {
+                        progress.push(nodeId);
+                      }
+                      localStorage.setItem(
+                        storageKey,
+                        JSON.stringify(progress),
+                      );
+                      // Force re-render to apply new colors
+                      setSelectedNode(null);
+                      setTimeout(() => setIsLoaded(false), 0);
+                      setTimeout(() => setIsLoaded(true), 10);
+                    } catch (e) {}
+                  }}
+                  className="rounded-lg border border-green-500/30 bg-slate-800 px-3 py-2 text-xs font-medium text-green-400 transition-all hover:bg-green-500/20"
+                  title="Segna/Rimuovi Completato"
+                >
+                  ✔ Completato
+                </button>
+                <button
+                  onClick={() => setSelectedNode(null)}
+                  className="rounded-lg bg-blue-600 px-4 py-2 text-xs font-medium text-white transition-all hover:bg-blue-500"
+                >
+                  Chiudi
+                </button>
+              </div>
             </div>
           </div>
         </div>
       )}
 
       {/* Styles */}
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         .mermaid svg {
           height: auto !important;
           max-width: 100% !important;
@@ -282,6 +372,11 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
           50%  { filter: drop-shadow(0 0 14px rgba(251,191,36,1)); }
           100% { filter: drop-shadow(0 0 3px rgba(251,191,36,0.4)); }
         }
+        @keyframes pulse-green {
+          0%   { filter: drop-shadow(0 0 3px rgba(34,197,94,0.4)); }
+          50%  { filter: drop-shadow(0 0 14px rgba(34,197,94,1)); }
+          100% { filter: drop-shadow(0 0 3px rgba(34,197,94,0.4)); }
+        }
         .mermaid g.definedNode rect,
         .mermaid g.definedNode circle,
         .mermaid g.definedNode polygon {
@@ -297,6 +392,21 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
           fill: #fbbf24 !important;
           font-weight: 700 !important;
         }
+        .mermaid g.completedNode rect,
+        .mermaid g.completedNode circle,
+        .mermaid g.completedNode polygon {
+          stroke: #22c55e !important;
+          stroke-width: 3px !important;
+          fill: #0f172a !important;
+          animation: pulse-green 2.5s ease-in-out infinite;
+          cursor: pointer !important;
+        }
+        .mermaid g.completedNode .label,
+        .mermaid g.completedNode .nodeLabel {
+          color: #22c55e !important;
+          fill: #22c55e !important;
+          font-weight: 700 !important;
+        }
         .mermaid .edgePath path {
           stroke: #3b82f6 !important;
           stroke-width: 2px !important;
@@ -305,7 +415,9 @@ export const MermaidRenderer = ({ content, definitions = {} }: MermaidRendererPr
           color: #f8fafc;
           font-family: 'Inter', sans-serif;
         }
-      `}} />
+      `,
+        }}
+      />
     </div>
   );
 };

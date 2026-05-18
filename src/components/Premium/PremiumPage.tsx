@@ -34,8 +34,9 @@ export function PremiumPage() {
     useState<AllowedSubscriptionInterval | null>(null);
 
   // State for plan switching confirmation modal
-  const [switchPlanDetails, setSwitchPlanDetails] =
-    useState<(typeof USER_SUBSCRIPTION_PLAN_PRICES)[number] | null>(null);
+  const [switchPlanDetails, setSwitchPlanDetails] = useState<
+    (typeof USER_SUBSCRIPTION_PLAN_PRICES)[number] | null
+  >(null);
 
   const toast = useToast();
 
@@ -88,7 +89,9 @@ export function PremiumPage() {
   const isSubscriptionCanceled = ['canceled', 'incomplete_expired'].includes(
     billingDetails?.status || '',
   );
-  const currentPriceId = isSubscriptionCanceled ? null : billingDetails?.priceId;
+  const currentPriceId = isSubscriptionCanceled
+    ? null
+    : billingDetails?.priceId;
 
   const currentPlan = USER_SUBSCRIPTION_PLAN_PRICES.find(
     (plan) => plan.priceId === currentPriceId,
@@ -189,7 +192,7 @@ export function PremiumPage() {
                     showLoginPopup();
                   }
                 }}
-                className="group relative flex items-center justify-center gap-2 overflow-hidden rounded-2xl border border-purple-500/30 bg-transparent px-6 py-4 text-base font-medium text-purple-500 shadow-sm transition-all hover:-translate-y-0.5 hover:bg-purple-500/10 hover:text-purple-400 hover:border-purple-300/30 focus:outline-none active:ring-0"
+                className="group relative flex items-center justify-center gap-2 overflow-hidden rounded-2xl border border-purple-500/30 bg-transparent px-6 py-4 text-base font-medium text-purple-500 shadow-sm transition-all hover:-translate-y-0.5 hover:border-purple-300/30 hover:bg-purple-500/10 hover:text-purple-400 focus:outline-none active:ring-0"
               >
                 <MousePointerClick className="h-5 w-5" aria-hidden="true" />
                 <span className="lg:hidden">Try Demo</span>
@@ -264,9 +267,9 @@ export function PremiumPage() {
                 disabled={
                   isCreatingCheckoutSession || currentPlan?.interval === 'month'
                 }
-                className={`mb-8 w-full rounded-lg px-6 py-3 font-medium transition-colors disabled:opacity-50  ${
+                className={`mb-8 w-full rounded-lg px-6 py-3 font-medium transition-colors disabled:opacity-50 ${
                   currentPlan?.interval === 'month'
-                    ? 'bg-gray-800 text-white cursor-not-allowed'
+                    ? 'cursor-not-allowed bg-gray-800 text-white'
                     : 'bg-blue-600 text-white hover:bg-blue-700'
                 }`}
               >
@@ -317,9 +320,9 @@ export function PremiumPage() {
                 disabled={
                   isCreatingCheckoutSession || currentPlan?.interval === 'year'
                 }
-                className={`mb-8 w-full rounded-lg px-6 py-3 font-medium transition-colors disabled:opacity-50  ${
+                className={`mb-8 w-full rounded-lg px-6 py-3 font-medium transition-colors disabled:opacity-50 ${
                   currentPlan?.interval === 'year'
-                    ? 'bg-green-600 text-white cursor-not-allowed'
+                    ? 'cursor-not-allowed bg-green-600 text-white'
                     : 'bg-blue-600 text-white hover:bg-blue-700'
                 }`}
               >
@@ -350,7 +353,6 @@ export function PremiumPage() {
             </div>
           </div>
         </div>
-
       </div>
 
       {activeVideoId && (

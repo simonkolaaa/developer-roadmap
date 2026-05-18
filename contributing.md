@@ -109,6 +109,7 @@ It's important to add a valid type, this will help us categorize the content and
   Meaningful commit messages help speed up the review process as well as help other contributors gain a good overview of the repositories commit history without having to dive into every commit.
 
   </p>
+
 - <p><strong>Look at the existing issues/pull requests before opening new ones</strong></p>
 
 ## Good vs. Not So Good Contributions
@@ -139,12 +140,13 @@ cd developer-roadmap
 pnpm add @roadmapsh/editor@npm:@roadmapsh/dummy-editor -w
 pnpm install
 ```
+
 Run the development server with:
 
 ```bash
 pnpm dev
 ```
 
-***
+---
 
 Have a look at the [License](./license) file.

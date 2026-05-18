@@ -170,6 +170,48 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
     ]
   },
 
+  // Frontend Avanzato
+  {
+    slug: 'frontend-avanzato',
+    title: { card: 'Frontend Avanzato', page: 'Frontend Avanzato Roadmap' },
+    description: 'Architetture complesse, Microfrontend e Performance Optimization.',
+    type: 'role',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+    order: 8,
+    topics: [
+      { title: 'Da definire (aggiungi mappa qui)', json: '' }
+    ]
+  },
+
+  // Backend Node.js
+  {
+    slug: 'backend-nodejs',
+    title: { card: 'Backend Node.js', page: 'Node.js Developer Roadmap' },
+    description: 'Sviluppo server-side con Express, NestJS e Microservizi.',
+    type: 'skill',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+    order: 9,
+    topics: [
+      { title: 'Da definire (aggiungi mappa qui)', json: '' }
+    ]
+  },
+
+  // Cybersecurity
+  {
+    slug: 'cybersecurity',
+    title: { card: 'Cybersecurity', page: 'Cybersecurity Roadmap' },
+    description: 'Fondamenti di sicurezza, Pen Testing e Crittografia.',
+    type: 'role',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+    order: 10,
+    topics: [
+      { title: 'Da definire (aggiungi mappa qui)', json: '' }
+    ]
+  },
+
   // Esame di Maturità
   {
     slug: 'maturita',
@@ -178,7 +220,7 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
     type: 'role',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    order: 9,
+    order: 11,
     topics: [
       { title: 'Diagramma Completo', json: '/roadmaps/local/maturita.json' }
     ]

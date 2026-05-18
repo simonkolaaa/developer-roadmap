@@ -51,7 +51,7 @@ const components: Options['components'] = {
     // @see https://github.com/shikijs/shiki/pull/585
     const code = (children.props as { children: string })?.children?.slice(
       0,
-      -1
+      -1,
     );
 
     return (
@@ -80,7 +80,7 @@ function _Markdown(props: MarkdownProps) {
     <div
       className={cn(
         'overflow-hidden [&>*:first-child]:mt-0 [&>*:last-child]:mb-0',
-        className
+        className,
       )}
     >
       <ReactMarkdown

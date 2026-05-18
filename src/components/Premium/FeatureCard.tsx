@@ -65,7 +65,7 @@ export function FeatureCard(props: FeatureCardProps) {
       <div className="mt-4">
         <h3 className="mb-1 text-sm font-medium text-white">{title}</h3>
         <p
-          className="text-xs [&_a]:text-blue-400 [&_a]:underline-offset-2 [&_a]:underline leading-relaxed text-slate-400"
+          className="text-xs leading-relaxed text-slate-400 [&_a]:text-blue-400 [&_a]:underline [&_a]:underline-offset-2"
           dangerouslySetInnerHTML={{ __html: markdownToHtml(description) }}
         />
       </div>

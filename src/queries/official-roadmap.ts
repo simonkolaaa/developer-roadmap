@@ -97,44 +97,16 @@ export function officialRoadmapOptions(slug: string) {
 }
 
 export async function officialRoadmapDetails(roadmapSlug: string) {
-  try {
-    const roadmap = await httpGet<OfficialRoadmapWithCourses>(
-      `/v1-official-roadmap/${roadmapSlug}`,
-    );
-
-    if (roadmap) return roadmap;
-    
-    // Fallback to local
-    const local = LOCAL_ROADMAPS.find(r => r.slug === roadmapSlug);
-    return local as unknown as OfficialRoadmapWithCourses;
-  } catch (error) {
-    const local = LOCAL_ROADMAPS.find(r => r.slug === roadmapSlug);
-    return local as unknown as OfficialRoadmapWithCourses;
-  }
+  const local = LOCAL_ROADMAPS.find((r) => r.slug === roadmapSlug);
+  return local as unknown as OfficialRoadmapWithCourses;
 }
 
 export async function listOfficialRoadmaps() {
-  try {
-    const roadmaps = (await httpGet<OfficialRoadmapDocument[]>(
-      `/v1-list-official-roadmaps`,
-    )) || [];
-
-    return [...LOCAL_ROADMAPS, ...roadmaps] as OfficialRoadmapDocument[];
-  } catch (error) {
-    return LOCAL_ROADMAPS as unknown as OfficialRoadmapDocument[];
-  }
+  return LOCAL_ROADMAPS as unknown as OfficialRoadmapDocument[];
 }
 
 export async function listOfficialBeginnerRoadmaps() {
-  try {
-    const roadmaps = await httpGet<OfficialRoadmapDocument[]>(
-      `/v1-list-official-beginner-roadmaps`,
-    );
-
-    return roadmaps;
-  } catch (error) {
-    return [];
-  }
+  return [];
 }
 
 export function isNewRoadmap(createdAt: Date) {

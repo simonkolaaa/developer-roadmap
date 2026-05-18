@@ -1,7 +1,7 @@
 import { useStore } from '@nanostores/react';
 import {
-    hideUpgradeModal,
-    isUpgradeModalOpen,
+  hideUpgradeModal,
+  isUpgradeModalOpen,
 } from '../../stores/subscription';
 import { UpgradeAccountModal } from './UpgradeAccountModal';
 
