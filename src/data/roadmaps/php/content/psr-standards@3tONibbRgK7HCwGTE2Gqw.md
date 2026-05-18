@@ -8,7 +8,7 @@ Here's a snippet to illustrate the PSR-4 autoloading standards in PHP:
     spl_autoload_register(function ($class) {
         // Convert namespace to directory structure
         $class = str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
-    
+
         // Get file if it exists
         if (file_exists($class)) {
             require $class;

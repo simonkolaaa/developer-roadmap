@@ -11,6 +11,7 @@ Visit the following resources to learn more:
 ## 📚 Appunti Personali (IT)
 
 ### 02_Setup_e_Factory.md
+
 # Lezione 1: Setup Professionale e Application Factory
 
 In questo modulo faremo un salto di qualità. Non scriveremo più tutto il codice in un solo file. Impareremo a organizzare il progetto come fanno i professionisti Python.
@@ -23,8 +24,8 @@ In Python, come facciamo a dire che una cartella non è solo un contenitore di f
 
 Lo facciamo creando all'interno della cartella un file speciale chiamato `__init__.py` (due underscore prima e dopo).
 
-*   **Senza `__init__.py`**: La cartella è solo una directory del sistema operativo.
-*   **Con `__init__.py`**: La cartella diventa un **Pacchetto Python**.
+- **Senza `__init__.py`**: La cartella è solo una directory del sistema operativo.
+- **Con `__init__.py`**: La cartella diventa un **Pacchetto Python**.
 
 Quando Python vede questo file, sa che può trattare quella cartella come se fosse una libreria. Il codice scritto dentro `__init__.py` viene eseguito automaticamente appena il pacchetto viene importato.
 
@@ -33,6 +34,7 @@ Quando Python vede questo file, sa che può trattare quella cartella come se fos
 Quando sviluppi un'applicazione web, ci sono file che riguardano il codice (che è uguale per tutti gli sviluppatori) e file che riguardano la **configurazione locale** (che cambiano da computer a computer).
 
 Flask usa una cartella standard chiamata `instance/` per contenere:
+
 1.  **I Segreti:** Chiavi di sicurezza, password (che non vanno mai condivise).
 2.  **Il Database:** Il file del database SQLite (che cambia mentre usi l'app).
 
@@ -41,9 +43,11 @@ Questa cartella è speciale perché **non dovrebbe mai essere condivisa** (ad es
 ### 3. Concetto Chiave: L'Application Factory
 
 Nei tutorial base, spesso si vede:
+
 ```python
 app = Flask(__name__)  # Creato globalmente
 ```
+
 Questo ha un difetto: l'applicazione viene creata subito, appena avvii Python. Non puoi cambiarne la configurazione facilmente.
 
 Il pattern **Application Factory** (Fabbrica di Applicazioni) risolve il problema. Invece di creare l'app come variabile globale, scriviamo una **funzione** che crea e restituisce l'app.
@@ -53,6 +57,7 @@ def create_app():
     app = Flask(...)
     return app
 ```
+
 È come avere uno stampino (la funzione): possiamo usarlo per creare l'applicazione quando vogliamo e come vogliamo.
 
 ---
@@ -82,7 +87,7 @@ from flask import Flask
 
 def create_app():
     # 1. Creiamo l'istanza di Flask
-    # instance_relative_config=True dice a Flask: 
+    # instance_relative_config=True dice a Flask:
     # "Cerca la cartella 'instance' fuori da 'app', non dentro."
     app = Flask(__name__, instance_relative_config=True)
 
@@ -110,7 +115,6 @@ def create_app():
 
     return app
 ```
-
 
 **3. L'Entry Point (`run.py`)**
 Ora ci serve un file per "accendere" la fabbrica. Questo file sta fuori dalla cartella `app`.
@@ -141,4 +145,3 @@ if __name__ == '__main__':
 4.  Se leggi `Running on http://127.0.0.1:5000`, apri il browser a quell'indirizzo e aggiungi `/hello`.
 
 Se vedi il messaggio di saluto, hai creato con successo un'architettura Flask professionale!
-

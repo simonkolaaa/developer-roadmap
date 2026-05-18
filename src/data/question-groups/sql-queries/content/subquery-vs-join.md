@@ -20,4 +20,4 @@ JOIN cities ON users.city_id = cities.id
 A JOIN is faster than a subquery in the following scenarios:
 
 - When you are querying data from multiple tables.
-- When you are filtering or joining on index columns. 
+- When you are filtering or joining on index columns.

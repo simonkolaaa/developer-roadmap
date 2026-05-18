@@ -23,28 +23,58 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
   // Fondamenti di Programmazione
   {
     slug: 'fondamenti-programmazione',
-    title: { card: 'Fondamenti di Programmazione', page: 'Fondamenti di Programmazione' },
+    title: {
+      card: 'Fondamenti di Programmazione',
+      page: 'Fondamenti di Programmazione',
+    },
     description: 'Basi della programmazione, algoritmi e strutture dati.',
     type: 'role',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     order: 1,
     topics: [
-      { title: 'Introduzione agli Algoritmi', json: '/roadmaps/local/algorithms.json' },
-      { title: 'Variabili e Tipi di Dato', json: '/roadmaps/local/variables-types.json' },
-      { title: 'Strutture di Controllo (If, Else, Switch)', json: '/roadmaps/local/control-flow.json' },
-      { title: 'Cicli e Iterazioni (For, While)', json: '/roadmaps/local/control-flow.json' },
-      { title: 'Funzioni e Ricorsione', json: '/roadmaps/local/functions.json' },
-      { title: 'Array e Liste Lineari', json: '/roadmaps/local/data-structures.json' },
-      { title: 'Puntatori e Gestione Memoria', json: '/roadmaps/local/java-jvm.json' },
-      { title: 'Complessità Computazionale', json: '/roadmaps/local/algorithms.json' }
-    ]
+      {
+        title: 'Introduzione agli Algoritmi',
+        json: '/roadmaps/local/algorithms.json',
+      },
+      {
+        title: 'Variabili e Tipi di Dato',
+        json: '/roadmaps/local/variables-types.json',
+      },
+      {
+        title: 'Strutture di Controllo (If, Else, Switch)',
+        json: '/roadmaps/local/control-flow.json',
+      },
+      {
+        title: 'Cicli e Iterazioni (For, While)',
+        json: '/roadmaps/local/control-flow.json',
+      },
+      {
+        title: 'Funzioni e Ricorsione',
+        json: '/roadmaps/local/functions.json',
+      },
+      {
+        title: 'Array e Liste Lineari',
+        json: '/roadmaps/local/data-structures.json',
+      },
+      {
+        title: 'Puntatori e Gestione Memoria',
+        json: '/roadmaps/local/java-jvm.json',
+      },
+      {
+        title: 'Complessità Computazionale',
+        json: '/roadmaps/local/algorithms.json',
+      },
+    ],
   },
 
   // Programmazione a Oggetti
   {
     slug: 'programmazione-oggetti',
-    title: { card: 'Programmazione a Oggetti', page: 'Programmazione a Oggetti (OOP)' },
+    title: {
+      card: 'Programmazione a Oggetti',
+      page: 'Programmazione a Oggetti (OOP)',
+    },
     description: 'Principi di OOP, classi, interfacce ed ereditarietà.',
     type: 'role',
     createdAt: new Date().toISOString(),
@@ -52,14 +82,35 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
     order: 2,
     topics: [
       { title: 'Classi e Oggetti', json: '/roadmaps/local/oop-classes.json' },
-      { title: 'Incapsulamento e Modificatori di Accesso', json: '/roadmaps/local/oop-encapsulation.json' },
-      { title: 'Ereditarietà e Gerarchie', json: '/roadmaps/local/oop-inheritance.json' },
-      { title: 'Polimorfismo e Dynamic Binding', json: '/roadmaps/local/oop-polymorphism.json' },
-      { title: 'Interfacce e Classi Astratte', json: '/roadmaps/local/oop-inheritance.json' },
-      { title: 'Eccezioni e Gestione Errori', json: '/roadmaps/local/rust-ownership.json' },
-      { title: 'Design Patterns di Base', json: '/roadmaps/local/software-design.json' },
-      { title: 'UML e Modellazione', json: '/roadmaps/local/software-design.json' }
-    ]
+      {
+        title: 'Incapsulamento e Modificatori di Accesso',
+        json: '/roadmaps/local/oop-encapsulation.json',
+      },
+      {
+        title: 'Ereditarietà e Gerarchie',
+        json: '/roadmaps/local/oop-inheritance.json',
+      },
+      {
+        title: 'Polimorfismo e Dynamic Binding',
+        json: '/roadmaps/local/oop-polymorphism.json',
+      },
+      {
+        title: 'Interfacce e Classi Astratte',
+        json: '/roadmaps/local/oop-inheritance.json',
+      },
+      {
+        title: 'Eccezioni e Gestione Errori',
+        json: '/roadmaps/local/rust-ownership.json',
+      },
+      {
+        title: 'Design Patterns di Base',
+        json: '/roadmaps/local/software-design.json',
+      },
+      {
+        title: 'UML e Modellazione',
+        json: '/roadmaps/local/software-design.json',
+      },
+    ],
   },
 
   // Java
@@ -76,8 +127,8 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
       { title: 'JVM & Architecture', json: '/roadmaps/local/java-jvm.json' },
       { title: 'Spring Framework', json: '/roadmaps/local/java.json' },
       { title: 'Hibernate & Persistence', json: '/roadmaps/local/java.json' },
-      { title: 'Concurrency in Java', json: '/roadmaps/local/go.json' }
-    ]
+      { title: 'Concurrency in Java', json: '/roadmaps/local/go.json' },
+    ],
   },
 
   // Python
@@ -90,12 +141,27 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
     updatedAt: new Date().toISOString(),
     order: 4,
     topics: [
-      { title: 'Python Core & Advanced', json: '/roadmaps/local/python-advanced.json' },
-      { title: 'Web Backend (Flask & Jinja2)', json: '/roadmaps/local/web-flask.json' },
-      { title: 'Data Analysis with Pandas', json: '/roadmaps/local/python-data.json' },
-      { title: 'Machine Learning Basics', json: '/roadmaps/local/python-data.json' },
-      { title: 'Automation & Scripting', json: '/roadmaps/local/python-automation.json' }
-    ]
+      {
+        title: 'Python Core & Advanced',
+        json: '/roadmaps/local/python-advanced.json',
+      },
+      {
+        title: 'Web Backend (Flask & Jinja2)',
+        json: '/roadmaps/local/web-flask.json',
+      },
+      {
+        title: 'Data Analysis with Pandas',
+        json: '/roadmaps/local/python-data.json',
+      },
+      {
+        title: 'Machine Learning Basics',
+        json: '/roadmaps/local/python-data.json',
+      },
+      {
+        title: 'Automation & Scripting',
+        json: '/roadmaps/local/python-automation.json',
+      },
+    ],
   },
 
   // Rust
@@ -109,11 +175,23 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
     order: 5,
     topics: [
       { title: 'Rust Safety & Lifecycle', json: '/roadmaps/local/rust.json' },
-      { title: 'Ownership & Borrowing', json: '/roadmaps/local/rust-ownership.json' },
-      { title: 'Error Handling (Result/Option)', json: '/roadmaps/local/rust-ownership.json' },
-      { title: 'Systems Programming with Rust', json: '/roadmaps/local/rust.json' },
-      { title: 'WebAssembly (Wasm) Integration', json: '/roadmaps/local/rust.json' }
-    ]
+      {
+        title: 'Ownership & Borrowing',
+        json: '/roadmaps/local/rust-ownership.json',
+      },
+      {
+        title: 'Error Handling (Result/Option)',
+        json: '/roadmaps/local/rust-ownership.json',
+      },
+      {
+        title: 'Systems Programming with Rust',
+        json: '/roadmaps/local/rust.json',
+      },
+      {
+        title: 'WebAssembly (Wasm) Integration',
+        json: '/roadmaps/local/rust.json',
+      },
+    ],
   },
 
   // Go
@@ -130,8 +208,11 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
       { title: 'Goroutines & Channels', json: '/roadmaps/local/go.json' },
       { title: 'Building Microservices', json: '/roadmaps/local/web-api.json' },
       { title: 'Testing in Go', json: '/roadmaps/local/go.json' },
-      { title: 'Go and Kubernetes', json: '/roadmaps/local/go-kubernetes.json' }
-    ]
+      {
+        title: 'Go and Kubernetes',
+        json: '/roadmaps/local/go-kubernetes.json',
+      },
+    ],
   },
 
   // JavaScript & React
@@ -146,10 +227,19 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
     topics: [
       { title: 'Modern JS & TypeScript', json: '/roadmaps/local/js-ts.json' },
       { title: 'React Ecosystem', json: '/roadmaps/local/react.json' },
-      { title: 'State Management (Redux/Zustand)', json: '/roadmaps/local/react-state.json' },
-      { title: 'Next.js & Server Side Rendering', json: '/roadmaps/local/react.json' },
-      { title: 'Modern CSS (Tailwind/Styled)', json: '/roadmaps/local/js-ts.json' }
-    ]
+      {
+        title: 'State Management (Redux/Zustand)',
+        json: '/roadmaps/local/react-state.json',
+      },
+      {
+        title: 'Next.js & Server Side Rendering',
+        json: '/roadmaps/local/react.json',
+      },
+      {
+        title: 'Modern CSS (Tailwind/Styled)',
+        json: '/roadmaps/local/js-ts.json',
+      },
+    ],
   },
 
   // Web Architecture & Database
@@ -163,25 +253,30 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
     order: 8,
     topics: [
       { title: 'System Overview', json: '/roadmaps/local/web-api.json' },
-      { title: 'Database Relazionali & NoSQL', json: '/roadmaps/local/database.json' },
-      { title: 'API Design (REST/GraphQL)', json: '/roadmaps/local/web-api.json' },
+      {
+        title: 'Database Relazionali & NoSQL',
+        json: '/roadmaps/local/database.json',
+      },
+      {
+        title: 'API Design (REST/GraphQL)',
+        json: '/roadmaps/local/web-api.json',
+      },
       { title: 'System Scalability', json: '/roadmaps/local/database.json' },
-      { title: 'Authentication & JWT', json: '/roadmaps/local/web-auth.json' }
-    ]
+      { title: 'Authentication & JWT', json: '/roadmaps/local/web-auth.json' },
+    ],
   },
 
   // Frontend Avanzato
   {
     slug: 'frontend-avanzato',
     title: { card: 'Frontend Avanzato', page: 'Frontend Avanzato Roadmap' },
-    description: 'Architetture complesse, Microfrontend e Performance Optimization.',
+    description:
+      'Architetture complesse, Microfrontend e Performance Optimization.',
     type: 'role',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     order: 8,
-    topics: [
-      { title: 'Da definire (aggiungi mappa qui)', json: '' }
-    ]
+    topics: [{ title: 'Da definire (aggiungi mappa qui)', json: '' }],
   },
 
   // Backend Node.js
@@ -193,9 +288,7 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     order: 9,
-    topics: [
-      { title: 'Da definire (aggiungi mappa qui)', json: '' }
-    ]
+    topics: [{ title: 'Da definire (aggiungi mappa qui)', json: '' }],
   },
 
   // Cybersecurity
@@ -207,22 +300,24 @@ export const LOCAL_ROADMAPS: LocalRoadmap[] = [
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     order: 10,
-    topics: [
-      { title: 'Da definire (aggiungi mappa qui)', json: '' }
-    ]
+    topics: [{ title: 'Da definire (aggiungi mappa qui)', json: '' }],
   },
 
   // Esame di Maturità
   {
     slug: 'maturita',
-    title: { card: 'Esame di Maturità', page: 'Esame di Maturità - Ciclo di Vita Web App' },
-    description: 'Ripasso completo per l\'esame: Python, Database, Web, Flask e Sicurezza.',
+    title: {
+      card: 'Esame di Maturità',
+      page: 'Esame di Maturità - Ciclo di Vita Web App',
+    },
+    description:
+      "Ripasso completo per l'esame: Python, Database, Web, Flask e Sicurezza.",
     type: 'role',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     order: 11,
     topics: [
-      { title: 'Diagramma Completo', json: '/roadmaps/local/maturita.json' }
-    ]
-  }
+      { title: 'Diagramma Completo', json: '/roadmaps/local/maturita.json' },
+    ],
+  },
 ];

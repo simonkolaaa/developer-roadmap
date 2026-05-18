@@ -4,9 +4,9 @@ Opcode caching is a technique that can significantly enhance the PHP performance
 
 An Example of a way to enable OPCache in your php.ini configuration file might look like:
 
-       opcache.enable=1 
-       opcache.memory_consumption=128 
-       opcache.max_accelerated_files=4000 
+       opcache.enable=1
+       opcache.memory_consumption=128
+       opcache.max_accelerated_files=4000
        opcache.revalidate_freq=60
 
 Visit the following resources to learn more:

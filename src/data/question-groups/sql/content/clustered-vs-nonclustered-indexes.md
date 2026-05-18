@@ -11,4 +11,4 @@ CREATE CLUSTERED INDEX idx_employees_id ON employees(employee_id);
 CREATE NONCLUSTERED INDEX idx_employees_dept ON employees(department_id);
 ```
 
-Choosing the right index type depends on how you're querying the data; range queries often benefit from clustered indexes, while exact lookups do well with non-clustered ones. 
+Choosing the right index type depends on how you're querying the data; range queries often benefit from clustered indexes, while exact lookups do well with non-clustered ones.

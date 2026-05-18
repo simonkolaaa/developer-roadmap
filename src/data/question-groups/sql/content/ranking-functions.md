@@ -6,4 +6,4 @@ These functions assign ranks or row numbers based on ordering criteria. They beh
 
 ![Difference between Rank, Dense_Rank and Row_Number](https://assets.roadmap.sh/guest/difference-between-rank-dense-rank-and-row-number-rubpc.png)
 
-They're helpful in tasks like leaderboard generation or identifying top performers by region or category. 
+They're helpful in tasks like leaderboard generation or identifying top performers by region or category.

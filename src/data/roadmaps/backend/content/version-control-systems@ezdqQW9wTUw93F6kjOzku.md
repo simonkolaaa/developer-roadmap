@@ -15,15 +15,17 @@ Visit the following resources to learn more:
 ## 📚 Appunti Personali (IT)
 
 ### 03_Controllo_di_Versione_con_Git.md
+
 # Controllo di Versione con Git e GitHub
 
 ## 1. A Cosa Serve il Controllo di Versione?
 
 Il **controllo di versione** è un sistema che tiene traccia delle modifiche apportate ai file nel tempo. Permette di:
--   **Salvare "fotografie"** del progetto in momenti specifici.
--   **Tornare a versioni precedenti** se qualcosa va storto.
--   **Collaborare** con altre persone sullo stesso progetto senza creare conflitti.
--   Capire **chi ha modificato cosa e quando**.
+
+- **Salvare "fotografie"** del progetto in momenti specifici.
+- **Tornare a versioni precedenti** se qualcosa va storto.
+- **Collaborare** con altre persone sullo stesso progetto senza creare conflitti.
+- Capire **chi ha modificato cosa e quando**.
 
 **Git** è il software di controllo di versione più usato al mondo. **GitHub** è una piattaforma online che ospita i repository Git e facilita la collaborazione.
 
@@ -64,11 +66,11 @@ Un **commit** è un salvataggio permanente delle modifiche nel tuo repository lo
 
 Una volta che hai salvato le modifiche localmente, devi sincronizzarle con GitHub.
 
-*   **Push**: Invia i tuoi commit locali al repository remoto su GitHub. È come caricare i tuoi salvataggi.
-    *   **Come fare**: Nella scheda `Source Control`, clicca sui tre puntini (`...`) e seleziona `Push`.
+- **Push**: Invia i tuoi commit locali al repository remoto su GitHub. È come caricare i tuoi salvataggi.
+  - **Come fare**: Nella scheda `Source Control`, clicca sui tre puntini (`...`) e seleziona `Push`.
 
-*   **Pull**: Scarica i commit che altri hanno caricato sul repository remoto. È come aggiornare il tuo progetto con le modifiche fatte dai tuoi collaboratori.
-    *   **Come fare**: Clicca sui tre puntini (`...`) e seleziona `Pull`.
+- **Pull**: Scarica i commit che altri hanno caricato sul repository remoto. È come aggiornare il tuo progetto con le modifiche fatte dai tuoi collaboratori.
+  - **Come fare**: Clicca sui tre puntini (`...`) e seleziona `Pull`.
 
 > **Buona pratica**: Esegui sempre un `pull` prima di iniziare a lavorare per assicurarti di avere la versione più aggiornata del progetto.
 
@@ -76,9 +78,8 @@ Una volta che hai salvato le modifiche localmente, devi sincronizzarle con GitHu
 
 VSCode offre un comodo pulsante "Sync Changes" (Sincronizza Modifiche) nella barra di stato in basso a sinistra. Questo comando esegue prima un `pull` e poi un `push`, mantenendo il tuo repository locale e quello remoto perfettamente allineati.
 
-
-
 ### 03_Accesso_Controllato_Properties.md
+
 # Lezione 2: Accesso Controllato con le Properties
 
 Abbiamo incapsulato i nostri dati, ma ora come facciamo a leggerli o a modificarli in modo sicuro? La risposta in Python è elegante e potente: le **properties**.
@@ -86,8 +87,9 @@ Abbiamo incapsulato i nostri dati, ma ora come facciamo a leggerli o a modificar
 ## 1. Getter e Setter: L'Approccio Tradizionale
 
 In molti linguaggi, per accedere a un attributo privato `__punti_vita` si creano due metodi:
-*   `get_punti_vita()`: per leggere il valore.
-*   `set_punti_vita(valore)`: per modificare il valore, aggiungendo della logica di controllo.
+
+- `get_punti_vita()`: per leggere il valore.
+- `set_punti_vita(valore)`: per modificare il valore, aggiungendo della logica di controllo.
 
 Questo funziona, ma in Python c'è un modo migliore.
 
@@ -144,7 +146,7 @@ print(f"PV dopo colpo quasi mortale: {eroe.punti_vita}")
 ```
 
 ### Vantaggi delle Properties:
+
 1.  **Sintassi Pulita:** L'utente della classe accede a `eroe.punti_vita` come se fosse un attributo normale, senza dover chiamare `get...()` o `set...()`.
 2.  **Controllo Totale:** Lo sviluppatore della classe mantiene il controllo totale su cosa succede quando un attributo viene letto o modificato.
 3.  **Flessibilità:** Puoi iniziare con un attributo pubblico e, se in futuro avrai bisogno di aggiungere logica, puoi trasformarlo in una property senza dover cambiare tutto il codice che lo utilizzava.
-

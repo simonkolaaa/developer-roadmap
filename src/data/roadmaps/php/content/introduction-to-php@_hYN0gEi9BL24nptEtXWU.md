@@ -7,7 +7,6 @@ Here's a simple PHP code to print a text:
       <?php
        echo "Hello, World!";
       ?>
-    
 
 Here the "echo" command in PHP helps to output one or more strings.
 

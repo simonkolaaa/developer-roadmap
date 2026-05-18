@@ -1,14 +1,13 @@
 # Load Balancer vs Reverse Proxy
 
-*   Deploying a load balancer is useful when you have multiple servers. Often, load balancers route traffic to a set of servers serving the same function.
-*   Reverse proxies can be useful even with just one web server or application server, opening up the benefits described in the previous section.
-*   Solutions such as NGINX and HAProxy can support both layer 7 reverse proxying and load balancing.
+- Deploying a load balancer is useful when you have multiple servers. Often, load balancers route traffic to a set of servers serving the same function.
+- Reverse proxies can be useful even with just one web server or application server, opening up the benefits described in the previous section.
+- Solutions such as NGINX and HAProxy can support both layer 7 reverse proxying and load balancing.
 
-Disadvantages of Reverse Proxy:
--------------------------------
+## Disadvantages of Reverse Proxy:
 
-*   Introducing a reverse proxy results in increased complexity.
-*   A single reverse proxy is a single point of failure, configuring multiple reverse proxies (ie a failover) further increases complexity.
+- Introducing a reverse proxy results in increased complexity.
+- A single reverse proxy is a single point of failure, configuring multiple reverse proxies (ie a failover) further increases complexity.
 
 Visit the following resources to learn more:
 

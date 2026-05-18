@@ -10,4 +10,4 @@ ON employees (last_name);
 
 ![SQL index](https://assets.roadmap.sh/guest/sql-index-tp3zi.png)
 
-Indexes are great for speeding up searches, data retrieval, and JOIN operations. They're also useful for maintaining performance in large SQL databases where quick lookups matter. 
+Indexes are great for speeding up searches, data retrieval, and JOIN operations. They're also useful for maintaining performance in large SQL databases where quick lookups matter.

@@ -16,7 +16,7 @@ type UsePersonalizedRoadmapOptions = {
   onFinish?: (data: PersonalizedRoadmapResponse) => void;
 };
 
-export function  usePersonalizedRoadmap(options: UsePersonalizedRoadmapOptions) {
+export function usePersonalizedRoadmap(options: UsePersonalizedRoadmapOptions) {
   const { roadmapId, onError, onStart, onData, onFinish } = options;
 
   const abortControllerRef = useRef<AbortController | null>(null);
@@ -29,7 +29,10 @@ export function  usePersonalizedRoadmap(options: UsePersonalizedRoadmapOptions) 
 
   const informationRef = useRef<string>('');
 
-  const generatePersonalizedRoadmap = async (information: string, allTopicIds?: string[]) => {
+  const generatePersonalizedRoadmap = async (
+    information: string,
+    allTopicIds?: string[],
+  ) => {
     try {
       informationRef.current = information;
       onStart?.();
@@ -59,18 +62,20 @@ export function  usePersonalizedRoadmap(options: UsePersonalizedRoadmapOptions) 
         // Fallback mock logic
         if (allTopicIds && allTopicIds.length > 0) {
           // Simulate a 2-second delay
-          await new Promise(resolve => setTimeout(resolve, 2000));
-          
+          await new Promise((resolve) => setTimeout(resolve, 2000));
+
           // Randomly pick 70-80% of topics to simulate personalization
           const shuffled = [...allTopicIds].sort(() => 0.5 - Math.random());
-          const count = Math.floor(allTopicIds.length * (0.7 + Math.random() * 0.1));
+          const count = Math.floor(
+            allTopicIds.length * (0.7 + Math.random() * 0.1),
+          );
           const selectedTopicIds = shuffled.slice(0, count);
-          
+
           const mockData = {
             topicIds: selectedTopicIds,
-            information: information
+            information: information,
           };
-          
+
           onFinish?.(mockData);
           setStatus('idle');
           return;
@@ -103,7 +108,7 @@ export function  usePersonalizedRoadmap(options: UsePersonalizedRoadmapOptions) 
             const parsed = parsePersonalizedRoadmapResponse(content);
             contentRef.current = {
               ...parsed,
-              information: informationRef.current
+              information: informationRef.current,
             };
             onData?.(contentRef.current);
           });

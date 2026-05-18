@@ -11,8 +11,8 @@ Use cases include checking which employees work in a particular location or iden
 SELECT name
 FROM employees
 WHERE department_id IN (
-    SELECT id 
-    FROM departments 
+    SELECT id
+    FROM departments
     WHERE location = 'New York'
 );
-``` 
+```

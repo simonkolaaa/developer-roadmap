@@ -4,5 +4,5 @@ Reinforcement learning is a key topic within the broader realm of machine learni
 
 Visit the following resources to learn more:
 
-- [@article@What is reinforcement learning](https://aws.amazon.com/what-is/reinforcement-learning/#:~:text=Reinforcement%20learning%20(RL)%20is%20a,use%20to%20achieve%20their%20goals.)
+- [@article@What is reinforcement learning](<https://aws.amazon.com/what-is/reinforcement-learning/#:~:text=Reinforcement%20learning%20(RL)%20is%20a,use%20to%20achieve%20their%20goals.>)
 - [@article@What is reinforcement learning - IBM](https://www.ibm.com/topics/reinforcement-learning)

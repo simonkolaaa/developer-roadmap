@@ -12,4 +12,4 @@ CREATE TABLE products (
   name VARCHAR(50) NOT NULL,
   price DECIMAL(10, 2) CHECK (price >= 0)
 );
-``` 
+```

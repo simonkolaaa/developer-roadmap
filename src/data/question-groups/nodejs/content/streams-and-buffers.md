@@ -3,13 +3,14 @@ Streams are collections of data that might not be available all at once and don'
 ## Four Types of Streams
 
 ### 1. Readable Streams
+
 Data source that you can read from.
 
 ```js
 import fs from 'node:fs';
 
 const readable = fs.createReadStream('large-file.txt', {
-  highWaterMark: 16 * 1024 // 16KB chunks
+  highWaterMark: 16 * 1024, // 16KB chunks
 });
 
 readable.on('data', (chunk) => {
@@ -22,6 +23,7 @@ readable.on('end', () => {
 ```
 
 ### 2. Writable Streams
+
 Destination that you can write data to.
 
 ```js
@@ -37,6 +39,7 @@ writable.on('finish', () => {
 ```
 
 ### 3. Duplex Streams
+
 Both readable and writable (e.g., TCP sockets).
 
 ```js
@@ -51,6 +54,7 @@ const server = net.createServer((socket) => {
 ```
 
 ### 4. Transform Streams
+
 Modify data as it passes through.
 
 ```js
@@ -60,12 +64,13 @@ const upperCase = new Transform({
   transform(chunk, encoding, callback) {
     this.push(chunk.toString().toUpperCase());
     callback();
-  }
+  },
 });
 ```
 
 process.stdin.pipe(upperCase).pipe(process.stdout);
-```
+
+````
 
 ## Buffer vs Reading Entire File
 
@@ -85,7 +90,7 @@ stream.on('data', (chunk) => {
 stream.on('end', () => {
   console.log(`Total size: ${size}`);
 });
-```
+````
 
 ## Piping Streams
 
@@ -114,7 +119,7 @@ const writable = fs.createWriteStream('dest.txt');
 
 readable.on('data', (chunk) => {
   const canContinue = writable.write(chunk);
-  
+
   if (!canContinue) {
     // Pause reading until drain event
     readable.pause();
@@ -127,12 +132,12 @@ readable.on('data', (chunk) => {
 
 ## When to Use Streams
 
-| Use Streams When | Use Buffer When |
-|-----------------|-----------------|
-| Large files (>100MB) | Small files (<10MB) |
+| Use Streams When          | Use Buffer When          |
+| ------------------------- | ------------------------ |
+| Large files (>100MB)      | Small files (<10MB)      |
 | Real-time data processing | Need entire data at once |
-| Memory is limited | Simple operations |
-| Network I/O | Data fits in memory |
+| Memory is limited         | Simple operations        |
+| Network I/O               | Data fits in memory      |
 
 ## Working with Buffers
 
@@ -150,4 +155,3 @@ console.log(buf2.toString()); // 'Hello'
 const combined = Buffer.concat([buf2, Buffer.from(' World')]);
 console.log(combined.toString()); // 'Hello World'
 ```
-

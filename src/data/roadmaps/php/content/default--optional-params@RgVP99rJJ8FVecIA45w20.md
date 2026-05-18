@@ -5,7 +5,7 @@ In PHP, you can assign default values to your function parameters. These are cal
     function greet($name = "guest") {
       echo "Hello, $name!";
     }
-    
+
     greet(); // Outputs: Hello, guest!
     greet("John"); // Outputs: Hello, John!
 

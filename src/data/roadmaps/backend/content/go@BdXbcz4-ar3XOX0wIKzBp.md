@@ -14,6 +14,7 @@ Visit the following resources to learn more:
 ## 📚 Appunti Personali (IT)
 
 ### 07_Riepilogo_Basi_di_Python_Mappa_Mentale.md
+
 # Python Mindmap
 
 Render the file using <https://markmap.js.org/repl>
@@ -91,4 +92,3 @@ markmap:
 ### finally
 ### raise
 ```
-

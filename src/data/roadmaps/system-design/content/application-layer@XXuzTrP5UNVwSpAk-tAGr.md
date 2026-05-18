@@ -4,11 +4,10 @@ Separating out the web layer from the application layer (also known as platform 
 
 ![](https://i.imgur.com/F0cjurv.png)
 
-Disadvantages
--------------
+## Disadvantages
 
-*   Adding an application layer with loosely coupled services requires a different approach from an architectural, operations, and process viewpoint (vs a monolithic system).
-*   Microservices can add complexity in terms of deployments and operations.
+- Adding an application layer with loosely coupled services requires a different approach from an architectural, operations, and process viewpoint (vs a monolithic system).
+- Microservices can add complexity in terms of deployments and operations.
 
 Visit the following resources to learn more:
 

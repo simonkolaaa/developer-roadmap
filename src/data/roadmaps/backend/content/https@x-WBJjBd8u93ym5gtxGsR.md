@@ -13,6 +13,7 @@ Visit the following resources to learn more:
 ## 📚 Appunti Personali (IT)
 
 ### 03_HTTPS.md
+
 ## HTTPS: Sicurezza nella Comunicazione Web <!-- omit in toc -->
 
 - [Perché HTTP non è sufficiente?](#perché-http-non-è-sufficiente)
@@ -58,5 +59,3 @@ Da questo momento in poi, sia il client che il server possiedono la stessa **chi
 ### Le Certificate Authority (CA)
 
 Come fa il browser a fidarsi del certificato di un server? Perché è stato firmato digitalmente da una **Certificate Authority (CA)**, un'entità di fiducia (come Let's Encrypt, DigiCert, ecc.). I sistemi operativi e i browser hanno un elenco preinstallato di CA attendibili. Se un certificato è firmato da una di queste, il browser lo considera valido, garantendo l'autenticità del server.
-
-

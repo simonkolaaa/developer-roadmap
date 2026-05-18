@@ -2,13 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { useChat } from '@ai-sdk/react';
 import { useQuery } from '@tanstack/react-query';
-import {
-  Ban,
-  FileText, HeartHandshake,
-  Star,
-  X,
-  Zap
-} from 'lucide-react';
+import { Ban, FileText, HeartHandshake, Star, X, Zap } from 'lucide-react';
 import { useKeydown } from '../../hooks/use-keydown';
 import { useLoadTopic } from '../../hooks/use-load-topic';
 import { useOutsideClick } from '../../hooks/use-outside-click';

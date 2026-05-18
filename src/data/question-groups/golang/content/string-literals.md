@@ -14,4 +14,4 @@ htmlTemplate := `<!DOCTYPE html>
 </html>` // backtick here ends the raw string literal
 ```
 
-In this case, the raw string literal enclosed in backticks preserves newlines, tabs, and any other whitespace exactly as you write them. 
+In this case, the raw string literal enclosed in backticks preserves newlines, tabs, and any other whitespace exactly as you write them.

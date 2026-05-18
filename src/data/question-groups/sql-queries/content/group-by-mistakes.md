@@ -15,4 +15,4 @@ GROUP BY day
 ```
 
 - **Not using aggregate functions:** It is also a common mistake to use `GROUP BY` without aggregate functions. `GROUP BY` usually goes with aggregate functions like `MAX`, `MIN`, `COUNT`, etc.
-- **Grouping by multiple columns**: Grouping by multiple columns can make the query meaningless. It is not common to group by many columns, and when this happens, you should check if you really need to group by those columns. 
+- **Grouping by multiple columns**: Grouping by multiple columns can make the query meaningless. It is not common to group by many columns, and when this happens, you should check if you really need to group by those columns.

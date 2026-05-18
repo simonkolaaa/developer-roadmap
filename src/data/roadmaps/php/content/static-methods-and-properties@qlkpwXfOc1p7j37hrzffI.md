@@ -4,14 +4,13 @@ Static methods and properties in PHP belong to the class rather than an instance
 
     class MyClass {
         static $myStaticProperty = "Hello, world";
-    
-        static function myStaticMethod() { 
-            return self::$myStaticProperty; 
+
+        static function myStaticMethod() {
+            return self::$myStaticProperty;
         }
     }
-    
-    echo MyClass::myStaticMethod(); 
-    
+
+    echo MyClass::myStaticMethod();
 
 In this example, we're directly accessing `myStaticMethod` from `MyClass` without an instantiation.
 

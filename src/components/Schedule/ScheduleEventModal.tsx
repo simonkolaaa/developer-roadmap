@@ -197,7 +197,6 @@ Visit the roadmap at https://roadmap.sh/${roadmapId}
       overlayClassName="items-start md:items-center"
     >
       <div className="rounded-xl bg-white px-3">
-
         <div className="flex flex-col items-center p-4 py-6 text-center">
           {selectedCalendar && (
             <CalendarSteps
@@ -214,7 +213,7 @@ Visit the roadmap at https://roadmap.sh/${roadmapId}
           {!selectedCalendar && (
             <>
               <h2 className="text-3xl font-semibold">Schedule Learning Time</h2>
-              <p className="mt-1.5 text-balance text-base text-gray-600">
+              <p className="mt-1.5 text-base text-balance text-gray-600">
                 Block some time on your calendar to stay consistent
               </p>
 

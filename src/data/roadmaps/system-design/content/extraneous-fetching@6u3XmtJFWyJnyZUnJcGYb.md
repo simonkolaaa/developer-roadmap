@@ -4,10 +4,10 @@ Extraneous fetching in system design refers to the practice of retrieving more d
 
 Extraneous fetching can lead to a number of issues, such as:
 
-*   Performance degradation
-*   Increased resource utilization
-*   Increased network traffic
-*   Poor user experience
+- Performance degradation
+- Increased resource utilization
+- Increased network traffic
+- Poor user experience
 
 Visit the following resources to learn more:
 

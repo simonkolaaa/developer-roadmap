@@ -4,4 +4,4 @@ Dashboard design involves creating visual interfaces that present key performanc
 
 Visit the following resources to learn more:
 
-- [@video@ES  Saltar navegación power bi dashboard design project     Crear   Imagen del avatar POWER BI Tutorial From BEGINNER to Pro Level](https://www.youtube.com/watch?v=0BKlUySopU4)
+- [@video@ES Saltar navegación power bi dashboard design project Crear Imagen del avatar POWER BI Tutorial From BEGINNER to Pro Level](https://www.youtube.com/watch?v=0BKlUySopU4)

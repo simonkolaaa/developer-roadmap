@@ -4,9 +4,9 @@ Authorization in GraphQL controls access to data and operations based on user pe
 
 There are several ways to implement authorization in GraphQL:
 
-*   Using middleware
-*   Using schema directives
-*   Using a data source layer
+- Using middleware
+- Using schema directives
+- Using a data source layer
 
 Visit the following resources to learn more:
 

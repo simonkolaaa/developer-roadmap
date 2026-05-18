@@ -7,7 +7,7 @@ Cross-Site Request Forgery (CSRF) Protection in PHP is a method where a website 
     if(empty($_SESSION['csrf'])) {
         $_SESSION['csrf'] = bin2hex(random_bytes(32));
     }
-    
+
     // Verify CSRF token
     if(isset($_POST['csrf']) && $_POST['csrf'] === $_SESSION['csrf']) {
         // valid CSRF token, perform action

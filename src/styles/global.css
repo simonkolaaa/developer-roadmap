@@ -1,6 +1,5 @@
 @import 'tailwindcss';
 
-
 @config '../../tailwind.config.cjs';
 @plugin 'tailwind-scrollbar';
 
@@ -8,7 +7,6 @@
   --font-orbitron: 'Orbitron', sans-serif;
   --font-rajdhani: 'Rajdhani', sans-serif;
 }
-
 
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
@@ -24,9 +22,14 @@
     font-family: 'Rajdhani', sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: 'Orbitron', sans-serif;
-    @apply tracking-wider uppercase font-bold text-slate-50;
+    @apply font-bold tracking-wider text-slate-50 uppercase;
     text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
   }
 
@@ -47,7 +50,6 @@
   box-shadow: 0 0 15px rgba(59, 130, 246, 0.1);
   border: 1px solid rgba(59, 130, 246, 0.2);
 }
-
 
 @utility container {
   @apply mx-auto max-w-[830px]! px-4;
@@ -141,7 +143,6 @@ a > code:before {
   );
   background-size: 200% 200%;
 }
-
 
 .striped-loader {
   background-image: repeating-linear-gradient(

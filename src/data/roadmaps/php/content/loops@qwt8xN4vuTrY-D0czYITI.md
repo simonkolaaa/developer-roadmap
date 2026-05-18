@@ -7,7 +7,6 @@ PHP incorporates the use of loops, which are a vital part of programming. They a
         echo $i;
     }
     ?>
-    
 
 In this example, the loop will execute five times, with $i increasing by one each time, outputting the numbers from 0 to 4.
 

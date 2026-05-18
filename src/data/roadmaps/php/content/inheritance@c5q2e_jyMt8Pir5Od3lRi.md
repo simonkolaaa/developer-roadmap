@@ -8,17 +8,16 @@ Inheritance, a fundamental concept in object-oriented programming (OOP), is a fe
         echo "Driving...";
       }
     }
-    
+
     class Car extends Vehicle {
       function horn() {
         echo "Beeping...";
       }
     }
-    
+
     $myCar = new Car();
     $myCar->drive(); // Inherits drive method from Vehicle
     $myCar->horn(); // Unique to Car
-    
 
 In the above example, the 'Car' class inherits the drive method from the 'Vehicle' class but also has an additional method, horn. This is an illustration of how inheritance in PHP can help to organize your code efficiently and intuitively.
 

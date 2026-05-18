@@ -7,7 +7,6 @@ Input validation is a vital aspect of PHP security. It involves checking whether
     } else {
       echo("Email is not valid");
     }
-    
 
 This code uses PHP's built-in `filter_var()` function to ensure the data is a valid email address. If not, the form will not be submitted until valid data is entered.
 

@@ -4,10 +4,10 @@ Data Analytics has proven to be a critical part of decision-making in modern bus
 
 Data Analysts, as ambassadors of this domain, employ these types, to answer various questions:
 
-*   Descriptive Analytics _(what happened in the past?)_
-*   Diagnostic Analytics _(why did it happened in the past?)_
-*   Predictive Analytics _(what will happen in the future?)_
-*   Prescriptive Analytics _(how can we make it happen?)_
+- Descriptive Analytics _(what happened in the past?)_
+- Diagnostic Analytics _(why did it happened in the past?)_
+- Predictive Analytics _(what will happen in the future?)_
+- Prescriptive Analytics _(how can we make it happen?)_
 
 Visit the following resources to learn more:
 

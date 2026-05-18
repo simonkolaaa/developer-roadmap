@@ -6,10 +6,9 @@ Anonymous functions in PHP, also known as closures, are functions that do not ha
     {
         printf("Hello %s\r\n", $name);
     };
-    
+
     $greet('World');
     $greet('PHP');
-    
 
 In this example, we're creating an anonymous function and assigning it to the variable `$greet`. We then call this anonymous function using $greet with 'World' and 'PHP' as arguments.
 

@@ -14,14 +14,14 @@ It takes three arguments.
 
 Using the `Sales` table, let's illustrate the **LAG()** function. The query is used to find the previous day sales. LAG() is useful when you want to create reports of past events.
 
-| id | day       | amount |
-| -- | --------- | ------ |
-| 1  | Monday    | 200    |
-| 2  | Tuesday   | 300    |
-| 3  | Wednesday | 600    |
-| 4  | Thursday  | 390    |
-| 5  | Friday    | 900    |
-| 6  | Saturday  | 600    |
+| id  | day       | amount |
+| --- | --------- | ------ |
+| 1   | Monday    | 200    |
+| 2   | Tuesday   | 300    |
+| 3   | Wednesday | 600    |
+| 4   | Thursday  | 390    |
+| 5   | Friday    | 900    |
+| 6   | Saturday  | 600    |
 
 ```sql
 SELECT
@@ -35,14 +35,14 @@ FROM
 
 The result of the query looks like this:
 
-| id | day       | amount | previous_day_sales |
-| -- | --------- | ------ | ------------------ |
-| 1  | Monday    | 200    | null               |
-| 2  | Tuesday   | 300    | 200                |
-| 3  | Wednesday | 600    | 300                |
-| 4  | Thursday  | 390    | 600                |
-| 5  | Friday    | 900    | 390                |
-| 6  | Saturday  | 600    | 900                |
+| id  | day       | amount | previous_day_sales |
+| --- | --------- | ------ | ------------------ |
+| 1   | Monday    | 200    | null               |
+| 2   | Tuesday   | 300    | 200                |
+| 3   | Wednesday | 600    | 300                |
+| 4   | Thursday  | 390    | 600                |
+| 5   | Friday    | 900    | 390                |
+| 6   | Saturday  | 600    | 900                |
 
 You use the **LEAD()** function to get data from rows after the current row. Its syntax is similar to that of the **LAG()** function. You can use it for forecasting future trends by looking ahead.
 
@@ -58,11 +58,11 @@ FROM
   sales;
 ```
 
-| id | day       | amount | previous_day_sales |
-| -- | --------- | ------ | ------------------ |
-| 1  | Monday    | 200    | 300                |
-| 2  | Tuesday   | 300    | 600                |
-| 3  | Wednesday | 600    | 390                |
-| 4  | Thursday  | 390    | 900                |
-| 5  | Friday    | 900    | 600                |
-| 6  | Saturday  | 600    | null               | 
+| id  | day       | amount | previous_day_sales |
+| --- | --------- | ------ | ------------------ |
+| 1   | Monday    | 200    | 300                |
+| 2   | Tuesday   | 300    | 600                |
+| 3   | Wednesday | 600    | 390                |
+| 4   | Thursday  | 390    | 900                |
+| 5   | Friday    | 900    | 600                |
+| 6   | Saturday  | 600    | null               |

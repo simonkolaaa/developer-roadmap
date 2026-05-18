@@ -6,7 +6,7 @@ Here's a simple example of caching MySQL query with PHP:
 
     $query = "SELECT * FROM my_table";
     $cache_file = '/tmp/cache/' . md5($query);
-    
+
     if (file_exists($cache_file)) {
         $result_set = unserialize(file_get_contents($cache_file));
     } else {

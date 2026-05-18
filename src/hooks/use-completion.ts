@@ -19,11 +19,11 @@ type CompletionParams<D extends Record<string, unknown>> = {
   onStart?: (options?: CompleteOptions) => Promise<void> | void;
   onData?: (
     part: CompletionPart<D>,
-    context: CompletionContext
+    context: CompletionContext,
   ) => Promise<void> | void;
   onFinish?: (
     result: string,
-    context: CompletionContext
+    context: CompletionContext,
   ) => Promise<void> | void;
   onError?: (error: Error) => void;
 };
@@ -103,7 +103,7 @@ export function useCompletion<
         return null;
       }
     },
-    [endpoint, onData, onFinish, onError, onStart]
+    [endpoint, onData, onFinish, onError, onStart],
   );
 
   const stop = useCallback(() => {

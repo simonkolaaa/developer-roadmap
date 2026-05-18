@@ -6,4 +6,4 @@ Programming against abstractions allows for more flexibility in the code. When c
 
 Visit the following resources to learn more:
 
-- [@article@Overview of Abstraction principle](https://en.wikipedia.org/wiki/Abstraction_principle_(computer_programming))
+- [@article@Overview of Abstraction principle](<https://en.wikipedia.org/wiki/Abstraction_principle_(computer_programming)>)

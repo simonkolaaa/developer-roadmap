@@ -1,8 +1,5 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
-import {
-  ArrowRightIcon, MousePointerClick,
-  Play
-} from 'lucide-react';
+import { ArrowRightIcon, MousePointerClick, Play } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { cn } from '../../lib/classname';
 import {

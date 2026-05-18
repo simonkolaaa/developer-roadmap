@@ -6,7 +6,6 @@ Writing files plays a crucial part in PHP, allowing you to store data and modify
     $current = file_get_contents($file);
     $current .= "New Data\n";
     file_put_contents($file, $current);
-    
 
 In this code, `file_get_contents()` is used to get the current data, then new data is appended, and `file_put_contents()` is used to write back to the file.
 

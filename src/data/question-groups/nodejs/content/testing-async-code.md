@@ -14,7 +14,7 @@ async function fetchUser(id) {
 // Test
 test('fetchUser returns user data', async () => {
   const user = await fetchUser(1);
-  
+
   expect(user).toHaveProperty('id', 1);
   expect(user).toHaveProperty('name');
 });
@@ -24,7 +24,7 @@ test('fetchUser returns user data', async () => {
 
 ```js
 test('fetchUser returns user data', () => {
-  return fetchUser(1).then(user => {
+  return fetchUser(1).then((user) => {
     expect(user).toHaveProperty('id', 1);
   });
 });
@@ -75,16 +75,16 @@ jest.mock('axios');
 test('getUser fetches user from API', async () => {
   const mockUser = { id: 1, name: 'John' };
   axios.get.mockResolvedValue({ data: mockUser });
-  
+
   const user = await getUser(1);
-  
+
   expect(axios.get).toHaveBeenCalledWith('/api/users/1');
   expect(user).toEqual(mockUser);
 });
 
 test('getUser handles errors', async () => {
   axios.get.mockRejectedValue(new Error('Network error'));
-  
+
   await expect(getUser(1)).rejects.toThrow('Network error');
 });
 ```
@@ -105,12 +105,12 @@ jest.mock('./db');
 test('findUserById queries database', async () => {
   const mockUser = { id: 1, name: 'John' };
   db.query.mockResolvedValue([mockUser]);
-  
+
   const user = await findUserById(1);
-  
+
   expect(db.query).toHaveBeenCalledWith(
     'SELECT * FROM users WHERE id = ?',
-    [1]
+    [1],
   );
   expect(user).toEqual([mockUser]);
 });
@@ -127,14 +127,14 @@ describe('User API', () => {
     const user = await fetchUser(1);
     expect(user).to.have.property('id', 1);
   });
-  
+
   // Promises
   it('should fetch user with promise', () => {
-    return fetchUser(1).then(user => {
+    return fetchUser(1).then((user) => {
       expect(user).to.have.property('id', 1);
     });
   });
-  
+
   // Done callback
   it('should call callback with user', (done) => {
     fetchUserCallback(1, (err, user) => {
@@ -167,13 +167,13 @@ afterEach(() => {
 
 test('calls callback after 1 second', () => {
   const callback = jest.fn();
-  
+
   delayedGreeting(callback);
-  
+
   expect(callback).not.toHaveBeenCalled();
-  
+
   jest.advanceTimersByTime(1000);
-  
+
   expect(callback).toHaveBeenCalledWith('Hello!');
 });
 ```
@@ -196,15 +196,15 @@ test('emits events during processing', async () => {
   const processor = new DataProcessor();
   const startHandler = jest.fn();
   const completeHandler = jest.fn();
-  
+
   processor.on('start', startHandler);
   processor.on('complete', completeHandler);
-  
+
   await processor.process({ value: 42 });
-  
+
   expect(startHandler).toHaveBeenCalled();
   expect(completeHandler).toHaveBeenCalledWith(
-    expect.objectContaining({ processed: true })
+    expect.objectContaining({ processed: true }),
   );
 });
 ```
@@ -221,7 +221,7 @@ describe('GET /api/users', () => {
       .get('/api/users')
       .expect('Content-Type', /json/)
       .expect(200);
-    
+
     expect(response.body).toBeInstanceOf(Array);
     expect(response.body.length).toBeGreaterThan(0);
   });
@@ -230,12 +230,12 @@ describe('GET /api/users', () => {
 describe('POST /api/users', () => {
   it('creates a new user', async () => {
     const newUser = { name: 'John', email: 'john@example.com' };
-    
+
     const response = await request(app)
       .post('/api/users')
       .send(newUser)
       .expect(201);
-    
+
     expect(response.body).toMatchObject(newUser);
     expect(response.body).toHaveProperty('id');
   });
@@ -249,14 +249,14 @@ describe('POST /api/users', () => {
 ```js
 // ❌ Test passes even if promise rejects!
 test('bad test', () => {
-  fetchUser(1).then(user => {
+  fetchUser(1).then((user) => {
     expect(user.id).toBe(999); // Never executed
   });
 });
 
 // ✅ Correct - return the promise
 test('good test', () => {
-  return fetchUser(1).then(user => {
+  return fetchUser(1).then((user) => {
     expect(user.id).toBe(1);
   });
 });
@@ -280,4 +280,3 @@ test('slow operation', async () => {
 // Or set globally
 jest.setTimeout(10000);
 ```
-

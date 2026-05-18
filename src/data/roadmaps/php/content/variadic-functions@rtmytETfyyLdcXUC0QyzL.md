@@ -8,7 +8,6 @@ A simple code example:
         return array_sum($numbers);
     }
     echo sum(1, 2, 3, 4);
-    
 
 This prints "10". The function accepts any number of arguments and adds them together.
 

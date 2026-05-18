@@ -4,8 +4,8 @@ A service is **scalable** if it results in increased **performance** in a manner
 
 Another way to look at performance vs scalability:
 
-*   If you have a **performance** problem, your system is slow for a single user.
-*   If you have a **scalability** problem, your system is fast for a single user but slow under heavy load.
+- If you have a **performance** problem, your system is slow for a single user.
+- If you have a **scalability** problem, your system is fast for a single user but slow under heavy load.
 
 Visit the following resources to learn more:
 

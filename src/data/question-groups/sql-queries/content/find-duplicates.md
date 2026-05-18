@@ -45,4 +45,4 @@ WHERE id IN (
 );
 ```
 
-The query deletes all the duplicates while retaining the first row of data. 
+The query deletes all the duplicates while retaining the first row of data.

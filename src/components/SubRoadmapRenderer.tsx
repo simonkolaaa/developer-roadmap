@@ -11,11 +11,18 @@ export interface SubRoadmapRendererProps {
   roadmapId?: string;
 }
 
-export function SubRoadmapRenderer({ jsonUrl, className, roadmapId }: SubRoadmapRendererProps) {
+export function SubRoadmapRenderer({
+  jsonUrl,
+  className,
+  roadmapId,
+}: SubRoadmapRendererProps) {
   const containerEl = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [mermaidData, setMermaidData] = useState<{ content: string; definitions: any } | null>(null);
+  const [mermaidData, setMermaidData] = useState<{
+    content: string;
+    definitions: any;
+  } | null>(null);
 
   async function fetchAndRender() {
     try {
@@ -24,18 +31,20 @@ export function SubRoadmapRenderer({ jsonUrl, className, roadmapId }: SubRoadmap
       setMermaidData(null);
 
       const finalUrl = cleanUrl(jsonUrl);
-      const res = await fetch(`${finalUrl}${finalUrl.includes('?') ? '&' : '?'}t=${Date.now()}`);
+      const res = await fetch(
+        `${finalUrl}${finalUrl.includes('?') ? '&' : '?'}t=${Date.now()}`,
+      );
       if (!res.ok) {
         throw new Error(`Failed to fetch sub-roadmap data: ${res.statusText}`);
       }
-      
+
       const json = await res.json();
-      
+
       // If the JSON contains a "mermaid" field, it's our new interactive format
       if (json.type === 'mermaid' || json.mermaid) {
         setMermaidData({
           content: json.mermaid,
-          definitions: json.definitions || {}
+          definitions: json.definitions || {},
         });
         setIsLoading(false);
         return;
@@ -43,7 +52,7 @@ export function SubRoadmapRenderer({ jsonUrl, className, roadmapId }: SubRoadmap
 
       // Otherwise, use the old wireframe renderer
       const { wireframeJSONToSVG } = await import('roadmap-renderer');
-      
+
       const svg: SVGElement | null = await wireframeJSONToSVG(json, {
         fontURL: '/fonts/balsamiq.woff2',
       });
@@ -51,29 +60,32 @@ export function SubRoadmapRenderer({ jsonUrl, className, roadmapId }: SubRoadmap
       if (svg && containerEl.current) {
         svg.classList.add('simon-kola-svg');
         replaceChildren(containerEl.current, svg);
-        
+
         // Post-process SVG colors
         const rects = svg.querySelectorAll('rect');
-        rects.forEach(rect => {
-            rect.setAttribute('fill', '#0f172a');
-            rect.setAttribute('stroke', '#3b82f6');
-            rect.setAttribute('stroke-width', '2');
+        rects.forEach((rect) => {
+          rect.setAttribute('fill', '#0f172a');
+          rect.setAttribute('stroke', '#3b82f6');
+          rect.setAttribute('stroke-width', '2');
         });
-        
+
         const texts = svg.querySelectorAll('text');
-        texts.forEach(text => {
-            text.setAttribute('fill', '#f8fafc');
-            text.style.fontFamily = "'Orbitron', sans-serif";
-            text.style.textTransform = "uppercase";
-            text.style.letterSpacing = "1px";
+        texts.forEach((text) => {
+          text.setAttribute('fill', '#f8fafc');
+          text.style.fontFamily = "'Orbitron', sans-serif";
+          text.style.textTransform = 'uppercase';
+          text.style.letterSpacing = '1px';
         });
 
         const lines = svg.querySelectorAll('line, path');
-        lines.forEach(line => {
-            line.setAttribute('stroke', '#1e293b');
-            if (line.getAttribute('stroke') === '#000' || line.getAttribute('stroke') === 'black') {
-                line.setAttribute('stroke', '#3b82f6');
-            }
+        lines.forEach((line) => {
+          line.setAttribute('stroke', '#1e293b');
+          if (
+            line.getAttribute('stroke') === '#000' ||
+            line.getAttribute('stroke') === 'black'
+          ) {
+            line.setAttribute('stroke', '#3b82f6');
+          }
         });
       }
     } catch (err: any) {
@@ -90,35 +102,51 @@ export function SubRoadmapRenderer({ jsonUrl, className, roadmapId }: SubRoadmap
 
   if (mermaidData) {
     return (
-      <MermaidRenderer 
-        content={mermaidData.content} 
-        definitions={mermaidData.definitions} 
+      <MermaidRenderer
+        content={mermaidData.content}
+        definitions={mermaidData.definitions}
       />
     );
   }
 
   return (
-    <div className={cn('relative w-full overflow-hidden bg-slate-950 rounded-lg border border-slate-800 min-h-[400px]', className)}>
+    <div
+      className={cn(
+        'relative min-h-[400px] w-full overflow-hidden rounded-lg border border-slate-800 bg-slate-950',
+        className,
+      )}
+    >
       {isLoading && (
         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-slate-950/80 backdrop-blur-md">
           <Spinner className="h-10 w-10 animate-spin text-blue-500" />
-          <span className="mt-4 font-orbitron text-xs text-slate-400 tracking-widest uppercase">Decrypting Map...</span>
-        </div>
-      )}
-      
-      {error && (
-        <div className="flex flex-col items-center justify-center py-20 text-center">
-          <p className="text-red-500 font-bold mb-2 font-orbitron">RENDER_FAILED</p>
-          <p className="text-slate-500 text-sm max-w-sm">{error}</p>
+          <span className="font-orbitron mt-4 text-xs tracking-widest text-slate-400 uppercase">
+            Decrypting Map...
+          </span>
         </div>
       )}
 
-      <div 
-        ref={containerEl} 
-        className={cn("w-full h-full p-4 flex justify-center", isLoading ? "opacity-0" : "opacity-100 transition-opacity duration-700")}
+      {error && (
+        <div className="flex flex-col items-center justify-center py-20 text-center">
+          <p className="font-orbitron mb-2 font-bold text-red-500">
+            RENDER_FAILED
+          </p>
+          <p className="max-w-sm text-sm text-slate-500">{error}</p>
+        </div>
+      )}
+
+      <div
+        ref={containerEl}
+        className={cn(
+          'flex h-full w-full justify-center p-4',
+          isLoading
+            ? 'opacity-0'
+            : 'opacity-100 transition-opacity duration-700',
+        )}
       />
-      
-      <style dangerouslySetInnerHTML={{ __html: `
+
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         .simon-kola-svg {
           max-width: 100%;
           height: auto;
@@ -150,7 +178,9 @@ export function SubRoadmapRenderer({ jsonUrl, className, roadmapId }: SubRoadmap
           filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.4));
           cursor: pointer;
         }
-      `}} />
+      `,
+        }}
+      />
     </div>
   );
 }

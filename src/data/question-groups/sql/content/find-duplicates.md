@@ -9,4 +9,4 @@ GROUP BY email
 HAVING COUNT(*) > 1;
 ```
 
-This is useful during data cleaning or when validating records before import. 
+This is useful during data cleaning or when validating records before import.

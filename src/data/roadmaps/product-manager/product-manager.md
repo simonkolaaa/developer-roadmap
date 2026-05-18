@@ -12,9 +12,9 @@ isHidden: false
 isUpcoming: false
 isNew: false
 partner:
-  description: "Ready-to use free on/offboarding templates for new employees"
-  link: "https://www.silo.team/book-a-demo-silo-team?utm_source=affiliate1&utm_medium=referral&utm_campaign=free_onboarding_checklist"
-  linkText: "silo.team"
+  description: 'Ready-to use free on/offboarding templates for new employees'
+  link: 'https://www.silo.team/book-a-demo-silo-team?utm_source=affiliate1&utm_medium=referral&utm_campaign=free_onboarding_checklist'
+  linkText: 'silo.team'
 dimensions:
   width: 968
   height: 5200
@@ -27,7 +27,7 @@ schema:
 seo:
   title: 'Product Manager'
   description: 'Learn what product management is, what product managers do and how to become one using our community-driven roadmap.'
-  keywords: 
+  keywords:
     - 'product manager roadmap 2024'
     - 'product manager roadmap 2025'
     - 'guide to becoming a product manager'

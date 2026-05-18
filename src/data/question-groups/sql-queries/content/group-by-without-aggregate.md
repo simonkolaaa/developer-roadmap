@@ -9,4 +9,4 @@ is equivalent to:
 
 ```sql
 SELECT DISTINCT phoneNumber FROM phoneNumbers
-``` 
+```

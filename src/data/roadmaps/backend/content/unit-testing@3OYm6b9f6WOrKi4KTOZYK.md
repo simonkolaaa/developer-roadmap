@@ -15,6 +15,7 @@ Visit the following resources to learn more:
 ## 📚 Appunti Personali (IT)
 
 ### 01_Mappa_Concettuale_Testing.md
+
 # Mappa Concettuale: Testing e Qualità del Codice
 
 Questa mappa riassume i concetti chiave che affronteremo in questo modulo, introducendo il testing automatico come pratica fondamentale per uno sviluppatore professionista.
@@ -42,9 +43,10 @@ graph TD
 ```
 
 ### 03_Il_Tuo_Primo_Unit_Test_con_Pytest.md
+
 # Il Tuo Primo Unit Test con Pytest
 
-Abbiamo visto *perché* è importante testare. Ora vediamo *come* farlo. Useremo `pytest`, la libreria di testing più popolare e potente nell'ecosistema Python.
+Abbiamo visto _perché_ è importante testare. Ora vediamo _come_ farlo. Useremo `pytest`, la libreria di testing più popolare e potente nell'ecosistema Python.
 
 ### 1. Cos'è `pytest`?
 
@@ -86,6 +88,7 @@ def somma(a: int, b: int) -> int:
 ### 4. Scrivere il Primo Test
 
 Ora scriviamo il codice che verificherà la nostra funzione `somma`. `pytest` si basa su due semplici convenzioni:
+
 1.  I file di test devono iniziare con `test_` (es. `test_calcolatrice.py`).
 2.  Le funzioni di test al loro interno devono iniziare con `test_` (es. `test_somma`).
 
@@ -103,7 +106,7 @@ def test_somma_due_numeri_positivi():
     input1 = 5
     input2 = 3
     risultato_atteso = 8
-    
+
     # 4. Chiama la funzione e verifica il risultato con 'assert'
     assert somma(input1, input2) == risultato_atteso
 
@@ -115,8 +118,9 @@ def test_somma_un_positivo_e_un_negativo():
 ### 5. L'Istruzione `assert`: il Cuore del Test
 
 `assert` è una parola chiave di Python che controlla se una condizione è `True`.
-*   Se `condizione` è `True`, l'istruzione non fa nulla e il test prosegue.
-*   Se `condizione` è `False`, l'istruzione solleva un errore (`AssertionError`) e il test **fallisce**.
+
+- Se `condizione` è `True`, l'istruzione non fa nulla e il test prosegue.
+- Se `condizione` è `False`, l'istruzione solleva un errore (`AssertionError`) e il test **fallisce**.
 
 `pytest` usa `assert` per verificare le nostre aspettative. La riga `assert somma(5, 3) == 8` si legge come: "Affermo che il risultato di `somma(5, 3)` deve essere uguale a `8`".
 
@@ -132,6 +136,7 @@ pytest
 
 **Output in caso di successo:**
 Se tutto va bene, vedrai un output simile a questo, con dei puntini verdi che indicano i test passati.
+
 ```
 ============================= test session starts ==============================
 ...
@@ -144,11 +149,14 @@ tests/test_calcolatrice.py ..                                            [100%]
 
 **Output in caso di fallimento:**
 Proviamo a rovinare la nostra funzione `somma` in `src/calcolatrice.py`:
+
 ```python
 def somma(a: int, b: int) -> int:
     return a * b # Errore intenzionale!
 ```
+
 Ora, rieseguiamo `pytest`:
+
 ```
 ============================= test session starts ==============================
 ...
@@ -163,7 +171,7 @@ ______________________ test_somma_due_numeri_positivi ______________________
         input1 = 5
         input2 = 3
         risultato_atteso = 8
-    
+
 >       assert somma(input1, input2) == risultato_atteso
 E       assert 15 == 8
 E        +  where 15 = somma(5, 3)
@@ -172,5 +180,5 @@ tests/test_calcolatrice.py:11: AssertionError
 ...
 =========================== 2 failed in 0.03s ============================
 ```
-`pytest` non solo ci dice che i test sono falliti (`FF`), ma ci mostra esattamente *perché*: si aspettava `8` ma ha ricevuto `15`. Questo feedback immediato e preciso è ciò che rende il testing automatico così potente.
 
+`pytest` non solo ci dice che i test sono falliti (`FF`), ma ci mostra esattamente _perché_: si aspettava `8` ma ha ricevuto `15`. Questo feedback immediato e preciso è ciò che rende il testing automatico così potente.

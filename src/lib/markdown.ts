@@ -88,7 +88,6 @@ export async function markdownToHtmlWithHighlighting(markdown: string) {
     };
 
     return markdownItAsync.renderAsync(replaceVariables(markdown));
-
   } catch (e) {
     return markdown;
   }

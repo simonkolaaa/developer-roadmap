@@ -2,9 +2,9 @@
 
 In [ASP.NET](http://ASP.NET), dependency injection (DI) lifecycles determine the lifetime of objects that are resolved through the DI container. There are several predefined lifecycle options in the `Microsoft.Extensions.DependencyInjection` library, including:
 
-*   **Transient:** A new instance of the object is created every time it is requested.
-*   **Scoped:** A new instance of the object is created for each request within the same scope.
-*   **Singleton:** A single instance of the object is created and shared across the entire application.
+- **Transient:** A new instance of the object is created every time it is requested.
+- **Scoped:** A new instance of the object is created for each request within the same scope.
+- **Singleton:** A single instance of the object is created and shared across the entire application.
 
 Additionally, you can also create a custom lifecycle by implementing the `Microsoft.Extensions.DependencyInjection.IServiceScopeFactory` interface
 

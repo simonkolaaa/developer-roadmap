@@ -38,7 +38,12 @@ type ListOfficialGuidesQuery = {
 export async function listOfficialGuides(query: ListOfficialGuidesQuery = {}) {
   try {
     const appUrl = import.meta.env.PUBLIC_APP_URL;
-    const baseUrl = (appUrl && appUrl !== 'undefined') ? appUrl : (typeof window !== 'undefined' ? window.location.origin : '');
+    const baseUrl =
+      appUrl && appUrl !== 'undefined'
+        ? appUrl
+        : typeof window !== 'undefined'
+          ? window.location.origin
+          : '';
     const guides = await httpGet<OfficialGuideDocument[]>(
       `${baseUrl}/v1-list-official-guides`,
       query,
@@ -54,7 +59,6 @@ export async function listOfficialGuides(query: ListOfficialGuidesQuery = {}) {
     return [];
   }
 }
-
 
 export interface OfficialAuthorDocument {
   _id: string;
@@ -98,7 +102,6 @@ export async function getOfficialGuide(slug: string, roadmapId?: string) {
   }
 }
 
-
 export async function listOfficialAuthors() {
   try {
     const authors = await httpGet<OfficialAuthorDocument[]>(
@@ -112,7 +115,6 @@ export async function listOfficialAuthors() {
 }
 
 export function getOfficialGuideHref(slug: string, roadmapId?: string) {
-
   const isExternal = roadmapId && roadmapId !== 'questions';
   return isExternal
     ? `${import.meta.env.PUBLIC_APP_URL}/${roadmapId}/${slug}`

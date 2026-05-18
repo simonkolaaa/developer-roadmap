@@ -27,10 +27,10 @@ For example, there are two tables `Users` and `Cities` with the following data:
 
 **Cities table**
 
-| id | name       |
-| -- | ---------- |
-| 1  | London     |
-| 2  | Manchester |
+| id  | name       |
+| --- | ---------- |
+| 1   | London     |
+| 2   | Manchester |
 
 Let's say you want to retrieve a list of users and their respective city names. You can achieve this using the **INNER JOIN** query.
 
@@ -55,7 +55,7 @@ ON users.cityId = cities.id
 ```sql
 SELECT table1.column_name1, table1.column_name2, table2.column_name1, table2.column_name2 FROM table1
 LEFT JOIN table2
-ON table1.column_name = table2.column_name 
+ON table1.column_name = table2.column_name
 ```
 
 Let's have a look at a practical example with `Users` and `Cities` tables from before.
@@ -71,4 +71,4 @@ When you execute the **LEFT JOIN** query, you get the table below.
 | Peter     | Smith    | 27  | Manchester |
 | Rich      | Mond     | 30  | Manchester |
 | Rach      | Mane     | 30  | Manchester |
-| Zach      | Ridge    | 30  | null       | 
+| Zach      | Ridge    | 30  | null       |

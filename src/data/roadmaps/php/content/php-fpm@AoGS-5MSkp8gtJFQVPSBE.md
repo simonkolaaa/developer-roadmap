@@ -9,7 +9,6 @@ PHP-FPM, or PHP FastCGI Process Manager, is a robust and efficient way to serve 
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         include fastcgi_params;
     }
-    
 
 Here `$uri` is the incoming request and `fastcgi_pass` should be the location where PHP-FPM listens.
 

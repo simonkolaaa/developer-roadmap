@@ -1,5 +1,5 @@
-You use **WHERE** for filtering rows before applying any grouping or aggregation. 
-The code snippet below illustrates the use of **WHERE**. It filters the `Users` table for rows where the `Age` is greater than 18. 
+You use **WHERE** for filtering rows before applying any grouping or aggregation.
+The code snippet below illustrates the use of **WHERE**. It filters the `Users` table for rows where the `Age` is greater than 18.
 
 ```sql
 SELECT * FROM Users

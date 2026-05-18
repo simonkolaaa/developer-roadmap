@@ -29,13 +29,13 @@ async function getUserData(userId) {
   // Check cache first
   const cached = cache.get(`user:${userId}`);
   if (cached) return cached;
-  
+
   // Fetch from database
   const user = await db.users.findById(userId);
-  
+
   // Store in cache
   cache.set(`user:${userId}`, user);
-  
+
   return user;
 }
 ```
@@ -49,10 +49,10 @@ const redis = new Redis();
 async function getCachedData(key, fetchFn, ttl = 3600) {
   const cached = await redis.get(key);
   if (cached) return JSON.parse(cached);
-  
+
   const data = await fetchFn();
   await redis.setex(key, ttl, JSON.stringify(data));
-  
+
   return data;
 }
 
@@ -60,7 +60,7 @@ async function getCachedData(key, fetchFn, ttl = 3600) {
 const products = await getCachedData(
   'products:all',
   () => db.products.findAll(),
-  3600
+  3600,
 );
 ```
 
@@ -75,7 +75,7 @@ for (const user of users) {
 
 // ✅ Eager loading - single query with JOIN
 const users = await User.findAll({
-  include: [{ model: Post }]
+  include: [{ model: Post }],
 });
 
 // ✅ Use indexes
@@ -85,13 +85,13 @@ await queryInterface.addIndex('posts', ['createdAt']);
 
 // ✅ Select only needed fields
 const users = await User.findAll({
-  attributes: ['id', 'name', 'email'] // Don't select everything
+  attributes: ['id', 'name', 'email'], // Don't select everything
 });
 
 // ✅ Pagination
 const users = await User.findAll({
   limit: 20,
-  offset: (page - 1) * 20
+  offset: (page - 1) * 20,
 });
 ```
 
@@ -115,16 +115,16 @@ app.get('/download', (req, res) => {
 app.get('/export', async (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.write('[');
-  
+
   let first = true;
   const cursor = User.find().cursor();
-  
+
   for await (const user of cursor) {
     if (!first) res.write(',');
     res.write(JSON.stringify(user));
     first = false;
   }
-  
+
   res.write(']');
   res.end();
 });
@@ -163,21 +163,25 @@ import compression from 'compression';
 app.use(compression());
 
 // With custom options
-app.use(compression({
-  level: 6, // Compression level (1-9)
-  threshold: 1024, // Only compress if > 1KB
-}));
+app.use(
+  compression({
+    level: 6, // Compression level (1-9)
+    threshold: 1024, // Only compress if > 1KB
+  }),
+);
 
 // Custom filter to skip compression for certain requests
-app.use(compression({
-  filter: (req, res) => {
-    // Skip compression if client requests it
-    if (req.headers['x-no-compression']) return false;
-    
-    // Fallback to the default compression filter behavior
-    return compression.filter(req, res);
-  }
-}));
+app.use(
+  compression({
+    filter: (req, res) => {
+      // Skip compression if client requests it
+      if (req.headers['x-no-compression']) return false;
+
+      // Fallback to the default compression filter behavior
+      return compression.filter(req, res);
+    },
+  }),
+);
 ```
 
 ## 7. Use Clustering
@@ -188,11 +192,11 @@ import os from 'node:os';
 
 if (cluster.isPrimary) {
   const numCPUs = os.cpus().length;
-  
+
   for (let i = 0; i < numCPUs; i++) {
     cluster.fork();
   }
-  
+
   cluster.on('exit', (worker) => {
     console.log(`Worker ${worker.process.pid} died`);
     cluster.fork(); // Restart
@@ -229,8 +233,8 @@ const stringify = fastJson({
   type: 'object',
   properties: {
     id: { type: 'integer' },
-    name: { type: 'string' }
-  }
+    name: { type: 'string' },
+  },
 });
 
 const json = stringify({ id: 1, name: 'John' }); // Faster than JSON.stringify
@@ -254,7 +258,7 @@ setInterval(() => {
   const used = process.memoryUsage();
   console.log({
     heapUsed: `${Math.round(used.heapUsed / 1024 / 1024)}MB`,
-    heapTotal: `${Math.round(used.heapTotal / 1024 / 1024)}MB`
+    heapTotal: `${Math.round(used.heapTotal / 1024 / 1024)}MB`,
   });
 }, 30000);
 ```
@@ -270,4 +274,3 @@ setInterval(() => {
 - ✅ Cluster your application
 - ✅ Monitor performance metrics
 - ✅ Profile and identify bottlenecks
-

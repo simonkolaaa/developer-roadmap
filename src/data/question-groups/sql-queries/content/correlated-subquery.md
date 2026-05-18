@@ -14,6 +14,6 @@ The code above:
 - Takes the `country_id` from the `employees` table.
 - Iterates through the other rows and does the same calculation.
 
-This leads to a degrading performance as the data in the table grows. 
+This leads to a degrading performance as the data in the table grows.
 
-You should use a correlated subquery if you want to perform row-specific operations or cannot achieve an operation using JOIN or other aggregate functions. 
+You should use a correlated subquery if you want to perform row-specific operations or cannot achieve an operation using JOIN or other aggregate functions.

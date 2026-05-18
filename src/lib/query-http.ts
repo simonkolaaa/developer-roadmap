@@ -62,11 +62,12 @@ export async function httpCall<ResponseType = AppResponse>(
 
     const headers = new Headers({
       Accept: 'application/json',
-      ...(!isServer ? { Authorization: `Bearer ${Cookies.get(TOKEN_COOKIE_NAME)}` } : {}),
+      ...(!isServer
+        ? { Authorization: `Bearer ${Cookies.get(TOKEN_COOKIE_NAME)}` }
+        : {}),
       ...(visitorId ? { fp: visitorId } : {}),
       ...(options?.headers ?? {}),
     });
-
 
     if (isServer) {
       headers.set('roadmap-api-key', import.meta?.env?.ROADMAP_API_KEY);
@@ -118,16 +119,15 @@ export async function httpCall<ResponseType = AppResponse>(
     return data as ResponseType;
   } catch (error: any) {
     console.error(`HTTP Call failed for ${url}:`, error);
-    
+
     // Return empty array if the URL suggests it was a list call, otherwise null
     if (url.includes('list') || url.includes('all')) {
-        return [] as unknown as ApiReturn<ResponseType>;
+      return [] as unknown as ApiReturn<ResponseType>;
     }
 
     return null as unknown as ApiReturn<ResponseType>;
   }
 }
-
 
 export async function httpPost<ResponseType = AppResponse>(
   url: string,

@@ -10,9 +10,6 @@ import { MapIcon } from 'lucide-react';
 import { SubRoadmapRenderer } from './SubRoadmapRenderer';
 import './FrameRenderer/FrameRenderer.css';
 
-
-
-
 export interface VisualRoadmapRendererProps {
   roadmapId: string;
   className?: string;
@@ -40,14 +37,14 @@ export function VisualRoadmapRenderer(props: VisualRoadmapRendererProps) {
 
       // Only attempt to fetch if this is NOT a local roadmap
       const roadmapJsonUrl = `https://roadmap.sh/${roadmapId}.json`;
-      
+
       const res = await fetch(roadmapJsonUrl);
       if (!res.ok) {
         throw new Error(`Failed to fetch roadmap data: ${res.statusText}`);
       }
-      
+
       const json = await res.json();
-      
+
       const { wireframeJSONToSVG } = await import('roadmap-renderer');
       const svg: SVGElement | null = await wireframeJSONToSVG(json, {
         fontURL: '/fonts/balsamiq.woff2',
@@ -58,117 +55,137 @@ export function VisualRoadmapRenderer(props: VisualRoadmapRendererProps) {
       }
     } catch (err: any) {
       console.error('Roadmap rendering error:', err);
-      setError(err.message || 'Something went wrong while rendering the roadmap.');
+      setError(
+        err.message || 'Something went wrong while rendering the roadmap.',
+      );
     } finally {
       setIsLoading(false);
     }
   }
 
-
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    
-    const data = LOCAL_ROADMAPS.find(r => r.slug === roadmapId);
+
+    const data = LOCAL_ROADMAPS.find((r) => r.slug === roadmapId);
     setLocalData(data);
-    
+
     fetchAndRender(data);
   }, [roadmapId]);
 
-
   return (
-    <div className={cn('relative w-full overflow-hidden rounded-xl bg-slate-900 p-6 border border-slate-800 neo-glow', className)}>
+    <div
+      className={cn(
+        'neo-glow relative w-full overflow-hidden rounded-xl border border-slate-800 bg-slate-900 p-6',
+        className,
+      )}
+    >
       {selectedMap && (
-        <Modal 
+        <Modal
           onClose={() => setSelectedMap(null)}
           bodyClassName="bg-slate-900 border border-slate-700 max-w-4xl"
           wrapperClassName="max-w-4xl"
         >
           <div className="p-1">
-            <div className="flex items-center justify-between mb-4 px-3 pt-3">
-              <h4 className="text-xl font-orbitron text-blue-400">{selectedMap.title}</h4>
+            <div className="mb-4 flex items-center justify-between px-3 pt-3">
+              <h4 className="font-orbitron text-xl text-blue-400">
+                {selectedMap.title}
+              </h4>
             </div>
-            <div className="rounded overflow-hidden bg-slate-950 border border-slate-800">
+            <div className="overflow-hidden rounded border border-slate-800 bg-slate-950">
               {selectedMap.json ? (
-                 <SubRoadmapRenderer jsonUrl={selectedMap.json} />
+                <SubRoadmapRenderer jsonUrl={selectedMap.json} />
               ) : selectedMap.image ? (
-                <img 
-                  src={selectedMap.image} 
-                  alt={selectedMap.title} 
-                  className="w-full h-auto max-h-[80vh] object-contain mx-auto"
+                <img
+                  src={selectedMap.image}
+                  alt={selectedMap.title}
+                  className="mx-auto h-auto max-h-[80vh] w-full object-contain"
                 />
               ) : null}
             </div>
-
           </div>
         </Modal>
       )}
 
       {isLoading && (
-
         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-slate-950/80 backdrop-blur-sm">
           <Spinner className="h-12 w-12 animate-spin text-blue-500" />
-          <span className="mt-4 font-medium text-slate-300 font-orbitron tracking-widest uppercase">Initializing...</span>
+          <span className="font-orbitron mt-4 font-medium tracking-widest text-slate-300 uppercase">
+            Initializing...
+          </span>
         </div>
       )}
-      
+
       {error && (
         <div className="flex flex-col items-center justify-center py-20 text-center">
-          <p className="text-red-500 font-bold mb-2 font-orbitron">ERROR_DATA_FETCH_FAILED</p>
-          <p className="text-slate-500 text-sm max-w-md">{error}</p>
+          <p className="font-orbitron mb-2 font-bold text-red-500">
+            ERROR_DATA_FETCH_FAILED
+          </p>
+          <p className="max-w-md text-sm text-slate-500">{error}</p>
         </div>
       )}
 
       {!isLoading && localData?.topics && (
         <div className="py-2">
-          <h3 className="text-xl font-orbitron text-blue-400 mb-8 border-b border-slate-800 pb-2">Programma di Studio</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <h3 className="font-orbitron mb-8 border-b border-slate-800 pb-2 text-xl text-blue-400">
+            Programma di Studio
+          </h3>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             {localData.topics.map((topic, index) => {
-              const topicTitle = typeof topic === 'string' ? topic : topic.title;
-              const topicImage = typeof topic === 'object' ? topic.image : undefined;
-              
+              const topicTitle =
+                typeof topic === 'string' ? topic : topic.title;
+              const topicImage =
+                typeof topic === 'object' ? topic.image : undefined;
+
               return (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className={cn(
-                    "flex items-center p-4 bg-slate-950 border border-slate-800 rounded-lg group transition-all",
-                    (topicImage || (topic as any).json) ? "cursor-pointer hover:border-blue-500/50 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]" : "opacity-80"
+                    'group flex items-center rounded-lg border border-slate-800 bg-slate-950 p-4 transition-all',
+                    topicImage || (topic as any).json
+                      ? 'cursor-pointer hover:border-blue-500/50 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]'
+                      : 'opacity-80',
                   )}
                   onClick={() => {
                     if (typeof topic === 'object') {
                       if (topic.json || topic.image) {
-                        setSelectedMap({ 
-                          title: topicTitle, 
-                          image: topic.image, 
-                          json: topic.json 
+                        setSelectedMap({
+                          title: topicTitle,
+                          image: topic.image,
+                          json: topic.json,
                         });
                       }
                     }
                   }}
                 >
-
-                  <span className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-900 text-blue-400 font-orbitron text-xs mr-4 group-hover:bg-blue-500 group-hover:text-slate-950 transition-colors">
+                  <span className="font-orbitron mr-4 flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-xs text-blue-400 transition-colors group-hover:bg-blue-500 group-hover:text-slate-950">
                     {index + 1}
                   </span>
-                  <div className="flex-1 flex items-center justify-between">
-                    <span className="text-slate-200 group-hover:text-white font-medium">{topicTitle}</span>
-                    {(topicImage || (typeof topic === 'object' && topic.json)) && (
-                      <MapIcon className="w-4 h-4 text-slate-600 group-hover:text-blue-400 transition-colors" />
+                  <div className="flex flex-1 items-center justify-between">
+                    <span className="font-medium text-slate-200 group-hover:text-white">
+                      {topicTitle}
+                    </span>
+                    {(topicImage ||
+                      (typeof topic === 'object' && topic.json)) && (
+                      <MapIcon className="h-4 w-4 text-slate-600 transition-colors group-hover:text-blue-400" />
                     )}
                   </div>
                 </div>
               );
             })}
-
           </div>
         </div>
       )}
 
-      <div 
-        ref={containerEl} 
+      <div
+        ref={containerEl}
         id="resource-svg-wrap"
-        className={cn("w-full h-full", isLoading ? "opacity-0" : "opacity-100 transition-opacity duration-500")}
+        className={cn(
+          'h-full w-full',
+          isLoading
+            ? 'opacity-0'
+            : 'opacity-100 transition-opacity duration-500',
+        )}
       />
     </div>
   );
 }
-

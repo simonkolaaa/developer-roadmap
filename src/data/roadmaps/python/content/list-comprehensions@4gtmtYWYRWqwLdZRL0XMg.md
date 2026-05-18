@@ -11,11 +11,13 @@ Visit the following resources to learn more:
 ## 📚 Appunti Personali (IT)
 
 ### 03_Pattern_Comuni_su_Liste.md
+
 # Pattern Comuni di Manipolazione delle Liste
 
 Quando lavoriamo con i dati, ci troviamo spesso a ripetere le stesse operazioni logiche. Imparare a riconoscere e implementare questi "pattern" (schemi) ci rende programmatori più veloci ed efficaci.
 
 Consideriamo di avere la seguente lista di dati per tutti gli esempi:
+
 ```python
 prodotti = [
     {"id": 1, "nome": "Laptop", "prezzo": 1200, "categoria": "Elettronica"},
@@ -26,6 +28,7 @@ prodotti = [
 ```
 
 ### 1. Ricerca (Trovare un elemento)
+
 **Obiettivo:** Trovare un elemento specifico che soddisfa una condizione.
 
 **Problema:** Trovare il prodotto con `id` uguale a 3.
@@ -42,6 +45,7 @@ print(prodotto_cercato)
 ```
 
 ### 2. Filtraggio (Selezionare un sottoinsieme)
+
 **Obiettivo:** Creare una nuova lista contenente solo gli elementi che soddisfano una condizione.
 
 **Problema:** Trovare tutti i prodotti della categoria "Elettronica".
@@ -57,6 +61,7 @@ print(prodotti_elettronici)
 ```
 
 ### 3. Trasformazione (Mapping)
+
 **Obiettivo:** Creare una nuova lista trasformando ogni elemento della lista originale.
 
 **Problema:** Creare una lista contenente solo i nomi di tutti i prodotti.
@@ -71,6 +76,7 @@ print(nomi_prodotti)
 ```
 
 ### 4. Aggregazione (Reducing)
+
 **Obiettivo:** Calcolare un singolo valore riassuntivo a partire da un'intera lista.
 
 **Problema:** Calcolare il prezzo totale di tutti i prodotti in magazzino.
@@ -89,5 +95,5 @@ prezzi = [prodotto["prezzo"] for prodotto in prodotti] # Questo si chiama "list 
 prezzo_totale_pythonico = sum(prezzi)
 print(f"Valore totale (modo Pythonico): {prezzo_totale_pythonico}€")
 ```
-Questi quattro pattern sono i mattoni fondamentali per quasi ogni operazione di analisi e manipolazione dei dati.
 
+Questi quattro pattern sono i mattoni fondamentali per quasi ogni operazione di analisi e manipolazione dei dati.

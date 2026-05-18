@@ -5,6 +5,6 @@ Process management involves controlling and monitoring the execution of programs
 Visit the following resources to learn more:
 
 - [@article@Managing processes](https://computing.stat.berkeley.edu/tutorial-using-bash/managing-processes.html)
-- [@article@ProcessManagement - Greg's Wiki  Greg's](https://mywiki.wooledge.org/ProcessManagement)
+- [@article@ProcessManagement - Greg's Wiki Greg's](https://mywiki.wooledge.org/ProcessManagement)
 - [@article@Bash Process Management: How to Tame Your Shell Like a Pro](https://itldc.com/en/blog/bash-process-management-how-to-tame-your-shell-like-a-pro/)
 - [@video@#4 - Bash command for Process Management](https://www.youtube.com/watch?v=O4C6_TJ-iws)

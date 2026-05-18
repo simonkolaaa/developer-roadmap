@@ -2,8 +2,7 @@
 
 HTTP is the `TCP/IP` based application layer communication protocol which standardizes how the client and server communicate with each other. It defines how the content is requested and transmitted across the internet.
 
-HTTPS
-=====
+# HTTPS
 
 HTTPS (**H**ypertext **T**ransfer **P**rotocol **S**ecure) is the secure version of HTTP, which is the primary protocol used to send data between a web browser and a website.
 

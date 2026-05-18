@@ -6,10 +6,10 @@ Learn more from the following resources:
 
 - [@official@Base Database Documentation](https://docs.oracle.com/en-us/iaas/base-database/index.html)
 
-
 ## 📚 Appunti Personali (IT)
 
 ### 02_Fondamenti_di_Database.md
+
 ## Fondamenti di Database <!-- omit in toc -->
 
 - [Definizione di Database](#definizione-di-database)
@@ -41,8 +41,8 @@ I database si possono classificare in diverse tipologie, in base alla loro strut
 - **Database relazionali**: questi database organizzano i dati in tabelle collegate tra loro attraverso relazioni. Ogni tabella è costituita da righe (tuple) e colonne (attributi). Questo tipo di database è basato sul _modello relazionale_ (approfondito nella lezione dedicata), e utilizza il linguaggio SQL per interagire con i dati.
 - **Database NoSQL**: questi database sono progettati per gestire grandi volumi di dati non strutturati o semi-strutturati. Sono flessibili e spesso utilizzati in contesti che richiedono alta scalabilità e velocità, come le applicazioni web in tempo reale. Alcuni esempi includono MongoDB (basato su documenti) e Redis (basato su chiavi-valori).
 
-
 ### 04_Progettazione_del_Database.md
+
 ## Progettazione del Database <!-- omit in toc -->
 
 - [Fasi della Progettazione del Database](#fasi-della-progettazione-del-database)
@@ -59,5 +59,3 @@ La progettazione di un database si articola in diverse fasi sequenziali, che tra
 4.  **Progettazione Fisica**: Definire come il database sarà effettivamente memorizzato e gestito dal DBMS. Questa fase include la scelta degli indici, l'allocazione dello spazio su disco e altre ottimizzazioni per le performance.
 
 Nelle prossime lezioni, analizzeremo in dettaglio ciascuna di queste fasi.
-
-

@@ -4,24 +4,23 @@ PHPUnit is a widely used testing framework in PHP. Automated testing allows deve
 
     <?php
     use PHPUnit\Framework\TestCase;
-    
+
     class StackTest extends TestCase
     {
         public function testPushAndPop()
         {
             $stack = [];
             $this->assertEquals(0, count($stack));
-    
+
             array_push($stack, 'foo');
             $this->assertEquals('foo', $stack[count($stack)-1]);
             $this->assertEquals(1, count($stack));
-    
+
             $this->assertEquals('foo', array_pop($stack));
             $this->assertEquals(0, count($stack));
         }
     }
     ?>
-    
 
 In this example, we’re testing the 'push' and 'pop' functionality of an array.
 

@@ -7,4 +7,4 @@ The query below illustrates the **GROUP BY** clause:
 ```sql
 SELECT columnName FROM Table
 GROUP BY columnName
-``` 
+```

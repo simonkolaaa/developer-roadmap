@@ -2,9 +2,9 @@
 
 Elastic use cases can be classified into three main categories:
 
-*   **Elasticsearch** is a distributed, open-source search and analytics engine for all types of data, including textual, numerical, geospatial, structured, and unstructured.
-*   **Elastic Observability** builds on this foundation to provide a unified view of logs, metrics, and traces, enabling users to monitor and troubleshoot their systems.
-*   **Elastic Security** leverages Elasticsearch's search and analytics capabilities to offer threat detection, prevention, and response, helping organizations protect themselves from cyber threats. Elasticsearch use cases are diverse, ranging from application search and website search to logging and log analytics, security analytics, and business analytics.
+- **Elasticsearch** is a distributed, open-source search and analytics engine for all types of data, including textual, numerical, geospatial, structured, and unstructured.
+- **Elastic Observability** builds on this foundation to provide a unified view of logs, metrics, and traces, enabling users to monitor and troubleshoot their systems.
+- **Elastic Security** leverages Elasticsearch's search and analytics capabilities to offer threat detection, prevention, and response, helping organizations protect themselves from cyber threats. Elasticsearch use cases are diverse, ranging from application search and website search to logging and log analytics, security analytics, and business analytics.
 
 Visit the following resources to learn more:
 

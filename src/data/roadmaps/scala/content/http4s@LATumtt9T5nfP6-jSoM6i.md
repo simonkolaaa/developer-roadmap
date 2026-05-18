@@ -1,5 +1,6 @@
 # http4s
- bb 
+
+bb
 http4s is a minimal, idiomatic Scala interface for HTTP services. It is built on FS2, a streaming library that allows for processing and emitting large payloads in constant space and implementing websockets. http4s is designed to be composable and easy to reason about, with I/O managed through cats-effect.
 
 Visit the following resources to learn more:

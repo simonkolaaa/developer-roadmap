@@ -12,6 +12,7 @@ Visit the following resources to learn more:
 ## 📚 Appunti Personali (IT)
 
 ### 02_Dall_Idea_al_Codice_Problem_Solving.md
+
 # Dall'Idea al Codice: Un Approccio al Problem Solving
 
 Sapere come funzionano `for`, `if`, liste e dizionari è come conoscere le lettere dell'alfabeto e le regole grammaticali. Ora dobbiamo imparare a scrivere una storia: come trasformare un'idea o un problema in un programma funzionante.
@@ -19,25 +20,30 @@ Sapere come funzionano `for`, `if`, liste e dizionari è come conoscere le lette
 Questo processo si chiama **problem solving** e segue alcuni passaggi logici.
 
 ### Il Problema di Esempio
+
 Immaginiamo di dover risolvere questo problema:
+
 > "Data una lista di studenti, ognuno con un nome e un voto, trovare il nome dello studente con il voto più alto."
 
 ### Passaggio 1: Capire e Scomporre il Problema
+
 La prima cosa da fare non è scrivere codice, ma pensare. Dobbiamo assicurarci di aver capito la richiesta e scomporla in passaggi più piccoli.
 
 1.  Dobbiamo avere una lista di studenti.
 2.  Per ogni studente, ci servono due informazioni: il nome e il voto.
-3.  Dobbiamo esaminare *tutti* gli studenti.
-4.  Mentre li esaminiamo, dobbiamo tenere traccia di chi ha il voto più alto *fino a quel momento*.
+3.  Dobbiamo esaminare _tutti_ gli studenti.
+4.  Mentre li esaminiamo, dobbiamo tenere traccia di chi ha il voto più alto _fino a quel momento_.
 5.  Una volta esaminati tutti, il nome che abbiamo tenuto da parte sarà la nostra risposta.
 
 ### Passaggio 2: Scegliere le Strutture Dati
+
 Come rappresentiamo i nostri dati?
 
-*   Per "una lista di studenti", una **lista Python** sembra la scelta perfetta.
-*   Per rappresentare un singolo studente con "nome e voto", un **dizionario** è ideale, perché ci permette di associare delle etichette (`"nome"`, `"voto"`) ai valori.
+- Per "una lista di studenti", una **lista Python** sembra la scelta perfetta.
+- Per rappresentare un singolo studente con "nome e voto", un **dizionario** è ideale, perché ci permette di associare delle etichette (`"nome"`, `"voto"`) ai valori.
 
 La nostra struttura dati sarà quindi una **lista di dizionari**:
+
 ```python
 studenti = [
     {"nome": "Alice", "voto": 85},
@@ -47,6 +53,7 @@ studenti = [
 ```
 
 ### Passaggio 3: Scrivere lo Pseudo-Codice
+
 Prima di scrivere codice Python, è utile scrivere una bozza in linguaggio umano. Questo si chiama **pseudo-codice**. Ci aiuta a definire la logica senza preoccuparci della sintassi.
 
 ```
@@ -62,6 +69,7 @@ Prima di scrivere codice Python, è utile scrivere una bozza in linguaggio umano
 ```
 
 ### Passaggio 4: Tradurre lo Pseudo-Codice in Python
+
 Solo ora, con un piano chiaro in mente, iniziamo a scrivere il codice vero e proprio.
 
 ```python
@@ -90,4 +98,3 @@ if miglior_studente_trovato:
 ```
 
 Questo approccio strutturato (Capire -> Scegliere Dati -> Pianificare -> Codificare) è una delle abilità più importanti per un programmatore e ti aiuterà a risolvere problemi sempre più complessi.
-

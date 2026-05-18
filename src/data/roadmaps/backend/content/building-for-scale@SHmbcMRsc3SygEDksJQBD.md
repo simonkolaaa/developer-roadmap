@@ -10,12 +10,12 @@ Visit the following resources to learn more:
 ## 📚 Appunti Personali (IT)
 
 ### 01_Scaletta_Primo_Giorno.md
+
 # 📚 Scaletta primo giorno di scuola – Informatica
 
 ### 1️⃣ Introduzione
 
 - **Cos’è l’informatica?**
-
   - Non è solo usare il PC → è _risolvere problemi con metodo e logica_.
   - È affascinante e creativa, ma richiede rigore, pazienza e curiosità.
   - Non è semplice né adatta a tutti: serve motivazione.
@@ -29,12 +29,10 @@ Visit the following resources to learn more:
 ### 2️⃣ Regole di base per il corso
 
 - **Consegna file**:
-
   - Nome = _cognome.estensione_ (es. `rossi.py`, `rossi.md`).
   - Non doppia estensione (`rossi.py.py`).
 
 - **Non copiare**:
-
   - Voto 2 a chi copia e a chi fa copiare.
 
 - **Prendere appunti**:
@@ -60,28 +58,23 @@ Visit the following resources to learn more:
 ### 5️⃣ Strumenti che useremo
 
 - **WSL (Windows Subsystem for Linux)**
-
   - Perché Linux?
     - La maggior parte dei server e degli strumenti professionali gira lì.
     - Abituarsi a un ambiente più vicino alla realtà.
 
 - **GitHub**
-
   - È il social network degli sviluppatori.
   - Serve per salvare versioni, collaborare, condividere codice.
   - Dove si trovano materiali, consegne e comunicazioni ufficiali.
 
 - **Google Classroom**
-
   - Dove consegnare gli elaborati.
 
 - **Visual Studio Code (VS Code)**
-
   - Editor/IDE: leggero, personalizzabile e con molte estensioni utili per Python, Git e Markdown.
   - Estensioni utili: Python, Pylance, GitLens, Markdown All in One, e formatter/linters.
 
 - **Nota sul layout della tastiera**
-
   - Consiglio pratico: per programmare è preferibile usare il layout di tastiera inglese (US) quando possibile. Molti linguaggi e scorciatoie assumono la posizione standard dei simboli (es. `[]{}<>/\@` e il backtick), e questo riduce errori e confusione.
 
 ---
@@ -101,5 +94,3 @@ Visit the following resources to learn more:
 ### 7️⃣ Concetti fondamentali dell'informatica
 
 - A questo [link](http://aptiva.v2.cs.unibo.it/wiki/index.php%3Ftitle=Concetti_fondamentali_dell'Informatica.html).
-
-

@@ -4,7 +4,7 @@ Password Hashing in PHP is a crucial aspect of security, which involves converti
 
     // Hashing the password
     $hash = password_hash('mypassword', PASSWORD_DEFAULT);
-    
+
     // Verifying the password
     if (password_verify('mypassword', $hash)) {
         echo 'Password is valid!';

@@ -5,20 +5,20 @@ export function MeetYourInstructor() {
   const features = [
     {
       icon: TrophyIcon,
-      text: 'Multiple GitHub Star Awards'
+      text: 'Multiple GitHub Star Awards',
     },
     {
       icon: GitHubIcon,
-      text: '#2 Most Starred Developer'
+      text: '#2 Most Starred Developer',
     },
     {
       icon: AwardIcon,
-      text: 'Google Developer Expert'
+      text: 'Google Developer Expert',
     },
     {
       icon: AwardIcon,
-      text: '2M+ roadmap.sh users'
-    }
+      text: '2M+ roadmap.sh users',
+    },
   ];
 
   return (

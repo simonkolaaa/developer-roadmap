@@ -15,6 +15,7 @@ Visit the following resources to learn more:
 ## 📚 Appunti Personali (IT)
 
 ### 05_REST.md
+
 ## REST: Lo Stile Architetturale per le Web API <!-- omit in toc -->
 
 - [Cos'è REST?](#cosè-rest)
@@ -56,5 +57,3 @@ L'architettura REST si sposa perfettamente con il protocollo HTTP.
 ### RESTful API
 
 Una Web API che segue i principi e i vincoli di REST viene definita una **RESTful API**. È l'approccio più diffuso e consolidato per la progettazione di API web.
-
-

@@ -5,7 +5,10 @@ import RoadmapHeader from '../../components/RoadmapHeader.astro';
 import { ShareIcons } from '../../components/ShareIcons/ShareIcons';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { isNewRoadmap } from '../../queries/official-roadmap';
-import { generateArticleSchema, generateFAQSchema } from '../../lib/jsonld-schema';
+import {
+  generateArticleSchema,
+  generateFAQSchema,
+} from '../../lib/jsonld-schema';
 import { getOpenGraphImageUrl } from '../../lib/open-graph';
 import { RoadmapTitleQuestion } from '../../components/RoadmapTitleQuestion';
 import ResourceProgressStats from '../../components/ResourceProgressStats.astro';
@@ -25,7 +28,7 @@ interface Params extends Record<string, string | undefined> {
 const { roadmapId } = Astro.params as Params;
 
 // ─── LOCAL ROADMAP CHECK ──────────────────────────────────────────────────────
-const localRoadmap = LOCAL_ROADMAPS.find(r => r.slug === roadmapId);
+const localRoadmap = LOCAL_ROADMAPS.find((r) => r.slug === roadmapId);
 
 // ─── OFFICIAL ROADMAP FETCH (only if NOT local) ───────────────────────────────
 let roadmapData: any = null;
@@ -49,120 +52,148 @@ if (!localRoadmap) {
     return Astro.rewrite('/404');
   }
 
-  const createdAt = roadmapData?.createdAt ? new Date(roadmapData.createdAt) : new Date();
-  const updatedAt = roadmapData?.updatedAt ? new Date(roadmapData.updatedAt) : new Date();
+  const createdAt = roadmapData?.createdAt
+    ? new Date(roadmapData.createdAt)
+    : new Date();
+  const updatedAt = roadmapData?.updatedAt
+    ? new Date(roadmapData.updatedAt)
+    : new Date();
   const datePublished = DateTime.fromJSDate(createdAt).toFormat('yyyy-MM-dd');
   const dateModified = DateTime.fromJSDate(updatedAt).toFormat('yyyy-MM-dd');
-  const baseUrl = import.meta.env.DEV ? 'http://localhost:8080' : 'https://roadmap.sh';
+  const baseUrl = import.meta.env.DEV
+    ? 'http://localhost:8080'
+    : 'https://roadmap.sh';
 
-  jsonLdSchema.push(generateArticleSchema({
-    url: `https://roadmap.sh/${roadmapId}`,
-    headline: roadmapData?.seo?.title || roadmapData?.title?.page,
-    description: roadmapData?.seo?.description || roadmapData?.description,
-    datePublished,
-    dateModified,
-    imageUrl: `${baseUrl}/roadmaps/${roadmapId}.png`,
-  }));
+  jsonLdSchema.push(
+    generateArticleSchema({
+      url: `https://roadmap.sh/${roadmapId}`,
+      headline: roadmapData?.seo?.title || roadmapData?.title?.page,
+      description: roadmapData?.seo?.description || roadmapData?.description,
+      datePublished,
+      dateModified,
+      imageUrl: `${baseUrl}/roadmaps/${roadmapId}.png`,
+    }),
+  );
 
-  ogImageUrl = roadmapData?.openGraph?.image || getOpenGraphImageUrl({ group: 'roadmap', resourceId: roadmapId });
+  ogImageUrl =
+    roadmapData?.openGraph?.image ||
+    getOpenGraphImageUrl({ group: 'roadmap', resourceId: roadmapId });
   question = roadmapData?.questions?.find((q: any) => q.type === 'main');
   faqs = roadmapData?.questions?.filter((q: any) => q.type === 'faq') || [];
   if (faqs.length) jsonLdSchema.push(generateFAQSchema(faqs));
 
-  try { projects = await listOfficialProjects({ roadmapId }); } catch {}
+  try {
+    projects = await listOfficialProjects({ roadmapId });
+  } catch {}
   isNew = roadmapData?.createdAt ? isNewRoadmap(roadmapData.createdAt) : false;
 }
 ---
 
-{localRoadmap && (
-  <BaseLayout
-    title={`${localRoadmap.title.page} — SimonKola Roadmaps`}
-    description={localRoadmap.description}
-  >
-    <div class="min-h-screen bg-slate-950 text-slate-100">
-      <div class="border-b border-slate-800 bg-slate-900 sticky top-[60px] z-10">
-        <div class="container mx-auto px-4 py-3 flex items-center gap-3 text-sm">
-          <a href="/" class="text-slate-400 hover:text-blue-400 transition-colors">Home</a>
-          <span class="text-slate-600">›</span>
-          <span class="text-slate-300 font-medium">{localRoadmap.title.card}</span>
-        </div>
-      </div>
-      <div class="bg-gradient-to-b from-slate-900 to-slate-950 border-b border-slate-800 py-12">
-        <div class="container mx-auto px-4 max-w-4xl">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-medium mb-5 uppercase tracking-widest">
-            {localRoadmap.type === 'role' ? '🎓 Percorso di Studio' : '⚡ Skill Track'}
+{
+  localRoadmap && (
+    <BaseLayout
+      title={`${localRoadmap.title.page} — SimonKola Roadmaps`}
+      description={localRoadmap.description}
+    >
+      <div class='min-h-screen bg-slate-950 text-slate-100'>
+        <div class='sticky top-[60px] z-10 border-b border-slate-800 bg-slate-900'>
+          <div class='container mx-auto flex items-center gap-3 px-4 py-3 text-sm'>
+            <a
+              href='/'
+              class='text-slate-400 transition-colors hover:text-blue-400'
+            >
+              Home
+            </a>
+            <span class='text-slate-600'>›</span>
+            <span class='font-medium text-slate-300'>
+              {localRoadmap.title.card}
+            </span>
           </div>
-          <h1 class="text-3xl md:text-4xl font-bold text-white mb-3 tracking-tight">
-            {localRoadmap.title.page}
-          </h1>
-          <p class="text-slate-400 text-base max-w-2xl leading-relaxed">
-            {localRoadmap.description}
-          </p>
+        </div>
+        <div class='border-b border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 py-12'>
+          <div class='w-full max-w-[98vw] mx-auto px-4 md:px-8'>
+            <div class='mb-5 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-1 text-xs font-medium tracking-widest text-blue-400 uppercase'>
+              {localRoadmap.type === 'role'
+                ? '🎓 Percorso di Studio'
+                : '⚡ Skill Track'}
+            </div>
+            <h1 class='mb-3 text-3xl font-bold tracking-tight text-white md:text-4xl'>
+              {localRoadmap.title.page}
+            </h1>
+            <p class='max-w-2xl text-base leading-relaxed text-slate-400'>
+              {localRoadmap.description}
+            </p>
+          </div>
+        </div>
+        <div class='w-full max-w-[98vw] mx-auto px-2 md:px-8 py-10'>
+          <VisualRoadmapRenderer roadmapId={roadmapId} client:only='react' />
         </div>
       </div>
-      <div class="container mx-auto px-4 py-10 max-w-4xl">
-        <VisualRoadmapRenderer roadmapId={roadmapId} client:only="react" />
-      </div>
-    </div>
-  </BaseLayout>
-)}
+    </BaseLayout>
+  )
+}
 
-{roadmapData && (
-  <BaseLayout
-    title={roadmapData?.seo?.title || roadmapData?.title?.page}
-    description={roadmapData?.seo?.description || roadmapData?.description}
-  >
-    <link
-      rel="preload"
-      href="/fonts/balsamiq.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-      slot="after-header"
-    />
-    <div class="bg-slate-950">
-      <RoadmapHeader
-        title={roadmapData?.title?.page}
-        description={roadmapData?.description}
-        partner={roadmapData?.partner}
-        roadmapId={roadmapId}
-        isForkable={true}
-        isNew={isNew}
-        projectCount={projects.length}
-        coursesCount={roadmapData?.courses?.length || 0}
+{
+  roadmapData && (
+    <BaseLayout
+      title={roadmapData?.seo?.title || roadmapData?.title?.page}
+      description={roadmapData?.seo?.description || roadmapData?.description}
+    >
+      <link
+        rel='preload'
+        href='/fonts/balsamiq.woff2'
+        as='font'
+        type='font/woff2'
+        crossorigin
+        slot='after-header'
       />
-      <div class="container mt-2.5 px-0 sm:px-4">
-        <div class="rounded-md border border-slate-800 bg-slate-900 neo-glow">
-          <ResourceProgressStats resourceId={roadmapId} resourceType="roadmap" />
-          {question?.title && (
-            <RoadmapTitleQuestion
-              client:load
-              roadmapId={roadmapId}
-              question={question?.title}
-              answer={question?.description}
-            />
-          )}
-        </div>
-      </div>
-      <div class="relative container max-w-[1000px]!">
-        <ShareIcons
-          resourceId={roadmapId}
-          resourceType="roadmap"
+      <div class='bg-slate-950'>
+        <RoadmapHeader
+          title={roadmapData?.title?.page}
           description={roadmapData?.description}
-          pageUrl={`https://roadmap.sh/${roadmapId}`}
-          client:load
+          partner={roadmapData?.partner}
+          roadmapId={roadmapId}
+          isForkable={true}
+          isNew={isNew}
+          projectCount={projects.length}
+          coursesCount={roadmapData?.courses?.length || 0}
         />
-        <VisualRoadmapRenderer roadmapId={roadmapId} client:only="react" />
+        <div class='container mt-2.5 px-0 sm:px-4'>
+          <div class='neo-glow rounded-md border border-slate-800 bg-slate-900'>
+            <ResourceProgressStats
+              resourceId={roadmapId}
+              resourceType='roadmap'
+            />
+            {question?.title && (
+              <RoadmapTitleQuestion
+                client:load
+                roadmapId={roadmapId}
+                question={question?.title}
+                answer={question?.description}
+              />
+            )}
+          </div>
+        </div>
+        <div class='relative container max-w-[1000px]!'>
+          <ShareIcons
+            resourceId={roadmapId}
+            resourceType='roadmap'
+            description={roadmapData?.description}
+            pageUrl={`https://roadmap.sh/${roadmapId}`}
+            client:load
+          />
+          <VisualRoadmapRenderer roadmapId={roadmapId} client:only='react' />
+        </div>
+        {roadmapId === 'docker' && (
+          <p class='mb-8 px-5 text-center text-xs text-gray-400 sm:mb-12'>
+            Roadmap owner Insight Partners is an investor in Docker.
+          </p>
+        )}
+        <FAQs faqs={faqs} client:load />
+        <RelatedRoadmaps relatedRoadmaps={roadmapData?.relatedRoadmaps || []} />
       </div>
-      {roadmapId === 'docker' && (
-        <p class="mb-8 px-5 text-center text-xs text-gray-400 sm:mb-12">
-          Roadmap owner Insight Partners is an investor in Docker.
-        </p>
-      )}
-      <FAQs faqs={faqs} client:load />
-      <RelatedRoadmaps relatedRoadmaps={roadmapData?.relatedRoadmaps || []} />
-    </div>
-    <CheckSubscriptionVerification client:load />
-    <div slot="changelog-banner"></div>
-  </BaseLayout>
-)}
+      <CheckSubscriptionVerification client:load />
+      <div slot='changelog-banner' />
+    </BaseLayout>
+  )
+}

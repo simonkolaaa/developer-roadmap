@@ -8,10 +8,10 @@ Here's a basic example of using MySQLi to connect to a MySQL database:
     $username = "username";
     $password = "password";
     $dbname = "myDB";
-    
+
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
-    
+
     // Check connection
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);

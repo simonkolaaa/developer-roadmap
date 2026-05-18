@@ -2,10 +2,10 @@
 
 Data Analytics involves extracting meaningful insights from raw data to drive decision-making processes. It includes a wide range of techniques and disciplines ranging from the simple data compilation to advanced algorithms and statistical analysis. Data analysts, as ambassadors of this domain, employ these techniques to answer various questions:
 
-*   Descriptive Analytics _(what happened in the past?)_
-*   Diagnostic Analytics _(why did it happened in the past?)_
-*   Predictive Analytics _(what will happen in the future?)_
-*   Prescriptive Analytics _(how can we make it happen?)_
+- Descriptive Analytics _(what happened in the past?)_
+- Diagnostic Analytics _(why did it happened in the past?)_
+- Predictive Analytics _(what will happen in the future?)_
+- Prescriptive Analytics _(how can we make it happen?)_
 
 Visit the following resources to learn more:
 

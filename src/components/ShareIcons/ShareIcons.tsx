@@ -17,11 +17,7 @@ export function ShareIcons(props: ShareIconsProps) {
   const icons = [
     {
       url: 'https://github.com/simonkolaaa',
-      icon: (
-        <GitHubIcon
-          className="size-[24px] [&>path]:fill-[#E5E5E5]"
-        />
-      ),
+      icon: <GitHubIcon className="size-[24px] [&>path]:fill-[#E5E5E5]" />,
     },
   ];
 
@@ -50,7 +46,7 @@ export function ShareIcons(props: ShareIconsProps) {
 
   return (
     <div
-      className="absolute left-[-18px] top-[110px] hidden h-full"
+      className="absolute top-[110px] left-[-18px] hidden h-full"
       ref={shareIconsRef}
     >
       <div className="sticky top-[100px] flex flex-col items-center gap-1.5">

@@ -4,17 +4,17 @@ JSON Processing in PHP refers to the handling, reading, and manipulation of JSON
 
     // Create an array
     $data = array('a' => 1, 'b' => 2, 'c' => 3);
-    
+
     // Encode the array into a JSON string
     $json = json_encode($data);
     echo $json;
-    
+
     // Output: {"a":1,"b":2,"c":3}
-    
+
     // Decode the JSON string back into an array
     $decoded = json_decode($json, true);
     print_r($decoded);
-    
+
     // Output: Array ( [a] => 1 [b] => 2 [c] => 3 )
 
 Visit the following resources to learn more:

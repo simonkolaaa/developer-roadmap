@@ -46,4 +46,4 @@ CREATE TABLE orders (
 );
 ```
 
-While normalization offers many benefits, if you normalize too much, you might end up with too many small tables and lots of joins, which can slow down performance in read-heavy systems. 
+While normalization offers many benefits, if you normalize too much, you might end up with too many small tables and lots of joins, which can slow down performance in read-heavy systems.

@@ -26,7 +26,7 @@ seo:
     - 'c++ developer 2025'
     - 'c++ engineer'
     - 'c++ skills'
-    - 'cpp roadmap 2025' 
+    - 'cpp roadmap 2025'
     - 'guide to c++'
     - 'c++ roadmap'
     - 'c++ roadmap 2025'

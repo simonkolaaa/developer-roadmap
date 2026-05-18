@@ -15,7 +15,7 @@ db.query(query, [req.params.id]);
 
 // ✅ With an ORM (Sequelize)
 const user = await User.findOne({
-  where: { id: req.params.id }
+  where: { id: req.params.id },
 });
 ```
 
@@ -25,7 +25,7 @@ const user = await User.findOne({
 // ❌ Vulnerable - user can pass { $gt: "" }
 const user = await User.findOne({
   username: req.body.username,
-  password: req.body.password
+  password: req.body.password,
 });
 
 // ✅ Validate and sanitize input
@@ -37,7 +37,7 @@ if (typeof username !== 'string' || typeof password !== 'string') {
 
 const user = await User.findOne({
   username: username.toString(),
-  password: password.toString()
+  password: password.toString(),
 });
 ```
 
@@ -58,12 +58,14 @@ app.get('/profile', (req, res) => {
 
 // ✅ Use Content Security Policy
 import helmet from 'helmet';
-app.use(helmet.contentSecurityPolicy({
-  directives: {
-    defaultSrc: ["'self'"],
-    scriptSrc: ["'self'"],
-  }
-}));
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'"],
+    },
+  }),
+);
 ```
 
 ## 4. Using Helmet.js
@@ -95,7 +97,7 @@ import rateLimit from 'express-rate-limit';
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // limit each IP to 100 requests per window
-  message: 'Too many requests, please try again later'
+  message: 'Too many requests, please try again later',
 });
 
 app.use('/api/', limiter);
@@ -104,7 +106,7 @@ app.use('/api/', limiter);
 const authLimiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour
   max: 5,
-  message: 'Too many login attempts'
+  message: 'Too many login attempts',
 });
 
 app.use('/api/login', authLimiter);
@@ -129,11 +131,9 @@ const verifyPassword = async (password, hash) => {
 
 // Generate JWT
 const generateToken = (user) => {
-  return jwt.sign(
-    { id: user.id, email: user.email },
-    process.env.JWT_SECRET,
-    { expiresIn: '1h' }
-  );
+  return jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, {
+    expiresIn: '1h',
+  });
 };
 
 // Use HTTP-only cookies for tokens
@@ -141,7 +141,7 @@ res.cookie('token', token, {
   httpOnly: true,
   secure: process.env.NODE_ENV === 'production',
   sameSite: 'strict',
-  maxAge: 3600000
+  maxAge: 3600000,
 });
 ```
 
@@ -153,7 +153,10 @@ import Joi from 'joi';
 const userSchema = Joi.object({
   username: Joi.string().alphanum().min(3).max(30).required(),
   email: Joi.string().email().required(),
-  password: Joi.string().min(8).pattern(/^(?=.*[A-Za-z])(?=.*\d)/).required()
+  password: Joi.string()
+    .min(8)
+    .pattern(/^(?=.*[A-Za-z])(?=.*\d)/)
+    .required(),
 });
 
 app.post('/register', async (req, res) => {
@@ -203,17 +206,19 @@ if (process.env.NODE_ENV === 'production') {
 // Secure session configuration
 import session from 'express-session';
 
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    secure: true,
-    httpOnly: true,
-    sameSite: 'strict',
-    maxAge: 24 * 60 * 60 * 1000
-  }
-}));
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: true,
+      httpOnly: true,
+      sameSite: 'strict',
+      maxAge: 24 * 60 * 60 * 1000,
+    },
+  }),
+);
 ```
 
 ## Security Checklist
@@ -228,4 +233,3 @@ app.use(session({
 - ✅ Keep dependencies updated
 - ✅ Use HTTP-only, secure cookies
 - ✅ Implement proper CORS policies
-

@@ -4,7 +4,7 @@ For performance optimization in PHP, configuration tuning is a crucial step. You
 
     // Updating memory_limit
     ini_set('memory_limit','256M');
-    
+
     // Updating max_execution_time
     ini_set('max_execution_time', '300');
 

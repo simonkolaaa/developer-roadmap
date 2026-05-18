@@ -20,7 +20,7 @@ export function useAIChatScroll(props: UseAIChatScrollProps) {
     }
 
     const paddingBottom = parseInt(
-      getComputedStyle(scrollableContainer).paddingBottom
+      getComputedStyle(scrollableContainer).paddingBottom,
     );
 
     const distanceFromBottom =
@@ -43,7 +43,7 @@ export function useAIChatScroll(props: UseAIChatScrollProps) {
         behavior: behavior === 'instant' ? 'instant' : 'smooth',
       });
     },
-    [scrollableContainerRef]
+    [scrollableContainerRef],
   );
 
   useEffect(() => {

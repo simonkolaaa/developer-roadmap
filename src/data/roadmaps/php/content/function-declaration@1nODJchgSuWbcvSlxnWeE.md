@@ -5,7 +5,6 @@ Function is the block of code that performs a specific task. It is a reusable co
     function greeting($name) {
         echo "Hello, " . $name;
     }
-    
 
 In this case, 'greeting' is the function name, '$name' is the parameter, and 'echo "Hello, " . $name;' is the operation.
 

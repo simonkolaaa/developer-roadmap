@@ -6,10 +6,10 @@ Factorial complexity algorithms have a runtime of `O(n!)`. This is the worst cas
         # Base case: If the string length is 1, return a list containing the string
         if len(s) == 1:
             return [s]
-    
+
         # Initialize the result list
         permutations = []
-    
+
         # Recursively generate all permutations
         for i in range(len(s)):
             # Current character
@@ -20,7 +20,7 @@ Factorial complexity algorithms have a runtime of `O(n!)`. This is the worst cas
             for perm in generate_permutations(remaining_chars):
                 # Add the current character to the front of each generated permutation
                 permutations.append(current_char + perm)
-    
+
         return permutations
 
 Visit the following resources to learn more:

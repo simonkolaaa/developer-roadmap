@@ -15,6 +15,7 @@ Visit the following resources to learn more:
 ## 📚 Appunti Personali (IT)
 
 ### 01_Mappa_Concettuale_Testing.md
+
 # Mappa Concettuale: Testing e Qualità del Codice
 
 Questa mappa riassume i concetti chiave che affronteremo in questo modulo, introducendo il testing automatico come pratica fondamentale per uno sviluppatore professionista.
@@ -40,4 +41,3 @@ graph TD
     D --> D4[Eseguire i<br>Test];
 
 ```
-

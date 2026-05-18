@@ -4,10 +4,10 @@ Design patterns are general solutions to common problems that arise in software 
 
 There are several different types of design patterns, including:
 
-*   Creational patterns
-*   Structural patterns
-*   Behavioral patterns
-*   Architectural patterns
+- Creational patterns
+- Structural patterns
+- Behavioral patterns
+- Architectural patterns
 
 Visit the following resources to learn more:
 

@@ -236,7 +236,7 @@ export function TopicProgressButton(props: TopicProgressButtonProps) {
       <button
         disabled={isUpdatingProgress}
         className={cn(
-          'flex 2xl:min-w-[135px] cursor-default cursor-pointer items-center rounded-md border border-gray-300 p-1 px-2 text-sm text-black hover:border-gray-400 disabled:pointer-events-none disabled:opacity-50',
+          'flex cursor-default cursor-pointer items-center rounded-md border border-gray-300 p-1 px-2 text-sm text-black hover:border-gray-400 disabled:pointer-events-none disabled:opacity-50 2xl:min-w-[135px]',
         )}
         onClick={() => setShowChangeStatus(true)}
       >
@@ -251,14 +251,17 @@ export function TopicProgressButton(props: TopicProgressButtonProps) {
                 )}
               ></span>
             </span>
-            <span className="ml-2 mr-2 capitalize">
+            <span className="mr-2 ml-2 capitalize">
               {progress === 'learning' ? 'In Progress' : progress}
             </span>
           </>
         )}
         {isUpdatingProgress && (
           <span className="flex items-center">
-            <Loader2 strokeWidth={3} className="size-3 flex-shrink-0 animate-spin" />
+            <Loader2
+              strokeWidth={3}
+              className="size-3 flex-shrink-0 animate-spin"
+            />
             <span className="ml-2 text-sm">Updating..</span>
           </span>
         )}

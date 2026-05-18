@@ -13,10 +13,10 @@ Below are the system errors commonly encountered when writing a Node.js program:
 7.  ENOENT - No such file or directory
 8.  ENOTDIR - Not a directory
 9.  ENOTEMPTY - Directory not empty
-10.  ENOTFOUND - DNS lookup failed
-11.  EPERM - Operation not permitted
-12.  EPIPE - Broken Pipe
-13.  ETIMEDOUT - Operation timed out
+10. ENOTFOUND - DNS lookup failed
+11. EPERM - Operation not permitted
+12. EPIPE - Broken Pipe
+13. ETIMEDOUT - Operation timed out
 
 Visit the following resources to learn more:
 

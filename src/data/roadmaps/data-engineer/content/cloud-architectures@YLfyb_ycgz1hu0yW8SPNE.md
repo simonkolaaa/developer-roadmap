@@ -4,10 +4,10 @@ Cloud architecture refers to how various cloud technology components, such as ha
 
 Cloud architecture components can included, among others:
 
-*   A frontend platform
-*   A backend platform
-*   A cloud-based delivery model
-*   A network (internet, intranet, or intercloud)
+- A frontend platform
+- A backend platform
+- A cloud-based delivery model
+- A network (internet, intranet, or intercloud)
 
 Visit the following resources to learn more:
 

@@ -6,5 +6,5 @@ Visit the following resources to learn more:
 
 - [@official@Deployments Documentation](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 - [@article@Kubernetes Deployment: From Basic Strategies to Progressive Delivery
-](https://codefresh.io/learn/kubernetes-deployment/)
+  ](https://codefresh.io/learn/kubernetes-deployment/)
 - [@video@Kubernetes Deployments | Deployment Strategies](https://youtu.be/lxc4EXZOOvE)

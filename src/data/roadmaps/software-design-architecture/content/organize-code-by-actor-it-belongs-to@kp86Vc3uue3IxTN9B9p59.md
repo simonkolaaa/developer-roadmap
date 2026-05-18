@@ -4,16 +4,16 @@ Organizing code by the actor it belongs to means structuring your codebase aroun
 
 Some key ideas behind this approach include:
 
-*   Actor-focused structure: Group related functionality by user roles, domains, or external systems (e.g., `admin`, `customer`, `payment-gateway`).
-*   High cohesion: Keep logic that changes for the same reason in the same place.
-*   Reduced coupling: Minimize dependencies between unrelated actors or domains.
-*   Clear ownership: Each module clearly represents a responsibility or business capability.
-*   Easier navigation: Developers can quickly find relevant code based on the actor they are working on.
-*   Scalability: The codebase grows more naturally as new actors or features are added.
-*   Improved testing: Actor-based modules are easier to test in isolation.
-*   Alignment with business logic: The structure mirrors real-world use cases and workflows.
-*   Better collaboration: Teams can own specific actors or domains.
-*   Cleaner boundaries: Encourages well-defined APIs between parts of the system.
+- Actor-focused structure: Group related functionality by user roles, domains, or external systems (e.g., `admin`, `customer`, `payment-gateway`).
+- High cohesion: Keep logic that changes for the same reason in the same place.
+- Reduced coupling: Minimize dependencies between unrelated actors or domains.
+- Clear ownership: Each module clearly represents a responsibility or business capability.
+- Easier navigation: Developers can quickly find relevant code based on the actor they are working on.
+- Scalability: The codebase grows more naturally as new actors or features are added.
+- Improved testing: Actor-based modules are easier to test in isolation.
+- Alignment with business logic: The structure mirrors real-world use cases and workflows.
+- Better collaboration: Teams can own specific actors or domains.
+- Cleaner boundaries: Encourages well-defined APIs between parts of the system.
 
 Visit the following resources to learn more:
 

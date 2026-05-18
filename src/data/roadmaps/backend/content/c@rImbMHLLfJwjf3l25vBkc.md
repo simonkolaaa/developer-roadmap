@@ -11,7 +11,8 @@ Visit the following resources to learn more:
 
 ## 📚 Appunti Personali (IT)
 
-### _percorso_di_studi.md
+### \_percorso_di_studi.md
+
 # Percorso di studi
 
 ```mermaid
@@ -63,14 +64,13 @@ graph TD
 
 ```
 
-
 ### 01_Scaletta_Primo_Giorno.md
+
 # 📚 Scaletta primo giorno di scuola – Informatica
 
 ### 1️⃣ Introduzione
 
 - **Cos’è l’informatica?**
-
   - Non è solo usare il PC → è _risolvere problemi con metodo e logica_.
   - È affascinante e creativa, ma richiede rigore, pazienza e curiosità.
   - Non è semplice né adatta a tutti: serve motivazione.
@@ -84,12 +84,10 @@ graph TD
 ### 2️⃣ Regole di base per il corso
 
 - **Consegna file**:
-
   - Nome = _cognome.estensione_ (es. `rossi.py`, `rossi.md`).
   - Non doppia estensione (`rossi.py.py`).
 
 - **Non copiare**:
-
   - Voto 2 a chi copia e a chi fa copiare.
 
 - **Prendere appunti**:
@@ -115,28 +113,23 @@ graph TD
 ### 5️⃣ Strumenti che useremo
 
 - **WSL (Windows Subsystem for Linux)**
-
   - Perché Linux?
     - La maggior parte dei server e degli strumenti professionali gira lì.
     - Abituarsi a un ambiente più vicino alla realtà.
 
 - **GitHub**
-
   - È il social network degli sviluppatori.
   - Serve per salvare versioni, collaborare, condividere codice.
   - Dove si trovano materiali, consegne e comunicazioni ufficiali.
 
 - **Google Classroom**
-
   - Dove consegnare gli elaborati.
 
 - **Visual Studio Code (VS Code)**
-
   - Editor/IDE: leggero, personalizzabile e con molte estensioni utili per Python, Git e Markdown.
   - Estensioni utili: Python, Pylance, GitLens, Markdown All in One, e formatter/linters.
 
 - **Nota sul layout della tastiera**
-
   - Consiglio pratico: per programmare è preferibile usare il layout di tastiera inglese (US) quando possibile. Molti linguaggi e scorciatoie assumono la posizione standard dei simboli (es. `[]{}<>/\@` e il backtick), e questo riduce errori e confusione.
 
 ---
@@ -157,8 +150,8 @@ graph TD
 
 - A questo [link](http://aptiva.v2.cs.unibo.it/wiki/index.php%3Ftitle=Concetti_fondamentali_dell'Informatica.html).
 
-
 ### 03_Confronto_tra_Linguaggi.md
+
 ### Tabella Comparativa dei Linguaggi di Programmazione
 
 Pensa a ogni linguaggio non come a un avversario degli altri, ma come a un attrezzo specializzato nella cassetta di un programmatore. Non useresti mai un cacciavite per piantare un chiodo!
@@ -183,8 +176,8 @@ Pensa a ogni linguaggio non come a un avversario degli altri, ma come a un attre
 
 Non esiste il linguaggio "migliore", ma solo quello **più adatto** al problema che vuoi risolvere.
 
-
 ### 05_Glossario_Informatico.md
+
 # Glossario di termini informatici
 
 Questo glossario è stato riorganizzato per argomenti per semplificare la consultazione. Le voci originali sono state raggruppate in sezioni tematiche; puoi suggerire ulteriori suddivisioni o chiedere di estrarre ogni sezione in file separati.
@@ -286,13 +279,13 @@ Questo glossario è stato riorganizzato per argomenti per semplificare la consul
 - OS (Operating System): Il sistema operativo (Windows, macOS, Linux).
 - Directory: Il nome tecnico per "cartella".
 
-
 ### 01_Mappa_Concettuale_Introduzione.md
+
 # Mappa Concettuale: Introduzione alla Programmazione
 
 Questa mappa riassume visivamente i concetti chiave che affronteremo in questa lezione introduttiva.
 
-```mermaid
+````mermaid
 graph TD
     A[Introduzione alla<br>Programmazione] --> B[Cos'è la<br>Programmazione?];
     A --> C[I Blocchi<br>Fondamentali];
@@ -306,7 +299,7 @@ graph TD
 
     D --> D1[Paradigmi di<br>Programmazione];
     D1 --> D1a[Imperativo vs<br>Dichiarativo];
-    
+
     D --> D2[Livelli di<br>Astrazione];
     D2 --> D2a[Basso Livello vs<br>Alto Livello];
 
@@ -392,10 +385,10 @@ graph TD
 ##### Composizione
 ##### Ereditarietà
 ### Diagrammi ER: Progettazione dei Database
-```
-
+````
 
 ### 01_Mappa_Concettuale_Strumenti.md
+
 # Mappa Concettuale: Strumenti dello Sviluppatore
 
 Questa mappa riassume i principali strumenti che ogni sviluppatore deve conoscere. Affronteremo ciascuno di questi argomenti nelle prossime lezioni.
@@ -413,8 +406,8 @@ graph TD
     D --> D2[WSL e SSH];
 ```
 
-
 ### 02_La_Shell_e_i_Comandi_Bash.md
+
 # La Shell e i Comandi Bash
 
 ## 1. Cos'è una Shell?
@@ -422,8 +415,9 @@ graph TD
 La **shell** è un'interfaccia a riga di comando che permette di interagire con il sistema operativo. Invece di usare mouse e finestre (GUI - Interfaccia Grafica), si usano comandi testuali. È uno strumento potente e veloce per gestire file, eseguire programmi e automatizzare compiti.
 
 Esistono diverse shell, le più comuni sono:
--   **Bash** (Bourne Again Shell): Lo standard su Linux e macOS. È quella che useremo.
--   **PowerShell**: La shell moderna di Windows.
+
+- **Bash** (Bourne Again Shell): Lo standard su Linux e macOS. È quella che useremo.
+- **PowerShell**: La shell moderna di Windows.
 
 ## 2. Comandi Essenziali di Bash
 
@@ -431,74 +425,76 @@ Ecco i comandi fondamentali per muoversi e operare nel sistema.
 
 ### Navigazione nel File System
 
--   **`pwd`** (Print Working Directory): Mostra il percorso della cartella in cui ti trovi.
-    ```bash
-    pwd
-    # Output: /home/utente/documenti
-    ```
--   **`ls`** (List): Elenca i file e le cartelle nella directory corrente.
-    ```bash
-    ls -la # Mostra una lista dettagliata, inclusi i file nascosti
-    ```
--   **`cd`** (Change Directory): Cambia la cartella corrente.
-    ```bash
-    cd /percorso/altra/cartella # Va a un percorso assoluto
-    cd ..                     # Sale alla cartella genitore
-    ```
+- **`pwd`** (Print Working Directory): Mostra il percorso della cartella in cui ti trovi.
+  ```bash
+  pwd
+  # Output: /home/utente/documenti
+  ```
+- **`ls`** (List): Elenca i file e le cartelle nella directory corrente.
+  ```bash
+  ls -la # Mostra una lista dettagliata, inclusi i file nascosti
+  ```
+- **`cd`** (Change Directory): Cambia la cartella corrente.
+  ```bash
+  cd /percorso/altra/cartella # Va a un percorso assoluto
+  cd ..                     # Sale alla cartella genitore
+  ```
 
 ### Gestione di File e Cartelle
 
--   **`mkdir`** (Make Directory): Crea una nuova cartella.
-    ```bash
-    mkdir nuova_cartella
-    ```
--   **`touch`**: Crea un file vuoto.
-    ```bash
-    touch mio_file.txt
-    ```
--   **`cp`** (Copy): Copia un file o una cartella.
-    ```bash
-    cp file_originale.txt file_copiato.txt
-    ```
--   **`mv`** (Move): Sposta o rinomina un file/cartella.
-    ```bash
-    mv vecchio_nome.txt nuovo_nome.txt # Rinomina
-    mv file.txt ./un_altra_cartella/   # Sposta
-    ```
--   **`rm`** (Remove): Elimina un file. **Attenzione: l'eliminazione è permanente!**
-    ```bash
-    rm file_da_cancellare.txt
-    rm -r cartella_da_cancellare # L'opzione -r cancella le cartelle e il loro contenuto
-    ```
+- **`mkdir`** (Make Directory): Crea una nuova cartella.
+  ```bash
+  mkdir nuova_cartella
+  ```
+- **`touch`**: Crea un file vuoto.
+  ```bash
+  touch mio_file.txt
+  ```
+- **`cp`** (Copy): Copia un file o una cartella.
+  ```bash
+  cp file_originale.txt file_copiato.txt
+  ```
+- **`mv`** (Move): Sposta o rinomina un file/cartella.
+  ```bash
+  mv vecchio_nome.txt nuovo_nome.txt # Rinomina
+  mv file.txt ./un_altra_cartella/   # Sposta
+  ```
+- **`rm`** (Remove): Elimina un file. **Attenzione: l'eliminazione è permanente!**
+  ```bash
+  rm file_da_cancellare.txt
+  rm -r cartella_da_cancellare # L'opzione -r cancella le cartelle e il loro contenuto
+  ```
 
 ### Visualizzazione di File
 
--   **`cat`** (Concatenate): Mostra l'intero contenuto di un file.
-    ```bash
-    cat file.txt
-    ```
--   **`less`**: Mostra il contenuto di un file una pagina alla volta (utile per file lunghi). Premi `q` per uscire.
-    ```bash
-    less file_molto_lungo.log
-    ```
+- **`cat`** (Concatenate): Mostra l'intero contenuto di un file.
+  ```bash
+  cat file.txt
+  ```
+- **`less`**: Mostra il contenuto di un file una pagina alla volta (utile per file lunghi). Premi `q` per uscire.
+  ```bash
+  less file_molto_lungo.log
+  ```
 
 ### Ottenere Aiuto
 
--   **`man`** (Manual): Mostra la pagina di manuale per un comando, spiegandone l'uso e le opzioni.
-    ```bash
-    man ls
-    ```
+- **`man`** (Manual): Mostra la pagina di manuale per un comando, spiegandone l'uso e le opzioni.
+  ```bash
+  man ls
+  ```
 
 ### 03_Controllo_di_Versione_con_Git.md
+
 # Controllo di Versione con Git e GitHub
 
 ## 1. A Cosa Serve il Controllo di Versione?
 
 Il **controllo di versione** è un sistema che tiene traccia delle modifiche apportate ai file nel tempo. Permette di:
--   **Salvare "fotografie"** del progetto in momenti specifici.
--   **Tornare a versioni precedenti** se qualcosa va storto.
--   **Collaborare** con altre persone sullo stesso progetto senza creare conflitti.
--   Capire **chi ha modificato cosa e quando**.
+
+- **Salvare "fotografie"** del progetto in momenti specifici.
+- **Tornare a versioni precedenti** se qualcosa va storto.
+- **Collaborare** con altre persone sullo stesso progetto senza creare conflitti.
+- Capire **chi ha modificato cosa e quando**.
 
 **Git** è il software di controllo di versione più usato al mondo. **GitHub** è una piattaforma online che ospita i repository Git e facilita la collaborazione.
 
@@ -539,11 +535,11 @@ Un **commit** è un salvataggio permanente delle modifiche nel tuo repository lo
 
 Una volta che hai salvato le modifiche localmente, devi sincronizzarle con GitHub.
 
-*   **Push**: Invia i tuoi commit locali al repository remoto su GitHub. È come caricare i tuoi salvataggi.
-    *   **Come fare**: Nella scheda `Source Control`, clicca sui tre puntini (`...`) e seleziona `Push`.
+- **Push**: Invia i tuoi commit locali al repository remoto su GitHub. È come caricare i tuoi salvataggi.
+  - **Come fare**: Nella scheda `Source Control`, clicca sui tre puntini (`...`) e seleziona `Push`.
 
-*   **Pull**: Scarica i commit che altri hanno caricato sul repository remoto. È come aggiornare il tuo progetto con le modifiche fatte dai tuoi collaboratori.
-    *   **Come fare**: Clicca sui tre puntini (`...`) e seleziona `Pull`.
+- **Pull**: Scarica i commit che altri hanno caricato sul repository remoto. È come aggiornare il tuo progetto con le modifiche fatte dai tuoi collaboratori.
+  - **Come fare**: Clicca sui tre puntini (`...`) e seleziona `Pull`.
 
 > **Buona pratica**: Esegui sempre un `pull` prima di iniziare a lavorare per assicurarti di avere la versione più aggiornata del progetto.
 
@@ -551,9 +547,8 @@ Una volta che hai salvato le modifiche localmente, devi sincronizzarle con GitHu
 
 VSCode offre un comodo pulsante "Sync Changes" (Sincronizza Modifiche) nella barra di stato in basso a sinistra. Questo comando esegue prima un `pull` e poi un `push`, mantenendo il tuo repository locale e quello remoto perfettamente allineati.
 
-
-
 ### 04_Ambiente_di_Sviluppo_con_VSCode.md
+
 # Ambiente di Sviluppo con VSCode
 
 ## 1. Cos'è un IDE?
@@ -561,10 +556,11 @@ VSCode offre un comodo pulsante "Sync Changes" (Sincronizza Modifiche) nella bar
 Un **IDE (Integrated Development Environment)**, o Ambiente di Sviluppo Integrato, è un'applicazione software che fornisce agli sviluppatori tutti gli strumenti necessari per scrivere, testare e correggere il codice in un unico posto.
 
 Un buon IDE include:
--   **Editor di Codice Avanzato**: Con evidenziazione della sintassi e suggerimenti automatici.
--   **Debugger**: Per trovare e risolvere errori nel codice.
--   **Terminale Integrato**: Per eseguire comandi senza lasciare l'editor.
--   **Integrazione con Git**: Per gestire il controllo di versione.
+
+- **Editor di Codice Avanzato**: Con evidenziazione della sintassi e suggerimenti automatici.
+- **Debugger**: Per trovare e risolvere errori nel codice.
+- **Terminale Integrato**: Per eseguire comandi senza lasciare l'editor.
+- **Integrazione con Git**: Per gestire il controllo di versione.
 
 **Visual Studio Code (VSCode)** è uno degli IDE più popolari al mondo. È leggero, veloce e incredibilmente personalizzabile grazie a un vasto marketplace di estensioni.
 
@@ -573,11 +569,13 @@ Un buon IDE include:
 **WSL (Windows Subsystem for Linux)** è una funzionalità di Windows che permette di eseguire un ambiente Linux completo direttamente su Windows, senza bisogno di macchine virtuali.
 
 **Perché è utile per uno sviluppatore?**
--   **Compatibilità**: Molti strumenti di sviluppo e server di produzione sono basati su Linux. Sviluppare in un ambiente simile a quello di produzione riduce i problemi.
--   **Potenza della Shell**: La shell Bash di Linux è molto più potente del Command Prompt di Windows.
--   **Integrazione Perfetta**: VSCode si integra perfettamente con WSL, permettendoti di scrivere codice su Windows ma di eseguirlo e testarlo in un ambiente Linux.
+
+- **Compatibilità**: Molti strumenti di sviluppo e server di produzione sono basati su Linux. Sviluppare in un ambiente simile a quello di produzione riduce i problemi.
+- **Potenza della Shell**: La shell Bash di Linux è molto più potente del Command Prompt di Windows.
+- **Integrazione Perfetta**: VSCode si integra perfettamente con WSL, permettendoti di scrivere codice su Windows ma di eseguirlo e testarlo in un ambiente Linux.
 
 **Come installare WSL:**
+
 1.  Apri PowerShell come Amministratore.
 2.  Esegui il comando: `wsl --install`
 3.  Riavvia il computer. Al riavvio, verrà installata automaticamente la distribuzione Ubuntu.
@@ -591,11 +589,13 @@ Una volta installato, puoi aprire un terminale Ubuntu direttamente da VSCode per
 VSCode, tramite l'estensione **"Remote - SSH"**, ti permette di aprire una cartella su un server remoto e lavorarci come se fosse sul tuo computer locale.
 
 **Perché è utile?**
--   Puoi modificare i file direttamente sul server di test o produzione.
--   Puoi sfruttare la potenza di calcolo di un server potente dal tuo laptop.
--   L'ambiente di sviluppo è identico a quello di esecuzione.
+
+- Puoi modificare i file direttamente sul server di test o produzione.
+- Puoi sfruttare la potenza di calcolo di un server potente dal tuo laptop.
+- L'ambiente di sviluppo è identico a quello di esecuzione.
 
 **Come connettersi via SSH da VSCode:**
+
 1.  Installa l'estensione "Remote - SSH" dal marketplace di VSCode.
 2.  Apri la Palette dei Comandi (`F1` o `Ctrl+Shift+P`).
 3.  Digita `Remote-SSH: Connect to Host...` e seleziona `Add New SSH Host...`.
@@ -603,6 +603,7 @@ VSCode, tramite l'estensione **"Remote - SSH"**, ti permette di aprire una carte
 5.  Una volta configurato, potrai connetterti al server direttamente da VSCode e aprire le sue cartelle.
 
 ### 06_Qualita_del_Codice_Linter_e_Formatter.md
+
 # Qualità del Codice: Linter e Formatter
 
 Scrivere codice che funziona è solo metà del lavoro. Scrivere codice **pulito, leggibile e coerente** è fondamentale per poterci lavorare in futuro e per collaborare con altri. Due strumenti essenziali ci aiutano in questo: i linter e i formatter.
@@ -611,19 +612,20 @@ Scrivere codice che funziona è solo metà del lavoro. Scrivere codice **pulito,
 
 Un **linter** è uno strumento che analizza il codice sorgente per trovare errori di programmazione, bug, errori stilistici e costrutti sospetti.
 
-*   **Analogia**: Pensa al linter come al correttore ortografico e grammaticale di un editor di testo. Ti sottolinea in rosso gli errori di battitura o le frasi costruite male.
+- **Analogia**: Pensa al linter come al correttore ortografico e grammaticale di un editor di testo. Ti sottolinea in rosso gli errori di battitura o le frasi costruite male.
 
 Un linter può segnalare:
--   Variabili definite ma mai utilizzate.
--   Errori di sintassi comuni.
--   Violazioni delle convenzioni di stile (es. nomi di variabili non standard).
--   Potenziali bug logici.
+
+- Variabili definite ma mai utilizzate.
+- Errori di sintassi comuni.
+- Violazioni delle convenzioni di stile (es. nomi di variabili non standard).
+- Potenziali bug logici.
 
 ## 2. Il Formatter: L'Ordinatore Automatico
 
 Un **formatter** è uno strumento che riscrive automaticamente il tuo codice per assicurarsi che segua delle regole di stile precise e coerenti. Si occupa di spazi, a capo, parentesi e indentazione.
 
-*   **Analogia**: Pensa al formatter come a una funzione di "giustifica testo" che sistema automaticamente i margini e l'interlinea di un documento per renderlo uniforme e professionale.
+- **Analogia**: Pensa al formatter come a una funzione di "giustifica testo" che sistema automaticamente i margini e l'interlinea di un documento per renderlo uniforme e professionale.
 
 L'uso di un formatter elimina le discussioni sullo stile e garantisce che tutto il codice del progetto abbia lo stesso aspetto, indipendentemente da chi lo ha scritto.
 
@@ -634,6 +636,7 @@ L'uso di un formatter elimina le discussioni sullo stile e garantisce che tutto 
 ### a) Installazione
 
 Con l'ambiente virtuale attivo, installiamo Ruff:
+
 ```bash
 pip install ruff
 ```
@@ -642,18 +645,20 @@ pip install ruff
 
 Ruff si usa da terminale.
 
-*   **Per controllare il codice (linting)**:
-    ```bash
-    # Analizza tutti i file nella cartella corrente e sottocartelle
-    ruff check .
-    ```
-    Ruff ti mostrerà una lista di errori e suggerimenti.
+- **Per controllare il codice (linting)**:
 
-*   **Per formattare il codice**:
-    ```bash
-    # Formatta automaticamente tutti i file
-    ruff format .
-    ```
+  ```bash
+  # Analizza tutti i file nella cartella corrente e sottocartelle
+  ruff check .
+  ```
+
+  Ruff ti mostrerà una lista di errori e suggerimenti.
+
+- **Per formattare il codice**:
+  ```bash
+  # Formatta automaticamente tutti i file
+  ruff format .
+  ```
 
 ### c) Integrazione con VSCode
 
@@ -674,15 +679,16 @@ La vera potenza di Ruff si ottiene integrandolo in VSCode.
 Con questa configurazione, ogni volta che salvi un file Python, Ruff lo pulirà e lo formatterà automaticamente, aiutandoti a scrivere codice di alta qualità fin dal primo giorno.
 
 ### 07_Uso_Responsabile_dell_IA_GitHub_Copilot.md
+
 # Uso Responsabile dell'IA: GitHub Copilot
 
 ## 1. Cos'è GitHub Copilot?
 
 Immagina di avere al tuo fianco un programmatore esperto che non si stanca mai, conosce quasi tutti i linguaggi di programmazione e può darti suggerimenti in tempo reale mentre scrivi. Questo è, in sintesi, GitHub Copilot.
 
-**Copilot è un assistente di programmazione basato sull'Intelligenza Artificiale.** Non scrive il codice *al posto tuo*, ma ti aiuta a scriverlo meglio e più velocemente, completando righe di codice, suggerendo intere funzioni e persino aiutandoti a capire parti di codice complesse.
+**Copilot è un assistente di programmazione basato sull'Intelligenza Artificiale.** Non scrive il codice _al posto tuo_, ma ti aiuta a scriverlo meglio e più velocemente, completando righe di codice, suggerendo intere funzioni e persino aiutandoti a capire parti di codice complesse.
 
-*   **Analogia**: Pensa a Copilot non come a un pilota automatico che guida l'aereo per te, ma come a un **copilota esperto**. Tu, il pilota, hai sempre il controllo e la responsabilità finale. Il copilota ti aiuta con i compiti di routine, ti avvisa di possibili problemi e ti fornisce informazioni, ma la decisione su cosa fare spetta sempre a te.
+- **Analogia**: Pensa a Copilot non come a un pilota automatico che guida l'aereo per te, ma come a un **copilota esperto**. Tu, il pilota, hai sempre il controllo e la responsabilità finale. Il copilota ti aiuta con i compiti di routine, ti avvisa di possibili problemi e ti fornisce informazioni, ma la decisione su cosa fare spetta sempre a te.
 
 ## 2. Configurazione in VS Code
 
@@ -700,49 +706,55 @@ Una volta attivato, vedrai una piccola icona di Copilot nella barra di stato in 
 Usare l'IA in modo efficace è un'abilità. Seguire queste regole ti impedirà di usare Copilot come una "stampella" e ti aiuterà a usarlo come un "propulsore" per il tuo apprendimento.
 
 #### Regola n.1: Tu sei il Pilota, l'IA è il Copilota
+
 La responsabilità finale del codice che scrivi è **sempre e solo tua**. Devi essere in grado di capire, spiegare e giustificare ogni singola riga del tuo programma. Se non capisci un suggerimento di Copilot, non usarlo.
 
 #### Regola n.2: Mai Fidarsi Ciecamente
+
 Copilot è incredibilmente potente, ma **non è infallibile**. Può generare codice che contiene bug, che è inefficiente o che non fa esattamente quello che vuoi. Ogni suggerimento va letto, analizzato e mentalmente verificato prima di essere accettato.
 
 #### Regola n.3: Usa l'IA per Accelerare, non per Sostituire il Pensiero
+
 L'IA è uno strumento per automatizzare i compiti ripetitivi o per superare piccoli blocchi, non per evitare di pensare. La progettazione del programma, la logica generale e la struttura del codice devono venire da te.
 
 ## 4. Casi d'Uso Virtuosi (Come Sfruttarlo al Meglio)
 
 Ecco alcuni modi intelligenti per collaborare con il tuo copilota IA:
 
-*   **Completamento Automatico Potenziato:** Inizia a scrivere un ciclo `for` per iterare su una lista e Copilot probabilmente ti suggerirà l'intero blocco di codice corretto.
-    ```python
-    voti =
-    # Inizia a scrivere "for voto in voti:" e osserva...
-    ```
+- **Completamento Automatico Potenziato:** Inizia a scrivere un ciclo `for` per iterare su una lista e Copilot probabilmente ti suggerirà l'intero blocco di codice corretto.
 
-*   **Generare Codice Ripetitivo (Boilerplate):** Invece di riscrivere per l'ennesima volta il codice per leggere un file, puoi chiederlo a Copilot.
-    ```python
-    # Scrivi un commento e osserva il suggerimento:
-    # funzione che legge un file JSON e restituisce il suo contenuto
-    ```
+  ```python
+  voti =
+  # Inizia a scrivere "for voto in voti:" e osserva...
+  ```
 
-*   **Imparare e Scoprire:** Se non ricordi come si fa qualcosa, puoi chiederlo direttamente.
-    ```python
-    # come si ordina una lista di dizionari in base alla chiave "eta"?
-    studenti = [{"nome": "Mario", "eta": 17}, {"nome": "Luisa", "eta": 16}]
-    # Inizia a scrivere "studenti_ordinati = sorted(...)"
-    ```
+- **Generare Codice Ripetitivo (Boilerplate):** Invece di riscrivere per l'ennesima volta il codice per leggere un file, puoi chiederlo a Copilot.
 
-*   **Scrivere Commenti e Documentazione:** Se hai scritto una funzione complessa, puoi chiedere a Copilot di documentarla per te. Seleziona la funzione e usa la chat di Copilot per chiedere: "Scrivi una docstring per questa funzione".
+  ```python
+  # Scrivi un commento e osserva il suggerimento:
+  # funzione che legge un file JSON e restituisce il suo contenuto
+  ```
+
+- **Imparare e Scoprire:** Se non ricordi come si fa qualcosa, puoi chiederlo direttamente.
+
+  ```python
+  # come si ordina una lista di dizionari in base alla chiave "eta"?
+  studenti = [{"nome": "Mario", "eta": 17}, {"nome": "Luisa", "eta": 16}]
+  # Inizia a scrivere "studenti_ordinati = sorted(...)"
+  ```
+
+- **Scrivere Commenti e Documentazione:** Se hai scritto una funzione complessa, puoi chiedere a Copilot di documentarla per te. Seleziona la funzione e usa la chat di Copilot per chiedere: "Scrivi una docstring per questa funzione".
 
 ## 5. Anti-Pattern (Cosa NON Fare)
 
-*   **Scrivere un commento con la traccia dell'esercizio:** Non scrivere `# Esercizio 04: Gestore della lista della spesa` e aspettarti che Copilot scriva l'intera soluzione. Questo non ti insegna nulla.
-*   **Accettare i suggerimenti senza leggerli:** Premere `Tab` a ripetizione senza capire cosa si sta aggiungendo al codice è il modo più veloce per creare un programma pieno di bug e che non capisci.
-*   **Chiedere all'IA di risolvere un errore al posto tuo:** Invece di fare copia-incolla di un messaggio di errore e chiedere "risolvi", chiedi "Quali sono le possibili cause di questo errore?". In questo modo, impari a fare debug.
+- **Scrivere un commento con la traccia dell'esercizio:** Non scrivere `# Esercizio 04: Gestore della lista della spesa` e aspettarti che Copilot scriva l'intera soluzione. Questo non ti insegna nulla.
+- **Accettare i suggerimenti senza leggerli:** Premere `Tab` a ripetizione senza capire cosa si sta aggiungendo al codice è il modo più veloce per creare un programma pieno di bug e che non capisci.
+- **Chiedere all'IA di risolvere un errore al posto tuo:** Invece di fare copia-incolla di un messaggio di errore e chiedere "risolvi", chiedi "Quali sono le possibili cause di questo errore?". In questo modo, impari a fare debug.
 
 **In conclusione:** GitHub Copilot è uno strumento rivoluzionario. Imparare a usarlo bene fin da subito ti renderà uno sviluppatore più rapido, efficiente e consapevole.
 
-
 ### 01_Mappa_Concettuale_Basi_Python.md
+
 # Mappa Concettuale: Basi della Programmazione Python
 
 Questa mappa delinea il percorso di apprendimento per i fondamenti della programmazione procedurale in Python.
@@ -758,7 +770,7 @@ graph TD
     B --> B1[Tipi Primitivi con<br>Type Hinting];
     B --> B2[Liste, Tuple,<br>Dizionari];
     B --> B3[JSON];
-    
+
     C --> C1[Definire<br>Funzioni];
     C --> C2[Parametri: *args<br>e **kwargs];
 
@@ -767,22 +779,24 @@ graph TD
 ```
 
 ### 05_Gestione_delle_Eccezioni.md
+
 # Gestione delle Eccezioni
 
 ## 1. Cos'è un'Eccezione?
 
 Un'**eccezione** è un errore che si verifica durante l'esecuzione di un programma e che ne interrompe il normale flusso. Se non viene gestita, l'eccezione causa l'arresto anomalo (crash) del programma con un messaggio di errore.
 
-*   **Analogia**: Stai seguendo una ricetta e ti accorgi che manca un ingrediente fondamentale (es. le uova). Non puoi continuare. Questo "imprevisto" è un'eccezione. Invece di fermarti, puoi avere un piano B: "se mancano le uova, usa le banane". Questo è "gestire l'eccezione".
+- **Analogia**: Stai seguendo una ricetta e ti accorgi che manca un ingrediente fondamentale (es. le uova). Non puoi continuare. Questo "imprevisto" è un'eccezione. Invece di fermarti, puoi avere un piano B: "se mancano le uova, usa le banane". Questo è "gestire l'eccezione".
 
 ## 2. Il Blocco `try...except`
 
 Per gestire le eccezioni, Python usa il blocco `try...except`.
 
--   **`try`**: In questo blocco inseriamo il codice "rischioso", quello che potrebbe generare un'eccezione.
--   **`except`**: In questo blocco inseriamo il codice da eseguire *solo se* si verifica un'eccezione nel blocco `try`.
+- **`try`**: In questo blocco inseriamo il codice "rischioso", quello che potrebbe generare un'eccezione.
+- **`except`**: In questo blocco inseriamo il codice da eseguire _solo se_ si verifica un'eccezione nel blocco `try`.
 
 **Esempio Pratico:**
+
 ```python
 try:
     # Codice che potrebbe causare un errore
@@ -834,6 +848,7 @@ finally:
 ```
 
 ### 06_Organizzazione_del_Codice_Moduli_e_Package.md
+
 # Organizzazione del Codice: Moduli e Package
 
 Quando un programma cresce, tenere tutto il codice in un unico file diventa confusionario e insostenibile. Per questo motivo, Python ci offre due strumenti per organizzare il codice in modo logico e riutilizzabile: i **moduli** e i **package**.
@@ -843,27 +858,33 @@ Quando un programma cresce, tenere tutto il codice in un unico file diventa conf
 Un **modulo** non è altro che un singolo file Python (`.py`).
 
 **A cosa serve?**
--   **Organizzazione**: Invece di avere un file di 2000 righe, puoi dividere la logica in file più piccoli e tematici. Ad esempio, `calcoli.py` per le funzioni matematiche e `grafica.py` per quelle di disegno.
--   **Riusabilità**: Puoi importare un modulo in altri script per riutilizzarne le funzioni e le classi senza doverle riscrivere.
+
+- **Organizzazione**: Invece di avere un file di 2000 righe, puoi dividere la logica in file più piccoli e tematici. Ad esempio, `calcoli.py` per le funzioni matematiche e `grafica.py` per quelle di disegno.
+- **Riusabilità**: Puoi importare un modulo in altri script per riutilizzarne le funzioni e le classi senza doverle riscrivere.
 
 ### Come si usa un modulo?
+
 Si usa l'istruzione **`import`**.
 
 **Esempio Concettuale**:
-*   File `matematica.py`:
-    ```python
-    PI_GRECO: float = 3.14159
 
-    def area_cerchio(raggio: float) -> float:
-        return PI_GRECO * (raggio ** 2)
-    ```
-*   File `main.py` (nella stessa cartella):
-    ```python
-    import matematica
+- File `matematica.py`:
 
-    area = matematica.area_cerchio(5)
-    print(f"L'area è: {area}")
-    ```
+  ```python
+  PI_GRECO: float = 3.14159
+
+  def area_cerchio(raggio: float) -> float:
+      return PI_GRECO * (raggio ** 2)
+  ```
+
+- File `main.py` (nella stessa cartella):
+
+  ```python
+  import matematica
+
+  area = matematica.area_cerchio(5)
+  print(f"L'area è: {area}")
+  ```
 
 ## 2. Package: Cartelle di Moduli
 
@@ -884,29 +905,33 @@ mio_progetto/
 ```
 
 ### Come si usa un package?
+
 Si usa la "dot notation" (notazione col punto) per accedere ai moduli interni.
 
 **Esempio Concettuale**:
-*   File `geometria/forme_piane.py`:
-    ```python
-    def area_quadrato(lato: float) -> float:
-        return lato * lato
-    ```
-*   File `main.py`:
-    ```python
-    from geometria.forme_piane import area_quadrato
 
-    area = area_quadrato(4)
-    print(f"L'area del quadrato è {area}")
-    ```
+- File `geometria/forme_piane.py`:
+  ```python
+  def area_quadrato(lato: float) -> float:
+      return lato * lato
+  ```
+- File `main.py`:
+
+  ```python
+  from geometria.forme_piane import area_quadrato
+
+  area = area_quadrato(4)
+  print(f"L'area del quadrato è {area}")
+  ```
 
 **In sintesi**:
--   **Modulo**: un file `.py`.
--   **Package**: una cartella di moduli (con `__init__.py`).
--   **Libreria**: un insieme di uno o più package distribuiti insieme per risolvere un problema specifico (es. `requests` o `Flask`).
 
+- **Modulo**: un file `.py`.
+- **Package**: una cartella di moduli (con `__init__.py`).
+- **Libreria**: un insieme di uno o più package distribuiti insieme per risolvere un problema specifico (es. `requests` o `Flask`).
 
 ### 01_Mappa_Concettuale_Testing.md
+
 # Mappa Concettuale: Testing e Qualità del Codice
 
 Questa mappa riassume i concetti chiave che affronteremo in questo modulo, introducendo il testing automatico come pratica fondamentale per uno sviluppatore professionista.
@@ -934,14 +959,16 @@ graph TD
 ```
 
 ### 02_Perche_Scrivere_Test.md
+
 # Perché Scrivere Test?
 
 Fino ad ora, per verificare se il nostro codice funzionava, abbiamo probabilmente usato un metodo molto semplice: aggiungere delle istruzioni `print()` e lanciare lo script per vedere cosa succedeva. Questo si chiama **testing manuale**.
 
 Il testing manuale va bene per script di poche righe, ma ha enormi limiti quando i progetti crescono:
-*   **È noioso e ripetitivo:** Devi lanciare il programma e inserire gli stessi input ogni volta.
-*   **È soggetto a errori:** È facile dimenticarsi di provare un caso specifico o interpretare male un risultato.
-*   **Non è scalabile:** Se hai 50 funzioni, testarle tutte a mano dopo ogni modifica diventa un lavoro a tempo pieno.
+
+- **È noioso e ripetitivo:** Devi lanciare il programma e inserire gli stessi input ogni volta.
+- **È soggetto a errori:** È facile dimenticarsi di provare un caso specifico o interpretare male un risultato.
+- **Non è scalabile:** Se hai 50 funzioni, testarle tutte a mano dopo ogni modifica diventa un lavoro a tempo pieno.
 
 Per questi motivi, gli sviluppatori professionisti si affidano al **testing automatico**.
 
@@ -949,21 +976,24 @@ Per questi motivi, gli sviluppatori professionisti si affidano al **testing auto
 
 Il testing automatico consiste nello scrivere del codice il cui unico scopo è **verificare che altro codice funzioni come previsto**. Questi "script di verifica" si chiamano **test**.
 
-*   **Analogia**: Pensa di costruire un ponte. Il testing manuale è come farci passare sopra un'auto e sperare che regga. Il testing automatico è come portare il ponte in un laboratorio e usare macchinari specializzati per applicare carichi precisi e misurare la resistenza, garantendo che rispetti le specifiche di progetto.
+- **Analogia**: Pensa di costruire un ponte. Il testing manuale è come farci passare sopra un'auto e sperare che regga. Il testing automatico è come portare il ponte in un laboratorio e usare macchinari specializzati per applicare carichi precisi e misurare la resistenza, garantendo che rispetti le specifiche di progetto.
 
 ## 2. I Vantaggi del Testing Automatico
 
 Scrivere test richiede tempo, ma è un investimento che ripaga enormemente.
 
 ### a) La Rete di Sicurezza (Prevenzione delle Regressioni)
+
 Questa è la ragione più importante. Una "regressione" è un bug che si introduce in una funzionalità che prima funzionava.
 Immagina di avere un'applicazione complessa. Aggiungi una nuova funzionalità e, senza accorgertene, rompi qualcos'altro in un'altra parte del programma. Con una buona suite di test, puoi lanciare un singolo comando e verificare in pochi secondi che tutto il resto dell'applicazione funzioni ancora perfettamente. I test sono la tua **rete di sicurezza** contro gli errori imprevisti.
 
 ### b) Documentazione Vivente
+
 Un test ben scritto è una forma di documentazione. Mostra in modo inequivocabile cosa dovrebbe fare una funzione con un dato input. Un nuovo sviluppatore può leggere i test per capire come usare il tuo codice.
 A differenza della documentazione tradizionale, i test non possono diventare obsoleti: se il codice cambia e il test non viene aggiornato, il test fallirà.
 
 ### c) Migliore Progettazione del Codice
+
 Scrivere codice "testabile" ti spinge a progettarlo meglio. Incoraggia a scrivere funzioni piccole, focalizzate su un singolo compito e che non dipendano da troppe parti esterne (le cosiddette "funzioni pure"). Questo porta naturalmente a un codice più pulito, modulare e facile da mantenere.
 
 ## 3. La Piramide del Testing: Focus sugli Unit Test
@@ -972,14 +1002,15 @@ Esistono diversi tipi di test. Una famosa metafora è la "piramide del testing",
 
 Uno **Unit Test** verifica la più piccola unità di codice possibile in modo isolato. Nel nostro caso, l'unità perfetta è una singola **funzione**.
 
-L'obiettivo di uno unit test è rispondere a una domanda molto semplice e precisa: "Se passo a *questa* funzione *questo* input, mi restituisce *questo* output atteso?".
+L'obiettivo di uno unit test è rispondere a una domanda molto semplice e precisa: "Se passo a _questa_ funzione _questo_ input, mi restituisce _questo_ output atteso?".
 
 Per il momento, ci concentreremo esclusivamente sugli unit test. Sono i più veloci da scrivere ed eseguire, e costituiscono la solida base di ogni strategia di testing professionale.
 
 ### 03_Il_Tuo_Primo_Unit_Test_con_Pytest.md
+
 # Il Tuo Primo Unit Test con Pytest
 
-Abbiamo visto *perché* è importante testare. Ora vediamo *come* farlo. Useremo `pytest`, la libreria di testing più popolare e potente nell'ecosistema Python.
+Abbiamo visto _perché_ è importante testare. Ora vediamo _come_ farlo. Useremo `pytest`, la libreria di testing più popolare e potente nell'ecosistema Python.
 
 ### 1. Cos'è `pytest`?
 
@@ -1021,6 +1052,7 @@ def somma(a: int, b: int) -> int:
 ### 4. Scrivere il Primo Test
 
 Ora scriviamo il codice che verificherà la nostra funzione `somma`. `pytest` si basa su due semplici convenzioni:
+
 1.  I file di test devono iniziare con `test_` (es. `test_calcolatrice.py`).
 2.  Le funzioni di test al loro interno devono iniziare con `test_` (es. `test_somma`).
 
@@ -1038,7 +1070,7 @@ def test_somma_due_numeri_positivi():
     input1 = 5
     input2 = 3
     risultato_atteso = 8
-    
+
     # 4. Chiama la funzione e verifica il risultato con 'assert'
     assert somma(input1, input2) == risultato_atteso
 
@@ -1050,8 +1082,9 @@ def test_somma_un_positivo_e_un_negativo():
 ### 5. L'Istruzione `assert`: il Cuore del Test
 
 `assert` è una parola chiave di Python che controlla se una condizione è `True`.
-*   Se `condizione` è `True`, l'istruzione non fa nulla e il test prosegue.
-*   Se `condizione` è `False`, l'istruzione solleva un errore (`AssertionError`) e il test **fallisce**.
+
+- Se `condizione` è `True`, l'istruzione non fa nulla e il test prosegue.
+- Se `condizione` è `False`, l'istruzione solleva un errore (`AssertionError`) e il test **fallisce**.
 
 `pytest` usa `assert` per verificare le nostre aspettative. La riga `assert somma(5, 3) == 8` si legge come: "Affermo che il risultato di `somma(5, 3)` deve essere uguale a `8`".
 
@@ -1067,6 +1100,7 @@ pytest
 
 **Output in caso di successo:**
 Se tutto va bene, vedrai un output simile a questo, con dei puntini verdi che indicano i test passati.
+
 ```
 ============================= test session starts ==============================
 ...
@@ -1079,11 +1113,14 @@ tests/test_calcolatrice.py ..                                            [100%]
 
 **Output in caso di fallimento:**
 Proviamo a rovinare la nostra funzione `somma` in `src/calcolatrice.py`:
+
 ```python
 def somma(a: int, b: int) -> int:
     return a * b # Errore intenzionale!
 ```
+
 Ora, rieseguiamo `pytest`:
+
 ```
 ============================= test session starts ==============================
 ...
@@ -1098,7 +1135,7 @@ ______________________ test_somma_due_numeri_positivi ______________________
         input1 = 5
         input2 = 3
         risultato_atteso = 8
-    
+
 >       assert somma(input1, input2) == risultato_atteso
 E       assert 15 == 8
 E        +  where 15 = somma(5, 3)
@@ -1107,9 +1144,11 @@ tests/test_calcolatrice.py:11: AssertionError
 ...
 =========================== 2 failed in 0.03s ============================
 ```
-`pytest` non solo ci dice che i test sono falliti (`FF`), ma ci mostra esattamente *perché*: si aspettava `8` ma ha ricevuto `15`. Questo feedback immediato e preciso è ciò che rende il testing automatico così potente.
+
+`pytest` non solo ci dice che i test sono falliti (`FF`), ma ci mostra esattamente _perché_: si aspettava `8` ma ha ricevuto `15`. Questo feedback immediato e preciso è ciò che rende il testing automatico così potente.
 
 ### 01_Mappa_Concettuale_Logica.md
+
 # Mappa Concettuale: Logica di Programmazione e Manipolazione Dati
 
 Questa mappa delinea il percorso che seguiremo per imparare a "pensare da programmatori", trasformando problemi reali in soluzioni software attraverso la manipolazione efficace dei dati.
@@ -1140,6 +1179,7 @@ graph TD
 ```
 
 ### 02_Dall_Idea_al_Codice_Problem_Solving.md
+
 # Dall'Idea al Codice: Un Approccio al Problem Solving
 
 Sapere come funzionano `for`, `if`, liste e dizionari è come conoscere le lettere dell'alfabeto e le regole grammaticali. Ora dobbiamo imparare a scrivere una storia: come trasformare un'idea o un problema in un programma funzionante.
@@ -1147,25 +1187,30 @@ Sapere come funzionano `for`, `if`, liste e dizionari è come conoscere le lette
 Questo processo si chiama **problem solving** e segue alcuni passaggi logici.
 
 ### Il Problema di Esempio
+
 Immaginiamo di dover risolvere questo problema:
+
 > "Data una lista di studenti, ognuno con un nome e un voto, trovare il nome dello studente con il voto più alto."
 
 ### Passaggio 1: Capire e Scomporre il Problema
+
 La prima cosa da fare non è scrivere codice, ma pensare. Dobbiamo assicurarci di aver capito la richiesta e scomporla in passaggi più piccoli.
 
 1.  Dobbiamo avere una lista di studenti.
 2.  Per ogni studente, ci servono due informazioni: il nome e il voto.
-3.  Dobbiamo esaminare *tutti* gli studenti.
-4.  Mentre li esaminiamo, dobbiamo tenere traccia di chi ha il voto più alto *fino a quel momento*.
+3.  Dobbiamo esaminare _tutti_ gli studenti.
+4.  Mentre li esaminiamo, dobbiamo tenere traccia di chi ha il voto più alto _fino a quel momento_.
 5.  Una volta esaminati tutti, il nome che abbiamo tenuto da parte sarà la nostra risposta.
 
 ### Passaggio 2: Scegliere le Strutture Dati
+
 Come rappresentiamo i nostri dati?
 
-*   Per "una lista di studenti", una **lista Python** sembra la scelta perfetta.
-*   Per rappresentare un singolo studente con "nome e voto", un **dizionario** è ideale, perché ci permette di associare delle etichette (`"nome"`, `"voto"`) ai valori.
+- Per "una lista di studenti", una **lista Python** sembra la scelta perfetta.
+- Per rappresentare un singolo studente con "nome e voto", un **dizionario** è ideale, perché ci permette di associare delle etichette (`"nome"`, `"voto"`) ai valori.
 
 La nostra struttura dati sarà quindi una **lista di dizionari**:
+
 ```python
 studenti = [
     {"nome": "Alice", "voto": 85},
@@ -1175,6 +1220,7 @@ studenti = [
 ```
 
 ### Passaggio 3: Scrivere lo Pseudo-Codice
+
 Prima di scrivere codice Python, è utile scrivere una bozza in linguaggio umano. Questo si chiama **pseudo-codice**. Ci aiuta a definire la logica senza preoccuparci della sintassi.
 
 ```
@@ -1190,6 +1236,7 @@ Prima di scrivere codice Python, è utile scrivere una bozza in linguaggio umano
 ```
 
 ### Passaggio 4: Tradurre lo Pseudo-Codice in Python
+
 Solo ora, con un piano chiaro in mente, iniziamo a scrivere il codice vero e proprio.
 
 ```python
@@ -1220,11 +1267,13 @@ if miglior_studente_trovato:
 Questo approccio strutturato (Capire -> Scegliere Dati -> Pianificare -> Codificare) è una delle abilità più importanti per un programmatore e ti aiuterà a risolvere problemi sempre più complessi.
 
 ### 03_Pattern_Comuni_su_Liste.md
+
 # Pattern Comuni di Manipolazione delle Liste
 
 Quando lavoriamo con i dati, ci troviamo spesso a ripetere le stesse operazioni logiche. Imparare a riconoscere e implementare questi "pattern" (schemi) ci rende programmatori più veloci ed efficaci.
 
 Consideriamo di avere la seguente lista di dati per tutti gli esempi:
+
 ```python
 prodotti = [
     {"id": 1, "nome": "Laptop", "prezzo": 1200, "categoria": "Elettronica"},
@@ -1235,6 +1284,7 @@ prodotti = [
 ```
 
 ### 1. Ricerca (Trovare un elemento)
+
 **Obiettivo:** Trovare un elemento specifico che soddisfa una condizione.
 
 **Problema:** Trovare il prodotto con `id` uguale a 3.
@@ -1251,6 +1301,7 @@ print(prodotto_cercato)
 ```
 
 ### 2. Filtraggio (Selezionare un sottoinsieme)
+
 **Obiettivo:** Creare una nuova lista contenente solo gli elementi che soddisfano una condizione.
 
 **Problema:** Trovare tutti i prodotti della categoria "Elettronica".
@@ -1266,6 +1317,7 @@ print(prodotti_elettronici)
 ```
 
 ### 3. Trasformazione (Mapping)
+
 **Obiettivo:** Creare una nuova lista trasformando ogni elemento della lista originale.
 
 **Problema:** Creare una lista contenente solo i nomi di tutti i prodotti.
@@ -1280,6 +1332,7 @@ print(nomi_prodotti)
 ```
 
 ### 4. Aggregazione (Reducing)
+
 **Obiettivo:** Calcolare un singolo valore riassuntivo a partire da un'intera lista.
 
 **Problema:** Calcolare il prezzo totale di tutti i prodotti in magazzino.
@@ -1298,14 +1351,17 @@ prezzi = [prodotto["prezzo"] for prodotto in prodotti] # Questo si chiama "list 
 prezzo_totale_pythonico = sum(prezzi)
 print(f"Valore totale (modo Pythonico): {prezzo_totale_pythonico}€")
 ```
+
 Questi quattro pattern sono i mattoni fondamentali per quasi ogni operazione di analisi e manipolazione dei dati.
 
 ### 04_Pattern_Comuni_su_Dizionari.md
+
 # Pattern Comuni di Manipolazione con i Dizionari
 
 Le liste sono ottime per contenere collezioni di dati, ma i dizionari brillano quando dobbiamo organizzarli, contarli o accedervi in modo più strutturato.
 
 ### 1. Conteggio delle Frequenze
+
 **Obiettivo:** Contare quante volte ogni elemento appare in una collezione.
 
 **Problema:** Data una lista di voti, contare quanti studenti hanno preso ciascun voto.
@@ -1326,6 +1382,7 @@ print(frequenze_voti)
 ```
 
 ### 2. Raggruppamento di Dati
+
 **Obiettivo:** Organizzare una lista di elementi in gruppi basati su una proprietà comune. Questo è uno dei pattern più potenti.
 
 **Problema:** Data la lista di prodotti, raggrupparli per categoria.
@@ -1345,7 +1402,7 @@ for prodotto in prodotti:
         # Se è la prima volta che vediamo questa categoria,
         # creiamo una nuova lista vuota per essa.
         prodotti_per_categoria[categoria] = []
-    
+
     # Aggiungiamo il prodotto corrente alla lista della sua categoria.
     prodotti_per_categoria[categoria].append(prodotto)
 
@@ -1359,6 +1416,7 @@ pprint.pprint(prodotti_per_categoria)
 ```
 
 ### 3. Indicizzazione (per Ricerche Veloci)
+
 **Obiettivo:** Trasformare una lista di dati in un dizionario per poter accedere a un elemento istantaneamente tramite un suo identificatore univoco (ID), invece di dover ciclare ogni volta l'intera lista.
 
 **Problema:** Data la lista di prodotti, creare una struttura che permetta di trovare un prodotto dato il suo `id` in modo immediato.
@@ -1383,17 +1441,21 @@ prodotto_cercato = prodotti_indicizzati[id_da_cercare]
 print(prodotto_cercato)
 # Output: {'id': 'B205', 'nome': 'Tastiera', 'prezzo': 80}
 ```
+
 Questo approccio è molto più efficiente della ricerca lineare su una lista, specialmente quando la collezione di dati è molto grande.
 
 ### 05_Lavorare_con_Dati_Strutturati.md
+
 # Mettere Tutto Insieme: Lavorare con Dati Strutturati
 
 Abbiamo imparato i pattern di problem-solving e di manipolazione dei dati. Ora applichiamoli a uno scenario realistico: analizzare dati provenienti da un file esterno, come un file CSV o JSON.
 
 ### Lo Scenario
+
 Immaginiamo di essere i gestori di un piccolo e-commerce e di avere un file `ordini.csv` con i dati delle vendite. Il nostro obiettivo è scrivere uno script Python che legga questo file e produca un piccolo report.
 
 **Contenuto del file `ordini.csv`:**
+
 ```csv
 id_ordine,prodotto,categoria,quantita,prezzo_unitario
 1,Laptop,Elettronica,1,1200
@@ -1404,6 +1466,7 @@ id_ordine,prodotto,categoria,quantita,prezzo_unitario
 ```
 
 **Il nostro compito è rispondere a queste domande:**
+
 1.  Qual è il ricavo totale di tutte le vendite?
 2.  Quanti prodotti della categoria "Libri" sono stati venduti in totale?
 3.  Qual è l'ordine con il ricavo più alto?
@@ -1411,6 +1474,7 @@ id_ordine,prodotto,categoria,quantita,prezzo_unitario
 ### Il Processo: Leggere, Analizzare, Stampare
 
 Il nostro script seguirà tre passaggi, proprio come abbiamo imparato:
+
 1.  **Leggere:** Aprire il file `ordini.csv` e caricare i dati in una struttura dati comoda (una lista di dizionari).
 2.  **Analizzare:** Applicare i pattern di manipolazione (aggregazione, filtraggio, ricerca) per calcolare le risposte.
 3.  **Stampare:** Mostrare i risultati in un report leggibile.
@@ -1460,7 +1524,7 @@ def analizza_dati(ordini: list[dict]):
         if ricavo_ordine > ricavo_massimo:
             ricavo_massimo = ricavo_ordine
             ordine_piu_ricco = ordine
-            
+
     return {
         "ricavo_totale": ricavo_totale,
         "quantita_libri": quantita_libri,
@@ -1491,14 +1555,16 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
 Questo esempio finale dimostra come i semplici pattern che abbiamo studiato possano essere combinati per creare script di analisi dati potenti e utili.
 
 ### 01_Mappa_Concettuale_Modulo_01.md
+
 # Mappa Concettuale: Modellazione e Oggetti
 
 Questa mappa riassume il flusso logico del modulo: dall'idea astratta di "oggetto" fino alla sua concreta implementazione, usando UML come ponte tra il design e il codice.
 
-```mermaid
+````mermaid
 graph TD
     A[Paradigma a Oggetti] --> B{Concetti Chiave};
     A --> C{Strumenti di Rappresentazione};
@@ -1542,7 +1608,7 @@ classDiagram
         +presentati() void
         +attacca(bersaglio) void
     }
-```
+````
 
 E questa è la sua implementazione in Python:
 
@@ -1566,18 +1632,20 @@ class Personaggio:
 ```
 
 Analizziamo la corrispondenza:
-*   `class Personaggio`: La dichiarazione della classe in UML corrisponde a `class Personaggio:`.
-*   **Attributi:** Gli attributi UML (`nome`, `punti_vita`, `livello`) diventano **attributi di istanza** in Python, definiti nel costruttore `__init__` e preceduti da `self.`.
-*   **Metodi:** I metodi UML (`presentati`, `attacca`) diventano **metodi di istanza** in Python, ovvero funzioni definite dentro la classe che accettano `self` come primo parametro.
+
+- `class Personaggio`: La dichiarazione della classe in UML corrisponde a `class Personaggio:`.
+- **Attributi:** Gli attributi UML (`nome`, `punti_vita`, `livello`) diventano **attributi di istanza** in Python, definiti nel costruttore `__init__` e preceduti da `self.`.
+- **Metodi:** I metodi UML (`presentati`, `attacca`) diventano **metodi di istanza** in Python, ovvero funzioni definite dentro la classe che accettano `self` come primo parametro.
 
 ### Cos'è `self`?
+
 `self` è una variabile speciale che rappresenta **l'oggetto specifico** su cui il metodo viene chiamato. Quando scriviamo `eroe1.presentati()`, `self` all'interno del metodo `presentati` si riferirà proprio a `eroe1`. Se chiamiamo `eroe2.presentati()`, `self` si riferirà a `eroe2`. È il modo con cui un oggetto accede a sé stesso.
 
 ## 2. Attributi di Istanza vs. Attributi di Classe
 
 Gli attributi che abbiamo definito con `self.` sono **attributi di istanza**, perché ogni oggetto (istanza) avrà la sua copia personale. Se creiamo due personaggi, `eroe1` ed `eroe2`, ognuno avrà il suo `nome` e i suoi `punti_vita`.
 
-Esistono anche gli **attributi di classe**, che sono condivisi da *tutti* gli oggetti creati da quella classe. Si definiscono direttamente sotto la dichiarazione della classe.
+Esistono anche gli **attributi di classe**, che sono condivisi da _tutti_ gli oggetti creati da quella classe. Si definiscono direttamente sotto la dichiarazione della classe.
 
 ```python
 class Personaggio:
@@ -1592,27 +1660,29 @@ class Personaggio:
 
 ## 3. Metodi di Istanza, di Classe e Statici
 
-*   **Metodi di Istanza (i più comuni):** Lavorano sui dati di un oggetto specifico (`self`). Esempi: `attacca()`, `subisci_danno()`.
+- **Metodi di Istanza (i più comuni):** Lavorano sui dati di un oggetto specifico (`self`). Esempi: `attacca()`, `subisci_danno()`.
 
-*   **Metodi di Classe:** Lavorano sui dati della classe (`cls`), non di un singolo oggetto. Si dichiarano con il decoratore `@classmethod`. Sono utili per creare "costruttori alternativi".
+- **Metodi di Classe:** Lavorano sui dati della classe (`cls`), non di un singolo oggetto. Si dichiarano con il decoratore `@classmethod`. Sono utili per creare "costruttori alternativi".
 
-    ```python
-    @classmethod
-    def crea_personaggio_base(cls, nome: str):
-        # 'cls' qui è come dire 'Personaggio'
-        return cls(nome)
-    ```
+  ```python
+  @classmethod
+  def crea_personaggio_base(cls, nome: str):
+      # 'cls' qui è come dire 'Personaggio'
+      return cls(nome)
+  ```
 
-*   **Metodi Statici:** Sono funzioni logicamente collegate alla classe, ma che **non dipendono né dallo stato della classe né da quello di un oggetto**. Non ricevono né `cls` né `self`. Si dichiarano con `@staticmethod`.
+- **Metodi Statici:** Sono funzioni logicamente collegate alla classe, ma che **non dipendono né dallo stato della classe né da quello di un oggetto**. Non ricevono né `cls` né `self`. Si dichiarano con `@staticmethod`.
 
-    ```python
-    @staticmethod
-    def calcola_danno_critico(danno_base: int) -> int:
-        return danno_base * 2
-    ```
-    Questa funzione è utile nel contesto del `Personaggio`, ma non ha bisogno di sapere il nome o i punti vita di un personaggio specifico per funzionare.
+  ```python
+  @staticmethod
+  def calcola_danno_critico(danno_base: int) -> int:
+      return danno_base * 2
+  ```
+
+  Questa funzione è utile nel contesto del `Personaggio`, ma non ha bisogno di sapere il nome o i punti vita di un personaggio specifico per funzionare.
 
 ### 01_Mappa_Concettuale_Modulo_02.md
+
 # Mappa Concettuale: Costruzione delle Classi
 
 Questa mappa illustra come trasformare una classe semplice in un componente software robusto, controllando come viene creata, come i suoi dati vengono protetti e come si presenta al mondo esterno.
@@ -1644,6 +1714,7 @@ graph TD
 ```
 
 ### 02_Costruttori_e_Incapsulamento.md
+
 # Lezione 1: Costruttori e Incapsulamento
 
 Nel modulo precedente abbiamo creato una classe `Personaggio`, ma la sua creazione e gestione dei dati è ancora fragile. Vediamo come renderla più solida.
@@ -1704,9 +1775,10 @@ Se ora proviamo ad accedere a `eroe.__punti_vita`, Python ci darà un `Attribute
 ## 3. Aggiornare il Diagramma UML
 
 L'incapsulamento si riflette anche nel nostro progetto UML. La **visibilità** di attributi e metodi viene indicata con dei simboli:
-*   `+` : Pubblico (accessibile da chiunque)
-*   `-` : Privato (accessibile solo dalla classe stessa)
-*   `#` : Protetto (un concetto legato all'ereditarietà, che vedremo più avanti)
+
+- `+` : Pubblico (accessibile da chiunque)
+- `-` : Privato (accessibile solo dalla classe stessa)
+- `#` : Protetto (un concetto legato all'ereditarietà, che vedremo più avanti)
 
 Il nostro diagramma `Personaggio` aggiornato diventa così:
 
@@ -1721,9 +1793,11 @@ classDiagram
         +attacca(bersaglio) void
     }
 ```
+
 Abbiamo reso `punti_vita` e `livello` privati, proteggendoli da modifiche esterne incontrollate. Nella prossima lezione vedremo come interagire con questi dati in modo sicuro.
 
 ### 03_Accesso_Controllato_Properties.md
+
 # Lezione 2: Accesso Controllato con le Properties
 
 Abbiamo incapsulato i nostri dati, ma ora come facciamo a leggerli o a modificarli in modo sicuro? La risposta in Python è elegante e potente: le **properties**.
@@ -1731,8 +1805,9 @@ Abbiamo incapsulato i nostri dati, ma ora come facciamo a leggerli o a modificar
 ## 1. Getter e Setter: L'Approccio Tradizionale
 
 In molti linguaggi, per accedere a un attributo privato `__punti_vita` si creano due metodi:
-*   `get_punti_vita()`: per leggere il valore.
-*   `set_punti_vita(valore)`: per modificare il valore, aggiungendo della logica di controllo.
+
+- `get_punti_vita()`: per leggere il valore.
+- `set_punti_vita(valore)`: per modificare il valore, aggiungendo della logica di controllo.
 
 Questo funziona, ma in Python c'è un modo migliore.
 
@@ -1789,14 +1864,16 @@ print(f"PV dopo colpo quasi mortale: {eroe.punti_vita}")
 ```
 
 ### Vantaggi delle Properties:
+
 1.  **Sintassi Pulita:** L'utente della classe accede a `eroe.punti_vita` come se fosse un attributo normale, senza dover chiamare `get...()` o `set...()`.
 2.  **Controllo Totale:** Lo sviluppatore della classe mantiene il controllo totale su cosa succede quando un attributo viene letto o modificato.
 3.  **Flessibilità:** Puoi iniziare con un attributo pubblico e, se in futuro avrai bisogno di aggiungere logica, puoi trasformarlo in una property senza dover cambiare tutto il codice che lo utilizzava.
 
 ### 04_Metodi_Speciali.md
+
 # Lezione 3: Rendere le Classi Espressive con i Metodi Speciali
 
-Un oggetto in Python può fare molto di più che chiamare i propri metodi. Può essere "stampato", "confrontato" con altri oggetti, e persino "sommato". Per fare questo, dobbiamo implementare i **metodi speciali** (o "magici", o "dunder" da *double underscore*).
+Un oggetto in Python può fare molto di più che chiamare i propri metodi. Può essere "stampato", "confrontato" con altri oggetti, e persino "sommato". Per fare questo, dobbiamo implementare i **metodi speciali** (o "magici", o "dunder" da _double underscore_).
 
 Questi metodi iniziano e finiscono sempre con un doppio underscore.
 
@@ -1828,6 +1905,7 @@ eroe = Personaggio("Gimli", 8)
 print(eroe)
 # Output: Personaggio: Gimli | Livello: 8 | PV: 100
 ```
+
 Il metodo `__str__` viene chiamato automaticamente ogni volta che un oggetto viene convertito in stringa, ad esempio con `print()` o `str()`.
 
 ## 2. `__repr__`: La Rappresentazione per lo Sviluppatore
@@ -1853,21 +1931,23 @@ print(repr(eroe)) # Chiamata esplicita
 
 Esistono decine di metodi speciali. Eccone alcuni comuni:
 
-*   `__eq__(self, other)`: Definisce il comportamento dell'operatore di uguaglianza (`==`). Permette di decidere quando due oggetti sono da considerarsi "uguali".
-    ```python
-    def __eq__(self, other):
-        # Due personaggi sono uguali se hanno lo stesso nome
-        if isinstance(other, Personaggio):
-            return self.nome == other.nome
-        return False
-    ```
+- `__eq__(self, other)`: Definisce il comportamento dell'operatore di uguaglianza (`==`). Permette di decidere quando due oggetti sono da considerarsi "uguali".
 
-*   **Metodi per operazioni aritmetiche:** `__add__` (+), `__sub__` (-), `__mul__` (*), etc.
-*   **Metodi per il confronto:** `__lt__` (<), `__gt__` (>), `__le__` (<=), `__ge__` (>=).
+  ```python
+  def __eq__(self, other):
+      # Due personaggi sono uguali se hanno lo stesso nome
+      if isinstance(other, Personaggio):
+          return self.nome == other.nome
+      return False
+  ```
+
+- **Metodi per operazioni aritmetiche:** `__add__` (+), `__sub__` (-), `__mul__` (\*), etc.
+- **Metodi per il confronto:** `__lt__` (<), `__gt__` (>), `__le__` (<=), `__ge__` (>=).
 
 Padroneggiare i metodi speciali permette di creare oggetti che si integrano perfettamente con il linguaggio Python, rendendo il codice più intuitivo e leggibile.
 
 ### 01_Mappa_Concettuale_Modulo_03.md
+
 # Mappa Concettuale: Relazioni tra Classi
 
 Questa mappa mostra i due modi principali con cui le classi possono interagire, formando la struttura portante di un'applicazione a oggetti.
@@ -1897,6 +1977,7 @@ graph TD
 ```
 
 ### 03_Associazioni_e_Collaborazione.md
+
 # Lezione 2: Associazioni e Collaborazione tra Oggetti (Relazione "HAS-A")
 
 La relazione "HAS-A" (un oggetto "ha un" altro oggetto) è fondamentale nella OOP e si modella tramite **Associazioni**. A differenza dell'ereditarietà, che crea una gerarchia di "tipi", le associazioni descrivono come oggetti indipendenti collaborano tra loro.
@@ -1907,8 +1988,8 @@ Comprendere come implementare i diversi tipi di associazione è cruciale per tra
 
 Prima di scrivere il codice, dobbiamo capire due concetti chiave del nostro progetto UML:
 
-*   **Cardinalità:** Indica *quanti* oggetti sono coinvolti in una relazione. Le più comuni sono `1` (esattamente uno), `*` (zero o più, cioè "molti") e `1..*` (uno o più).
-*   **Direzionalità:** Indica *chi conosce chi*. Una freccia (`-->`) indica una navigazione unidirezionale (una classe conosce l'altra, ma non viceversa). Una linea semplice (`--`) indica una relazione bidirezionale (entrambe le classi si conoscono a vicenda).
+- **Cardinalità:** Indica _quanti_ oggetti sono coinvolti in una relazione. Le più comuni sono `1` (esattamente uno), `*` (zero o più, cioè "molti") e `1..*` (uno o più).
+- **Direzionalità:** Indica _chi conosce chi_. Una freccia (`-->`) indica una navigazione unidirezionale (una classe conosce l'altra, ma non viceversa). Una linea semplice (`--`) indica una relazione bidirezionale (entrambe le classi si conoscono a vicenda).
 
 Vediamo come implementare i tre casi principali nel contesto del nostro RPG.
 
@@ -1921,12 +2002,14 @@ Un'istanza della Classe A è associata a una sola istanza della Classe B, e vice
 **Esempio RPG:** Ogni `Personaggio` ha esattamente un `Inventario`, e ogni `Inventario` appartiene a un solo `Personaggio`.
 
 #### Diagramma UML
+
 ```mermaid
 classDiagram
     Personaggio "1" -- "1" Inventario : possiede
 ```
 
 #### Implementazione in Python
+
 Per una relazione bidirezionale, entrambe le classi devono avere un attributo per fare riferimento all'altra. È fondamentale gestire l'associazione in modo coerente da entrambi i lati.
 
 ```python
@@ -1967,12 +2050,14 @@ Un'istanza della Classe A è associata a zero o più istanze della Classe B. Ogn
 **Esempio RPG:** Un `Inventario` può contenere molti `Oggetti`, ma un `Oggetto` specifico si trova in un solo `Inventario` alla volta.
 
 #### Diagramma UML
+
 ```mermaid
 classDiagram
     Inventario "1" -- "*" Oggetto : contiene
 ```
 
 #### Implementazione in Python
+
 La classe "uno" (`Inventario`) avrà una lista per contenere gli oggetti "molti" (`Oggetto`).
 
 ```python
@@ -2011,6 +2096,7 @@ inventario.aggiungi_oggetto(scudo)
 inventario.mostra_contenuto()
 print(f"La {spada.nome} si trova in un inventario: {isinstance(spada.contenitore, Inventario)}")
 ```
+
 ---
 
 ## 4. Associazione Molti-a-Molti (N-a-N)
@@ -2020,12 +2106,14 @@ Un'istanza della Classe A può essere associata a più istanze della Classe B, e
 **Esempio RPG:** Un `Personaggio` può apprendere più `Abilita` (es. "Attacco Rapido", "Palla di Fuoco"), e una stessa `Abilita` può essere appresa da più `Personaggi`.
 
 #### Diagramma UML
+
 ```mermaid
 classDiagram
     Personaggio "*" -- "*" Abilita : apprende
 ```
 
 #### Implementazione in Python
+
 Questa è la relazione più complessa. Entrambe le classi devono avere una lista per contenere i riferimenti all'altra. Sono necessari metodi specifici per creare il legame in modo consistente da entrambe le parti.
 
 ```python
@@ -2069,6 +2157,7 @@ print(f"Chi conosce '{attacco_rapido.nome_abilita}'? {[p.nome for p in attacco_r
 ```
 
 ### 01_Mappa_Concettuale_Modulo_04.md
+
 # Mappa Concettuale: Relazioni tra Classi
 
 Questa mappa mostra i due modi principali con cui le classi possono interagire, formando la struttura portante di un'applicazione a oggetti.
@@ -2098,6 +2187,7 @@ graph TD
 ```
 
 ### 03_Processo_di_Modellazione_Guidato.md
+
 # Lezione 2: Il Processo di Modellazione - Una Guida Pratica
 
 Abbiamo analizzato diversi scenari e creato diagrammi UML. Ora, formalizziamo il processo con due diagrammi di flusso che possono servirvi come una "checklist" o una guida passo-passo quando affrontate un nuovo problema di design, specialmente per il progetto finale.
@@ -2110,7 +2200,7 @@ Questo flowchart vi aiuta a decidere come trasformare le informazioni di un test
 flowchart TD
     A[Parti da un'informazione del requisito] --> B{{"È un dato semplice e primitivo?<br/>(es. nome, età, prezzo, un numero, una stringa...)"}};
     B -->|Sì| C[È un <b>Attributo</b> di una classe];
-    
+
     B -->|No| D{{"Ha dati propri e comportamenti?<br/>(È un 'sostantivo' importante con delle sue caratteristiche?)"}};
     D -->|Sì| E{{"È un tipo specializzato di un'altra classe?<br/>(Relazione 'IS-A')"}};
     E -->|Sì| F[È una <b>Classe Derivata</b><br/>Usa l'Ereditarietà];
@@ -2136,11 +2226,11 @@ flowchart TD
     D -->|No unidirezionale| D2[<b>Solo la classe 'Uno'</b><br/>ha una lista di attributi che punta ai 'Molti'.];
 
     B -->|Molti-a-Molti * -- *| E[<b>Ogni classe ha una lista di attributi</b><br/>che punta all'altra.<br/>Gestisci l'aggiunta da entrambi i lati.];
-    
+
 ```
 
-
 ### 01_Mappa_Concettuale_Modulo_05.md
+
 # Mappa Concettuale: Contesto e Qualità del Codice
 
 Questa mappa mostra come, una volta costruito un sistema a oggetti, ci si assicura che funzioni correttamente (Qualità) e si definisce come può essere usato da altri (Contesto).
@@ -2168,6 +2258,7 @@ graph TD
 ```
 
 ### 03_Le_Licenze_Software.md
+
 # Lezione 2: Le Licenze Software
 
 Quando creiamo un'opera dell'ingegno (un libro, una canzone, un software), questa è automaticamente protetta dal diritto d'autore. Nessuno può copiarla, modificarla o distribuirla senza il nostro permesso.
@@ -2176,39 +2267,42 @@ Ma cosa succede se **vogliamo** che altri usino, modifichino e condividano il no
 
 ## 1. Software Proprietario vs. Software Libero (Open Source)
 
-*   **Software Proprietario:** Il codice sorgente è un segreto industriale. L'utente non può vederlo, modificarlo o distribuirlo. La licenza d'uso (chiamata EULA) è molto restrittiva. *Esempi: Windows, Microsoft Office, Adobe Photoshop.*
+- **Software Proprietario:** Il codice sorgente è un segreto industriale. L'utente non può vederlo, modificarlo o distribuirlo. La licenza d'uso (chiamata EULA) è molto restrittiva. _Esempi: Windows, Microsoft Office, Adobe Photoshop._
 
-*   **Software Libero / Open Source:** Il codice sorgente è pubblico. La licenza concede a tutti delle libertà fondamentali:
-    1.  **Libertà di eseguire** il programma per qualsiasi scopo.
-    2.  **Libertà di studiare** come funziona il programma e di modificarlo.
-    3.  **Libertà di ridistribuire** copie.
-    4.  **Libertà di distribuire** copie delle proprie versioni modificate.
+- **Software Libero / Open Source:** Il codice sorgente è pubblico. La licenza concede a tutti delle libertà fondamentali:
+  1.  **Libertà di eseguire** il programma per qualsiasi scopo.
+  2.  **Libertà di studiare** come funziona il programma e di modificarlo.
+  3.  **Libertà di ridistribuire** copie.
+  4.  **Libertà di distribuire** copie delle proprie versioni modificate.
 
 ## 2. Le Principali Categorie di Licenze Open Source
 
 Non tutte le licenze open source sono uguali. Si dividono principalmente in due famiglie.
 
 ### a) Licenze Permissive (es. MIT, Apache 2.0)
-*   **Filosofia:** Massima libertà. "Prendi il mio codice e facci quello che vuoi".
-*   **Caratteristiche:**
-    *   Puoi usare il codice in progetti personali, open source o **anche commerciali e proprietari**.
-    *   L'unico obbligo, di solito, è mantenere l'attribuzione originale (il nome dell'autore e il testo della licenza).
-*   **Licenza MIT (la più semplice e popolare):**
-    > In pratica dice: "Ti do il mio codice così com'è, senza nessuna garanzia. L'unica cosa che ti chiedo è di includere il mio nome e questa licenza se lo usi."
+
+- **Filosofia:** Massima libertà. "Prendi il mio codice e facci quello che vuoi".
+- **Caratteristiche:**
+  - Puoi usare il codice in progetti personali, open source o **anche commerciali e proprietari**.
+  - L'unico obbligo, di solito, è mantenere l'attribuzione originale (il nome dell'autore e il testo della licenza).
+- **Licenza MIT (la più semplice e popolare):**
+  > In pratica dice: "Ti do il mio codice così com'è, senza nessuna garanzia. L'unica cosa che ti chiedo è di includere il mio nome e questa licenza se lo usi."
 
 ### b) Licenze Copyleft (es. GNU GPL)
-*   **Filosofia:** La libertà deve essere protetta. "Se usi il mio codice libero, anche il tuo codice derivato deve essere libero".
-*   **Caratteristiche:**
-    *   Se modifichi il codice o lo includi in un progetto più grande, **devi distribuire anche il tuo progetto con la stessa licenza GPL**.
-    *   Questo impedisce a un'azienda di prendere un software GPL, migliorarlo e renderlo proprietario.
-*   **GNU General Public License (GPL):**
-    > In pratica dice: "Puoi usare, modificare e distribuire il mio codice liberamente, ma qualsiasi software che crei basandoti su questo deve garantire le stesse libertà a tutti gli altri."
+
+- **Filosofia:** La libertà deve essere protetta. "Se usi il mio codice libero, anche il tuo codice derivato deve essere libero".
+- **Caratteristiche:**
+  - Se modifichi il codice o lo includi in un progetto più grande, **devi distribuire anche il tuo progetto con la stessa licenza GPL**.
+  - Questo impedisce a un'azienda di prendere un software GPL, migliorarlo e renderlo proprietario.
+- **GNU General Public License (GPL):**
+  > In pratica dice: "Puoi usare, modificare e distribuire il mio codice liberamente, ma qualsiasi software che crei basandoti su questo deve garantire le stesse libertà a tutti gli altri."
 
 ## 3. Perché è Importante?
 
 Scegliere una licenza per i propri progetti (anche quelli scolastici pubblicati su GitHub) è una buona pratica professionale. Comunica chiaramente al mondo cosa si può e non si può fare con il nostro lavoro, proteggendo sia noi che gli utilizzatori. Per la maggior parte dei piccoli progetti, una licenza permissiva come la **MIT** è una scelta eccellente e sicura.
 
 ### 01_Mappa_Concettuale_Modulo_06.md
+
 # Mappa Concettuale: Il Ciclo di Vita del Progetto Finale
 
 Questa mappa illustra le fasi che trasformeranno i requisiti del progetto in un'applicazione software completa e funzionante, enfatizzando l'approccio "Design-First".
@@ -2242,11 +2336,12 @@ graph TD
 ```
 
 ### 01_Mappa_Concettuale_Modulo_01.md
+
 # Mappa Concettuale: Fondamenti e Progettazione di Database Relazionali
 
 Questa mappa illustra il percorso logico del modulo, partendo dai concetti teorici fino alla progettazione e all'interazione pratica con un database.
 
-```mermaid
+````mermaid
 graph TD
     A[Database Relazionali] --> B[Perché e Come?];
     A --> C[Progettazione];
@@ -2290,9 +2385,10 @@ Questa è la regola più semplice: ogni rettangolo nel tuo diagramma ER corrispo
 ```mermaid
 erDiagram
     STUDENTE
-```
+````
 
 **Traduzione SQL:**
+
 ```sql
 CREATE TABLE Studente (
     -- le colonne verranno definite qui...
@@ -2306,6 +2402,7 @@ CREATE TABLE Studente (
 Ogni attributo elencato all'interno di un'entità nel diagramma diventa una colonna nella tabella corrispondente. Durante questa fase, definiamo anche il **tipo di dato** e i **vincoli** di base come `PRIMARY KEY` e `NOT NULL`.
 
 **Diagramma ER:**
+
 ```mermaid
 erDiagram
     STUDENTE {
@@ -2317,6 +2414,7 @@ erDiagram
 ```
 
 **Traduzione SQL:**
+
 ```sql
 CREATE TABLE Studente (
     matricola INT PRIMARY KEY,
@@ -2333,6 +2431,7 @@ CREATE TABLE Studente (
 Questa è la regola fondamentale per creare i collegamenti. In una relazione "uno a molti", la tabella sul lato "molti" deve contenere un riferimento alla tabella sul lato "uno". Questo riferimento è la **chiave esterna (Foreign Key)**.
 
 **Diagramma ER:** (Un `Docente` insegna molti `Corsi`)
+
 ```mermaid
 erDiagram
     DOCENTE ||--|{ CORSO : insegna
@@ -2353,6 +2452,7 @@ CREATE TABLE Corso (
     FOREIGN KEY (docente_id) REFERENCES Docente(id)
 );
 ```
+
 Questa struttura garantisce che ogni corso sia collegato a un solo docente, ma un docente possa essere associato a più corsi.
 
 ---
@@ -2362,6 +2462,7 @@ Questa struttura garantisce che ogni corso sia collegato a un solo docente, ma u
 Una relazione "molti a molti" non può essere rappresentata direttamente in un database relazionale. La soluzione è creare una terza tabella, chiamata **tabella di raccordo** (o _junction table_), che collega le due entità.
 
 **Diagramma ER:** (Molti `Studenti` frequentano molti `Corsi`)
+
 ```mermaid
 erDiagram
     STUDENTE }|--|{ CORSO : frequenta
@@ -2393,6 +2494,7 @@ CREATE TABLE Iscrizione (
 Seguendo queste quattro regole, puoi tradurre sistematicamente qualsiasi progetto concettuale in una struttura logica e fisica pronta per essere implementata.
 
 ### 07a_Normalizzazione_in_Pratica.md
+
 # Normalizzazione in Pratica: Da un Foglio Excel a un Database Pulito
 
 La normalizzazione può sembrare un concetto teorico e astratto. Vediamo come applicarla in uno scenario pratico per trasformare una singola tabella disordinata (come un foglio di calcolo) in un database relazionale ben strutturato, eliminando le anomalie dei dati.
@@ -2403,13 +2505,14 @@ Immagina di dover gestire i dati delle vendite di un negozio usando questa singo
 
 **Tabella Iniziale: `REGISTRO_VENDITE`**
 
-| ID_Ordine | Data | ID_Cliente | Nome_Cliente | Indirizzo_Cliente | Prodotti_Ordinati (ID:Nome:Qtà) |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| 101 | 2025-11-15 | C01 | Mario Rossi | Via Roma 1, Milano | A1:Mouse:1, B2:Tastiera:1 |
-| 102 | 2025-11-16 | C02 | Anna Bianchi| Via Milano 5, Torino| A1:Mouse:2 |
-| 103 | 2025-11-17 | C01 | Mario Rossi | Via Roma 1, Milano | C3:Monitor:1 |
+| ID_Ordine | Data       | ID_Cliente | Nome_Cliente | Indirizzo_Cliente    | Prodotti_Ordinati (ID:Nome:Qtà) |
+| :-------- | :--------- | :--------- | :----------- | :------------------- | :------------------------------ |
+| 101       | 2025-11-15 | C01        | Mario Rossi  | Via Roma 1, Milano   | A1:Mouse:1, B2:Tastiera:1       |
+| 102       | 2025-11-16 | C02        | Anna Bianchi | Via Milano 5, Torino | A1:Mouse:2                      |
+| 103       | 2025-11-17 | C01        | Mario Rossi  | Via Roma 1, Milano   | C3:Monitor:1                    |
 
 **Problemi evidenti:**
+
 1.  **Anomalia di Aggiornamento:** Se Mario Rossi cambia indirizzo, dobbiamo modificare **tutte** le righe dei suoi ordini, rischiando errori.
 2.  **Dati non Atomici:** La colonna `Prodotti_Ordinati` contiene più valori. È impossibile fare una ricerca per singolo prodotto.
 3.  **Anomalia di Inserimento:** Non possiamo aggiungere un nuovo cliente finché non ha effettuato almeno un ordine.
@@ -2425,14 +2528,14 @@ Immagina di dover gestire i dati delle vendite di un negozio usando questa singo
 
 **Risultato (Tabella in 1NF):**
 
-| ID_Ordine | Data | ID_Cliente | Nome_Cliente | Indirizzo_Cliente | ID_Prodotto | Quantità |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 101 | 2025-11-15 | C01 | Mario Rossi | Via Roma 1, Milano | A1 | 1 |
-| 101 | 2025-11-15 | C01 | Mario Rossi | Via Roma 1, Milano | B2 | 1 |
-| 102 | 2025-11-16 | C02 | Anna Bianchi| Via Milano 5, Torino| A1 | 2 |
-| 103 | 2025-11-17 | C01 | Mario Rossi | Via Roma 1, Milano | C3 | 1 |
+| ID_Ordine | Data       | ID_Cliente | Nome_Cliente | Indirizzo_Cliente    | ID_Prodotto | Quantità |
+| :-------- | :--------- | :--------- | :----------- | :------------------- | :---------- | :------- |
+| 101       | 2025-11-15 | C01        | Mario Rossi  | Via Roma 1, Milano   | A1          | 1        |
+| 101       | 2025-11-15 | C01        | Mario Rossi  | Via Roma 1, Milano   | B2          | 1        |
+| 102       | 2025-11-16 | C02        | Anna Bianchi | Via Milano 5, Torino | A1          | 2        |
+| 103       | 2025-11-17 | C01        | Mario Rossi  | Via Roma 1, Milano   | C3          | 1        |
 
-*   **Commento:** Abbiamo risolto il problema dei dati non atomici, ma la ridondanza dei dati del cliente e dell'ordine è addirittura peggiorata! Questo è normale e ci prepara per il passo successivo.
+- **Commento:** Abbiamo risolto il problema dei dati non atomici, ma la ridondanza dei dati del cliente e dell'ordine è addirittura peggiorata! Questo è normale e ci prepara per il passo successivo.
 
 ---
 
@@ -2441,6 +2544,7 @@ Immagina di dover gestire i dati delle vendite di un negozio usando questa singo
 **Regola:** Ogni attributo non-chiave deve dipendere dall'**intera** chiave primaria. (Questo si applica quando abbiamo una chiave primaria composta).
 
 **Azione:**
+
 1.  La chiave primaria della nostra tabella in 1NF è `(ID_Ordine, ID_Prodotto)`.
 2.  Notiamo che `Data`, `ID_Cliente`, `Nome_Cliente` e `Indirizzo_Cliente` dipendono solo da `ID_Ordine`, non dall'intera chiave.
 3.  Per risolvere, dividiamo la tabella in due: una per gli ordini e una per i dettagli dei prodotti in ogni ordine.
@@ -2462,7 +2566,7 @@ Immagina di dover gestire i dati delle vendite di un negozio usando questa singo
 | 102 | A1 | 2 |
 | 103 | C3 | 1 |
 
-*   **Commento:** Ora la struttura è molto più pulita. La maggior parte della ridondanza è sparita. Rimane solo quella dei dati del cliente.
+- **Commento:** Ora la struttura è molto più pulita. La maggior parte della ridondanza è sparita. Rimane solo quella dei dati del cliente.
 
 ---
 
@@ -2495,11 +2599,12 @@ Immagina di dover gestire i dati delle vendite di un negozio usando questa singo
 | 102 | A1 | 2 |
 | 103 | C3 | 1 |
 
-*   **Nota:** Per completare lo schema, avremmo bisogno anche di una tabella `Prodotti(ID_Prodotto, Nome_Prodotto, Prezzo)`.
+- **Nota:** Per completare lo schema, avremmo bisogno anche di una tabella `Prodotti(ID_Prodotto, Nome_Prodotto, Prezzo)`.
 
 Abbiamo raggiunto uno schema robusto, privo di ridondanze e che previene le anomalie. Ogni pezzo di informazione è memorizzato una sola volta.
 
 ### 09_Chiavi_Primaria_Esterna.md
+
 ## Chiavi: Primaria ed Esterna <!-- omit in toc -->
 
 - [Chiave Primaria (Primary Key)](#chiave-primaria-primary-key)
@@ -2552,8 +2657,8 @@ Nella tabella `Iscrizioni`:
 
 Questo garantisce che non si possano inserire iscrizioni per studenti o corsi inesistenti.
 
-
 ### 10_Vincoli_di_Integrita.md
+
 ## Vincoli di Integrità <!-- omit in toc -->
 
 - [Tipi di Vincoli di Integrità](#tipi-di-vincoli-di-integrità)
@@ -2565,17 +2670,14 @@ I **vincoli di integrità** sono regole che vengono applicate alle colonne di un
 Oltre ai vincoli di **chiave primaria** e **chiave esterna** già visti, esistono altri vincoli importanti:
 
 1.  **Vincolo di Unicità (`UNIQUE`)**
-
     - **Scopo**: Assicura che tutti i valori in una colonna (o in un insieme di colonne) siano unici.
     - _Esempio_: In una tabella `Utenti`, l'indirizzo `email` deve essere unico per ogni utente, ma potrebbe non essere la chiave primaria.
 
 2.  **Vincolo di Non Nullità (`NOT NULL`)**
-
     - **Scopo**: Assicura che una colonna non possa contenere valori `NULL`. Ogni riga deve obbligatoriamente avere un valore per quella colonna.
     - _Esempio_: In una tabella `Studenti`, le colonne `Nome` e `Cognome` non possono essere lasciate vuote.
 
 3.  **Vincolo di Default (`DEFAULT`)**
-
     - **Scopo**: Fornisce un valore predefinito per una colonna quando nessun valore viene specificato durante l'inserimento di una nuova riga.
     - _Esempio_: In una tabella `Ordini`, la colonna `data_ordine` può avere come valore di default la data e l'ora correnti.
 
@@ -2585,8 +2687,8 @@ Oltre ai vincoli di **chiave primaria** e **chiave esterna** già visti, esiston
 
 Questi vincoli vengono definiti durante la creazione della tabella con il comando `CREATE TABLE` in SQL.
 
-
 ### 11a_SQL_Avanzato_Esempi_Pratici.md
+
 # SQL Avanzato: Esempi Pratici con JOIN e GROUP BY
 
 Scrivere query di base è semplice, ma la vera potenza di SQL risiede nella sua capacità di combinare e aggregare dati da più tabelle per rispondere a domande complesse. In questa lezione, vedremo esempi pratici delle clausole più importanti: `JOIN` e `GROUP BY`.
@@ -2638,14 +2740,14 @@ JOIN Corsi ON Iscrizioni.corso_id = Corsi.id;
 
 **Risultato:**
 
-| nome | nome_corso |
-| :-- | :-- |
-| Marco | Matematica |
-| Marco | Fisica |
-| Laura | Matematica |
-| Simone| Fisica |
+| nome   | nome_corso |
+| :----- | :--------- |
+| Marco  | Matematica |
+| Marco  | Fisica     |
+| Laura  | Matematica |
+| Simone | Fisica     |
 
-*   **Spiegazione:** La query abbina `Studenti` con `Iscrizioni` e poi con `Corsi`. Nota che **Elena non compare**, perché il suo ID non è presente nella tabella `Iscrizioni`.
+- **Spiegazione:** La query abbina `Studenti` con `Iscrizioni` e poi con `Corsi`. Nota che **Elena non compare**, perché il suo ID non è presente nella tabella `Iscrizioni`.
 
 ---
 
@@ -2667,15 +2769,15 @@ LEFT JOIN Corsi ON Iscrizioni.corso_id = Corsi.id;
 
 **Risultato:**
 
-| nome | nome_corso |
-| :-- | :-- |
-| Marco | Matematica |
-| Marco | Fisica |
-| Laura | Matematica |
-| Simone| Fisica |
-| **Elena** | **NULL** |
+| nome      | nome_corso |
+| :-------- | :--------- |
+| Marco     | Matematica |
+| Marco     | Fisica     |
+| Laura     | Matematica |
+| Simone    | Fisica     |
+| **Elena** | **NULL**   |
 
-*   **Spiegazione:** Ora Elena compare nel risultato. Poiché non è stata trovata una corrispondenza per lei nella tabella `Iscrizioni`, il valore per `nome_corso` è `NULL`. Questo è utilissimo per trovare "elementi orfani".
+- **Spiegazione:** Ora Elena compare nel risultato. Poiché non è stata trovata una corrispondenza per lei nella tabella `Iscrizioni`, il valore per `nome_corso` è `NULL`. Questo è utilissimo per trovare "elementi orfani".
 
 ---
 
@@ -2701,21 +2803,23 @@ HAVING
 **Risultato:**
 
 | nome_corso | numero_iscritti |
-| :-- | :-- |
-| Matematica | 2 |
-| Fisica | 2 |
+| :--------- | :-------------- |
+| Matematica | 2               |
+| Fisica     | 2               |
 
-*   **Spiegazione del processo:**
-    1.  `JOIN` combina i dati.
-    2.  `GROUP BY Corsi.nome_corso` crea i gruppi: uno per "Matematica", uno per "Fisica" e uno per "Chimica".
-    3.  `COUNT(...)` conta gli studenti in ogni gruppo (2 per Matematica, 2 per Fisica, 0 per Chimica).
-    4.  `HAVING numero_iscritti >= 2` filtra via il gruppo "Chimica" perché non soddisfa la condizione.
+- **Spiegazione del processo:**
+  1.  `JOIN` combina i dati.
+  2.  `GROUP BY Corsi.nome_corso` crea i gruppi: uno per "Matematica", uno per "Fisica" e uno per "Chimica".
+  3.  `COUNT(...)` conta gli studenti in ogni gruppo (2 per Matematica, 2 per Fisica, 0 per Chimica).
+  4.  `HAVING numero_iscritti >= 2` filtra via il gruppo "Chimica" perché non soddisfa la condizione.
 
 **Ricorda la differenza fondamentale:**
-*   `WHERE` filtra le righe **prima** che vengano raggruppate.
-*   `HAVING` filtra i gruppi **dopo** che sono stati creati.
+
+- `WHERE` filtra le righe **prima** che vengano raggruppate.
+- `HAVING` filtra i gruppi **dopo** che sono stati creati.
 
 ### 14_Nozioni_di_Sicurezza.md
+
 ## Nozioni di Sicurezza dei Database <!-- omit in toc -->
 
 - [Principi Chiave della Sicurezza](#principi-chiave-della-sicurezza)
@@ -2742,8 +2846,8 @@ La sicurezza dei database è un aspetto fondamentale per garantire l'**integrit�
 - **Configurazioni Errate**: Un DBMS con impostazioni di sicurezza di default o non correttamente configurato (es. porte aperte inutilmente) può esporre a rischi.
 - **Mancanza di Aggiornamenti**: Non applicare le patch di sicurezza rilasciate dai produttori del DBMS lascia il sistema vulnerabile a exploit noti.
 
-
 ### 16_SQL_Injection.md
+
 ## SQL Injection <!-- omit in toc -->
 
 - [Cos'è la SQL Injection?](#cosè-la-sql-injection)
@@ -2788,8 +2892,8 @@ Il database tratterà questi valori **sempre e solo come dati**, mai come parte 
 
 **L'uso di un ORM (Object-Relational Mapper), che vedremo più avanti, è un altro metodo potentissimo per prevenire la SQL injection, poiché genera query parametrizzate per design.**
 
-
 ### 01_Mappa_Concettuale_Modulo_02.md
+
 # Mappa Concettuale: Basi dello Sviluppo Web e API REST
 
 Questa mappa delinea i due pilastri concettuali del modulo: il protocollo di comunicazione HTTP e lo stile architetturale per l'interazione tra applicazioni API REST.
@@ -2824,8 +2928,8 @@ graph TD
     C --- D;
 ```
 
-
 ### 07_Consumare_API_con_Python_Requests.md
+
 # Consumare API con Python e la Libreria `requests`
 
 Abbiamo imparato la teoria dietro le API REST. Ora è il momento di passare alla pratica e vedere come un'applicazione (in questo caso, un semplice script Python) può "consumare" un'API per ottenere e inviare dati.
@@ -2928,6 +3032,7 @@ except requests.exceptions.RequestException as err:
 Scrivere un client API con `requests` è così semplice. Questa abilità è fondamentale per costruire applicazioni che interagiscono con servizi esterni o per testare le API che costruiremo noi stessi.````
 
 ### 09_Il_Ciclo_di_Vita_di_una_Richiesta_Web.md
+
 # Il Ciclo di Vita di una Richiesta Web: La Storia Completa
 
 Abbiamo analizzato i singoli pezzi del puzzle: il protocollo HTTP, l'architettura REST, il ruolo del server WSGI. Ora, uniamoli tutti insieme per seguire il viaggio completo di una richiesta web, dal momento in cui un utente clicca un pulsante nel suo browser fino a quando riceve una risposta dalla nostra applicazione Python.
@@ -2943,44 +3048,58 @@ Immaginiamo che un utente si trovi sulla pagina di login della nostra applicazio
 ### Il Viaggio Passo Passo
 
 #### 1. L'Azione dell'Utente
+
 Tutto inizia con un'interazione umana. L'utente compila un form HTML e clicca il pulsante di submit.
 
 #### 2. Il Browser: Il Costruttore della Richiesta
+
 Il browser traduce l'azione dell'utente in una richiesta **HTTP**. Basandosi sugli attributi del tag `<form>`, assembla un messaggio che contiene:
-*   **Start-Line:** `POST /login HTTP/1.1` (Il metodo `POST` perché stiamo inviando dati sensibili, e l'**Endpoint** `/login` per l'autenticazione).
-*   **Headers:** Informazioni come `Host: mia-app.com` e `Content-Type: application/x-www-form-urlencoded`.
-*   **Body:** Le credenziali inserite dall'utente (es. `username=pippo&password=secret`).
+
+- **Start-Line:** `POST /login HTTP/1.1` (Il metodo `POST` perché stiamo inviando dati sensibili, e l'**Endpoint** `/login` per l'autenticazione).
+- **Headers:** Informazioni come `Host: mia-app.com` e `Content-Type: application/x-www-form-urlencoded`.
+- **Body:** Le credenziali inserite dall'utente (es. `username=pippo&password=secret`).
 
 #### 3. HTTPS: Il Tunnel Sicuro
+
 Prima che la richiesta venga inviata su Internet, viene incapsulata in un livello di sicurezza **HTTPS**. Grazie al protocollo **TLS/SSL**, l'intero messaggio HTTP viene crittografato. Questo garantisce che, anche se qualcuno intercettasse il pacchetto, non potrebbe leggere la password dell'utente.
 
 #### 4. Il Viaggio su Internet
+
 La richiesta crittografata viaggia attraverso la rete. Il sistema DNS traduce il nome del dominio (`mia-app.com`) nell'indirizzo IP del server, e i router instradano il pacchetto fino a destinazione.
 
 #### 5. Il Server Web (es. Nginx): Il Vigile Urbano
+
 La richiesta non arriva direttamente alla nostra applicazione Python. Arriva prima a un **Web Server** come Nginx o Apache. Questo software ha due compiti principali:
+
 1.  **Gestire la connessione di rete** in modo efficiente e terminare la connessione **HTTPS** (decrittografando la richiesta).
 2.  **Agire da "reverse proxy"**: ispeziona la richiesta e decide a quale servizio interno inoltrarla. Per una richiesta dinamica destinata alla nostra app, la passa al server applicativo.
 
 #### 6. Il Server WSGI (es. Gunicorn): L'Interprete
+
 Il server web (Nginx) non sa come eseguire codice Python. Per questo, comunica con un **Server WSGI** come Gunicorn. Gunicorn è un "traduttore" che prende la richiesta HTTP dal server web e la converte in un formato standard che Python può capire, come definito dalle specifiche **WSGI**.
 
 #### 7. L'Applicazione Flask: Il Cervello
+
 Finalmente, la richiesta raggiunge la nostra applicazione!
+
 1.  Il server WSGI (Gunicorn) invoca l'oggetto applicazione Flask.
 2.  Il motore di routing di Flask analizza l'**Endpoint** (`/login`) e il metodo (`POST`) e chiama la funzione Python associata (es. la funzione decorata con `@app.route('/login', methods=['POST'])`).
 3.  La nostra funzione legge le credenziali dal corpo della richiesta, le confronta con quelle nel database (visto nel Modulo 01) e decide se l'autenticazione ha avuto successo.
 
 #### 8. La Risposta: La Decisione del Cervello
+
 La nostra funzione Flask ora deve generare una risposta. Se il login ha successo, potrebbe creare una risposta di **redirezione**. Questa è a sua volta un messaggio **HTTP**:
-*   **Status-Line:** `HTTP/1.1 302 Found` (Lo status code per la redirezione).
-*   **Headers:** `Location: /dashboard` (Dice al browser a quale nuova pagina andare).
+
+- **Status-Line:** `HTTP/1.1 302 Found` (Lo status code per la redirezione).
+- **Headers:** `Location: /dashboard` (Dice al browser a quale nuova pagina andare).
 
 #### 9. Il Viaggio di Ritorno
+
 La risposta HTTP ripercorre la strada all'indietro:
 `Flask` -> `Gunicorn (WSGI)` -> `Nginx` -> `Crittografia HTTPS` -> `Internet` -> `Browser`
 
 #### 10. Il Browser: L'Esecutore Finale
+
 Il browser riceve la risposta `302 Found`. Capisce che deve effettuare una nuova richiesta, questa volta una richiesta `GET` all'endpoint `/dashboard`. Il ciclo ricomincia, ma questa volta il server restituirà la pagina HTML della dashboard dell'utente.
 
 ### Schema Riassuntivo del Flusso
@@ -3010,6 +3129,7 @@ sequenceDiagram
 Questa "storia" dimostra come ogni componente che abbiamo studiato abbia un ruolo preciso e indispensabile nell'ecosistema di un'applicazione web.
 
 ### 01_Mappa_Concettuale_Modulo_03.md
+
 # Mappa Concettuale: Architettura Web con Flask
 
 Questa mappa illustra la struttura "professionale" che adotteremo fin dal primo giorno, separando la configurazione, la logica delle route e la visualizzazione.
@@ -3039,6 +3159,7 @@ graph TD
 ```
 
 ### 02_Setup_e_Factory.md
+
 # Lezione 1: Setup Professionale e Application Factory
 
 In questo modulo faremo un salto di qualità. Non scriveremo più tutto il codice in un solo file. Impareremo a organizzare il progetto come fanno i professionisti Python.
@@ -3051,8 +3172,8 @@ In Python, come facciamo a dire che una cartella non è solo un contenitore di f
 
 Lo facciamo creando all'interno della cartella un file speciale chiamato `__init__.py` (due underscore prima e dopo).
 
-*   **Senza `__init__.py`**: La cartella è solo una directory del sistema operativo.
-*   **Con `__init__.py`**: La cartella diventa un **Pacchetto Python**.
+- **Senza `__init__.py`**: La cartella è solo una directory del sistema operativo.
+- **Con `__init__.py`**: La cartella diventa un **Pacchetto Python**.
 
 Quando Python vede questo file, sa che può trattare quella cartella come se fosse una libreria. Il codice scritto dentro `__init__.py` viene eseguito automaticamente appena il pacchetto viene importato.
 
@@ -3061,6 +3182,7 @@ Quando Python vede questo file, sa che può trattare quella cartella come se fos
 Quando sviluppi un'applicazione web, ci sono file che riguardano il codice (che è uguale per tutti gli sviluppatori) e file che riguardano la **configurazione locale** (che cambiano da computer a computer).
 
 Flask usa una cartella standard chiamata `instance/` per contenere:
+
 1.  **I Segreti:** Chiavi di sicurezza, password (che non vanno mai condivise).
 2.  **Il Database:** Il file del database SQLite (che cambia mentre usi l'app).
 
@@ -3069,9 +3191,11 @@ Questa cartella è speciale perché **non dovrebbe mai essere condivisa** (ad es
 ### 3. Concetto Chiave: L'Application Factory
 
 Nei tutorial base, spesso si vede:
+
 ```python
 app = Flask(__name__)  # Creato globalmente
 ```
+
 Questo ha un difetto: l'applicazione viene creata subito, appena avvii Python. Non puoi cambiarne la configurazione facilmente.
 
 Il pattern **Application Factory** (Fabbrica di Applicazioni) risolve il problema. Invece di creare l'app come variabile globale, scriviamo una **funzione** che crea e restituisce l'app.
@@ -3081,6 +3205,7 @@ def create_app():
     app = Flask(...)
     return app
 ```
+
 È come avere uno stampino (la funzione): possiamo usarlo per creare l'applicazione quando vogliamo e come vogliamo.
 
 ---
@@ -3110,7 +3235,7 @@ from flask import Flask
 
 def create_app():
     # 1. Creiamo l'istanza di Flask
-    # instance_relative_config=True dice a Flask: 
+    # instance_relative_config=True dice a Flask:
     # "Cerca la cartella 'instance' fuori da 'app', non dentro."
     app = Flask(__name__, instance_relative_config=True)
 
@@ -3138,7 +3263,6 @@ def create_app():
 
     return app
 ```
-
 
 **3. L'Entry Point (`run.py`)**
 Ora ci serve un file per "accendere" la fabbrica. Questo file sta fuori dalla cartella `app`.
@@ -3171,6 +3295,7 @@ if __name__ == '__main__':
 Se vedi il messaggio di saluto, hai creato con successo un'architettura Flask professionale!
 
 ### 01_Mappa_Concettuale_Modulo_04.md
+
 # Mappa Concettuale: Accesso Dati e Autenticazione
 
 Questa mappa evidenzia l'architettura a tre livelli che implementiamo: Presentazione, Logica Applicativa e Accesso ai Dati.
@@ -3206,6 +3331,7 @@ graph TD
 ```
 
 ### 01_Mappa_Concettuale_Modulo_05.md
+
 # Mappa Concettuale: Sviluppo CRUD e Relazioni
 
 Questa mappa mostra il flusso completo per la gestione di un'entità complessa come i Post, integrando sicurezza e database.
@@ -3239,6 +3365,7 @@ graph TD
 ```
 
 ### 03_Blueprint_Create_Read.md
+
 # Lezione 2: Visualizzare e Creare i Post
 
 Ora che abbiamo il repository, dobbiamo aggiornare il nostro sito per usarlo.
@@ -3247,6 +3374,7 @@ Non creeremo nuovi file: modificheremo `app/main.py` per mostrare i post veri in
 ### 1. Aggiornare la Homepage (`app/main.py`)
 
 Apri `app/main.py`. Dobbiamo:
+
 1.  Importare il repository.
 2.  Aggiornare la funzione `index` per leggere dal DB.
 3.  Aggiungere la route `create` per scrivere nuovi post.
@@ -3266,7 +3394,7 @@ bp = Blueprint('main', __name__)
 def index():
     # 1. Prendiamo i post veri dal database
     posts = post_repository.get_all_posts()
-    
+
     # 2. Passiamo la variabile 'posts' al template
     return render_template('index.html', posts=posts)
 
@@ -3304,37 +3432,35 @@ def create():
 Apri `app/templates/index.html`. Ora i dati che arrivano (`posts`) sono oggetti reali del database, non stringhe. Dobbiamo accedere ai campi giusti (`title`, `body`, `username`).
 
 ```html
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<h1>Blog della Classe</h1>
 
-{% block content %}
-  <h1>Blog della Classe</h1>
-  
-  <!-- Mostra il tasto 'Nuovo' solo se sei loggato -->
-  {% if g.user %}
-    <a href="{{ url_for('main.create') }}" class="btn">Scrivi un nuovo post</a>
-    <hr>
+<!-- Mostra il tasto 'Nuovo' solo se sei loggato -->
+{% if g.user %}
+<a href="{{ url_for('main.create') }}" class="btn">Scrivi un nuovo post</a>
+<hr />
+{% endif %} {% for post in posts %}
+<article>
+  <header>
+    <!-- Titolo del post -->
+    <h2>{{ post['title'] }}</h2>
+    <!-- Info autore e data -->
+    <small
+      >Scritto da <strong>{{ post['username'] }}</strong> il {{
+      post['created'].strftime('%Y-%m-%d') }}</small
+    >
+  </header>
+
+  <!-- Corpo del post -->
+  <p>{{ post['body'] }}</p>
+
+  <!-- Tasto Modifica (visibile solo all'autore) -->
+  {% if g.user and g.user['id'] == post['author_id'] %}
+  <a href="{{ url_for('main.update', id=post['id']) }}">Modifica</a>
   {% endif %}
-
-  {% for post in posts %}
-    <article>
-      <header>
-          <!-- Titolo del post -->
-          <h2>{{ post['title'] }}</h2>
-          <!-- Info autore e data -->
-          <small>Scritto da <strong>{{ post['username'] }}</strong> il {{ post['created'].strftime('%Y-%m-%d') }}</small>
-      </header>
-      
-      <!-- Corpo del post -->
-      <p>{{ post['body'] }}</p>
-      
-      <!-- Tasto Modifica (visibile solo all'autore) -->
-      {% if g.user and g.user['id'] == post['author_id'] %}
-        <a href="{{ url_for('main.update', id=post['id']) }}">Modifica</a>
-      {% endif %}
-    </article>
-    <hr>
-  {% endfor %}
-{% endblock %}
+</article>
+<hr />
+{% endfor %} {% endblock %}
 ```
 
 ### 3. Creare il Template `blog/create.html`
@@ -3342,23 +3468,22 @@ Apri `app/templates/index.html`. Ora i dati che arrivano (`posts`) sono oggetti 
 Crea la cartella `app/templates/blog/` e dentro il file `create.html`.
 
 ```html
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<h1>Nuovo Post</h1>
+<form method="post">
+  <label for="title">Titolo</label>
+  <input name="title" id="title" required />
 
-{% block content %}
-  <h1>Nuovo Post</h1>
-  <form method="post">
-    <label for="title">Titolo</label>
-    <input name="title" id="title" required>
+  <label for="body">Testo del post</label>
+  <textarea name="body" id="body" rows="5" required></textarea>
 
-    <label for="body">Testo del post</label>
-    <textarea name="body" id="body" rows="5" required></textarea>
-
-    <input type="submit" value="Pubblica">
-  </form>
+  <input type="submit" value="Pubblica" />
+</form>
 {% endblock %}
 ```
 
 ### 01_Mappa_Concettuale_Modulo_06.md
+
 # Mappa Concettuale: Deployment e Produzione
 
 Questa mappa illustra la trasformazione dell'ambiente, dal PC dello studente al Cloud.
@@ -3388,6 +3513,7 @@ graph TD
 ```
 
 ### 02_Gunicorn_Requirements.md
+
 # Lezione 1: Prepararsi al Cloud (Gunicorn e Requirements)
 
 Fino ad ora abbiamo lanciato il sito con `flask run` o `python run.py`.
@@ -3400,6 +3526,7 @@ Per andare online ("in Produzione"), ci serve un **Camion**. Ci serve **Gunicorn
 Gunicorn (Green Unicorn) è un server **WSGI** professionale. Gestisce molte richieste contemporaneamente, è stabile e sicuro.
 
 Apri il terminale (col venv attivo) e installalo:
+
 ```bash
 pip install gunicorn
 ```
@@ -3423,11 +3550,13 @@ Quando caricheremo il codice sul Cloud (Render.com), il server remoto riceverà 
 Dobbiamo fornirgli una "Lista della Spesa". In Python, questa lista si chiama `requirements.txt`.
 
 Generala automaticamente con questo comando:
+
 ```bash
 pip freeze > requirements.txt
 ```
 
 Apri il file creato. Dovrebbe contenere righe come:
+
 ```text
 Flask==3.0.0
 gunicorn==21.2.0
@@ -3457,6 +3586,7 @@ instance/
 Ora siamo pronti per configurare la sicurezza.
 
 ### 5m_Esempio_Documento_Requisiti.md
+
 # Esempio di Documento dei Requisiti
 
 > Questo esempio mostra come preparare un documento dei requisiti per un progetto di fine anno del modulo `03_Sviluppo_Web_e_Database`.
@@ -3467,6 +3597,7 @@ Ora siamo pronti per configurare la sicurezza.
 ### 1.1 Scopo del documento
 
 Lo scopo di questo documento è:
+
 - descrivere in modo chiaro il prodotto che gli studenti dovranno realizzare;
 - raccogliere i requisiti funzionali e non funzionali;
 - fornire una prima progettazione concettuale con diagrammi ER, UML e casi d'uso;
@@ -3475,6 +3606,7 @@ Lo scopo di questo documento è:
 ### 1.2 Contesto
 
 Gli studenti del quinto anno devono realizzare un piccolo progetto web con backend in Python/Flask e database relazionale. Il tema è libero, ma è consigliabile scegliere un prodotto che preveda:
+
 - una gestione dati persistente;
 - una parte di autenticazione e sicurezza;
 - un'interfaccia web con visualizzazione dinamica;
@@ -3497,11 +3629,11 @@ RecipeHub è un ricettario digitale in cui gli utenti possono creare, condivider
 
 ## 3. Stakeholder e attori
 
-| Stakeholder | Ruolo | Interesse |
-| --- | --- | --- |
-| Studente | Sviluppatore | Realizzare il progetto rispettando i requisiti |
-| Docente | Valutatore | Verificare correttezza tecnica e completezza |
-| Utente finale | Studentessa o studente | Usare l'app per salvare e consultare ricette |
+| Stakeholder   | Ruolo                  | Interesse                                      |
+| ------------- | ---------------------- | ---------------------------------------------- |
+| Studente      | Sviluppatore           | Realizzare il progetto rispettando i requisiti |
+| Docente       | Valutatore             | Verificare correttezza tecnica e completezza   |
+| Utente finale | Studentessa o studente | Usare l'app per salvare e consultare ricette   |
 
 ### Attori principali
 
@@ -3712,13 +3844,13 @@ Il diagramma dei casi d'uso è stato generato come immagine a partire dal file P
 
 Un possibile piano di lavoro su 5 settimane:
 
-| Settimana | Attività |
-| --- | --- |
-| 1 | Analisi dei requisiti, scelta del tema, disegno ER e UML, preparazione ambiente di lavoro |
-| 2 | Configurazione Flask, sistema di autenticazione, gestione utenti |
-| 3 | Implementazione CRUD delle ricette e delle categorie |
-| 4 | Ricerca/filter, preferiti, commenti opzionali |
-| 5 | Testing, correzioni bug, documentazione, preparazione consegna GitHub |
+| Settimana | Attività                                                                                  |
+| --------- | ----------------------------------------------------------------------------------------- |
+| 1         | Analisi dei requisiti, scelta del tema, disegno ER e UML, preparazione ambiente di lavoro |
+| 2         | Configurazione Flask, sistema di autenticazione, gestione utenti                          |
+| 3         | Implementazione CRUD delle ricette e delle categorie                                      |
+| 4         | Ricerca/filter, preferiti, commenti opzionali                                             |
+| 5         | Testing, correzioni bug, documentazione, preparazione consegna GitHub                     |
 
 ### 10.1 Gantt semplificato
 
@@ -3748,5 +3880,3 @@ gantt
 - Usare `.gitignore` per escludere `__pycache__`, `.venv` e `instance/`.
 - Includere i diagrammi di progetto se sono stati realizzati.
 - Fare commit frequenti e significativi.
-
-

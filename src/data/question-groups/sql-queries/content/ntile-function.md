@@ -1,4 +1,4 @@
-**NTILE()** is a window function that divides rows into a pre-defined number of roughly equal groups. It's like breaking your data into different sets based on your defined criteria. For example, let's say you have some student scores from 1 to 100; you can use the **NTILE()** function to categorize the scores into different groups or buckets. 
+**NTILE()** is a window function that divides rows into a pre-defined number of roughly equal groups. It's like breaking your data into different sets based on your defined criteria. For example, let's say you have some student scores from 1 to 100; you can use the **NTILE()** function to categorize the scores into different groups or buckets.
 
 The syntax of the `NTILE()` function is:
 
@@ -9,7 +9,6 @@ NTILE(n) OVER (ORDER BY some_column)
 - n: represents the number of groups you want to divide your rows into.
 - ORDER BY: defines the order of the rows in each group where the function is applied.
 
- 
 Let's see a practical example using a table `Scores`. The table stores students' scores on a test. We will see how to use the **NTILE()** function.
 
 | userId | score |
@@ -44,4 +43,4 @@ FROM scores;
 | 8      | 66    | 3        |
 | 5      | 60    | 3        |
 
-The **NTILE()** function is useful in data analysis because it can detect outliers in a data set and create histograms of data. It can also create percentiles and quartiles for data distribution. 
+The **NTILE()** function is useful in data analysis because it can detect outliers in a data set and create histograms of data. It can also create percentiles and quartiles for data distribution.

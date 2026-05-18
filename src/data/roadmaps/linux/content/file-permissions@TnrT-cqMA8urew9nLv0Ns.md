@@ -7,7 +7,6 @@ In fact, permissions on the system are there for a reason: to prevent unprivileg
 Let's have a look at an example:
 
     -rwxr--r-- 1 root root 4096 Jan 1 12:00 filename
-    
 
 From the above example, the first character `-` indicates if it is a regular file(`-`) or directory(`d`). The following group of three characters(`rwx`) represents the permissions for the file owner. The next three characters(`r--`) represent permissions for the group and the last set of three characters(`r--`) represents permissions for others.
 

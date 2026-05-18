@@ -12,6 +12,7 @@ Visit the following resources to learn more:
 ## 📚 Appunti Personali (IT)
 
 ### 13_MariaDB.md
+
 # Guida a MariaDB
 
 MariaDB è un sistema di gestione di database relazionali (RDBMS) open source, creato dagli sviluppatori originali di MySQL. È altamente compatibile con MySQL, quindi la maggior parte degli strumenti e dei comandi funziona in modo identico.
@@ -73,9 +74,9 @@ Una volta dentro, puoi eseguire comandi SQL. Ecco alcuni comandi utili:
     ```
 5.  **Applica le modifiche:**
     `sql
-    FLUSH PRIVILEGES;
-    EXIT;
-    `
+FLUSH PRIVILEGES;
+EXIT;
+`
     Ora puoi connetterti direttamente con il nuovo utente:
 
 ```bash
@@ -91,5 +92,3 @@ mysql -u nome_utente -p nome_database < percorso/del/tuo/file.sql
 ```
 
 Questo comando eseguirà tutte le istruzioni SQL contenute nel file all'interno del database specificato.
-
-

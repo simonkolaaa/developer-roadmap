@@ -2,7 +2,7 @@
 jsonUrl: '/jsons/roadmaps/datastructures-and-algorithms.json'
 pdfUrl: '/pdfs/roadmaps/datastructures-and-algorithms.pdf'
 order: 18
-renderer: "editor"
+renderer: 'editor'
 briefTitle: 'Data Structures & Algorithms'
 briefDescription: 'Step by step guide to learn Data Structures and Algorithms in 2025'
 title: 'Data Structures & Algorithms'

@@ -5,9 +5,8 @@ Autoloading is a convenient feature in PHP that allows for automated loading of 
     spl_autoload_register(function ($class_name) {
         include $class_name . '.php';
     });
-    
+
     $obj = new MyClass();
-    
 
 In this example, PHP will automatically load the MyClass.php file when the MyClass is instantiated.
 

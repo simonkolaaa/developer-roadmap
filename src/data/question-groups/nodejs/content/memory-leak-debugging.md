@@ -19,7 +19,7 @@ function handleRequest(req, res) {
     // Process data
   };
   req.on('data', onData);
-  
+
   res.on('finish', () => {
     req.removeListener('data', onData);
   });
@@ -51,7 +51,7 @@ function processRequest(id, data) {
 // ❌ Memory leak: closure retains largeData
 function createHandler() {
   const largeData = new Array(1000000).fill('x');
-  
+
   return function handler(req, res) {
     // largeData is retained even if not used
     res.send('OK');
@@ -81,7 +81,7 @@ function startPolling() {
   const intervalId = setInterval(() => {
     fetchData();
   }, 1000);
-  
+
   return () => clearInterval(intervalId);
 }
 ```
@@ -110,7 +110,7 @@ setInterval(() => {
     heapUsed: `${Math.round(usage.heapUsed / 1024 / 1024)}MB`,
     heapTotal: `${Math.round(usage.heapTotal / 1024 / 1024)}MB`,
     external: `${Math.round(usage.external / 1024 / 1024)}MB`,
-    rss: `${Math.round(usage.rss / 1024 / 1024)}MB`
+    rss: `${Math.round(usage.rss / 1024 / 1024)}MB`,
   });
 }, 5000);
 ```
@@ -150,8 +150,9 @@ const initialMemory = process.memoryUsage().heapUsed;
 setInterval(() => {
   const currentMemory = process.memoryUsage().heapUsed;
   const growth = currentMemory - initialMemory;
-  
-  if (growth > 50 * 1024 * 1024) { // 50MB growth
+
+  if (growth > 50 * 1024 * 1024) {
+    // 50MB growth
     console.warn('Possible memory leak detected!');
     console.log(`Memory grew by ${Math.round(growth / 1024 / 1024)}MB`);
   }
@@ -176,4 +177,3 @@ function attachMetadata(obj, data) {
   // When obj is garbage collected, metadata entry is too
 }
 ```
-

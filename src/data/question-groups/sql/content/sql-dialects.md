@@ -11,4 +11,4 @@ Some common SQL dialects are:
 
 While the core syntax is similar, features like aggregate and scalar functions, JSON handling, or full-text search may vary slightly.
 
-After answering the question, feel free to ask which dialect the company uses; it's a great way to learn more about their stack and how they work. 
+After answering the question, feel free to ask which dialect the company uses; it's a great way to learn more about their stack and how they work.

@@ -1,4 +1,4 @@
-# Google Deployment  Mgr.
+# Google Deployment Mgr.
 
 Google Cloud Deployment Manager is an infrastructure deployment service that automates the creation and management of Google Cloud resources. It provides users with flexible template and configuration files to create deployments that have a variety of Google Cloud services, such as Cloud Storage, Compute Engine, and Cloud SQL, configured to work together.
 

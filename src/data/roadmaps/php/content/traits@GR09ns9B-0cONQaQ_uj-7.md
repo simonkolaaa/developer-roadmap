@@ -14,7 +14,6 @@ Here's an example how to use a Trait:
     }
     $user = new User();
     echo $user->sayHello(); // Outputs: Hello
-    
 
 In the above code snippet, the `Greeting` trait is being used in the `User` class, and we are able to use its methods as if they were defined in the `User` class.
 

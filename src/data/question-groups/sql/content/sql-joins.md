@@ -8,10 +8,10 @@ JOINs let you combine rows from two or more tables based on a related column. Th
 Example using `LEFT JOIN`:
 
 ```sql
--- Get users and their orders (even if they have none)  
-SELECT users.name, orders.amount  
-FROM users  
+-- Get users and their orders (even if they have none)
+SELECT users.name, orders.amount
+FROM users
 LEFT JOIN orders ON users.id = orders.user_id;
 ```
 
-Think of JOIN operations like combining spreadsheets based on related information. 
+Think of JOIN operations like combining spreadsheets based on related information.

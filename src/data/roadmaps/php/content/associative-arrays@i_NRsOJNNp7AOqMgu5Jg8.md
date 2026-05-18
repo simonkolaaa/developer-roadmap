@@ -7,7 +7,6 @@ Associative arrays in PHP are a type of array that uses named keys instead of nu
        "John" => 42,
        "Mary" => 27
     ];
-    
 
 In this case, to find out John's age, you would simply use `echo $ages['John']` where 'John' is the key. Associative arrays are also easy to loop through using the `foreach` construct.
 

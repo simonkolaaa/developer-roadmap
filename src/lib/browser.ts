@@ -1,13 +1,15 @@
 export function urlToId(url: string) {
-  return url
-    .replace(/^https?:\/\//, '')
-    .replace('roadmap.sh', '')
-    .replace(/localhost:[\d]*?/, '')
-    .replace(/\?.*$/, '')
-    .replace(/\/$/, '')
-    .replace(/^\//, '')
-    .replace(/[^a-zA-Z0-9]/g, '-')
-    .toLowerCase() || 'home';
+  return (
+    url
+      .replace(/^https?:\/\//, '')
+      .replace('roadmap.sh', '')
+      .replace(/localhost:[\d]*?/, '')
+      .replace(/\?.*$/, '')
+      .replace(/\/$/, '')
+      .replace(/^\//, '')
+      .replace(/[^a-zA-Z0-9]/g, '-')
+      .toLowerCase() || 'home'
+  );
 }
 
 const LAST_PATH_KEY = 'lastPage';
@@ -184,12 +186,12 @@ export function getGclid(): string | undefined {
 
   const params = new URLSearchParams(window.location.search);
   const gclid = params.get('gclid');
-  
+
   if (gclid) {
     localStorage.setItem('gclid', gclid);
     return gclid;
   }
-  
+
   return localStorage.getItem('gclid') || undefined;
 }
 
@@ -215,7 +217,7 @@ export function getPageTrackingData() {
 
   const utmParams = getUrlUtmParams();
   const storedUtmParams = getStoredUtmParams();
-  
+
   return {
     page_location: window.location.href,
     page_path: window.location.pathname,

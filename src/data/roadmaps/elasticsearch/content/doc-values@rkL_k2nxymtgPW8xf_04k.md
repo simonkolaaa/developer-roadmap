@@ -6,5 +6,5 @@ Visit the following resources to learn more:
 
 - [@official@doc_values](https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/doc-values)
 - [@article@Elasticsearch doc-values-only Fields](https://opster.com/guides/elasticsearch/data-architecture/elasticsearch-doc-values-only-fields/)
-- [@article@Elasticsearch _source, doc_values and store Performance](https://sease.io/2021/02/field-retrieval-performance-in-elasticsearch.html)
+- [@article@Elasticsearch \_source, doc_values and store Performance](https://sease.io/2021/02/field-retrieval-performance-in-elasticsearch.html)
 - [@video@Field Data vs Doc Values | Understanding Elasticsearch Performance Issues](https://www.youtube.com/watch?v=l99lIuvQULk)

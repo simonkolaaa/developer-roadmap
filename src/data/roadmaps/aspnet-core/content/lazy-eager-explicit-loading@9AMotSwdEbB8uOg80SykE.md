@@ -1,12 +1,10 @@
 # Lazy Eager Explicit Loading
 
-Eager Loading
--------------
+## Eager Loading
 
 Eager Loading helps you to load all your needed entities at once; i.e., all your child entities will be loaded at single database call. This can be achieved, using the Include method, which returns the related entities as a part of the query and a large amount of data is loaded at once.
 
-Lazy Loading
-------------
+## Lazy Loading
 
 It is the default behavior of an Entity Framework, where a child entity is loaded only when it is accessed for the first time. It simply delays the loading of the related data, until you ask for it.
 

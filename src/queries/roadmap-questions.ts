@@ -9,8 +9,10 @@ export function roadmapQuestionsOptions(roadmapId: string) {
   return queryOptions({
     queryKey: ['roadmap-questions', roadmapId],
     queryFn: () => {
-      return httpGet<RoadmapQuestionsResponse>(`/v1-official-roadmap-questions/${roadmapId}`);
+      return httpGet<RoadmapQuestionsResponse>(
+        `/v1-official-roadmap-questions/${roadmapId}`,
+      );
     },
     refetchOnMount: false,
   });
-} 
+}

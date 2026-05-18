@@ -12,144 +12,143 @@ seo:
   title: 'Top 30 SQL Interview Questions and Answers (With Quiz)'
   description: 'Master 30 common SQL interview questions with practical examples, flashcards, and tips for writing queries without autocomplete during live interviews.'
   ogImageUrl: 'https://assets.roadmap.sh/guest/sql-queries-interview-questions-and-answers-q3qua.jpg'
-  keywords: 
-    - 'sql quiz' 
-    - 'sql questions' 
-    - 'sql interview questions' 
-    - 'sql interview' 
+  keywords:
+    - 'sql quiz'
+    - 'sql questions'
+    - 'sql interview questions'
+    - 'sql interview'
     - 'sql test'
 sitemap:
   priority: 1
   changefreq: 'monthly'
 questions:
-    - question: How is SQL different from other programming languages?
-      answer: sql-vs-other-languages.md
-      topics:
+  - question: How is SQL different from other programming languages?
+    answer: sql-vs-other-languages.md
+    topics:
       - 'Beginners'
-    - question: What are SQL dialects?
-      answer: sql-dialects.md
-      topics:
+  - question: What are SQL dialects?
+    answer: sql-dialects.md
+    topics:
       - 'Beginners'
-    - question: What are the types of SQL subsets, and how are they different?
-      answer: sql-subsets.md
-      topics:
+  - question: What are the types of SQL subsets, and how are they different?
+    answer: sql-subsets.md
+    topics:
       - 'Beginners'
-    - question: What is a primary key?
-      answer: primary-key.md
-      topics:
+  - question: What is a primary key?
+    answer: primary-key.md
+    topics:
       - 'Beginners'
-    - question: Explain SQL constraints like NOT NULL, UNIQUE, and CHECK.
-      answer: sql-constraints.md
-      topics:
+  - question: Explain SQL constraints like NOT NULL, UNIQUE, and CHECK.
+    answer: sql-constraints.md
+    topics:
       - 'Beginners'
-    - question: What is the difference between WHERE and HAVING?
-      answer: where-vs-having.md
-      topics:
+  - question: What is the difference between WHERE and HAVING?
+    answer: where-vs-having.md
+    topics:
       - 'Beginners'
-    - question: What is a foreign key?
-      answer: foreign-key.md
-      topics:
+  - question: What is a foreign key?
+    answer: foreign-key.md
+    topics:
       - 'Beginners'
-    - question: What are the different types of JOINs in SQL?
-      answer: sql-joins.md
-      topics:
+  - question: What are the different types of JOINs in SQL?
+    answer: sql-joins.md
+    topics:
       - 'Intermediate'
-    - question: How do you use a subquery?
-      answer: subquery-usage.md
-      topics:
+  - question: How do you use a subquery?
+    answer: subquery-usage.md
+    topics:
       - 'Intermediate'
-    - question: What is an index and why is it useful?
-      answer: sql-index.md
-      topics:
+  - question: What is an index and why is it useful?
+    answer: sql-index.md
+    topics:
       - 'Intermediate'
-    - question: What is the difference between UNION and UNION ALL?
-      answer: union-vs-union-all.md
-      topics:
+  - question: What is the difference between UNION and UNION ALL?
+    answer: union-vs-union-all.md
+    topics:
       - 'Intermediate'
-    - question: What is the difference between RANK(), DENSE_RANK(), and ROW_NUMBER()?
-      answer: ranking-functions.md
-      topics:
+  - question: What is the difference between RANK(), DENSE_RANK(), and ROW_NUMBER()?
+    answer: ranking-functions.md
+    topics:
       - 'Intermediate'
-    - question: What is a correlated subquery?
-      answer: correlated-subquery.md
-      topics:
+  - question: What is a correlated subquery?
+    answer: correlated-subquery.md
+    topics:
       - 'Intermediate'
-    - question: How can you find duplicate records in a table?
-      answer: find-duplicates.md
-      topics:
+  - question: How can you find duplicate records in a table?
+    answer: find-duplicates.md
+    topics:
       - 'Intermediate'
-    - question: What is a view?
-      answer: sql-view.md
-      topics:
+  - question: What is a view?
+    answer: sql-view.md
+    topics:
       - 'Intermediate'
-    - question: What is SQL injection, and how do you prevent it?
-      answer: sql-injection-prevention.md
-      topics:
+  - question: What is SQL injection, and how do you prevent it?
+    answer: sql-injection-prevention.md
+    topics:
       - 'Intermediate'
-    - question: What are the advantages of stored procedures?
-      answer: stored-procedures.md
-      topics:
+  - question: What are the advantages of stored procedures?
+    answer: stored-procedures.md
+    topics:
       - 'Advanced'
-    - question: What is database normalization, and why is it important?
-      answer: database-normalization.md
-      topics:
+  - question: What is database normalization, and why is it important?
+    answer: database-normalization.md
+    topics:
       - 'Advanced'
-    - question: How do you handle database transactions in SQL?
-      answer: database-transactions.md
-      topics:
+  - question: How do you handle database transactions in SQL?
+    answer: database-transactions.md
+    topics:
       - 'Advanced'
-    - question: What is the difference between clustered and non-clustered indexes?
-      answer: clustered-vs-nonclustered-indexes.md
-      topics:
+  - question: What is the difference between clustered and non-clustered indexes?
+    answer: clustered-vs-nonclustered-indexes.md
+    topics:
       - 'Advanced'
-    - question: How do you optimize a slow-performing query?
-      answer: query-optimization.md
-      topics:
+  - question: How do you optimize a slow-performing query?
+    answer: query-optimization.md
+    topics:
       - 'Advanced'
-    - question: How would you implement pagination in SQL?
-      answer: sql-pagination.md
-      topics:
+  - question: How would you implement pagination in SQL?
+    answer: sql-pagination.md
+    topics:
       - 'Advanced'
-    - question: How many patients have registered in the past 6 months?
-      answer: patients-registration-query.md
-      topics:
+  - question: How many patients have registered in the past 6 months?
+    answer: patients-registration-query.md
+    topics:
       - 'Practical Queries'
-    - question: What's the average treatment cost per appointment?
-      answer: average-treatment-cost.md
-      topics:
+  - question: What's the average treatment cost per appointment?
+    answer: average-treatment-cost.md
+    topics:
       - 'Practical Queries'
-    - question: List patients who had more than 3 appointments.
-      answer: patients-multiple-appointments.md
-      topics:
+  - question: List patients who had more than 3 appointments.
+    answer: patients-multiple-appointments.md
+    topics:
       - 'Practical Queries'
-    - question: Which doctor has treated the highest number of unique patients?
-      answer: doctor-most-patients.md
-      topics:
+  - question: Which doctor has treated the highest number of unique patients?
+    answer: doctor-most-patients.md
+    topics:
       - 'Practical Queries'
-    - question: What's the total revenue generated from treatments last month?
-      answer: revenue-last-month.md
-      topics:
+  - question: What's the total revenue generated from treatments last month?
+    answer: revenue-last-month.md
+    topics:
       - 'Practical Queries'
-    - question: Find the most common diagnosis.
-      answer: most-common-diagnosis.md
-      topics:
+  - question: Find the most common diagnosis.
+    answer: most-common-diagnosis.md
+    topics:
       - 'Practical Queries'
-    - question: Which appointments were scheduled but never had a treatment recorded?
-      answer: appointments-no-treatment.md
-      topics:
+  - question: Which appointments were scheduled but never had a treatment recorded?
+    answer: appointments-no-treatment.md
+    topics:
       - 'Practical Queries'
-    - question: Which patients haven't visited in over a year?
-      answer: patients-no-recent-visits.md
-      topics:
-      - 'Practical Queries'    
+  - question: Which patients haven't visited in over a year?
+    answer: patients-no-recent-visits.md
+    topics:
+      - 'Practical Queries'
 ---
 
 ![SQL interview questions and answers](https://assets.roadmap.sh/guest/sql-queries-interview-questions-and-answers-q3qua.jpg)
 
 In this guide, I’ll walk you through 30 essential questions, from basic joins to advanced window functions, and share practical tips for writing and debugging queries on the spot. Each answer includes simple, practical examples (such as customer analysis and inventory tracking) so you’ll learn the syntax and know when and why to use it. By the end, you’ll have the confidence to tackle any live SQL test and the know-how to put these patterns to work.
- 
-To help you prepare and practice more effectively, I’ve included a collection of flashcards that make self-testing easier. Check out the [SQL roadmap](https://roadmap.sh/sql) for an even deeper dive into the topics covered in this guide.
 
+To help you prepare and practice more effectively, I’ve included a collection of flashcards that make self-testing easier. Check out the [SQL roadmap](https://roadmap.sh/sql) for an even deeper dive into the topics covered in this guide.
 
 ## Getting ready for your SQL interview
 

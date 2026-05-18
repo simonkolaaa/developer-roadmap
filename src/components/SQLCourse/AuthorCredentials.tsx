@@ -1,4 +1,3 @@
-
 export function AuthorCredentials() {
   return (
     <div className="mx-auto mt-8 flex flex-col items-start gap-4 text-sm text-zinc-400 sm:flex-row sm:flex-wrap sm:items-center md:mt-12 md:justify-center md:gap-x-3 md:gap-y-2">

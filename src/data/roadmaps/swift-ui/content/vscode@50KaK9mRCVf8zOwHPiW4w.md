@@ -1,6 +1,6 @@
 # VSCode
 
-VSCode (Visual Studio Code) is a free and popular source code editor developed by Microsoft. It's known for its lightweight design, extensive customization options through extensions, and robust support for various programming languages, including Swift.  It provides features like syntax highlighting, debugging, an integrated terminal, and Git integration, making it a versatile tool for software development.
+VSCode (Visual Studio Code) is a free and popular source code editor developed by Microsoft. It's known for its lightweight design, extensive customization options through extensions, and robust support for various programming languages, including Swift. It provides features like syntax highlighting, debugging, an integrated terminal, and Git integration, making it a versatile tool for software development.
 
 Visit the following resources to learn more:
 

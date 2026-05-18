@@ -9,7 +9,6 @@ Recursion, as it applies to PHP, refers to a function that calls itself to solve
         }
     }
     countDown(5);
-    
 
 In this example, the function `countDown` calls itself until the count hits zero, displaying numbers from 5 to 0.
 

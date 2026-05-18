@@ -7,9 +7,8 @@ Here's an example:
     function add(int $a, int $b): int {
         return $a + $b;
     }
-    
+
     echo add(1, 2);  // prints: 3
-    
 
 In this example, the function 'add' only accepts integers and also returns an integer.
 

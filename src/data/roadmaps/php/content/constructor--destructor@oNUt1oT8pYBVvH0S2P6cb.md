@@ -4,20 +4,20 @@ Constructor and Destructor methods are fundamental components of Object-Oriented
 
     class TestClass {
       public $value;
-    
+
       // Constructor Method
       public function __construct($val) {
         $this->value = $val;
       }
-    
+
       // Destructor Method
       public function __destruct() {
         echo "Object is being destroyed.";
       }
     }
-    
+
     $obj = new TestClass("Hello World");
-    echo $obj->value; 
+    echo $obj->value;
     // Displays: Hello World
     // And when the script ends, "Object is being destroyed."
 

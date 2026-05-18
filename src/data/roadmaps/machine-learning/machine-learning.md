@@ -2,7 +2,7 @@
 jsonUrl: '/jsons/roadmaps/machine-learning.json'
 pdfUrl: '/pdfs/roadmaps/machine-learning.pdf'
 order: 4.99
-renderer: "editor"
+renderer: 'editor'
 briefTitle: 'Machine Learning'
 briefDescription: 'Step by step guide to becoming a Machine Learning Engineer in 2025'
 title: 'Machine Learning'

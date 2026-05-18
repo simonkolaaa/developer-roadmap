@@ -15,7 +15,7 @@ import { ShareRoadmapButton } from './ShareRoadmapButton';
 import { TabLink } from './TabLink';
 import { PersonalizedRoadmap } from './PersonalizedRoadmap/PersonalizedRoadmap';
 import RoadmapFeedbackAlert from './Roadmaps/RoadmapFeedbackAlert.astro';
-import {markdownToHtml} from '../lib/markdown';
+import { markdownToHtml } from '../lib/markdown';
 
 export interface Props {
   title: string;
@@ -46,7 +46,6 @@ const {
   isNew = false,
 } = Astro.props;
 
-
 const hasCourses = coursesCount > 0;
 const hasProjects = projectCount > 0;
 ---
@@ -57,26 +56,26 @@ const hasProjects = projectCount > 0;
 <div class='container mt-0 flex flex-col gap-2.5 px-0 sm:mt-3 sm:px-4'>
   {
     partner && (
-      <div class='hidden rounded-md border border-slate-800 bg-slate-900 px-2 py-1.5 sm:block neo-glow'>
+      <div class='neo-glow hidden rounded-md border border-slate-800 bg-slate-900 px-2 py-1.5 sm:block'>
         <p class='py-0.5 text-left text-sm text-slate-300'>
           <span class='badge mr-1 bg-blue-600'>Partner</span>
           {partner.description}
-          <a href={partner.link} target='_blank' class='font-medium underline text-blue-400'>
+          <a
+            href={partner.link}
+            target='_blank'
+            class='font-medium text-blue-400 underline'
+          >
             {partner.linkText}
           </a>
         </p>
       </div>
     )
-
   }
 
-
-
   <div
-    class='relative rounded-none border border-slate-800 bg-slate-900 px-5 pt-4 pb-0 sm:rounded-lg neo-glow'
+    class='neo-glow relative rounded-none border border-slate-800 bg-slate-900 px-5 pt-4 pb-0 sm:rounded-lg'
   >
     <div class='flex items-start justify-between'>
-
       <a
         class='inline-flex items-center justify-center rounded-md bg-gray-300 px-2 py-1.5 text-xs font-medium hover:bg-gray-400 sm:hidden sm:text-sm'
         aria-label='Back to roadmaps'
@@ -107,9 +106,10 @@ const hasProjects = projectCount > 0;
       <h1 class='mb-0.5 text-2xl font-bold sm:mb-3.5 sm:text-5xl'>
         {title}
       </h1>
-      <p class='text-sm text-balance text-gray-500 sm:text-lg' set:html={markdownToHtml(description)}>
-        
-      </p>
+      <p
+        class='text-sm text-balance text-gray-500 sm:text-lg'
+        set:html={markdownToHtml(description)}
+      />
     </div>
 
     {
@@ -146,7 +146,5 @@ const hasProjects = projectCount > 0;
         </div>
       )
     }
-
-
   </div>
 </div>

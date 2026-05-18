@@ -16,7 +16,6 @@ Here's a basic switch statement:
         echo "Invalid choice.";
     }
     // Outputs: You chose apple.
-    
 
 Switch statements can make your code cleaner and easier to manage, especially when dealing with multiple conditions.
 

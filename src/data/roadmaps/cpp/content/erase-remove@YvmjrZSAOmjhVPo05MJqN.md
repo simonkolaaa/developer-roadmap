@@ -5,4 +5,4 @@ The Erase-Remove idiom is a common C++ technique used to efficiently remove elem
 Visit the following resources to learn more:
 
 - [@article@std::remove, std::remove_if](https://en.cppreference.com/w/cpp/algorithm/remove.html)
-- [@video@C++ STL algorithm - erase-remove idiom -- std::remove(_if, _copy_if) | Modern Cpp Series Ep. 154](https://www.youtube.com/watch?v=btyuTSb_238)
+- [@video@C++ STL algorithm - erase-remove idiom -- std::remove(\_if, \_copy_if) | Modern Cpp Series Ep. 154](https://www.youtube.com/watch?v=btyuTSb_238)

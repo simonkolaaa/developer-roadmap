@@ -23,4 +23,4 @@ Transactions follow ACID properties:
 - **Isolation**: Transactions don't interfere with each other.
 - **Durability**: Once committed, the changes are saved permanently.
 
-If you're dealing with things like financial transfers or inventory updates, using transactions is a must. 
+If you're dealing with things like financial transfers or inventory updates, using transactions is a must.

@@ -4,6 +4,6 @@ An ID, or Primary Key, is a unique identifier for each document stored within an
 
 Visit the following resources to learn more:
 
-- [@official@_id field](http://elastic.co/docs/reference/elasticsearch/mapping-reference/mapping-id-field)
+- [@official@\_id field](http://elastic.co/docs/reference/elasticsearch/mapping-reference/mapping-id-field)
 - [@official@Index basics](https://www.elastic.co/docs/manage-data/data-store/index-basics)
 - [@official@Get a document by its ID](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get)

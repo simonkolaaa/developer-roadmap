@@ -7,7 +7,7 @@ Middleware is a function that has access to the request object, response object,
 function middleware(req, res, next) {
   // Do something with req/res
   console.log(`${req.method} ${req.url}`);
-  
+
   // Pass control to next middleware
   next();
 }
@@ -65,7 +65,7 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({
     error: 'Something went wrong!',
-    message: err.message
+    message: err.message,
   });
 });
 
@@ -96,11 +96,11 @@ app.use(express.static('public'));
 ```js
 function authenticate(req, res, next) {
   const token = req.headers.authorization?.split(' ')[1];
-  
+
   if (!token) {
     return res.status(401).json({ error: 'No token provided' });
   }
-  
+
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;
@@ -121,12 +121,12 @@ app.get('/profile', authenticate, (req, res) => {
 ```js
 function logger(req, res, next) {
   const start = Date.now();
-  
+
   res.on('finish', () => {
     const duration = Date.now() - start;
     console.log(`${req.method} ${req.url} ${res.statusCode} - ${duration}ms`);
   });
-  
+
   next();
 }
 
@@ -142,25 +142,25 @@ function rateLimiter(limit = 100, windowMs = 60000) {
   return (req, res, next) => {
     const ip = req.ip;
     const now = Date.now();
-    
+
     if (!rateLimit.has(ip)) {
       rateLimit.set(ip, { count: 1, resetTime: now + windowMs });
       return next();
     }
-    
+
     const record = rateLimit.get(ip);
-    
+
     if (now > record.resetTime) {
       // Window expired - reset and clean up
       record.count = 1;
       record.resetTime = now + windowMs;
       return next();
     }
-    
+
     if (record.count >= limit) {
       return res.status(429).json({ error: 'Too many requests' });
     }
-    
+
     record.count++;
     next();
   };
@@ -219,9 +219,11 @@ const asyncHandler = (fn) => (req, res, next) => {
   Promise.resolve(fn(req, res, next)).catch(next);
 };
 
-app.get('/users', asyncHandler(async (req, res) => {
-  const users = await User.find();
-  res.json(users);
-}));
+app.get(
+  '/users',
+  asyncHandler(async (req, res) => {
+    const users = await User.find();
+    res.json(users);
+  }),
+);
 ```
-

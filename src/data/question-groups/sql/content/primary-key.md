@@ -10,4 +10,4 @@ CREATE TABLE users (
   name VARCHAR(100)
 );
 -- 'id' must be unique and non-null for every row.
-``` 
+```

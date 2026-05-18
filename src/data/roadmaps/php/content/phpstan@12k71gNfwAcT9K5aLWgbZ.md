@@ -6,7 +6,7 @@ Here's a basic example of how you can use PHPStan:
 
     // install PHPStan using composer
     $ composer require --dev phpstan/phpstan
-    
+
     // analyse your code
     $ vendor/bin/phpstan analyse src
 

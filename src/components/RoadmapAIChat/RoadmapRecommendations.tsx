@@ -69,7 +69,7 @@ export function RoadmapRecommendations(props: RoadmapRecommendationsProps) {
             className="group flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-2.5 py-1.5 text-left text-sm text-gray-700 transition-all hover:border-gray-400 hover:text-black active:bg-gray-100"
           >
             {item.title}
-            <SquareArrowOutUpRightIcon className="size-3.5 ml-1 text-gray-400 transition-transform group-hover:text-gray-600" />
+            <SquareArrowOutUpRightIcon className="ml-1 size-3.5 text-gray-400 transition-transform group-hover:text-gray-600" />
           </a>
         ))}
       </div>

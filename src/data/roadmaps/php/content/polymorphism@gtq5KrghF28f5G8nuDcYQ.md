@@ -8,27 +8,26 @@ Here's a small sample code demonstrating the concept:
     interface Shape {
       public function draw();
     }
-    
+
     class Circle implements Shape {
       public function draw() {
         echo "Draw a circle";
       }
     }
-    
+
     class Rectangle implements Shape {
       public function draw() {
         echo "Draw a rectangle";
       }
     }
-    
+
     function drawShape(Shape $shape) {
       $shape->draw();
     }
-    
-    drawShape(new Circle());  
-    drawShape(new Rectangle()); 
+
+    drawShape(new Circle());
+    drawShape(new Rectangle());
     ?>
-    
 
 This creates a scalable way to add more shapes, as you only need to follow the 'Shape' interface.
 

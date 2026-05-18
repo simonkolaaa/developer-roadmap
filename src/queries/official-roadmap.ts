@@ -3,7 +3,11 @@ import { FetchError, httpGet } from '../lib/query-http';
 import { DateTime } from 'luxon';
 import { LOCAL_ROADMAPS } from '../data/local-roadmaps';
 
-export const allowedOfficialRoadmapType = ['skill', 'role', 'best-practice'] as const;
+export const allowedOfficialRoadmapType = [
+  'skill',
+  'role',
+  'best-practice',
+] as const;
 export type AllowedOfficialRoadmapType =
   (typeof allowedOfficialRoadmapType)[number];
 

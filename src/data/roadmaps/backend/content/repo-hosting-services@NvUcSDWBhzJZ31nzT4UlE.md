@@ -11,11 +11,13 @@ Visit the following resources to learn more:
 ## 📚 Appunti Personali (IT)
 
 ### 02_DB_e_Repository.md
+
 # Lezione 1: Database SQL e Repository Pattern
 
 Finora il nostro sito usava dati finti. Ora useremo **SQLite**, un vero database che salva i dati in un file.
 
 In questa lezione:
+
 1.  Creeremo uno script per costruire il database (tabelle).
 2.  Creeremo il modulo per connetterci.
 3.  Scriveremo il nostro primo **Repository**.
@@ -74,9 +76,11 @@ connection.close()
 
 **Eseguiamolo subito:**
 Apri il terminale e scrivi:
+
 ```bash
 python setup_db.py
 ```
+
 Se vedi "Database creato con successo", hai finito la configurazione iniziale!
 
 ### 3. Gestire la Connessione (`app/db.py`)
@@ -90,7 +94,7 @@ from flask import current_app, g
 
 def get_db():
     """Restituisce la connessione al database per la richiesta corrente."""
-    # 'g' è uno zaino temporaneo di Flask. 
+    # 'g' è uno zaino temporaneo di Flask.
     # Se la connessione c'è già, la riusiamo. Se no, la creiamo.
     if 'db' not in g:
         g.db = sqlite3.connect(
@@ -113,7 +117,6 @@ def init_app(app):
     # Dice a Flask: "Quando hai finito di caricare la pagina, chiudi sempre il DB"
     app.teardown_appcontext(close_db)
 ```
-
 
 ### 4. Attivare la chiusura automatica
 
@@ -178,6 +181,7 @@ def get_user_by_id(user_id):
 Fatto! Abbiamo un sistema database pulito, semplice e funzionante.
 
 ### 02_Repository_dei_Post.md
+
 # Lezione 1: Il Repository dei Post e le Relazioni SQL
 
 Il cuore di un blog sono i post. Un post non vive da solo: è scritto da un **Autore**.
@@ -248,4 +252,3 @@ def delete(post_id):
     db.execute('DELETE FROM post WHERE id = ?', (post_id,))
     db.commit()
 ```
-

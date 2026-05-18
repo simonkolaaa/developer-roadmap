@@ -12,12 +12,12 @@ export function PurchaseBanner() {
   useEffect(() => {
     const handleScroll = () => {
       if (!bannerRef.current) return;
-      
+
       const bannerRect = bannerRef.current.getBoundingClientRect();
       const bannerTop = bannerRect.top;
       const bannerBottom = bannerRect.bottom;
       const scrollTop = window.scrollY;
-      
+
       // Banner is fully in view when both top and bottom are within viewport
       const fullyVisible = bannerTop >= 0 && bannerBottom <= window.innerHeight;
       setIsFullyInView(fullyVisible || scrollTop > bannerRect.top);

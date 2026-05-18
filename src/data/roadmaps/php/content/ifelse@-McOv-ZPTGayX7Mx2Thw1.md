@@ -8,7 +8,6 @@ In PHP, the if/else conditional statements are fundamental components that contr
     } else {
         echo "The number is not greater than 5";
     }
-    
 
 In this example, the output will be "The number is greater than 5" because the condition evaluated to true.
 

@@ -74,7 +74,7 @@ async function readFiles() {
     const data1 = await fs.readFile('file1.txt', 'utf8');
     const data2 = await fs.readFile('file2.txt', 'utf8');
     const data3 = await fs.readFile('file3.txt', 'utf8');
-    
+
     return { data1, data2, data3 };
   } catch (err) {
     console.error('Error:', err.message);
@@ -84,8 +84,8 @@ async function readFiles() {
 
 // Call async function
 readFiles()
-  .then(result => console.log(result))
-  .catch(err => console.error(err));
+  .then((result) => console.log(result))
+  .catch((err) => console.error(err));
 ```
 
 ## Parallel vs Sequential Execution
@@ -95,11 +95,11 @@ readFiles()
 ```js
 async function sequential() {
   const start = Date.now();
-  
+
   const result1 = await fetchData1(); // 1 second
   const result2 = await fetchData2(); // 1 second
   const result3 = await fetchData3(); // 1 second
-  
+
   console.log(`Time: ${Date.now() - start}ms`); // ~3000ms
 }
 ```
@@ -109,13 +109,13 @@ async function sequential() {
 ```js
 async function parallel() {
   const start = Date.now();
-  
+
   const [result1, result2, result3] = await Promise.all([
     fetchData1(),
     fetchData2(),
-    fetchData3()
+    fetchData3(),
   ]);
-  
+
   console.log(`Time: ${Date.now() - start}ms`); // ~1000ms
 }
 ```
@@ -128,7 +128,7 @@ async function parallel() {
 const results = await Promise.all([
   fetch('/api/users'),
   fetch('/api/posts'),
-  fetch('/api/comments')
+  fetch('/api/comments'),
 ]);
 // Fails if ANY promise rejects
 ```
@@ -139,7 +139,7 @@ const results = await Promise.all([
 const results = await Promise.allSettled([
   fetch('/api/users'),
   fetch('/api/posts'),
-  Promise.reject('Error')
+  Promise.reject('Error'),
 ]);
 // Returns all results, even if some fail
 // [{ status: 'fulfilled', value: ... }, { status: 'rejected', reason: ... }]
@@ -150,7 +150,9 @@ const results = await Promise.allSettled([
 ```js
 const result = await Promise.race([
   fetch('/api/data'),
-  delay(5000).then(() => { throw new Error('Timeout'); })
+  delay(5000).then(() => {
+    throw new Error('Timeout');
+  }),
 ]);
 ```
 
@@ -160,7 +162,7 @@ const result = await Promise.race([
 const result = await Promise.any([
   fetch('/api/primary'),
   fetch('/api/backup1'),
-  fetch('/api/backup2')
+  fetch('/api/backup2'),
 ]);
 // Returns first successful result
 ```
@@ -176,8 +178,10 @@ doSomething((err, result) => {
 
 // Promises
 doSomething()
-  .then(result => { /* handle result */ })
-  .catch(err => handleError(err));
+  .then((result) => {
+    /* handle result */
+  })
+  .catch((err) => handleError(err));
 
 // Async/Await
 try {
@@ -190,11 +194,11 @@ try {
 
 ## When to Use Each Pattern
 
-| Pattern | Best For | Avoid When |
-|---------|----------|------------|
-| Callbacks | Legacy code, streams, event emitters | New code, complex flows |
-| Promises | Chaining operations, library APIs | Simple one-off operations |
-| Async/Await | Most modern code, readability | Top-level module scope (ESM) |
+| Pattern     | Best For                             | Avoid When                   |
+| ----------- | ------------------------------------ | ---------------------------- |
+| Callbacks   | Legacy code, streams, event emitters | New code, complex flows      |
+| Promises    | Chaining operations, library APIs    | Simple one-off operations    |
+| Async/Await | Most modern code, readability        | Top-level module scope (ESM) |
 
 ## Common Mistakes
 
@@ -247,4 +251,3 @@ async function safeOperation() {
   }
 }
 ```
-

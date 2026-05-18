@@ -4,18 +4,17 @@ Performance Testing is a subset of Performance Engineering. It is a process of e
 
 There are three objectives (three S) of Performance testing to observe and evaluate: `Speed`, `Scalability`, and `Stability`.
 
-Types of Performance Testing
-----------------------------
+## Types of Performance Testing
 
 Following are the commonly used performance testing types, but not limited to:
 
-*   Load Testing
-*   Stress Testing
-*   Spike Testing
-*   Endurance Testing
-*   Volume Testing
-*   Scalability Testing
-*   Capacity Testing
+- Load Testing
+- Stress Testing
+- Spike Testing
+- Endurance Testing
+- Volume Testing
+- Scalability Testing
+- Capacity Testing
 
 Visit the following resources to learn more:
 

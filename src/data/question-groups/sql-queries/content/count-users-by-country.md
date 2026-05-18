@@ -26,4 +26,4 @@ The query uses the **GROUP BY** clause to group the users by country and then sh
 | Portugal  | 2     |
 | Argentina | 2     |
 | Belgium   | 1     |
-| Denmark   | 1     | 
+| Denmark   | 1     |

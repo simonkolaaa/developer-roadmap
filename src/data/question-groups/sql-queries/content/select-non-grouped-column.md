@@ -13,4 +13,4 @@ SELECT firstName, phoneNumber FROM phoneNumbers
 GROUP BY phoneNumber
 ```
 
-The result will be an error because `firstName` is not in the **GROUP BY** clause and not using an aggregate function. 
+The result will be an error because `firstName` is not in the **GROUP BY** clause and not using an aggregate function.

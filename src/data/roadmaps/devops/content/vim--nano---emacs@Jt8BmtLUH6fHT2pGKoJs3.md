@@ -2,11 +2,11 @@
 
 Text editors are software tools used for creating, editing, and managing text files. They range from simple editors with basic features to complex Integrated Development Environments (IDEs). Popular text editors include:
 
-*   **Notepad**: A basic editor for Windows, suitable for simple text files.
-*   **Vim**: A highly configurable and powerful editor known for its efficiency and modal interface.
-*   **Emacs**: A versatile editor with extensive customization options and a wide range of plugins.
-*   **Sublime Text**: A feature-rich editor with a focus on speed and a user-friendly interface.
-*   **Visual Studio Code**: A modern, open-source editor with built-in support for debugging, extensions, and integration with various development tools.
+- **Notepad**: A basic editor for Windows, suitable for simple text files.
+- **Vim**: A highly configurable and powerful editor known for its efficiency and modal interface.
+- **Emacs**: A versatile editor with extensive customization options and a wide range of plugins.
+- **Sublime Text**: A feature-rich editor with a focus on speed and a user-friendly interface.
+- **Visual Studio Code**: A modern, open-source editor with built-in support for debugging, extensions, and integration with various development tools.
 
 Visit the following resources to learn more:
 

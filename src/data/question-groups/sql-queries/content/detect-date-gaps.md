@@ -1,4 +1,4 @@
-You will use the **LAG()** function to detect gaps in a sequence of dates per user. You will compare each date with the previous one and check if the difference is greater than 1.  
+You will use the **LAG()** function to detect gaps in a sequence of dates per user. You will compare each date with the previous one and check if the difference is greater than 1.
 
 Let's use a table `ClockIns` to demonstrate how you detect gaps. The table has two columns, `userId` and `clockInDate`, representing the user identification number and the date the user clocked in with an access card into a facility. The table looks like this:
 
@@ -28,7 +28,7 @@ WITH clockInGaps AS (
     clockIns
 )
 
-SELECT 
+SELECT
   userId,
   previousClockInDate AS gapStart,
   clockInDate AS gapEend,
@@ -45,4 +45,4 @@ The code above starts with creating an expression `clockInGaps` that queries for
 | 1      | 2025-01-02 | 2025-01-05 | 2       |
 | 2      | 2025-01-07 | 2025-01-10 | 2       |
 | 3      | 2025-01-02 | 2025-01-04 | 1       |
-| 3      | 2025-01-04 | 2025-01-06 | 1       | 
+| 3      | 2025-01-04 | 2025-01-06 | 1       |

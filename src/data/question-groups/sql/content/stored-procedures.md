@@ -26,4 +26,4 @@ END;
 EXEC GetEmployeesByDepartment @DepartmentID = 3;
 ```
 
-Stored procedures are especially useful in enterprise systems where performance, security, and consistent logic are important. 
+Stored procedures are especially useful in enterprise systems where performance, security, and consistent logic are important.

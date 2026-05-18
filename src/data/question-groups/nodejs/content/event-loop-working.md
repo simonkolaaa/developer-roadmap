@@ -3,6 +3,7 @@ The Node.js event loop is the mechanism that allows Node.js to perform non-block
 ## Six Phases of Event Loop
 
 ### 1. Timers Phase
+
 Executes callbacks scheduled by `setTimeout()` and `setInterval()`.
 
 ```js
@@ -12,12 +13,15 @@ setTimeout(() => {
 ```
 
 ### 2. Pending Callbacks Phase
+
 Executes I/O callbacks deferred from the previous cycle.
 
 ### 3. Idle, Prepare Phase
+
 Used internally by Node.js.
 
 ### 4. Poll Phase
+
 Retrieves new I/O events and executes I/O-related callbacks. This is where most application code runs.
 
 ```js
@@ -29,6 +33,7 @@ fs.readFile('file.txt', (err, data) => {
 ```
 
 ### 5. Check Phase
+
 Executes `setImmediate()` callbacks.
 
 ```js
@@ -38,6 +43,7 @@ setImmediate(() => {
 ```
 
 ### 6. Close Callbacks Phase
+
 Handles close events like `socket.on('close')`.
 
 ## Microtasks vs Macrotasks
@@ -80,4 +86,3 @@ fs.readFile('file.txt', () => {
 - Use `setImmediate()` for breaking up CPU-intensive work
 - Avoid recursive `process.nextTick()` calls (can starve I/O)
 - Use worker threads for heavy computation
-

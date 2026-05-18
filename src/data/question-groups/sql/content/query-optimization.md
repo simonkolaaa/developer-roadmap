@@ -30,4 +30,4 @@ JOIN products p ON oi.product_id = p.id
 WHERE o.order_date > '2022-01-01';
 ```
 
-The specific optimization techniques will vary based on your database system and performance bottlenecks. 
+The specific optimization techniques will vary based on your database system and performance bottlenecks.

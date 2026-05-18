@@ -6,9 +6,8 @@ Parameters in PHP functions specify the input that the function expects to recei
       $sum = $num1 + $num2;
       return $sum;
     }
-    
+
     echo addNumbers(3, 4);  // Outputs: 7
-    
 
 In the above code, `$num1` and `$num2` are parameters, and the sum of these numbers is the return value.
 

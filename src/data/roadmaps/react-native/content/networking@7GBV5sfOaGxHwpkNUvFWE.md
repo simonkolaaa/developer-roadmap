@@ -6,7 +6,6 @@ React Native facilitates network requests and data management from remote source
       .then((response) => response.json())
       .then((json) => console.log(json))
       .catch((error) => console.error(error));
-    
 
 Another popular option is Axios, a widely-used library that simplifies HTTP requests in JavaScript applications. Like fetch, Axios is promise-based and offers a user-friendly API, making it a preferred choice for many developers when handling network requests in React Native.
 

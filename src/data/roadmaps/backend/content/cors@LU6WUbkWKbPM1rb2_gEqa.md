@@ -11,7 +11,8 @@ Visit the following resources to learn more:
 
 ## 📚 Appunti Personali (IT)
 
-### _percorso_di_studi.md
+### \_percorso_di_studi.md
+
 # Percorso di studi
 
 ```mermaid
@@ -63,8 +64,8 @@ graph TD
 
 ```
 
-
 ### 03_Mappa_Generale_del_Corso.md
+
 [Rendered version](https://rawcdn.githack.com/angelogalantiscuola/IT/refs/heads/main/argomenti_fondamentali.html)
 
 ```markmap
@@ -147,5 +148,3 @@ graph TD
 ##### Ereditarietà
 ### Diagrammi ER: Progettazione dei Database
 ```
-
-

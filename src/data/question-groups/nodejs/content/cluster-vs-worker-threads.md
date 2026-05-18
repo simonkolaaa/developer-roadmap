@@ -25,10 +25,12 @@ if (cluster.isPrimary) {
   });
 } else {
   // Workers share the TCP connection
-  http.createServer((req, res) => {
-    res.writeHead(200);
-    res.end(`Hello from worker ${process.pid}`);
-  }).listen(8000);
+  http
+    .createServer((req, res) => {
+      res.writeHead(200);
+      res.end(`Hello from worker ${process.pid}`);
+    })
+    .listen(8000);
 
   console.log(`Worker ${process.pid} started`);
 }
@@ -39,12 +41,17 @@ if (cluster.isPrimary) {
 Creates threads within the same process. Workers share memory (via SharedArrayBuffer) and are lighter than cluster workers.
 
 ```js
-import { Worker, isMainThread, parentPort, workerData } from 'node:worker_threads';
+import {
+  Worker,
+  isMainThread,
+  parentPort,
+  workerData,
+} from 'node:worker_threads';
 
 if (isMainThread) {
   // Main thread
   const worker = new Worker(__filename, {
-    workerData: { num: 42 }
+    workerData: { num: 42 },
   });
 
   worker.on('message', (result) => {
@@ -76,14 +83,14 @@ function heavyComputation(n) {
 
 ## Key Differences
 
-| Feature | Cluster | Worker Threads |
-|---------|---------|----------------|
-| **Isolation** | Separate processes | Same process |
-| **Memory** | Separate memory | Can share memory |
-| **Communication** | IPC (slower) | Message passing + SharedArrayBuffer |
-| **Use Case** | HTTP servers | CPU-intensive tasks |
-| **Overhead** | Higher (new process) | Lower (new thread) |
-| **Crash Impact** | Worker crash is isolated | Can affect main thread |
+| Feature           | Cluster                  | Worker Threads                      |
+| ----------------- | ------------------------ | ----------------------------------- |
+| **Isolation**     | Separate processes       | Same process                        |
+| **Memory**        | Separate memory          | Can share memory                    |
+| **Communication** | IPC (slower)             | Message passing + SharedArrayBuffer |
+| **Use Case**      | HTTP servers             | CPU-intensive tasks                 |
+| **Overhead**      | Higher (new process)     | Lower (new thread)                  |
+| **Crash Impact**  | Worker crash is isolated | Can affect main thread              |
 
 ## When to Use Cluster
 
@@ -150,7 +157,7 @@ const sharedBuffer = new SharedArrayBuffer(4);
 const sharedArray = new Int32Array(sharedBuffer);
 
 const worker = new Worker('./worker.js', {
-  workerData: { sharedBuffer }
+  workerData: { sharedBuffer },
 });
 
 // Both can read/write to sharedArray
@@ -169,4 +176,3 @@ console.log(Atomics.load(sharedArray, 0)); // 100
 3. **Don't overuse workers** - Thread pool size should match CPU cores
 4. **Handle errors properly** - Workers can crash independently
 5. **Consider PM2** - Production-ready process management for clusters
-

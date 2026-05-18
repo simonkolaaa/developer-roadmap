@@ -14,6 +14,7 @@ Visit the following resources to learn more:
 ## 📚 Appunti Personali (IT)
 
 ### 03_Form_e_Auth.md
+
 # Lezione 2: Form, POST e Autenticazione
 
 Ora che abbiamo il database pronto, costruiamo le pagine per registrarci e fare login.
@@ -22,6 +23,7 @@ Useremo un nuovo Blueprint: `auth`.
 ### 1. Concetto Chiave: La "Doppia Vita" di una Route
 
 Spesso in Flask una singola funzione gestisce due momenti diversi:
+
 1.  **Metodo GET**: L'utente arriva sulla pagina. Il server deve solo **mostrare il form vuoto**.
 2.  **Metodo POST**: L'utente ha compilato il form e premuto "Invia". Il server riceve i dati e deve **elaborarli**.
 
@@ -35,6 +37,7 @@ Il protocollo HTTP è **Stateless** (senza stato). Ogni volta che chiedi una pag
 
 **Come facciamo a farci riconoscere?**
 Usiamo una **Sessione**. Immaginala come il **braccialetto di un villaggio turistico**:
+
 1.  All'ingresso (Login), mostri i documenti (Username/Password).
 2.  Se i documenti sono validi, la reception (Server) ti mette un braccialetto (Cookie di Sessione).
 3.  Da quel momento, per entrare in piscina o al bar, non mostri più i documenti: mostri solo il polso col braccialetto.
@@ -72,10 +75,10 @@ def register():
         if error is None:
             # Hashiamo la password (MAI salvarla in chiaro!)
             hashed_pwd = generate_password_hash(password)
-            
+
             # Chiamiamo il Repository
             success = user_repository.create_user(username, hashed_pwd)
-            
+
             if success:
                 return redirect(url_for('auth.login'))
             else:
@@ -92,7 +95,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
         error = None
-        
+
         # 1. Cerchiamo l'utente nel DB
         user = user_repository.get_user_by_username(username)
 
@@ -108,7 +111,7 @@ def login():
             session.clear()
             # Salviamo l'ID dell'utente nel cookie di sessione
             session['user_id'] = user['id']
-            
+
             # Ora il browser ricorderà chi siamo!
             return redirect(url_for('main.index'))
 
@@ -154,6 +157,7 @@ def load_logged_in_user():
 ### 5. Aggiornare `base.html` (Navbar e Flash)
 
 Ora sfruttiamo subito il lavoro fatto. Modifichiamo `app/templates/base.html` per:
+
 1.  Mostrare messaggi di errore (`flash`).
 2.  Cambiare la Navbar se l'utente è loggato (usando `g.user`).
 
@@ -162,26 +166,26 @@ Ora sfruttiamo subito il lavoro fatto. Modifichiamo `app/templates/base.html` pe
 
 <nav>
   <a href="{{ url_for('main.index') }}">Blog Scolastico</a>
-  
+
   <!-- LOGICA DINAMICA DELLA NAVBAR -->
   {% if g.user %}
-    <!-- Se g.user esiste, l'utente è loggato -->
-    <span>Ciao, {{ g.user['username'] }}</span>
-    <a href="{{ url_for('auth.logout') }}">Logout</a>
+  <!-- Se g.user esiste, l'utente è loggato -->
+  <span>Ciao, {{ g.user['username'] }}</span>
+  <a href="{{ url_for('auth.logout') }}">Logout</a>
   {% else %}
-    <!-- Altrimenti mostriamo i tasti di accesso -->
-    <a href="{{ url_for('auth.register') }}">Registrati</a>
-    <a href="{{ url_for('auth.login') }}">Login</a>
+  <!-- Altrimenti mostriamo i tasti di accesso -->
+  <a href="{{ url_for('auth.register') }}">Registrati</a>
+  <a href="{{ url_for('auth.login') }}">Login</a>
   {% endif %}
 </nav>
 
-<hr>
+<hr />
 
 <!-- Zona Messaggi Flash -->
 {% for message in get_flashed_messages() %}
-    <div class="flash" style="color: red; border: 1px solid red; padding: 10px;">
-        {{ message }}
-    </div>
+<div class="flash" style="color: red; border: 1px solid red; padding: 10px;">
+  {{ message }}
+</div>
 {% endfor %}
 ```
 
@@ -190,38 +194,36 @@ Ora sfruttiamo subito il lavoro fatto. Modifichiamo `app/templates/base.html` pe
 Infine, creiamo i file HTML mancanti nella cartella `app/templates/auth/`.
 
 **`app/templates/auth/register.html`**
-```html
-{% extends 'base.html' %}
 
-{% block content %}
-  <h2>Registrazione</h2>
-  <form method="post">
-    <label for="username">Username</label>
-    <input name="username" id="username" required>
-    
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    
-    <input type="submit" value="Registrati">
-  </form>
+```html
+{% extends 'base.html' %} {% block content %}
+<h2>Registrazione</h2>
+<form method="post">
+  <label for="username">Username</label>
+  <input name="username" id="username" required />
+
+  <label for="password">Password</label>
+  <input type="password" name="password" id="password" required />
+
+  <input type="submit" value="Registrati" />
+</form>
 {% endblock %}
 ```
 
 **`app/templates/auth/login.html`**
-```html
-{% extends 'base.html' %}
 
-{% block content %}
-  <h2>Accedi</h2>
-  <form method="post">
-    <label for="username">Username</label>
-    <input name="username" id="username" required>
-    
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    
-    <input type="submit" value="Login">
-  </form>
+```html
+{% extends 'base.html' %} {% block content %}
+<h2>Accedi</h2>
+<form method="post">
+  <label for="username">Username</label>
+  <input name="username" id="username" required />
+
+  <label for="password">Password</label>
+  <input type="password" name="password" id="password" required />
+
+  <input type="submit" value="Login" />
+</form>
 {% endblock %}
 ```
 
@@ -233,24 +235,27 @@ Per far funzionare tutto, ricorda di registrare il nuovo blueprint in `app/__ini
     # ... dentro create_app ...
     from . import auth
     app.register_blueprint(auth.bp)
-    
+
     return app
 ```
 
 ### 04_Update_Delete_Auth.md
+
 # Lezione 3: Modifica e Cancellazione (Update/Delete)
 
 Per completare il blog, dobbiamo permettere agli autori di modificare o cancellare i propri post.
 Aggiungeremo queste funzioni nel nostro file principale: `app/main.py`.
 
 Qui introduciamo un concetto fondamentale: **Autorizzazione**.
-*   **Autenticazione:** Il sistema sa chi sei (Login).
-*   **Autorizzazione:** Hai il permesso di fare questa azione? (Es. modificare un post che non hai scritto tu).
+
+- **Autenticazione:** Il sistema sa chi sei (Login).
+- **Autorizzazione:** Hai il permesso di fare questa azione? (Es. modificare un post che non hai scritto tu).
 
 ### 1. Helper per i controlli (`get_post`)
 
 In `app/main.py`, aggiungiamo una funzione per non ripetere codice (mettila fuori dalle route, magari prima di `update`).
 Questa funzione fa tre cose:
+
 1.  Recupera il post dal DB.
 2.  Controlla se esiste.
 3.  Controlla se l'utente corrente è il proprietario del post.
@@ -277,6 +282,7 @@ def get_post(id, check_author=True):
 ### 2. La Route di Update
 
 Qui dobbiamo applicare due livelli di sicurezza manualmente:
+
 1.  **Sei loggato?** (`if g.user is None`)
 2.  **È il tuo post?** (gestito da `get_post`)
 
@@ -288,7 +294,7 @@ def update(id):
     # --- LIVELLO 1: PROTEZIONE (Sei loggato?) ---
     if g.user is None:
         return redirect(url_for('auth.login'))
-    
+
     # --- LIVELLO 2: AUTORIZZAZIONE (È tuo?) ---
     # Questa funzione blocca tutto con un errore 403 se il post non è tuo
     post = get_post(id)
@@ -324,10 +330,10 @@ def delete(id):
     # 1. Sei loggato?
     if g.user is None:
         return redirect(url_for('auth.login'))
-    
+
     # 2. È tuo? (verifica anche che esista)
-    get_post(id) 
-    
+    get_post(id)
+
     # 3. Cancella usando il repository
     post_repository.delete_post(id)
     return redirect(url_for('main.index'))
@@ -340,43 +346,53 @@ Crea il file `app/templates/blog/update.html`.
 Simile a quello di creazione, ma con una differenza importante: usiamo `value` per pre-compilare i campi con i dati esistenti.
 
 La logica `request.form.get('title') or post['title']` significa:
-*   Se l'utente ha provato a salvare ma c'era un errore, rimostra quello che ha appena scritto.
-*   Altrimenti (è la prima volta che apre la pagina), mostra il titolo originale dal DB.
+
+- Se l'utente ha provato a salvare ma c'era un errore, rimostra quello che ha appena scritto.
+- Altrimenti (è la prima volta che apre la pagina), mostra il titolo originale dal DB.
 
 ```html
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<h1>Modifica "{{ post['title'] }}"</h1>
 
-{% block content %}
-  <h1>Modifica "{{ post['title'] }}"</h1>
-  
-  <!-- Form di Modifica -->
-  <form method="post">
-    <label for="title">Titolo</label>
-    <input name="title" id="title" value="{{ request.form.get('title') or post['title'] }}" required>
+<!-- Form di Modifica -->
+<form method="post">
+  <label for="title">Titolo</label>
+  <input
+    name="title"
+    id="title"
+    value="{{ request.form.get('title') or post['title'] }}"
+    required
+  />
 
-    <label for="body">Testo</label>
-    <textarea name="body" id="body" rows="5" required>{{ request.form.get('body') or post['body'] }}</textarea>
+  <label for="body">Testo</label>
+  <textarea name="body" id="body" rows="5" required>
+{{ request.form.get('body') or post['body'] }}</textarea
+  >
 
-    <input type="submit" value="Salva Modifiche">
-  </form>
+  <input type="submit" value="Salva Modifiche" />
+</form>
 
-  <hr>
-  
-  <!-- Form di Cancellazione (Separato) -->
-  <!-- L'action punta alla route di delete con l'id del post -->
-  <!-- Nota: l'endpoint è 'main.delete' -->
-  <form action="{{ url_for('main.delete', id=post['id']) }}" method="post">
-    <input type="submit" value="Elimina Post" 
-           onclick="return confirm('Sei sicuro di voler eliminare questo post?')"
-           style="background-color: red; color: white;">
-  </form>
+<hr />
+
+<!-- Form di Cancellazione (Separato) -->
+<!-- L'action punta alla route di delete con l'id del post -->
+<!-- Nota: l'endpoint è 'main.delete' -->
+<form action="{{ url_for('main.delete', id=post['id']) }}" method="post">
+  <input
+    type="submit"
+    value="Elimina Post"
+    onclick="return confirm('Sei sicuro di voler eliminare questo post?')"
+    style="background-color: red; color: white;"
+  />
+</form>
 {% endblock %}
 ```
 
 ### Conclusione Modulo 05
+
 Ora il tuo blog è completo e sicuro!
 Hai implementato:
-*   **CRUD Completo:** Create, Read, Update, Delete.
-*   **Architettura:** Codice diviso in Repository (SQL), Blueprint (Python) e Template (HTML).
-*   **Sicurezza:** Protezione contro accessi non autorizzati e modifica di dati altrui.
 
+- **CRUD Completo:** Create, Read, Update, Delete.
+- **Architettura:** Codice diviso in Repository (SQL), Blueprint (Python) e Template (HTML).
+- **Sicurezza:** Protezione contro accessi non autorizzati e modifica di dati altrui.

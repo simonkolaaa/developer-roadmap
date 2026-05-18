@@ -1,4 +1,4 @@
-# Security  Best Practices
+# Security Best Practices
 
 As an Engineering Manager, ensuring security best practices is crucial. This involves creating and maintaining secure software infrastructure, and making sure the team is following proper protocols.
 

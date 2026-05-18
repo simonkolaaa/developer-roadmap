@@ -4,7 +4,7 @@ BI conferences and webinars are events where professionals in the business intel
 
 Here are 4 popular BI conferences:
 
-*   **Gartner Data & Analytics Summit:** A leading conference covering a wide range of data and analytics topics.
-*   **TDWI Conferences:** Focused on data warehousing, business intelligence, and analytics.
-*   **Data Council:** A community-powered conference for data scientists, engineers, and analysts.
-*   **Big Data LDN:** A UK-based event showcasing big data and analytics solutions.
+- **Gartner Data & Analytics Summit:** A leading conference covering a wide range of data and analytics topics.
+- **TDWI Conferences:** Focused on data warehousing, business intelligence, and analytics.
+- **Data Council:** A community-powered conference for data scientists, engineers, and analysts.
+- **Big Data LDN:** A UK-based event showcasing big data and analytics solutions.

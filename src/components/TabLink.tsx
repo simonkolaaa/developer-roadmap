@@ -78,7 +78,9 @@ export function TabLink(props: TabLinkProps) {
     >
       <Icon className="h-4 w-4 shrink-0" />
       <span className={cn(textClass, 'hidden sm:inline')}>{text}</span>
-      <span className={cn(textClass, 'inline sm:hidden')}>{mobileText || text}</span>
+      <span className={cn(textClass, 'inline sm:hidden')}>
+        {mobileText || text}
+      </span>
       {badgeNode}
     </a>
   );

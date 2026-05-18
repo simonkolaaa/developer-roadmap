@@ -100,7 +100,7 @@ export function ChapterRow(props: ChapterRowProps) {
                   {regularLessons.map((lesson, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-3 text-zinc-400 cursor-text"
+                      className="flex cursor-text items-center gap-3 text-zinc-400"
                     >
                       <BookIcon className="h-4 w-4" />
                       <span>{lesson.title}</span>
@@ -119,7 +119,7 @@ export function ChapterRow(props: ChapterRowProps) {
                   {challenges.map((challenge, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-3 text-zinc-400 cursor-text"
+                      className="flex cursor-text items-center gap-3 text-zinc-400"
                     >
                       {challenge.type === 'challenge' ? (
                         <CodeIcon className="h-4 w-4" />

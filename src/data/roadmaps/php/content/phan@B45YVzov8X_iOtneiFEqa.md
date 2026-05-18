@@ -4,16 +4,15 @@ Phan is a static analysis tool specially made for PHP language, greatly useful i
 
     <?php
     // Phan sample usage
-    
+
     require 'vendor/autoload.php';    // Autoload files using Composer autoload
-    
+
     use Phan\Phan;
     use Phan\CLI;
-    
+
     $code = "<?php function add(int $a, int $b): int { return $a + $b; } echo add('hello', 'world');"; // code with a type error
-    
+
     Phan::analyzeFile('test.php', $code);
-    
 
 Above is a basic sample of using Phan. It checks for a type error in a PHP function.
 

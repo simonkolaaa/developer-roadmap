@@ -7,21 +7,21 @@ Here is a basic example of the Factory Pattern:
     public abstract class Animal {
         public abstract String makeSound();
     }
-    
+
     public class Dog extends Animal {
         @override
         public String makeSound() {
             return "Woof";
         }
     }
-    
+
     public class Cat extends Animal {
         @override
         public String makeSound() {
             return "Meow";
         }
     }
-    
+
     public class AnimalFactory {
         public Animal createAnimal(String type) {
             if ("Dog".equals(type)) {

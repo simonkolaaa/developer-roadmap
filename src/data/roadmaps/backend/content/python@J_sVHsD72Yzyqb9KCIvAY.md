@@ -14,6 +14,7 @@ Visit the following resources to learn more:
 ## 📚 Appunti Personali (IT)
 
 ### 05_Ambienti_Virtuali_in_Python.md
+
 # Ambienti Virtuali: Introduzione
 
 ## 1. Perché Isolare i Progetti?
@@ -26,11 +27,12 @@ Il problema è che progetti diversi potrebbero aver bisogno di "attrezzi" (libre
 
 Un **ambiente virtuale** è la soluzione a questo problema. È come creare una "scatola degli attrezzi" separata e isolata per ogni progetto su cui lavori.
 
-*   **Analogia**: Immagina di avere una scatola di LEGO per costruire un castello e un'altra per costruire un'astronave. Non mescoleresti mai i pezzi, giusto? Ogni progetto ha la sua scatola con solo i pezzi che gli servono.
+- **Analogia**: Immagina di avere una scatola di LEGO per costruire un castello e un'altra per costruire un'astronave. Non mescoleresti mai i pezzi, giusto? Ogni progetto ha la sua scatola con solo i pezzi che gli servono.
 
 Un ambiente virtuale è una cartella che contiene:
--   Una copia dell'interprete Python.
--   Tutte le librerie necessarie **solo per quel progetto**.
+
+- Una copia dell'interprete Python.
+- Tutte le librerie necessarie **solo per quel progetto**.
 
 Questo garantisce che i tuoi progetti siano ordinati, indipendenti e riproducibili su qualsiasi computer.
 
@@ -51,20 +53,21 @@ Python include uno strumento chiamato `venv` per creare ambienti virtuali.
 
 Prima di poterlo usare, l'ambiente deve essere "attivato".
 
-*   **Su Windows (Bash/WSL o Git Bash):**
-    ```bash
-    source .venv/Scripts/activate
-    ```
-*   **Su macOS e Linux:**
-    ```bash
-    source .venv/bin/activate
-    ```
+- **Su Windows (Bash/WSL o Git Bash):**
+  ```bash
+  source .venv/Scripts/activate
+  ```
+- **Su macOS e Linux:**
+  ```bash
+  source .venv/bin/activate
+  ```
 
 Una volta attivato, vedrai `(.venv)` all'inizio del prompt del terminale. Questo ti conferma che sei dentro la "scatola" isolata del tuo progetto.
 
 ### c) Disattivazione
 
 Quando hai finito, per uscire dall'ambiente, digita:
+
 ```bash
 deactivate
 ```
@@ -72,6 +75,7 @@ deactivate
 **Nota**: Approfondiremo come installare e gestire le librerie con `pip` in una lezione successiva, dopo aver preso confidenza con le basi di Python. Per ora, è importante abituarsi a creare e attivare un ambiente virtuale per ogni nuovo progetto.
 
 ### 01_Mappa_Concettuale_Basi_Python.md
+
 # Mappa Concettuale: Basi della Programmazione Python
 
 Questa mappa delinea il percorso di apprendimento per i fondamenti della programmazione procedurale in Python.
@@ -87,7 +91,7 @@ graph TD
     B --> B1[Tipi Primitivi con<br>Type Hinting];
     B --> B2[Liste, Tuple,<br>Dizionari];
     B --> B3[JSON];
-    
+
     C --> C1[Definire<br>Funzioni];
     C --> C2[Parametri: *args<br>e **kwargs];
 
@@ -96,6 +100,7 @@ graph TD
 ```
 
 ### 07_Riepilogo_Basi_di_Python_Mappa_Mentale.md
+
 # Python Mindmap
 
 Render the file using <https://markmap.js.org/repl>
@@ -175,6 +180,7 @@ markmap:
 ```
 
 ### 03_Dal_Progetto_al_Codice_Python.md
+
 # Lezione 2: Dal Progetto al Codice - La Sintassi `class`
 
 Abbiamo il nostro progetto UML per la classe `Personaggio`. Ora, vediamo come "costruirla" usando il codice Python. La traduzione da un diagramma UML di base a una classe Python è quasi diretta.
@@ -216,18 +222,20 @@ class Personaggio:
 ```
 
 Analizziamo la corrispondenza:
-*   `class Personaggio`: La dichiarazione della classe in UML corrisponde a `class Personaggio:`.
-*   **Attributi:** Gli attributi UML (`nome`, `punti_vita`, `livello`) diventano **attributi di istanza** in Python, definiti nel costruttore `__init__` e preceduti da `self.`.
-*   **Metodi:** I metodi UML (`presentati`, `attacca`) diventano **metodi di istanza** in Python, ovvero funzioni definite dentro la classe che accettano `self` come primo parametro.
+
+- `class Personaggio`: La dichiarazione della classe in UML corrisponde a `class Personaggio:`.
+- **Attributi:** Gli attributi UML (`nome`, `punti_vita`, `livello`) diventano **attributi di istanza** in Python, definiti nel costruttore `__init__` e preceduti da `self.`.
+- **Metodi:** I metodi UML (`presentati`, `attacca`) diventano **metodi di istanza** in Python, ovvero funzioni definite dentro la classe che accettano `self` come primo parametro.
 
 ### Cos'è `self`?
+
 `self` è una variabile speciale che rappresenta **l'oggetto specifico** su cui il metodo viene chiamato. Quando scriviamo `eroe1.presentati()`, `self` all'interno del metodo `presentati` si riferirà proprio a `eroe1`. Se chiamiamo `eroe2.presentati()`, `self` si riferirà a `eroe2`. È il modo con cui un oggetto accede a sé stesso.
 
 ## 2. Attributi di Istanza vs. Attributi di Classe
 
 Gli attributi che abbiamo definito con `self.` sono **attributi di istanza**, perché ogni oggetto (istanza) avrà la sua copia personale. Se creiamo due personaggi, `eroe1` ed `eroe2`, ognuno avrà il suo `nome` e i suoi `punti_vita`.
 
-Esistono anche gli **attributi di classe**, che sono condivisi da *tutti* gli oggetti creati da quella classe. Si definiscono direttamente sotto la dichiarazione della classe.
+Esistono anche gli **attributi di classe**, che sono condivisi da _tutti_ gli oggetti creati da quella classe. Si definiscono direttamente sotto la dichiarazione della classe.
 
 ```python
 class Personaggio:
@@ -242,27 +250,29 @@ class Personaggio:
 
 ## 3. Metodi di Istanza, di Classe e Statici
 
-*   **Metodi di Istanza (i più comuni):** Lavorano sui dati di un oggetto specifico (`self`). Esempi: `attacca()`, `subisci_danno()`.
+- **Metodi di Istanza (i più comuni):** Lavorano sui dati di un oggetto specifico (`self`). Esempi: `attacca()`, `subisci_danno()`.
 
-*   **Metodi di Classe:** Lavorano sui dati della classe (`cls`), non di un singolo oggetto. Si dichiarano con il decoratore `@classmethod`. Sono utili per creare "costruttori alternativi".
+- **Metodi di Classe:** Lavorano sui dati della classe (`cls`), non di un singolo oggetto. Si dichiarano con il decoratore `@classmethod`. Sono utili per creare "costruttori alternativi".
 
-    ```python
-    @classmethod
-    def crea_personaggio_base(cls, nome: str):
-        # 'cls' qui è come dire 'Personaggio'
-        return cls(nome)
-    ```
+  ```python
+  @classmethod
+  def crea_personaggio_base(cls, nome: str):
+      # 'cls' qui è come dire 'Personaggio'
+      return cls(nome)
+  ```
 
-*   **Metodi Statici:** Sono funzioni logicamente collegate alla classe, ma che **non dipendono né dallo stato della classe né da quello di un oggetto**. Non ricevono né `cls` né `self`. Si dichiarano con `@staticmethod`.
+- **Metodi Statici:** Sono funzioni logicamente collegate alla classe, ma che **non dipendono né dallo stato della classe né da quello di un oggetto**. Non ricevono né `cls` né `self`. Si dichiarano con `@staticmethod`.
 
-    ```python
-    @staticmethod
-    def calcola_danno_critico(danno_base: int) -> int:
-        return danno_base * 2
-    ```
-    Questa funzione è utile nel contesto del `Personaggio`, ma non ha bisogno di sapere il nome o i punti vita di un personaggio specifico per funzionare.
+  ```python
+  @staticmethod
+  def calcola_danno_critico(danno_base: int) -> int:
+      return danno_base * 2
+  ```
+
+  Questa funzione è utile nel contesto del `Personaggio`, ma non ha bisogno di sapere il nome o i punti vita di un personaggio specifico per funzionare.
 
 ### 12_SQL_in_Python.md
+
 ## Uso di SQL in un Linguaggio di Programmazione <!-- omit in toc -->
 
 - [Il Flusso di Lavoro Standard](#il-flusso-di-lavoro-standard)
@@ -382,8 +392,8 @@ Un errore gravissimo è costruire query concatenando stringhe con l'input dell'u
 
 **Regola d'oro**: Mai, mai inserire l'input dell'utente direttamente in una stringa SQL. Usa sempre i parametri forniti dalla tua libreria.
 
-
 ### 07_Consumare_API_con_Python_Requests.md
+
 # Consumare API con Python e la Libreria `requests`
 
 Abbiamo imparato la teoria dietro le API REST. Ora è il momento di passare alla pratica e vedere come un'applicazione (in questo caso, un semplice script Python) può "consumare" un'API per ottenere e inviare dati.
@@ -484,4 +494,3 @@ except requests.exceptions.RequestException as err:
 ```
 
 Scrivere un client API con `requests` è così semplice. Questa abilità è fondamentale per costruire applicazioni che interagiscono con servizi esterni o per testare le API che costruiremo noi stessi.````
-

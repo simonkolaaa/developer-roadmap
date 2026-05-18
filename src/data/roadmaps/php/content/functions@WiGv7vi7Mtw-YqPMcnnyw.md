@@ -5,9 +5,8 @@ Functions in PHP are self-contained blocks of code that carry out specific tasks
     function greet($name) {
         return "Hello, " . $name;
     }
-    
+
     echo greet("John"); // Outputs: Hello, John
-    
 
 In the code above, "greet" is a function that takes one parameter "name". It concatenates "Hello, " with the name and returns the result.
 

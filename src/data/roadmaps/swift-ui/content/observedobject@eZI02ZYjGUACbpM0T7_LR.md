@@ -1,6 +1,6 @@
 # @ObservedObject
 
-`@ObservedObject` is a property wrapper in SwiftUI used to subscribe to an external class that conforms to the `ObservableObject` protocol.  When the observable object publishes changes (typically through `@Published` properties), any views observing it will automatically update to reflect the new data. This allows you to manage and share state across different parts of your SwiftUI application, ensuring that the UI stays synchronized with the underlying data model.
+`@ObservedObject` is a property wrapper in SwiftUI used to subscribe to an external class that conforms to the `ObservableObject` protocol. When the observable object publishes changes (typically through `@Published` properties), any views observing it will automatically update to reflect the new data. This allows you to manage and share state across different parts of your SwiftUI application, ensuring that the UI stays synchronized with the underlying data model.
 
 Visit the following resources to learn more:
 

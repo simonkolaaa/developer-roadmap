@@ -2,4 +2,4 @@ A foreign key is a column (or a combination of columns) that references the prim
 
 ![SQL foreign key](https://assets.roadmap.sh/guest/sql-foreign-key-8bwm3.png)
 
-A table with a foreign key constraint helps prevent unmatched records and keeps data consistent across related tables. 
+A table with a foreign key constraint helps prevent unmatched records and keeps data consistent across related tables.

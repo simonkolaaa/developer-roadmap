@@ -21,4 +21,4 @@ LIMIT 10;
 
 Offset-based pagination is easy to use, but it gets slower as the offset increases. Keyset pagination is better for deep scrolling or infinite lists.
 
-> **Want a deeper dive?** Our [**SQL Mastery Course**](https://roadmap.sh/courses/sql) covers indexing, transactions, and other advanced security patterns. 
+> **Want a deeper dive?** Our [**SQL Mastery Course**](https://roadmap.sh/courses/sql) covers indexing, transactions, and other advanced security patterns.

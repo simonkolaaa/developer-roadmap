@@ -4,9 +4,9 @@ Namespaces in PHP are a way of encapsulating items so that name collisions won't
 
 Here's a quick example:
 
-    namespace MyNamespace\SubNamespace; 
+    namespace MyNamespace\SubNamespace;
     function displayGreeting() {
-         echo 'Hello World!'; 
+         echo 'Hello World!';
     }
 
 Visit the following resources to learn more:

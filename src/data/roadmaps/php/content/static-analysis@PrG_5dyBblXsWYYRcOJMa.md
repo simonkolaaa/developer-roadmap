@@ -4,7 +4,6 @@ Static analysis in PHP is a method to inspect the source code before running it.
 
     composer require --dev phpstan/phpstan
     ./vendor/bin/phpstan analyse src
-    
 
 It outputs information about any issues it finds in code. However, to reap the full benefits, understand that these tools require proper configuration and regular usage.
 

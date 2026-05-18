@@ -8,7 +8,6 @@ CSV processing refers to handling CSV (Comma Separated Values) files in PHP, an 
         }
         fclose($handle);
     }
-    
 
 In this snippet, PHP reads through each line of the `sample.csv` file, converting each into an array with `fgetcsv()`.
 

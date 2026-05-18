@@ -6,4 +6,4 @@ CREATE TABLE users (
    name VARCHAR(100),
    phoneNumber VARCHAR(100)
 );
-``` 
+```

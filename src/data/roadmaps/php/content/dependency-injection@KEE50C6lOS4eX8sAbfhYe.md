@@ -7,19 +7,19 @@ Dependency injection is a design pattern used mainly for managing class dependen
             echo 'Hello, PHP dependency injection!';
         }
     }
-    
+
     class B {
         private $a;
-    
+
         public function __construct(A $classAInstance) {
             $this->a = $classAInstance;
         }
-    
+
         public function callDisplayOwn() {
             $this->a->display();
         }
     }
-    
+
     $instanceA = new A();
     $instanceB = new B($instanceA);
     $instanceB->callDisplayOwn();  // Outputs: "Hello, PHP dependency injection!"

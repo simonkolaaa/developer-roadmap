@@ -9,7 +9,6 @@
     "paths": {
       "@roadmapsh/editor": ["src/lib/editor-stub.ts"]
     }
-
   },
   "exclude": ["node_modules", "dist"]
 }

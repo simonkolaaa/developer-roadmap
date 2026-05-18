@@ -4,7 +4,7 @@ MLOps, short for Machine Learning Operations, is a set of practices that aims to
 
 Visit the following resources to learn more:
 
-- [@book@MLOps Engineering at Scale - Carl Osipov](http://103.203.175.90:81/fdScript/RootOfEBooks/E%20Book%20collection%20-%202025%20-%20C/CSE%20%20IT%20AIDS%20ML/MLOps%20Engineering%20at%20Scale%20-%20Carl%20Osipov%20(Manning,%202022).pdf)
+- [@book@MLOps Engineering at Scale - Carl Osipov](<http://103.203.175.90:81/fdScript/RootOfEBooks/E%20Book%20collection%20-%202025%20-%20C/CSE%20%20IT%20AIDS%20ML/MLOps%20Engineering%20at%20Scale%20-%20Carl%20Osipov%20(Manning,%202022).pdf>)
 - [@article@What is MLOps?](https://aws.amazon.com/what-is/mlops/)
 - [@article@MLOps Explained: A Deep Dive into Machine Learning Operations](https://hermanmotcheyo.medium.com/mlops-explained-a-deep-dive-into-machine-learning-operations-ab9342c5c90d)
 - [@article@Machine Learning Operations (MLOps) For Beginners](https://towardsdatascience.com/machine-learning-operations-mlops-for-beginners-a5686bfe02b2/?utm_source=roadmap&utm_medium=Referral&utm_campaign=TDS+roadmap+integration)

@@ -26,4 +26,4 @@ export function VideoModal(props: VideoModalProps) {
       </div>
     </Modal>
   );
-} 
+}

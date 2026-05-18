@@ -6,13 +6,12 @@ Here is a simple example:
 
     class Car {
       public $color; // Property
-    
+
       // Method
       public function setColor($color) {
         $this->color = $color;
       }
     }
-    
 
 In this example, `$color` is a property and `setColor()` is a method.
 

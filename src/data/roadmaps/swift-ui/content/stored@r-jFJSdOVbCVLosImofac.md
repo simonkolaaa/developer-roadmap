@@ -1,6 +1,6 @@
 # Stored Properties
 
-Stored properties are variables or constants that are part of a structure or class. They hold data directly within an instance of that structure or class.  Think of them as the "things" an object *has*.  You define them with `var` for variables (values that can change) and `let` for constants (values that cannot change after initialization).
+Stored properties are variables or constants that are part of a structure or class. They hold data directly within an instance of that structure or class. Think of them as the "things" an object _has_. You define them with `var` for variables (values that can change) and `let` for constants (values that cannot change after initialization).
 
 Visit the following resources to learn more:
 
