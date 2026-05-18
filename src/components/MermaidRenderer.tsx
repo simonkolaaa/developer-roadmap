@@ -274,17 +274,14 @@ export const MermaidRenderer = ({
             <div className="mt-5 flex items-center justify-between gap-3 border-t border-slate-800 pt-4">
               <div className="flex flex-wrap gap-2">
                 {selectedNode.note ? (
-                  <button
-                    onClick={() => {
-                      const url = `obsidian://open?vault=IT_notes&file=${encodeURIComponent(selectedNode.note!)}`;
-                      window.location.href = url;
-                    }}
+                  <a
+                    href={`obsidian://open?vault=IT_notes&file=${encodeURIComponent(selectedNode.note!)}`}
                     className="flex items-center gap-2 rounded-lg border border-yellow-500/20 bg-slate-800 px-3 py-2 text-xs font-medium text-yellow-400 transition-all hover:border-yellow-500/50 hover:bg-yellow-500/10 hover:text-yellow-300"
                     title={`Apri in Obsidian: ${selectedNode.note}`}
                   >
                     <Book size={13} />
                     Apri in Obsidian
-                  </button>
+                  </a>
                 ) : null}
 
                 {selectedNode.githubUrl ? (
