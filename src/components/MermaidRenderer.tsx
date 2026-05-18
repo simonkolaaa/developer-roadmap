@@ -276,6 +276,8 @@ export const MermaidRenderer = ({
                 {selectedNode.note ? (
                   <a
                     href={`obsidian://open?vault=IT_notes&file=${encodeURIComponent(selectedNode.note!)}`}
+                    data-astro-reload
+                    target="_top"
                     className="flex items-center gap-2 rounded-lg border border-yellow-500/20 bg-slate-800 px-3 py-2 text-xs font-medium text-yellow-400 transition-all hover:border-yellow-500/50 hover:bg-yellow-500/10 hover:text-yellow-300"
                     title={`Apri in Obsidian: ${selectedNode.note}`}
                   >
