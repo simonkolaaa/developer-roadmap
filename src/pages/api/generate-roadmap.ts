@@ -11,11 +11,22 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    const apiKey = import.meta.env.GEMINI_API_KEY || process.env.GEMINI_API_KEY;
+    const getEnv = (key: string) => {
+      // @ts-ignore
+      if (typeof process !== 'undefined' && process.env && process.env[key]) {
+        // @ts-ignore
+        return process.env[key];
+      }
+      // @ts-ignore
+      return import.meta.env[key];
+    };
+
+    const apiKey = getEnv('GEMINI_API_KEY');
+    
     if (!apiKey) {
       return new Response(
         JSON.stringify({
-          error: 'GEMINI_API_KEY not configured. Aggiungila nel file .env',
+          error: 'GEMINI_API_KEY not configured. Assicurati di averla inserita su Vercel (e di aver fatto Redeploy).',
         }),
         { status: 500 },
       );
