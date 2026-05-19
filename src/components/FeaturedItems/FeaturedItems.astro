@@ -25,10 +25,19 @@ const {
       {heading}
     </h2>
 
-    <ul class='grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 awwwards-grid'>
+    <ul class='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 awwwards-grid auto-rows-fr'>
       {
         featuredItems.map((featuredItem, i) => (
-          <li class="awwwards-item opacity-0 translate-y-5 transition-all duration-700 ease-out" style={`transition-delay: ${i * 50}ms`}>
+          <li 
+            class:list={[
+              "awwwards-item opacity-0 translate-y-5 transition-all duration-700 ease-out h-full",
+              {
+                "sm:col-span-2 lg:col-span-2 lg:row-span-2": i === 0, // Primo elemento gigante
+                "lg:col-span-2": i === 3 || i === 6 || i === 7, // Alcuni larghi
+              }
+            ]} 
+            style={`transition-delay: ${i * 50}ms`}
+          >
             <FeaturedItem
               allowBookmark={allowBookmark}
               text={featuredItem.text}
@@ -41,8 +50,8 @@ const {
       }
       {
         showCreateRoadmap && (
-          <li class="awwwards-item opacity-0 translate-y-5 transition-all duration-700 ease-out" style={`transition-delay: ${featuredItems.length * 50}ms`}>
-            <CreateRoadmapButton client:load className='min-h-[54px]' />
+          <li class="awwwards-item opacity-0 translate-y-5 transition-all duration-700 ease-out lg:col-span-2" style={`transition-delay: ${featuredItems.length * 50}ms`}>
+            <CreateRoadmapButton client:load className='min-h-[54px] h-full' />
           </li>
         )
       }

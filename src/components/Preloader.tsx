@@ -53,44 +53,69 @@ export const Preloader = () => {
             transition={{ duration: 1.2 }}
           />
 
-          {/* Testo Gigante Animato */}
+          {/* Testo Gigante Animato (Convertito in SVG Vettoriale per performance) */}
           <motion.div
-            className="relative z-10 flex flex-col items-center justify-center whitespace-nowrap"
-            style={{ transformOrigin: '73% 50%' }} // Punta verso la "O" di KOLA
+            className="relative z-10 flex flex-col items-center justify-center w-full"
+            style={{ 
+              transformOrigin: '70% 50%', // Punta verso la "O" di KOLA
+              willChange: 'transform' // GPU Acceleration
+            }}
             initial={{ scale: 1 }}
             animate={phase === 'zoom' ? { scale: 150, opacity: 0 } : { scale: 1 }}
             transition={phase === 'zoom' ? { duration: 2.2, ease: [0.76, 0, 0.24, 1] } : {}}
           >
-            <style>{`
-              .stroke-text {
-                -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
-                color: transparent;
-                font-size: clamp(4rem, 15vw, 15rem);
-              }
-              .fill-text {
-                font-size: clamp(4rem, 15vw, 15rem);
-                background-image: linear-gradient(90deg, #60a5fa, #a855f7);
-                -webkit-background-clip: text;
-                color: transparent;
-              }
-            `}</style>
-            
-            <div className="relative font-black tracking-tighter leading-none uppercase">
-              {/* Testo Trasparente con Bordo (Background) */}
-              <div className="stroke-text absolute inset-0 select-none">
-                SIMON KOLA
-              </div>
-              
-              {/* Testo Riempito con maschera (Foreground animato) */}
-              <motion.div 
-                className="fill-text relative z-10 select-none overflow-hidden"
-                initial={{ clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)' }} // Inizia nascosto dal basso
-                animate={{ clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' }} // Si riempie verso l'alto
-                transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
+            <svg 
+              viewBox="0 0 1000 200" 
+              className="w-full max-w-[90vw] md:max-w-6xl h-auto drop-shadow-2xl"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <defs>
+                <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#60a5fa" />
+                  <stop offset="100%" stopColor="#a855f7" />
+                </linearGradient>
+                
+                <clipPath id="fillClip">
+                  <motion.rect
+                    x="0"
+                    width="1000"
+                    initial={{ y: 200, height: 0 }}
+                    animate={{ y: 0, height: 200 }}
+                    transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
+                  />
+                </clipPath>
+              </defs>
+
+              {/* Stroke Text (Background) */}
+              <text 
+                x="50%" 
+                y="50%" 
+                textAnchor="middle" 
+                dominantBaseline="middle" 
+                className="font-black uppercase tracking-tighter"
+                style={{ fontSize: '140px', fontFamily: 'Orbitron, sans-serif' }}
+                stroke="rgba(255, 255, 255, 0.2)"
+                strokeWidth="2"
+                fill="transparent"
               >
                 SIMON KOLA
-              </motion.div>
-            </div>
+              </text>
+
+              {/* Fill Text (Foreground) */}
+              <g clipPath="url(#fillClip)">
+                <text 
+                  x="50%" 
+                  y="50%" 
+                  textAnchor="middle" 
+                  dominantBaseline="middle" 
+                  className="font-black uppercase tracking-tighter"
+                  style={{ fontSize: '140px', fontFamily: 'Orbitron, sans-serif' }}
+                  fill="url(#textGradient)"
+                >
+                  SIMON KOLA
+                </text>
+              </g>
+            </svg>
             
             {/* Piccola sottoscritta */}
             <motion.div
