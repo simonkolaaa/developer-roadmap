@@ -2,111 +2,104 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const Preloader = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [progress, setProgress] = useState(0);
+  const [shouldRender, setShouldRender] = useState(false);
+  const [phase, setPhase] = useState<'fill' | 'zoom' | 'exit'>('fill');
 
   useEffect(() => {
-    // Rimosso il check del sessionStorage per far godere l'animazione ad ogni F5
+    // Rimuoviamo il sessionStorage così puoi vedere sempre l'animazione ricaricando
+    setShouldRender(true);
+  }, []);
 
-    const duration = 1500; // Hyper-fast 1.5 seconds
-    const intervalTime = 15;
-    const steps = duration / intervalTime;
-    let currentStep = 0;
-
-    const timer = setInterval(() => {
-      currentStep++;
-      const nextProgress = Math.min(Math.floor((currentStep / steps) * 100), 100);
-      setProgress(nextProgress);
-
-      if (currentStep >= steps) {
-        clearInterval(timer);
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 300); // Piccola pausa a 100% prima del botto
-      }
-    }, intervalTime);
+  useEffect(() => {
+    if (!shouldRender) return;
 
     // Lock body scroll
     document.body.style.overflow = 'hidden';
 
+    // Sequence timing
+    const fillTimer = setTimeout(() => {
+      setPhase('zoom');
+    }, 2000); // 2 seconds to fill
+
+    const exitTimer = setTimeout(() => {
+      setPhase('exit');
+      document.body.style.overflow = 'unset';
+      sessionStorage.setItem('intro_played', 'true');
+    }, 3200); // Zoom duration 1.2s
+
     return () => {
-      clearInterval(timer);
+      clearTimeout(fillTimer);
+      clearTimeout(exitTimer);
       document.body.style.overflow = 'unset';
     };
-  }, []);
+  }, [shouldRender]);
 
-  // Make sure body overflow is reset when component unmounts or finishes loading
-  useEffect(() => {
-    if (!isLoading) {
-      document.body.style.overflow = 'unset';
-    }
-  }, [isLoading]);
+  if (!shouldRender) return null;
 
   return (
     <AnimatePresence>
-      {isLoading && (
+      {phase !== 'exit' && (
         <motion.div
-          className="fixed inset-0 z-[100000] flex flex-col items-center justify-center bg-slate-950 overflow-hidden"
-          exit={{ backgroundColor: "rgba(2, 6, 23, 0)", pointerEvents: "none" }}
-          transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
+          className="fixed inset-0 z-[100000] flex items-center justify-center overflow-hidden pointer-events-none"
+          initial={{ backgroundColor: '#020617' }} // slate-950
+          animate={phase === 'zoom' ? { backgroundColor: 'rgba(2, 6, 23, 0)' } : { backgroundColor: '#020617' }}
+          transition={{ duration: 1, ease: 'easeIn' }}
+          exit={{ opacity: 0 }}
         >
-          {/* Sfondo Esplosivo in uscita */}
+          {/* Sfondo sfumato che sparisce prima dello zoom */}
           <motion.div 
-            className="absolute inset-0 bg-gradient-to-br from-purple-900 to-black z-0"
-            initial={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 1.5, opacity: 0 }}
-            transition={{ duration: 0.8, ease: "circIn" }}
+            className="absolute inset-0 bg-gradient-to-br from-purple-900/30 to-black z-0"
+            animate={phase === 'zoom' ? { opacity: 0 } : { opacity: 1 }}
+            transition={{ duration: 0.8 }}
           />
 
-          <div className="relative z-10 flex w-full h-full flex-col items-center justify-center">
+          {/* Testo Gigante Animato */}
+          <motion.div
+            className="relative z-10 flex flex-col items-center justify-center whitespace-nowrap origin-center"
+            initial={{ scale: 1 }}
+            animate={phase === 'zoom' ? { scale: 80, opacity: 0 } : { scale: 1 }}
+            transition={phase === 'zoom' ? { duration: 1.2, ease: [0.76, 0, 0.24, 1] } : {}}
+          >
+            <style>{`
+              .stroke-text {
+                -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+                color: transparent;
+                font-size: clamp(4rem, 15vw, 15rem);
+              }
+              .fill-text {
+                font-size: clamp(4rem, 15vw, 15rem);
+                background-image: linear-gradient(90deg, #60a5fa, #a855f7);
+                -webkit-background-clip: text;
+                color: transparent;
+              }
+            `}</style>
             
-            {/* Contatore Gigante e Maschera */}
-            <div className="relative flex items-end overflow-hidden">
-              <motion.div
-                initial={{ y: '100%' }}
-                animate={{ y: 0 }}
-                exit={{ y: '-100%', opacity: 0, scale: 0.5 }}
-                transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-                className="flex items-end"
+            <div className="relative font-black tracking-tighter leading-none uppercase">
+              {/* Testo Trasparente con Bordo (Background) */}
+              <div className="stroke-text absolute inset-0 select-none">
+                SIMON KOLA
+              </div>
+              
+              {/* Testo Riempito con maschera (Foreground animato) */}
+              <motion.div 
+                className="fill-text relative z-10 select-none overflow-hidden"
+                initial={{ clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)' }} // Inizia nascosto dal basso
+                animate={{ clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' }} // Si riempie verso l'alto
+                transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
               >
-                <h1 className="text-[12rem] md:text-[20rem] font-black leading-none text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-800 mix-blend-overlay">
-                  {progress}
-                </h1>
-                <span className="text-4xl md:text-8xl font-black text-slate-700 mb-8 md:mb-16 mix-blend-overlay">%</span>
+                SIMON KOLA
               </motion.div>
             </div>
             
-            {/* Nome che appare come "sottotitolo" */}
-            <motion.div 
-              className="absolute bottom-20 overflow-hidden"
-              exit={{ opacity: 0, y: 50 }}
-              transition={{ duration: 0.5 }}
+            {/* Piccola sottoscritta */}
+            <motion.div
+              className="mt-4 text-xs md:text-sm font-mono tracking-[0.5em] text-slate-500 uppercase text-center"
+              animate={phase === 'zoom' ? { opacity: 0 } : { opacity: 1 }}
+              transition={{ duration: 0.3 }}
             >
-              <motion.h2 
-                initial={{ y: '100%' }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1, delay: 0.5, ease: [0.76, 0, 0.24, 1] }}
-                className="text-2xl md:text-4xl font-extrabold uppercase tracking-[0.5em] text-purple-400 drop-shadow-[0_0_15px_rgba(168,85,247,0.8)]"
-              >
-                Simon Kola
-              </motion.h2>
+              Developer Roadmaps
             </motion.div>
-
-          </div>
-
-          {/* Curtain Reveal Effect (Le porte che si aprono) */}
-          <motion.div 
-            className="absolute top-0 left-0 w-full h-1/2 bg-slate-950 z-20 pointer-events-none"
-            initial={{ y: '-100%' }}
-            exit={{ y: '-100%' }} // Si assicura che scivoli via
-            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-          />
-          <motion.div 
-            className="absolute bottom-0 left-0 w-full h-1/2 bg-slate-950 z-20 pointer-events-none"
-            initial={{ y: '100%' }}
-            exit={{ y: '100%' }} // Si assicura che scivoli via
-            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-          />
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
