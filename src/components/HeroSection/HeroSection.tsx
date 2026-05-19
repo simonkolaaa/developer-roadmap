@@ -1,8 +1,12 @@
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform, useScroll } from 'framer-motion';
 import { useEffect } from 'react';
 import { FeatureAnnouncement } from '../FeatureAnnouncement';
 
 export const HeroSection = () => {
+  const { scrollY } = useScroll();
+  const heroY = useTransform(scrollY, [0, 500], [0, 150]);
+  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
+
   const mouseX = useMotionValue(typeof window !== 'undefined' ? window.innerWidth / 2 : 0);
   const mouseY = useMotionValue(typeof window !== 'undefined' ? window.innerHeight / 2 : 0);
 
@@ -79,6 +83,7 @@ export const HeroSection = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
+          style={{ y: heroY, opacity: heroOpacity }}
           className="flex flex-col items-center sm:items-center items-start"
         >
           <motion.div variants={itemVariants} className='-mt-4 mb-7 w-full sm:-mt-10 sm:mb-4 sm:flex sm:justify-center'>

@@ -19,13 +19,13 @@ export const Preloader = () => {
     // Sequence timing
     const fillTimer = setTimeout(() => {
       setPhase('zoom');
-    }, 2000); // 2 seconds to fill
+    }, 2500); // Slower fill (2.5s)
 
     const exitTimer = setTimeout(() => {
       setPhase('exit');
       document.body.style.overflow = 'unset';
       sessionStorage.setItem('intro_played', 'true');
-    }, 3200); // Zoom duration 1.2s
+    }, 4500); // 2.5s fill + 2s zoom
 
     return () => {
       clearTimeout(fillTimer);
@@ -43,22 +43,23 @@ export const Preloader = () => {
           className="fixed inset-0 z-[100000] flex items-center justify-center overflow-hidden pointer-events-none"
           initial={{ backgroundColor: '#020617' }} // slate-950
           animate={phase === 'zoom' ? { backgroundColor: 'rgba(2, 6, 23, 0)' } : { backgroundColor: '#020617' }}
-          transition={{ duration: 1, ease: 'easeIn' }}
+          transition={{ duration: 1.5, ease: 'easeIn' }}
           exit={{ opacity: 0 }}
         >
           {/* Sfondo sfumato che sparisce prima dello zoom */}
           <motion.div 
             className="absolute inset-0 bg-gradient-to-br from-purple-900/30 to-black z-0"
             animate={phase === 'zoom' ? { opacity: 0 } : { opacity: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1.2 }}
           />
 
           {/* Testo Gigante Animato */}
           <motion.div
-            className="relative z-10 flex flex-col items-center justify-center whitespace-nowrap origin-center"
+            className="relative z-10 flex flex-col items-center justify-center whitespace-nowrap"
+            style={{ transformOrigin: '73% 50%' }} // Punta verso la "O" di KOLA
             initial={{ scale: 1 }}
-            animate={phase === 'zoom' ? { scale: 80, opacity: 0 } : { scale: 1 }}
-            transition={phase === 'zoom' ? { duration: 1.2, ease: [0.76, 0, 0.24, 1] } : {}}
+            animate={phase === 'zoom' ? { scale: 150, opacity: 0 } : { scale: 1 }}
+            transition={phase === 'zoom' ? { duration: 2.2, ease: [0.76, 0, 0.24, 1] } : {}}
           >
             <style>{`
               .stroke-text {

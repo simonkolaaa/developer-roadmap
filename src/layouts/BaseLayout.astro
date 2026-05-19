@@ -10,6 +10,8 @@ import { CustomCursor } from '../components/CustomCursor';
 import { Preloader } from '../components/Preloader';
 import { cn } from '../lib/classname';
 
+import { ViewTransitions } from 'astro:transitions';
+
 export interface Props {
   title?: string;
   htmlClassName?: string;
@@ -32,6 +34,7 @@ const {
 <!doctype html>
 <html lang='en' class={htmlClassName}>
   <head>
+    <ViewTransitions />
     <meta charset='UTF-8' />
     <meta name='generator' content={Astro.generator} />
     <title>{title}</title>
