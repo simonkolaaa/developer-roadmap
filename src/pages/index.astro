@@ -13,6 +13,7 @@ import {
   listOfficialRoadmaps,
 } from '../queries/official-roadmap';
 import { LOCAL_ROADMAPS } from '../data/local-roadmaps';
+import { MyRoadmapsList } from '../components/MyRoadmapsList';
 
 const roadmaps = await listOfficialRoadmaps();
 const roleRoadmaps = roadmaps.filter((roadmap) => roadmap.type === 'role');
@@ -83,6 +84,9 @@ const videos = await getAllVideos();
           }
         </ul>
       </div>
+    </div>
+    <div class='container'>
+      <MyRoadmapsList client:only='react' />
     </div>
 
     <FeaturedItems

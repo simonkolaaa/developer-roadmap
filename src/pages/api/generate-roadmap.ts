@@ -72,12 +72,19 @@ Regole ferree:
 
     let text = data.candidates[0].content.parts[0].text;
 
-    // Pulisci i backtick markdown che Gemini potrebbe aver inserito nonostante il prompt
-    text = text
-      .replace(/```mermaid/gi, '')
-      .replace(/```/g, '')
-      .trim();
-    if (!text.startsWith('flowchart') && !text.startsWith('graph')) {
+    // Advanced Mermaid code extraction
+    const mermaidMatch = text.match(/```(?:mermaid)?\n?([\s\S]*?)```/);
+    if (mermaidMatch && mermaidMatch[1]) {
+      text = mermaidMatch[1].trim();
+    } else {
+      // Fallback: try to find the start of the flowchart/graph if backticks are missing
+      const startIdx = text.search(/flowchart|graph/i);
+      if (startIdx !== -1) {
+        text = text.substring(startIdx).trim();
+      }
+    }
+
+    if (!text.toLowerCase().startsWith('flowchart') && !text.toLowerCase().startsWith('graph')) {
       text = 'flowchart TD\n' + text;
     }
 

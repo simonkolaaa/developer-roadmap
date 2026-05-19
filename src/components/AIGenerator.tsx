@@ -73,7 +73,22 @@ export const AIGenerator = () => {
 
       {mermaidData && (
         <div className="mt-4 flex w-full flex-col gap-4">
-          <div className="flex w-full justify-end px-4">
+          <div className="flex w-full justify-end px-4 gap-3">
+            <button
+              onClick={() => {
+                const title = window.prompt("Scegli un nome per la tua Roadmap:", prompt || "Nuova Roadmap");
+                if (title) {
+                  const id = 'custom-' + Date.now();
+                  const saved = JSON.parse(localStorage.getItem('my-roadmaps') || '[]');
+                  saved.push({ id, title, content: mermaidData, date: new Date().toISOString() });
+                  localStorage.setItem('my-roadmaps', JSON.stringify(saved));
+                  alert('Roadmap salvata con successo nella tua Homepage!');
+                }
+              }}
+              className="rounded-md border border-green-700 bg-green-900/30 px-3 py-1.5 text-xs font-medium text-green-400 transition-colors hover:bg-green-800/50 hover:text-green-300 flex items-center gap-2"
+            >
+              💾 Salva nei Miei Percorsi
+            </button>
             <button
               onClick={() => {
                 navigator.clipboard.writeText(mermaidData);
