@@ -65,7 +65,7 @@ Regole ferree:
     if (!response.ok) {
       console.error(data);
       return new Response(
-        JSON.stringify({ error: 'Failed to generate roadmap from AI' }),
+        JSON.stringify({ error: `Gemini API Error: ${data.error?.message || JSON.stringify(data)}` }),
         { status: 500 },
       );
     }
