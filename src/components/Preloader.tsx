@@ -19,13 +19,13 @@ export const Preloader = () => {
     // Sequence timing
     const fillTimer = setTimeout(() => {
       setPhase('zoom');
-    }, 2500); // Slower fill (2.5s)
+    }, 1500); // Snappy fill (1.5s)
 
     const exitTimer = setTimeout(() => {
       setPhase('exit');
       document.body.style.overflow = 'unset';
       sessionStorage.setItem('intro_played', 'true');
-    }, 4500); // 2.5s fill + 2s zoom
+    }, 3000); // 1.5s fill + 1.5s zoom
 
     return () => {
       clearTimeout(fillTimer);
@@ -43,26 +43,26 @@ export const Preloader = () => {
           className="fixed inset-0 z-[100000] flex items-center justify-center overflow-hidden pointer-events-none"
           initial={{ backgroundColor: '#020617' }} // slate-950
           animate={phase === 'zoom' ? { backgroundColor: 'rgba(2, 6, 23, 0)' } : { backgroundColor: '#020617' }}
-          transition={{ duration: 1.5, ease: 'easeIn' }}
+          transition={{ duration: 1.0, ease: 'easeIn' }}
           exit={{ opacity: 0 }}
         >
           {/* Sfondo sfumato che sparisce prima dello zoom */}
           <motion.div 
             className="absolute inset-0 bg-gradient-to-br from-purple-900/30 to-black z-0"
             animate={phase === 'zoom' ? { opacity: 0 } : { opacity: 1 }}
-            transition={{ duration: 1.2 }}
+            transition={{ duration: 0.8 }}
           />
 
           {/* Testo Gigante Animato (Convertito in SVG Vettoriale per performance) */}
           <motion.div
             className="relative z-10 flex flex-col items-center justify-center w-full"
             style={{ 
-              transformOrigin: '70% 50%', // Punta verso la "O" di KOLA
+              transformOrigin: '76% 50%', // Punta esattamenta verso la "O" di KOLA
               willChange: 'transform' // GPU Acceleration
             }}
             initial={{ scale: 1 }}
-            animate={phase === 'zoom' ? { scale: 150, opacity: 0 } : { scale: 1 }}
-            transition={phase === 'zoom' ? { duration: 2.2, ease: [0.76, 0, 0.24, 1] } : {}}
+            animate={phase === 'zoom' ? { scale: 180, opacity: 0 } : { scale: 1 }}
+            transition={phase === 'zoom' ? { duration: 1.5, ease: [0.76, 0, 0.24, 1] } : {}}
           >
             <svg 
               viewBox="0 0 1000 200" 
@@ -81,7 +81,7 @@ export const Preloader = () => {
                     width="1000"
                     initial={{ y: 200, height: 0 }}
                     animate={{ y: 0, height: 200 }}
-                    transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
+                    transition={{ duration: 1.0, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
                   />
                 </clipPath>
               </defs>

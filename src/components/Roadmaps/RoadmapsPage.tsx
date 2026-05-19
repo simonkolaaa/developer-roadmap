@@ -684,35 +684,34 @@ export function RoadmapsPage() {
   }, []);
 
   return (
-    <div className="border-t bg-gray-100">
-      <button
-        onClick={() => {
-          setIsFilterOpen(!isFilterOpen);
-        }}
-        id="filter-button"
-        className={cn(
-          '-mt-1 flex w-full items-center justify-center bg-gray-300 py-2 text-sm text-black focus:shadow-none focus:outline-0 sm:hidden',
-          {
-            'mb-3': !isFilterOpen,
-          },
-        )}
-      >
-        {!isFilterOpen && <Filter size={13} className="mr-1" />}
-        {isFilterOpen && <X size={13} className="mr-1" />}
-        Categories
-      </button>
-      <div className="relative container flex flex-col gap-4 sm:flex-row">
-        <div
+    <div className="border-t border-slate-800 bg-slate-950 py-10 min-h-screen">
+      <div className="container relative flex flex-col gap-8 sm:flex-row">
+        <button
+          onClick={() => setIsFilterOpen(!isFilterOpen)}
+          id="filter-button"
           className={cn(
-            'hidden w-full flex-col from-gray-100 sm:w-[180px] sm:border-r sm:bg-linear-to-l sm:pt-6',
-            {
-              'hidden sm:flex': !isFilterOpen,
-              'z-50 flex': isFilterOpen,
-            },
+            'flex w-full items-center justify-center rounded-xl bg-slate-800 py-3 text-sm font-semibold text-slate-200 transition-colors hover:bg-slate-700 sm:hidden',
+            { 'mb-3': !isFilterOpen }
           )}
         >
-          <div className="absolute top-0 -mx-4 w-full bg-white pb-0 shadow-xl sm:sticky sm:top-10 sm:mx-0 sm:bg-transparent sm:pb-20 sm:shadow-none">
-            <div className="grid grid-cols-1">
+          {!isFilterOpen ? <Filter size={16} className="mr-2" /> : <X size={16} className="mr-2" />}
+          Categories
+        </button>
+
+        <div
+          className={cn(
+            'w-full sm:w-[260px] shrink-0',
+            {
+              'hidden sm:block': !isFilterOpen,
+              'block': isFilterOpen,
+            }
+          )}
+        >
+          <div className="sticky top-24 rounded-2xl border border-slate-800 bg-slate-900/50 p-4 shadow-2xl backdrop-blur-xl">
+            <h3 className="mb-4 px-2 text-xs font-bold tracking-widest text-slate-500 uppercase">
+              Filter by
+            </h3>
+            <div className="flex flex-col gap-1">
               <CategoryFilterButton
                 onClick={() => {
                   setActiveGroup('');
@@ -739,14 +738,16 @@ export function RoadmapsPage() {
             </div>
           </div>
         </div>
-        <div className="flex grow flex-col gap-6 pt-2 pb-20 sm:pt-8">
+
+        <div className="flex grow flex-col gap-10 sm:pt-4">
           {visibleGroups.map((group) => (
-            <div key={`${group.group}-${group.roadmaps.length}`}>
-              <h2 className="mb-2 text-xs tracking-wide text-gray-400 uppercase">
+            <div key={`${group.group}-${group.roadmaps.length}`} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <h2 className="mb-4 flex items-center text-sm font-bold tracking-widest text-purple-400 uppercase">
+                <span className="mr-2 h-px w-8 bg-purple-500/50"></span>
                 {group.group}
               </h2>
 
-              <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2 md:grid-cols-3">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {group.roadmaps.map((roadmap) => (
                   <RoadmapCard roadmap={roadmap} key={roadmap.link} />
                 ))}

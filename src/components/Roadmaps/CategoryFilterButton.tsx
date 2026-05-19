@@ -12,13 +12,10 @@ export function CategoryFilterButton(props: CategoryFilterButtonProps) {
   return (
     <button
       className={cn(
-        'border-b bg-linear-to-l py-1.5 pr-3 text-center text-sm text-gray-500 hover:text-gray-900 sm:text-right',
+        'w-full mb-1 text-left sm:text-right px-4 py-2 rounded-xl text-sm transition-all duration-300 font-medium',
         {
-          'from-white font-semibold text-gray-900':
-            selected && category !== 'All Roadmaps',
-          'font-semibold text-gray-900':
-            selected && category === 'All Roadmaps',
-          'hover:from-white': category !== 'All Roadmaps',
+          'bg-purple-600/20 text-purple-300 border border-purple-500/30 shadow-[0_0_15px_rgba(168,85,247,0.15)]': selected,
+          'text-slate-400 hover:text-slate-200 hover:bg-slate-800 border border-transparent': !selected,
         },
       )}
       type="button"

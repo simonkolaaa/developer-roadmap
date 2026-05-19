@@ -22,73 +22,68 @@ const {
 
 <a
   class:list={[
-    'bento-card group font-regular text-md relative flex h-full w-full flex-col items-start justify-center overflow-hidden rounded-2xl border border-slate-700/50 bg-slate-800/40 p-4 text-slate-300 no-underline backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-purple-500/50 hover:shadow-[0_10px_40px_-10px_rgba(168,85,247,0.3)] sm:p-5',
+    'awwwards-list-item group relative flex w-full items-center justify-between border-b border-slate-800/50 py-6 transition-all duration-500 hover:border-purple-500/30 hover:bg-slate-900/40 hover:px-6 hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] sm:py-8',
     {
       'opacity-50': isUpcoming,
     },
   ]}
   href={url}
 >
-  {/* Effetto Spotlight */}
-  <div class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" style="background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(168, 85, 247, 0.15), transparent 40%);"></div>
+  <div class="flex items-center gap-6 z-20">
+    <span class="text-3xl font-extrabold tracking-tighter text-slate-300 transition-all duration-500 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-500 sm:text-5xl">
+      {text}
+    </span>
 
-  <span class='relative z-20 font-semibold tracking-wide text-slate-200 group-hover:text-white transition-colors'>
-    {text}
-  </span>
+    {
+      isNew && (
+        <span class='flex items-center rounded-full bg-purple-900/30 px-3 py-1 text-xs font-medium text-purple-300 border border-purple-500/20'>
+          <span class='mr-2 relative flex h-2 w-2'>
+            <span class='absolute inline-flex h-2 w-2 animate-ping rounded-full bg-purple-400 opacity-75' />
+            <span class='relative inline-flex h-2 w-2 rounded-full bg-purple-500' />
+          </span>
+          New
+        </span>
+      )
+    }
+
+    {
+      isUpcoming && (
+        <span class='flex items-center rounded-full bg-slate-800 px-3 py-1 text-xs font-medium text-slate-400 border border-slate-700'>
+          Upcoming
+        </span>
+      )
+    }
+  </div>
+
+  <div class="relative z-20 flex items-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+    <div class="flex h-12 w-12 items-center justify-center rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 backdrop-blur-sm transition-transform duration-500 group-hover:rotate-45">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </div>
+  </div>
 
   {
     allowBookmark && (
-      <MarkFavorite
-        resourceId={url.split('/').pop()!}
-        resourceType={
-          url.includes('best-practices') ? 'best-practice' : 'roadmap'
-        }
-        client:only='react'
-      />
+      <div class="absolute right-0 top-0 z-30 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+        <MarkFavorite
+          resourceId={url.split('/').pop()!}
+          resourceType={
+            url.includes('best-practices') ? 'best-practice' : 'roadmap'
+          }
+          client:only='react'
+        />
+      </div>
     )
   }
-
-  {
-    isNew && (
-      <span class='absolute right-3 bottom-3 flex items-center rounded-tl rounded-br text-xs font-medium text-purple-300'>
-        <span class='mr-1.5 flex h-2 w-2'>
-          <span class='absolute inline-flex h-2 w-2 animate-ping rounded-full bg-purple-400 opacity-75' />
-          <span class='relative inline-flex h-2 w-2 rounded-full bg-purple-500' />
-        </span>
-        New
-      </span>
-    )
-  }
-
-  {
-    isUpcoming && (
-      <span class='absolute right-3 bottom-3 flex items-center rounded-tl rounded-br text-xs font-medium text-slate-500'>
-        <span class='mr-1.5 flex h-2 w-2'>
-          <span class='absolute inline-flex h-2 w-2 animate-ping rounded-full bg-slate-500 opacity-75' />
-          <span class='relative inline-flex h-2 w-2 rounded-full bg-slate-600' />
-        </span>
-        Upcoming
-      </span>
-    )
-  }
+  
   <span
     data-progress
-    class='absolute top-0 bottom-0 left-0 z-10 w-0 bg-purple-900/20 transition-[width] duration-300'
+    class='absolute top-0 bottom-0 left-0 z-10 w-0 bg-purple-900/10 transition-[width] duration-300'
   ></span>
 </a>
 
 <script>
-  // Hover Spotlight logic
-  document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.querySelectorAll('.bento-card');
-    cards.forEach((card) => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = (e as MouseEvent).clientX - rect.left;
-        const y = (e as MouseEvent).clientY - rect.top;
-        (card as HTMLElement).style.setProperty('--mouse-x', `${x}px`);
-        (card as HTMLElement).style.setProperty('--mouse-y', `${y}px`);
-      });
-    });
+  // Simple listener for page loads
+  document.addEventListener("astro:page-load", () => {
+    // any initialization if needed
   });
 </script>
