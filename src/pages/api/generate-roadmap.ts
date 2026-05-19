@@ -48,8 +48,7 @@ export const POST: APIRoute = async ({ request }) => {
 Il diagramma deve avere almeno 8-10 nodi con i concetti fondamentali e le relative connessioni. 
 Regole ferree:
 1. Usa solo la sintassi di Mermaid (es. flowchart TD, A[Start] --> B[Next]).
-2. NON includere testo prima o dopo il blocco di codice.
-3. NON includere i backtick (\`\`\`mermaid o \`\`\`). Restituisci SOLO il codice raw del diagramma che inizia con "flowchart TD" o "graph TD".`,
+2. Metti il codice Mermaid SEMPRE all'interno di un blocco markdown con i backtick (\`\`\`mermaid e \`\`\`). Questo è obbligatorio per l'estrazione.`,
                 },
               ],
             },
@@ -78,9 +77,28 @@ Regole ferree:
       text = mermaidMatch[1].trim();
     } else {
       // Fallback: try to find the start of the flowchart/graph if backticks are missing
-      const startIdx = text.search(/flowchart|graph/i);
-      if (startIdx !== -1) {
-        text = text.substring(startIdx).trim();
+      const lines = text.split('\n');
+      const diagramLines = [];
+      let capturing = false;
+      for (const line of lines) {
+        if (line.trim().toLowerCase().startsWith('flowchart') || line.trim().toLowerCase().startsWith('graph')) {
+          capturing = true;
+        }
+        if (capturing) {
+          // Se la riga sembra testo discorsivo o un elenco puntato che non c'entra con mermaid, interrompi.
+          if (
+            (line.trim().startsWith('*') || line.trim().startsWith('-')) && 
+            !line.includes('-->') && 
+            !line.includes('---') && 
+            !line.match(/[\[\]{()}]/)
+          ) {
+            break;
+          }
+          diagramLines.push(line);
+        }
+      }
+      if (diagramLines.length > 0) {
+        text = diagramLines.join('\n').trim();
       }
     }
 
