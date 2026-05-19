@@ -6,6 +6,8 @@ import Footer from '../components/Footer.astro';
 import Navigation from '../components/Navigation/Navigation.astro';
 import { PageProgress } from '../components/PageProgress';
 import { Toaster } from '../components/Toast';
+import { CustomCursor } from '../components/CustomCursor';
+import { Preloader } from '../components/Preloader';
 import { cn } from '../lib/classname';
 
 export interface Props {
@@ -59,6 +61,7 @@ const {
       bodyClassName,
     )}
   >
+    <Preloader client:only='react' />
     <slot name='page-header'>
       <Navigation />
     </slot>
@@ -73,6 +76,7 @@ const {
 
     <Toaster client:only='react' />
     <CommandMenu client:idle />
+    <CustomCursor client:only='react' />
     <PageProgress client:idle />
 
     <slot name='after-footer' />
