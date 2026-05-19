@@ -7,36 +7,51 @@ export const prerender = false;
 
 <BaseLayout
   title='Genera Roadmap con AI — Simonkola Roadmaps'
-  description={'Genera la tua roadmap di studio istantaneamente sfruttando l\'intelligenza artificiale.'}
+  description={"Genera la tua roadmap di studio istantaneamente sfruttando l'intelligenza artificiale."}
   permalink={'/ai'}
 >
   <div class='min-h-screen bg-slate-950 text-slate-100'>
     <div class='sticky top-[60px] z-10 border-b border-slate-800 bg-slate-900'>
       <div class='container mx-auto flex items-center gap-3 px-4 py-3 text-sm'>
-        <a href='/' class='text-slate-400 transition-colors hover:text-blue-400'>
+        <a
+          href='/'
+          class='text-slate-400 transition-colors hover:text-blue-400'
+        >
           Home
         </a>
         <span class='text-slate-600'>›</span>
         <span class='font-medium text-slate-300'>Genera con AI</span>
       </div>
     </div>
-    
-    <div class='border-b border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 py-12'>
+
+    <div
+      class='border-b border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 py-12'
+    >
       <div class='container mx-auto max-w-4xl px-4 text-center'>
-        <div class='mb-5 inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-3 py-1 text-xs font-medium tracking-widest text-purple-400 uppercase'>
+        <div
+          class='mb-5 inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-3 py-1 text-xs font-medium tracking-widest text-purple-400 uppercase'
+        >
           ✨ Sperimentale
         </div>
-        <h1 class='mb-3 text-3xl font-bold tracking-tight text-white md:text-5xl'>
-          Genera Roadmap con <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Gemini AI</span>
+        <h1
+          class='mb-3 text-3xl font-bold tracking-tight text-white md:text-5xl'
+        >
+          Genera Roadmap con <span
+            class='bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent'
+            >Gemini AI</span
+          >
         </h1>
         <p class='mx-auto max-w-2xl text-base leading-relaxed text-slate-400'>
-          Inserisci un argomento che vorresti imparare (es. "Sviluppo Web con Rust" o "Architetture Cloud") e l'intelligenza artificiale genererà istantaneamente una mappa concettuale interattiva personalizzata per te.
+          Inserisci un argomento che vorresti imparare (es. "Sviluppo Web con
+          Rust" o "Architetture Cloud") e l'intelligenza artificiale genererà
+          istantaneamente una mappa concettuale interattiva personalizzata per
+          te.
         </p>
       </div>
     </div>
 
-    <div class='w-full max-w-[98vw] mx-auto px-2 md:px-8 py-10'>
-      <AIGenerator client:only="react" />
+    <div class='mx-auto w-full max-w-[98vw] px-2 py-10 md:px-8'>
+      <AIGenerator client:only='react' />
     </div>
   </div>
 </BaseLayout>
