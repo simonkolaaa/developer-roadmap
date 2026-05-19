@@ -2,15 +2,19 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const Preloader = () => {
+  const [shouldRender, setShouldRender] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     // Check if we already showed the preloader in this session
-    if (sessionStorage.getItem('intro_played')) {
-      setIsLoading(false);
-      return;
+    if (!sessionStorage.getItem('intro_played')) {
+      setShouldRender(true);
     }
+  }, []);
+
+  useEffect(() => {
+    if (!shouldRender) return;
 
     const duration = 2000;
     const intervalTime = 20;
@@ -46,6 +50,8 @@ export const Preloader = () => {
       document.body.style.overflow = 'unset';
     }
   }, [isLoading]);
+
+  if (!shouldRender) return null;
 
   return (
     <AnimatePresence>
