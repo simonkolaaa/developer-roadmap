@@ -2,22 +2,14 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const Preloader = () => {
-  const [shouldRender, setShouldRender] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Check if we already showed the preloader in this session
-    if (!sessionStorage.getItem('intro_played')) {
-      setShouldRender(true);
-    }
-  }, []);
+    // Rimosso il check del sessionStorage per far godere l'animazione ad ogni F5
 
-  useEffect(() => {
-    if (!shouldRender) return;
-
-    const duration = 2000;
-    const intervalTime = 20;
+    const duration = 1500; // Hyper-fast 1.5 seconds
+    const intervalTime = 15;
     const steps = duration / intervalTime;
     let currentStep = 0;
 
@@ -30,8 +22,7 @@ export const Preloader = () => {
         clearInterval(timer);
         setTimeout(() => {
           setIsLoading(false);
-          sessionStorage.setItem('intro_played', 'true');
-        }, 500); // Wait half a sec at 100% before dismissing
+        }, 300); // Piccola pausa a 100% prima del botto
       }
     }, intervalTime);
 
@@ -51,57 +42,71 @@ export const Preloader = () => {
     }
   }, [isLoading]);
 
-  if (!shouldRender) return null;
-
   return (
     <AnimatePresence>
       {isLoading && (
         <motion.div
-          initial={{ y: 0 }}
-          exit={{ y: '-100vh' }}
+          className="fixed inset-0 z-[100000] flex flex-col items-center justify-center bg-slate-950 overflow-hidden"
+          exit={{ backgroundColor: "rgba(2, 6, 23, 0)", pointerEvents: "none" }}
           transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
-          className="fixed inset-0 z-[100000] flex flex-col items-center justify-center bg-slate-950"
         >
-          <div className="relative flex flex-col items-center">
-            {/* Background glowing orb */}
-            <motion.div
-              animate={{
-                scale: [1, 1.5, 1],
-                opacity: [0.5, 0.8, 0.5],
-              }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute top-1/2 left-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-600/30 blur-[80px]"
-            />
+          {/* Sfondo Esplosivo in uscita */}
+          <motion.div 
+            className="absolute inset-0 bg-gradient-to-br from-purple-900 to-black z-0"
+            initial={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 1.5, opacity: 0 }}
+            transition={{ duration: 0.8, ease: "circIn" }}
+          />
+
+          <div className="relative z-10 flex w-full h-full flex-col items-center justify-center">
             
+            {/* Contatore Gigante e Maschera */}
+            <div className="relative flex items-end overflow-hidden">
+              <motion.div
+                initial={{ y: '100%' }}
+                animate={{ y: 0 }}
+                exit={{ y: '-100%', opacity: 0, scale: 0.5 }}
+                transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+                className="flex items-end"
+              >
+                <h1 className="text-[12rem] md:text-[20rem] font-black leading-none text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-800 mix-blend-overlay">
+                  {progress}
+                </h1>
+                <span className="text-4xl md:text-8xl font-black text-slate-700 mb-8 md:mb-16 mix-blend-overlay">%</span>
+              </motion.div>
+            </div>
+            
+            {/* Nome che appare come "sottotitolo" */}
             <motion.div 
-              className="overflow-hidden"
-              initial={{ height: 0 }}
-              animate={{ height: 'auto' }}
-              transition={{ duration: 1, delay: 0.2, ease: [0.76, 0, 0.24, 1] }}
+              className="absolute bottom-20 overflow-hidden"
+              exit={{ opacity: 0, y: 50 }}
+              transition={{ duration: 0.5 }}
             >
-              <h1 className="relative z-10 text-5xl font-extrabold uppercase tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 sm:text-7xl drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]">
+              <motion.h2 
+                initial={{ y: '100%' }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1, delay: 0.5, ease: [0.76, 0, 0.24, 1] }}
+                className="text-2xl md:text-4xl font-extrabold uppercase tracking-[0.5em] text-purple-400 drop-shadow-[0_0_15px_rgba(168,85,247,0.8)]"
+              >
                 Simon Kola
-              </h1>
+              </motion.h2>
             </motion.div>
-            
-            <motion.div 
-              className="mt-8 flex w-full max-w-xs flex-col items-center gap-4 relative z-10"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 1 }}
-            >
-              <div className="flex w-full justify-between text-xs font-mono tracking-widest text-slate-400">
-                <span>INITIALIZING</span>
-                <span>{progress}%</span>
-              </div>
-              <div className="h-[2px] w-full overflow-hidden bg-slate-800">
-                <motion.div 
-                  className="h-full bg-gradient-to-r from-blue-500 to-purple-500"
-                  style={{ width: `${progress}%` }}
-                />
-              </div>
-            </motion.div>
+
           </div>
+
+          {/* Curtain Reveal Effect (Le porte che si aprono) */}
+          <motion.div 
+            className="absolute top-0 left-0 w-full h-1/2 bg-slate-950 z-20 pointer-events-none"
+            initial={{ y: '-100%' }}
+            exit={{ y: '-100%' }} // Si assicura che scivoli via
+            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+          />
+          <motion.div 
+            className="absolute bottom-0 left-0 w-full h-1/2 bg-slate-950 z-20 pointer-events-none"
+            initial={{ y: '100%' }}
+            exit={{ y: '100%' }} // Si assicura che scivoli via
+            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+          />
         </motion.div>
       )}
     </AnimatePresence>
