@@ -12,7 +12,7 @@ import {
   isNewRoadmap,
   listOfficialRoadmaps,
 } from '../queries/official-roadmap';
-import { LOCAL_ROADMAPS } from '../data/local-roadmaps';
+import { RoadmapsSlider } from '../components/Roadmaps/RoadmapsSlider';
 import { MyRoadmapsList } from '../components/MyRoadmapsList';
 
 const roadmaps = await listOfficialRoadmaps();
@@ -58,88 +58,9 @@ const videos = await getAllVideos();
     <HeroSection client:load />
 
     <!-- ══ PERCORSI PERSONALI (Local Roadmaps) ══════════════════════════════ -->
-    <div
-      class='relative border-b border-b-white/10 bg-slate-950 py-20 overflow-visible z-30'
-    >
+    <div class='relative bg-slate-950 py-20 overflow-visible z-30'>
       <div class='container relative'>
-        <div class="mb-12 flex items-baseline justify-between border-b border-white/10 pb-4">
-          <span class="text-xs font-semibold tracking-[0.2em] text-yellow-400 font-orbitron uppercase">// 01 . PERCORSI PERSONALI</span>
-          <span class="text-[10px] font-mono text-slate-500 uppercase tracking-widest hidden sm:block">LOCAL JOURNEYS</span>
-        </div>
-        
-        <ul class='flex flex-col w-full relative z-10 border-t border-white/5'>
-          {
-            LOCAL_ROADMAPS.sort((a, b) => a.order - b.order).map((roadmap, i) => (
-              <li 
-                class="awwwards-item opacity-0 translate-y-5 transition-all duration-700 ease-out w-full border-b border-white/5"
-                style={`transition-delay: ${i * 40}ms`}
-              >
-                <a
-                  href={`/${roadmap.slug}`}
-                  class='awwwards-list-item group relative flex w-full items-center justify-between py-6 transition-all duration-300 hover:bg-white/[0.01] px-2 sm:px-4'
-                  data-title={roadmap.title.card}
-                  data-desc={roadmap.description}
-                  data-type={roadmap.type}
-                  data-topics={roadmap.topics ? `${roadmap.topics.length} TOPICS` : "0 TOPICS"}
-                >
-                  <div class="relative z-10 flex items-center gap-4 sm:gap-8">
-                    <span class='text-xs font-mono text-yellow-500/40 tracking-wider w-8 shrink-0'>
-                      // {(i + 1).toString().padStart(2, '0')}
-                    </span>
-                    
-                    <!-- Kinetic Text Roll Effect (Symmetric) -->
-                    <div class="h-[1.3em] overflow-hidden relative flex items-center pr-2">
-                      <span class="block text-xl font-bold tracking-tight text-slate-300 transition-transform duration-500 ease-[0.16,1,0.3,1] group-hover:-translate-y-full sm:text-3xl uppercase font-orbitron">{roadmap.title.card}</span>
-                      <span class="absolute top-full left-0 block text-xl font-bold tracking-tight text-yellow-400 transition-transform duration-500 ease-[0.16,1,0.3,1] group-hover:-translate-y-full sm:text-3xl uppercase font-orbitron">{roadmap.title.card}</span>
-                    </div>
-                  </div>
-                  
-                  <div class="relative z-20 flex items-center gap-6">
-                    <div class="hidden sm:flex items-center gap-4">
-                      <span class="text-[9px] font-mono border border-slate-800 rounded px-2 py-0.5 text-slate-500 group-hover:border-yellow-500/30 group-hover:text-yellow-400 transition-colors duration-300">
-                        {roadmap.type === 'role' ? 'RUOLO' : 'COMPETENZA'}
-                      </span>
-                      <span class="text-[10px] font-mono text-slate-500 group-hover:text-slate-300 transition-colors duration-300">
-                        {roadmap.topics ? `${roadmap.topics.length} ARGOMENTI` : '0 ARGOMENTI'}
-                      </span>
-                    </div>
-
-                    <div class="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-slate-900/40 text-slate-400 transition-all duration-300 group-hover:border-yellow-400/40 group-hover:bg-yellow-500/10 group-hover:text-yellow-400 group-hover:rotate-45">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                    </div>
-                  </div>
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-
-        <!-- Shared Floating Preview Card (Clean, Sharp Dark theme from mohamedshehata.net) -->
-        <div
-          id="floating-preview"
-          class="pointer-events-none fixed top-0 left-0 z-50 h-[170px] w-[270px] opacity-0 scale-95 rounded-xl border border-white/10 bg-slate-950/95 p-5 shadow-[0_30px_60px_rgba(0,0,0,0.8)] backdrop-blur-md transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden"
-          style="transform: translate3d(-100%, -100%, 0) rotate(0deg); transform-origin: center center;"
-        >
-          {/* Subtle line background decoration */}
-          <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-yellow-500/20 to-transparent"></div>
-          
-          <div class="relative z-10 flex flex-col h-full justify-between">
-            <div>
-              <span id="preview-type" class="text-[8px] font-bold uppercase tracking-[0.2em] text-yellow-500/70 font-mono">// RUOLO</span>
-              <h4 id="preview-title" class="mt-1 text-md font-bold tracking-tight text-slate-200 uppercase font-orbitron line-clamp-1">FONDAMENTI</h4>
-              <p id="preview-desc" class="mt-1.5 text-xs text-slate-400 leading-relaxed line-clamp-2">Basi della programmazione, algoritmi e strutture dati.</p>
-            </div>
-            
-            <div class="flex items-center justify-between border-t border-white/5 pt-3">
-              <span class="text-[9px] text-slate-500 font-mono tracking-wider" id="preview-count">8 TOPICS</span>
-              <span class="text-[9px] text-yellow-400 font-mono tracking-widest flex items-center gap-1">
-                STUDIA ORA
-                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-              </span>
-            </div>
-          </div>
-        </div>
-
+        <RoadmapsSlider client:only="react" />
       </div>
     </div>
     <div class='container'>
