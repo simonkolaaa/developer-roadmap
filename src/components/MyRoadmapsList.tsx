@@ -61,19 +61,19 @@ export const MyRoadmapsList = () => {
           <motion.a
             variants={cardVariants}
             whileHover={{ 
-              borderColor: "rgba(255, 255, 255, 0.2)",
-              backgroundColor: "rgba(255, 255, 255, 0.02)"
+              borderColor: "rgba(168, 85, 247, 0.35)",
+              backgroundColor: "rgba(168, 85, 247, 0.04)"
             }}
             whileTap={{ scale: 0.99 }}
             key={roadmap.id}
             href={`/my-roadmap?id=${roadmap.id}`}
             className="group relative flex min-h-[90px] items-center justify-between rounded-xl border border-white/5 bg-transparent p-4 transition-all duration-300"
           >
-            <span className="text-sm font-light text-white/50 group-hover:text-white transition-colors duration-300 line-clamp-2 uppercase font-sans">
+            <span className="text-sm font-light text-white/50 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-450 transition-all duration-300 line-clamp-2 uppercase font-sans">
               {roadmap.title}
             </span>
             <div className="flex flex-col items-end gap-2">
-              <span className="text-[9px] font-mono text-white/30 whitespace-nowrap bg-white/5 px-2 py-0.5 rounded border border-white/5">
+              <span className="text-[9px] font-mono text-white/30 whitespace-nowrap bg-white/5 px-2 py-0.5 rounded border border-white/5 group-hover:border-purple-500/20 group-hover:text-purple-300 transition-all duration-300">
                 {new Date(roadmap.date).toLocaleDateString()}
               </span>
               <button 
@@ -85,7 +85,7 @@ export const MyRoadmapsList = () => {
                     setRoadmaps(newRoadmaps);
                   }
                 }}
-                className="text-[10px] text-white/20 hover:text-white/80 hover:bg-white/10 rounded-full h-5 w-5 flex items-center justify-center transition-all border border-white/5"
+                className="text-[10px] text-white/20 hover:text-red-400 hover:bg-red-500/10 rounded-full h-5 w-5 flex items-center justify-center transition-all border border-white/5 hover:border-red-500/25"
                 title="Elimina"
               >
                 ×

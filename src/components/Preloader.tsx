@@ -149,7 +149,7 @@ export const Preloader = () => {
                 textAnchor="middle" 
                 dominantBaseline="middle" 
                 className="font-black uppercase tracking-tighter"
-                style={{ fontSize: '140px', fontFamily: 'Orbitron, sans-serif' }}
+                style={{ fontSize: '90px', fontFamily: 'Orbitron, sans-serif' }}
                 stroke="rgba(255, 255, 255, 0.2)"
                 strokeWidth="2"
                 fill="transparent"
@@ -165,7 +165,7 @@ export const Preloader = () => {
                   textAnchor="middle" 
                   dominantBaseline="middle" 
                   className="font-black uppercase tracking-tighter"
-                  style={{ fontSize: '140px', fontFamily: 'Orbitron, sans-serif' }}
+                  style={{ fontSize: '90px', fontFamily: 'Orbitron, sans-serif' }}
                   fill="url(#textGradient)"
                 >
                   SIMON K<tspan id="zoom-o">O</tspan>LA
