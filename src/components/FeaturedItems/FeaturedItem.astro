@@ -21,9 +21,9 @@ const {
 
 <a
   class:list={[
-    'group relative flex w-full items-center justify-between border-b border-white/5 py-5 transition-all duration-300 hover:border-purple-500/25',
+    'group relative flex w-full items-center justify-between border-b border-white/5 py-5 transition-all duration-300 hover:border-purple-500/25 featured-reveal opacity-0 translate-y-8 ease-[0.16,1,0.3,1]',
     {
-      'opacity-40': isUpcoming,
+      'opacity-40 upcoming-item': isUpcoming,
     },
   ]}
   href={url}
@@ -84,3 +84,38 @@ const {
     class='absolute top-0 bottom-0 left-0 -z-20 w-0 bg-white/[0.02] transition-[width] duration-300'
   ></span>
 </a>
+
+<script>
+  function setupScrollReveals() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            // Aggiungiamo un piccolissimo ritardo per creare un effetto sequenziale (staggered)
+            setTimeout(() => {
+              entry.target.classList.remove('opacity-0', 'translate-y-8');
+              if (entry.target.classList.contains('upcoming-item')) {
+                entry.target.classList.add('opacity-40', 'translate-y-0');
+              } else {
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+              }
+            }, i * 60);
+            
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.05,
+        rootMargin: '0px 0px -40px 0px',
+      }
+    );
+
+    document.querySelectorAll('.featured-reveal').forEach((el) => {
+      observer.observe(el);
+    });
+  }
+
+  // Si integra perfettamente con le transizioni di pagina di Astro
+  document.addEventListener('astro:page-load', setupScrollReveals);
+</script>

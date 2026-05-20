@@ -69,32 +69,39 @@ export const Preloader = () => {
   useEffect(() => {
     if (!shouldRender) return;
     
-    // Conversion of screen client rect to local SVG canvas coordinates (100% pixel-perfect centering)
-    const detectTimer = setTimeout(() => {
+    const calculateCenter = () => {
       const oEl = document.getElementById('zoom-o');
-      const svgEl = document.querySelector('svg');
-      if (oEl && svgEl) {
+      if (oEl) {
         try {
-          const rect = oEl.getBoundingClientRect();
-          const point = svgEl.createSVGPoint();
-          
-          // Get the center of the O element in screen coordinates
-          point.x = rect.left + rect.width / 2;
-          point.y = rect.top + rect.height / 2;
-          
-          // Convert screen coordinates back into local 1000x200 SVG coordinates
-          const svgPoint = point.matrixTransform(svgEl.getScreenCTM()!.inverse());
-          if (svgPoint && !isNaN(svgPoint.x) && !isNaN(svgPoint.y)) {
-            zoomPoint.current = {
-              x: svgPoint.x,
-              y: svgPoint.y
-            };
+          // getBBox ricava le coordinate stabili locali all'interno dello spazio SVG 1000x200
+          const bbox = (oEl as any).getBBox();
+          if (bbox && bbox.width > 0) {
+            const localX = bbox.x + bbox.width / 2;
+            const localY = bbox.y + bbox.height / 2;
+            
+            // Applica limiti di sicurezza per prevenire valori anomali
+            if (!isNaN(localX) && !isNaN(localY) && localX > 0 && localY > 0) {
+              zoomPoint.current = { x: localX, y: localY };
+            }
           }
         } catch (e) {
-          console.warn("Failed to center coordinate detection:", e);
+          console.warn("Rilevamento getBBox fallito, uso del fallback:", e);
         }
       }
-    }, 350);
+    };
+
+    // Esegui subito per avere un valore iniziale
+    calculateCenter();
+
+    // Riesegui non appena i font (incluso Orbitron) sono completamente caricati nel browser
+    if (typeof window !== 'undefined' && 'fonts' in document) {
+      document.fonts.ready.then(() => {
+        calculateCenter();
+      });
+    }
+
+    // Timer di sicurezza aggiuntivo
+    const detectTimer = setTimeout(calculateCenter, 400);
 
     return () => clearTimeout(detectTimer);
   }, [shouldRender]);
