@@ -65,7 +65,7 @@ export const CustomCursor = () => {
         }
       `}</style>
       <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-[9999] flex items-center justify-center rounded-full border-2 border-purple-500 bg-purple-500/10 mix-blend-screen"
+        className="pointer-events-none fixed top-0 left-0 z-[9999] flex items-center justify-center rounded-full border-2 border-white bg-white/5 mix-blend-difference"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
@@ -74,25 +74,25 @@ export const CustomCursor = () => {
         }}
         animate={{
           scale: hoverType === 'view' ? 2.5 : hoverType === 'click' ? 1.8 : 1,
-          borderColor: hoverType === 'view' ? 'rgba(168, 85, 247, 0.9)' : 'rgba(168, 85, 247, 0.5)',
-          backgroundColor: hoverType === 'view' ? 'rgba(168, 85, 247, 0.25)' : hoverType === 'click' ? 'rgba(168, 85, 247, 0.15)' : 'rgba(168, 85, 247, 0.03)',
+          borderColor: hoverType === 'view' ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255, 255, 255, 0.4)',
+          backgroundColor: hoverType === 'view' ? 'rgba(255, 255, 255, 0.15)' : hoverType === 'click' ? 'rgba(255, 255, 255, 0.08)' : 'rgba(255, 255, 255, 0.02)',
         }}
         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
       >
         <span 
-          className="text-[6px] font-black uppercase tracking-[0.2em] text-purple-200 transition-opacity duration-300 font-mono"
+          className="text-[6px] font-black uppercase tracking-[0.2em] text-white transition-opacity duration-300 font-mono"
           style={{ opacity: hoverType === 'view' ? 1 : 0 }}
         >
           VIEW
         </span>
       </motion.div>
       <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-[10000] h-2 w-2 rounded-full bg-blue-400"
+        className="pointer-events-none fixed top-0 left-0 z-[10000] h-1.5 w-1.5 rounded-full bg-white mix-blend-difference"
         style={{
           x: useSpring(cursorX, { damping: 40, stiffness: 400 }),
           y: useSpring(cursorY, { damping: 40, stiffness: 400 }),
-          translateX: 12,
-          translateY: 12,
+          translateX: 13,
+          translateY: 13,
         }}
         animate={{
           scale: hoverType !== 'none' ? 0 : 1,

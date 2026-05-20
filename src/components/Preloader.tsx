@@ -54,8 +54,12 @@ export const Preloader = () => {
     const w = originalW - (originalW - targetW) * progress;
     const h = originalH - (originalH - targetH) * progress;
     
-    const currentX = (x - w / 2) * progress;
-    const currentY = (y - h / 2) * progress;
+    // Linearly interpolate the center point from the initial center to the target point
+    const centerX = (originalW / 2) + (x - (originalW / 2)) * progress;
+    const centerY = (originalH / 2) + (y - (originalH / 2)) * progress;
+
+    const currentX = centerX - w / 2;
+    const currentY = centerY - h / 2;
     
     return `${currentX} ${currentY} ${w} ${h}`;
   });
@@ -93,10 +97,9 @@ export const Preloader = () => {
       {phase !== 'exit' && (
         <motion.div
           className="fixed inset-0 z-[100000] flex items-center justify-center overflow-hidden pointer-events-none"
-          initial={{ backgroundColor: '#020617' }} // slate-950
-          animate={phase === 'zoom' ? { backgroundColor: 'rgba(2, 6, 23, 0)' } : { backgroundColor: '#020617' }}
-          transition={{ duration: 1.0, ease: 'easeIn' }}
-          exit={{ opacity: 0 }}
+          initial={{ backgroundColor: '#020617' }}
+          animate={{ backgroundColor: '#020617' }}
+          exit={{ opacity: 0, transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] } }}
         >
           {/* Sfondo sfumato che sparisce prima dello zoom */}
           <motion.div 
