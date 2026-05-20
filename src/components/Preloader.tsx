@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState, useRef } from 'react';
+import { motion, AnimatePresence, useMotionValue, useTransform, animate } from 'framer-motion';
 
 export const Preloader = () => {
   const [shouldRender, setShouldRender] = useState(false);
   const [phase, setPhase] = useState<'fill' | 'zoom' | 'exit'>('fill');
+  const zoomPoint = useRef({ x: 672, y: 100 }); // Default estimate for 'O' in KOLA
+
+  const zoomProgress = useMotionValue(0);
 
   useEffect(() => {
-    // Rimuoviamo il sessionStorage così puoi vedere sempre l'animazione ricaricando
     setShouldRender(true);
   }, []);
 
@@ -19,19 +21,69 @@ export const Preloader = () => {
     // Sequence timing
     const fillTimer = setTimeout(() => {
       setPhase('zoom');
-    }, 1500); // Snappy fill (1.5s)
+      // Smooth Awwwards cubic-bezier zoom animation on the viewBox
+      animate(zoomProgress, 1, {
+        duration: 1.6,
+        ease: [0.76, 0, 0.24, 1],
+      });
+    }, 1500);
 
     const exitTimer = setTimeout(() => {
       setPhase('exit');
       document.body.style.overflow = 'unset';
       sessionStorage.setItem('intro_played', 'true');
-    }, 3000); // 1.5s fill + 1.5s zoom
+    }, 3100);
 
     return () => {
       clearTimeout(fillTimer);
       clearTimeout(exitTimer);
       document.body.style.overflow = 'unset';
     };
+  }, [shouldRender]);
+
+  // Interpolazione viewBox per ingrandimento vettoriale puro (100% nitido)
+  const originalW = 1000;
+  const originalH = 200;
+  const targetW = 12; // Zoom ravvicinato dentro il buco della lettera "O"
+  const targetH = 2.4;
+
+  const viewBox = useTransform(zoomProgress, (progress) => {
+    const x = zoomPoint.current.x;
+    const y = zoomPoint.current.y;
+    
+    const w = originalW - (originalW - targetW) * progress;
+    const h = originalH - (originalH - targetH) * progress;
+    
+    const currentX = (x - w / 2) * progress;
+    const currentY = (y - h / 2) * progress;
+    
+    return `${currentX} ${currentY} ${w} ${h}`;
+  });
+
+  const textOpacity = useTransform(zoomProgress, [0, 0.85, 1], [1, 1, 0]);
+
+  useEffect(() => {
+    if (!shouldRender) return;
+    
+    // Rilevamento programmatico delle coordinate per centrare la "O" a prescindere dal font/display
+    const detectTimer = setTimeout(() => {
+      const oEl = document.getElementById('zoom-o');
+      if (oEl) {
+        try {
+          const bbox = (oEl as any).getBBox();
+          if (bbox && bbox.width > 0) {
+            zoomPoint.current = {
+              x: bbox.x + bbox.width / 2,
+              y: bbox.y + bbox.height / 2
+            };
+          }
+        } catch (e) {
+          console.warn("Failed to get BBox of zoom-o:", e);
+        }
+      }
+    }, 300);
+
+    return () => clearTimeout(detectTimer);
   }, [shouldRender]);
 
   if (!shouldRender) return null;
@@ -53,21 +105,13 @@ export const Preloader = () => {
             transition={{ duration: 0.8 }}
           />
 
-          {/* Testo Gigante Animato (Convertito in SVG Vettoriale per performance) */}
-          <motion.div
-            className="relative z-10 flex flex-col items-center justify-center w-full"
-            style={{ 
-              transformOrigin: '76% 50%', // Punta esattamenta verso la "O" di KOLA
-              willChange: 'transform' // GPU Acceleration
-            }}
-            initial={{ scale: 1 }}
-            animate={phase === 'zoom' ? { scale: 180, opacity: 0 } : { scale: 1 }}
-            transition={phase === 'zoom' ? { duration: 1.5, ease: [0.76, 0, 0.24, 1] } : {}}
-          >
-            <svg 
-              viewBox="0 0 1000 200" 
+          {/* Testo Gigante Animato (Vettoriale al 100% per evitare sgranature) */}
+          <div className="relative z-10 flex flex-col items-center justify-center w-full">
+            <motion.svg 
+              viewBox={viewBox} 
               className="w-full max-w-[90vw] md:max-w-6xl h-auto drop-shadow-2xl"
               preserveAspectRatio="xMidYMid meet"
+              style={{ opacity: textOpacity }}
             >
               <defs>
                 <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -112,20 +156,19 @@ export const Preloader = () => {
                   style={{ fontSize: '140px', fontFamily: 'Orbitron, sans-serif' }}
                   fill="url(#textGradient)"
                 >
-                  SIMON KOLA
+                  SIMON K<tspan id="zoom-o">O</tspan>LA
                 </text>
               </g>
-            </svg>
+            </motion.svg>
             
             {/* Piccola sottoscritta */}
             <motion.div
               className="mt-4 text-xs md:text-sm font-mono tracking-[0.5em] text-slate-500 uppercase text-center"
-              animate={phase === 'zoom' ? { opacity: 0 } : { opacity: 1 }}
-              transition={{ duration: 0.3 }}
+              style={{ opacity: textOpacity }}
             >
               Developer Roadmaps
             </motion.div>
-          </motion.div>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
