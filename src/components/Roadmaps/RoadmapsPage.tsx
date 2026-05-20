@@ -11,6 +11,7 @@ import { RoadmapCard } from './RoadmapCard.tsx';
 import { httpGet } from '../../lib/http.ts';
 import { isLoggedIn } from '../../lib/jwt.ts';
 import type { AllowedMemberRoles } from '../ShareOptions/ShareTeamMemberList.tsx';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export type UserProgressResponse = {
   resourceId: string;
@@ -739,21 +740,59 @@ export function RoadmapsPage() {
           </div>
         </div>
 
-        <div className="flex grow flex-col gap-10 sm:pt-4">
-          {visibleGroups.map((group) => (
-            <div key={`${group.group}-${group.roadmaps.length}`} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <h2 className="mb-4 flex items-center text-sm font-bold tracking-widest text-purple-400 uppercase">
-                <span className="mr-2 h-px w-8 bg-purple-500/50"></span>
-                {group.group}
-              </h2>
+        <div className="flex grow flex-col gap-10 sm:pt-4 overflow-hidden">
+          <AnimatePresence mode="popLayout">
+            {visibleGroups.map((group) => (
+              <motion.div
+                key={`${group.group}-${group.roadmaps.length}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="w-full"
+              >
+                <h2 className="mb-4 flex items-center text-sm font-bold tracking-widest text-purple-400 uppercase">
+                  <span className="mr-2 h-px w-8 bg-purple-500/50"></span>
+                  {group.group}
+                </h2>
 
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {group.roadmaps.map((roadmap) => (
-                  <RoadmapCard roadmap={roadmap} key={roadmap.link} />
-                ))}
-              </div>
-            </div>
-          ))}
+                <motion.div
+                  variants={{
+                    hidden: { opacity: 0 },
+                    visible: {
+                      opacity: 1,
+                      transition: {
+                        staggerChildren: 0.04,
+                      },
+                    },
+                  }}
+                  initial="hidden"
+                  animate="visible"
+                  className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
+                >
+                  {group.roadmaps.map((roadmap) => (
+                    <motion.div
+                      variants={{
+                        hidden: { opacity: 0, y: 15 },
+                        visible: {
+                          opacity: 1,
+                          y: 0,
+                          transition: {
+                            type: 'spring',
+                            damping: 25,
+                            stiffness: 300,
+                          },
+                        },
+                      }}
+                      key={roadmap.link}
+                    >
+                      <RoadmapCard roadmap={roadmap} />
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
       </div>
     </div>

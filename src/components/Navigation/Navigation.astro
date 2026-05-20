@@ -21,14 +21,18 @@ import Icon from '../AstroIcon.astro';
       <div class='ml-4 hidden gap-6 sm:flex sm:items-center'>
         <a
           href='/roadmaps'
-          class='text-sm font-medium text-gray-300 transition-colors hover:text-white'
-          >Roadmaps</a
+          class='relative text-sm font-medium text-gray-300 transition-colors hover:text-white py-1 group'
         >
+          Roadmaps
+          <span class="absolute bottom-0 left-0 w-full h-[2px] bg-yellow-400 scale-x-0 origin-right transition-transform duration-300 ease-[0.16,1,0.3,1] group-hover:scale-x-100 group-hover:origin-left"></span>
+        </a>
         <a
           href='/about'
-          class='text-sm font-medium text-gray-300 transition-colors hover:text-white'
-          >About</a
+          class='relative text-sm font-medium text-gray-300 transition-colors hover:text-white py-1 group'
         >
+          About
+          <span class="absolute bottom-0 left-0 w-full h-[2px] bg-yellow-400 scale-x-0 origin-right transition-transform duration-300 ease-[0.16,1,0.3,1] group-hover:scale-x-100 group-hover:origin-left"></span>
+        </a>
       </div>
     </div>
 
