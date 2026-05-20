@@ -17,23 +17,21 @@ const {
 } = Astro.props;
 ---
 
-<div class='relative border-b border-b-[#1e293c] py-10 sm:py-14 awwwards-section opacity-0 translate-y-10 transition-all duration-1000 ease-out'>
+<div class='relative py-12 md:py-16 awwwards-section bg-[#050505] border-t border-white/5'>
   <div class='container'>
-    <h2
-      class='text-md font-regular absolute -top-[17px] flex rounded-lg border border-[#1e293c] bg-slate-900 px-3 py-1 text-slate-400 sm:left-1/2 sm:-translate-x-1/2'
-    >
-      {heading}
-    </h2>
+    <div class="mb-8 flex items-baseline justify-between border-b border-white/10 pb-4">
+      <div>
+        <span class="text-[10px] font-mono tracking-[0.25em] text-white/40 uppercase">// OFFICIAL GUIDE</span>
+        <h2 class="mt-2 text-2xl md:text-3xl font-medium tracking-tight text-white uppercase font-orbitron">
+          {heading}
+        </h2>
+      </div>
+    </div>
 
-    <ul class='flex flex-col w-full awwwards-grid'>
+    <ul class='flex flex-col w-full border-t border-white/5'>
       {
-        featuredItems.map((featuredItem, i) => (
-          <li 
-            class:list={[
-              "awwwards-item opacity-0 translate-y-5 transition-all duration-700 ease-out w-full"
-            ]} 
-            style={`transition-delay: ${i * 50}ms`}
-          >
+        featuredItems.map((featuredItem) => (
+          <li class="w-full">
             <FeaturedItem
               allowBookmark={allowBookmark}
               text={featuredItem.text}
@@ -44,32 +42,14 @@ const {
           </li>
         ))
       }
-      {
-        showCreateRoadmap && (
-          <li class="awwwards-item opacity-0 translate-y-5 transition-all duration-700 ease-out mt-8" style={`transition-delay: ${featuredItems.length * 50}ms`}>
-            <CreateRoadmapButton client:load className='min-h-[54px] w-full max-w-sm mx-auto' />
-          </li>
-        )
-      }
     </ul>
+    
+    {
+      showCreateRoadmap && (
+        <div class="mt-12 flex justify-center">
+          <CreateRoadmapButton client:load className='min-h-[46px] w-full max-w-xs mx-auto border border-white/10 rounded-full hover:border-white/30 text-white transition-all bg-transparent' />
+        </div>
+      )
+    }
   </div>
 </div>
-
-<script>
-  document.addEventListener("astro:page-load", () => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.remove('opacity-0', 'translate-y-10', 'translate-y-5');
-          const items = entry.target.querySelectorAll('.awwwards-item');
-          items.forEach(item => item.classList.remove('opacity-0', 'translate-y-5'));
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.awwwards-section').forEach(section => {
-      observer.observe(section);
-    });
-  });
-</script>

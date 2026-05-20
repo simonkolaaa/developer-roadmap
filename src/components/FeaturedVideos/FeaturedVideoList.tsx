@@ -10,28 +10,28 @@ export function FeaturedVideoList(props: FeaturedVideoListProps) {
   const { heading, videos } = props;
 
   return (
-    <div className="container">
-      <h2 className="block text-2xl font-bold sm:text-3xl">{heading}</h2>
+    <div className="container bg-[#050505]">
+      <div className="mb-8 flex items-baseline justify-between border-b border-white/10 pb-4">
+        <div>
+          <span className="text-[10px] font-mono tracking-[0.25em] text-white/40 uppercase">// LEARNING RESOURCES</span>
+          <h2 className="mt-2 text-2xl md:text-3xl font-medium tracking-tight text-white uppercase font-orbitron">
+            {heading}
+          </h2>
+        </div>
+      </div>
 
-      <div className="mt-3 sm:my-5">
+      <div className="my-6 border-t border-white/5">
         {videos.map((video) => (
           <VideoListItem key={video.id} video={video} />
         ))}
       </div>
 
-      <a
-        href="/videos"
-        className="hidden rounded-full bg-linear-to-r from-slate-600 to-black px-3 py-2 text-xs font-medium text-white transition-colors hover:from-blue-600 hover:to-blue-800 sm:inline"
-      >
-        View All Videos &rarr;
-      </a>
-
-      <div className="mt-3 block sm:hidden">
+      <div className="mt-10 flex justify-center">
         <a
           href="/videos"
-          className="font-regular block rounded-md border border-black p-2 text-center text-sm text-black hover:bg-black hover:text-gray-50"
+          className="rounded-full border border-white/10 bg-transparent px-8 py-3.5 text-[10px] font-mono tracking-[0.2em] text-white uppercase transition-all duration-300 hover:bg-white hover:text-black hover:border-white"
         >
-          View All Videos &nbsp;&rarr;
+          VIEW ALL VIDEOS
         </a>
       </div>
     </div>

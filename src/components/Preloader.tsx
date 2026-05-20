@@ -69,23 +69,32 @@ export const Preloader = () => {
   useEffect(() => {
     if (!shouldRender) return;
     
-    // Rilevamento programmatico delle coordinate per centrare la "O" a prescindere dal font/display
+    // Conversion of screen client rect to local SVG canvas coordinates (100% pixel-perfect centering)
     const detectTimer = setTimeout(() => {
       const oEl = document.getElementById('zoom-o');
-      if (oEl) {
+      const svgEl = document.querySelector('svg');
+      if (oEl && svgEl) {
         try {
-          const bbox = (oEl as any).getBBox();
-          if (bbox && bbox.width > 0) {
+          const rect = oEl.getBoundingClientRect();
+          const point = svgEl.createSVGPoint();
+          
+          // Get the center of the O element in screen coordinates
+          point.x = rect.left + rect.width / 2;
+          point.y = rect.top + rect.height / 2;
+          
+          // Convert screen coordinates back into local 1000x200 SVG coordinates
+          const svgPoint = point.matrixTransform(svgEl.getScreenCTM()!.inverse());
+          if (svgPoint && !isNaN(svgPoint.x) && !isNaN(svgPoint.y)) {
             zoomPoint.current = {
-              x: bbox.x + bbox.width / 2,
-              y: bbox.y + bbox.height / 2
+              x: svgPoint.x,
+              y: svgPoint.y
             };
           }
         } catch (e) {
-          console.warn("Failed to get BBox of zoom-o:", e);
+          console.warn("Failed to center coordinate detection:", e);
         }
       }
-    }, 300);
+    }, 350);
 
     return () => clearTimeout(detectTimer);
   }, [shouldRender]);

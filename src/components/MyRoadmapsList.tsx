@@ -25,31 +25,31 @@ export const MyRoadmapsList = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.08,
       },
     },
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 30, scale: 0.95 },
+    hidden: { opacity: 0, y: 15 },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
-      transition: { type: 'spring', stiffness: 100, damping: 12 },
+      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
   return (
-    <div className="mb-14 px-4 sm:px-0 relative z-10">
-      <motion.h2 
-        initial={{ opacity: 0, x: -20 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        className="mb-4 text-lg font-bold text-white sm:text-2xl uppercase tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]"
-      >
-        Your Created Roadmaps
-      </motion.h2>
+    <div className="mb-16 relative z-10 bg-[#050505] py-12 md:py-16 border-t border-white/5">
+      <div className="mb-8 flex items-baseline justify-between border-b border-white/10 pb-4">
+        <div>
+          <span className="text-[10px] font-mono tracking-[0.25em] text-white/40 uppercase">// PERSONAL ARCHIVE</span>
+          <h2 className="mt-2 text-2xl md:text-3xl font-medium tracking-tight text-white uppercase font-orbitron">
+            Your Created Roadmaps
+          </h2>
+        </div>
+      </div>
+
       <motion.div 
         variants={containerVariants}
         initial="hidden"
@@ -61,21 +61,19 @@ export const MyRoadmapsList = () => {
           <motion.a
             variants={cardVariants}
             whileHover={{ 
-              scale: 1.05, 
-              y: -5,
-              boxShadow: "0px 10px 30px rgba(168, 85, 247, 0.2)",
-              borderColor: "rgba(168, 85, 247, 0.5)"
+              borderColor: "rgba(255, 255, 255, 0.2)",
+              backgroundColor: "rgba(255, 255, 255, 0.02)"
             }}
-            whileTap={{ scale: 0.98 }}
+            whileTap={{ scale: 0.99 }}
             key={roadmap.id}
             href={`/my-roadmap?id=${roadmap.id}`}
-            className="group relative flex min-h-[100px] items-center justify-between rounded-xl border border-slate-800 bg-slate-900/80 backdrop-blur-md p-4 transition-colors"
+            className="group relative flex min-h-[90px] items-center justify-between rounded-xl border border-white/5 bg-transparent p-4 transition-all duration-300"
           >
-            <span className="text-base font-semibold text-slate-200 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all line-clamp-2">
+            <span className="text-sm font-light text-white/50 group-hover:text-white transition-colors duration-300 line-clamp-2 uppercase font-sans">
               {roadmap.title}
             </span>
             <div className="flex flex-col items-end gap-2">
-              <span className="text-[10px] font-mono text-slate-500 whitespace-nowrap bg-slate-950 px-2 py-1 rounded-full">
+              <span className="text-[9px] font-mono text-white/30 whitespace-nowrap bg-white/5 px-2 py-0.5 rounded border border-white/5">
                 {new Date(roadmap.date).toLocaleDateString()}
               </span>
               <button 
@@ -87,7 +85,7 @@ export const MyRoadmapsList = () => {
                     setRoadmaps(newRoadmaps);
                   }
                 }}
-                className="text-xs text-red-500/30 hover:text-red-400 hover:bg-red-500/10 rounded-full p-1.5 transition-all"
+                className="text-[10px] text-white/20 hover:text-white/80 hover:bg-white/10 rounded-full h-5 w-5 flex items-center justify-center transition-all border border-white/5"
                 title="Elimina"
               >
                 ×
