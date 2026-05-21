@@ -15,16 +15,26 @@ const {
   showCreateRoadmap,
   allowBookmark = true,
 } = Astro.props;
+
+const sectionIndex = heading.includes('Role') ? '02' : heading.includes('Skill') ? '03' : '04';
 ---
 
-<div class='relative py-12 md:py-16 awwwards-section bg-[#050505] border-t border-white/5'>
+<div class='section-reveal relative py-12 md:py-16 awwwards-section bg-[#050505] border-t border-white/5 opacity-0 translate-y-10 transition-all duration-700 ease-[0.16,1,0.3,1]'>
   <div class='container'>
-    <div class="mb-8 flex items-baseline justify-between border-b border-white/10 pb-4">
+    <div class="mb-8 flex items-end justify-between border-b border-white/10 pb-4">
       <div>
-        <span class="text-[10px] font-mono tracking-[0.25em] text-white/40 uppercase">// OFFICIAL GUIDE</span>
+        <span class="text-[10px] font-mono tracking-[0.25em] text-white/40 uppercase">// {sectionIndex} . OFFICIAL GUIDE</span>
         <h2 class="mt-2 text-2xl md:text-3xl font-medium tracking-tight text-white uppercase font-orbitron">
           {heading}
         </h2>
+      </div>
+      
+      <!-- Contatore items -->
+      <div class="text-right hidden sm:block">
+        <span class="text-2xl font-extrabold font-orbitron bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+          {featuredItems.length}
+        </span>
+        <span class="block text-[9px] font-mono text-white/30 tracking-widest uppercase">PATHS</span>
       </div>
     </div>
 
@@ -47,9 +57,28 @@ const {
     {
       showCreateRoadmap && (
         <div class="mt-12 flex justify-center">
-          <CreateRoadmapButton client:load className='min-h-[46px] w-full max-w-xs mx-auto border border-white/10 rounded-full hover:border-white/30 text-white transition-all bg-transparent' />
+          <CreateRoadmapButton client:load className='group relative min-h-[46px] w-full max-w-xs mx-auto border border-white/10 rounded-full hover:border-purple-500/30 text-white transition-all bg-transparent overflow-hidden' />
         </div>
       )
     }
   </div>
 </div>
+
+<script>
+  function setupSectionReveals() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('opacity-0', 'translate-y-10');
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.05, rootMargin: '0px 0px -60px 0px' }
+    );
+    document.querySelectorAll('.section-reveal').forEach((el) => observer.observe(el));
+  }
+  document.addEventListener('astro:page-load', setupSectionReveals);
+</script>

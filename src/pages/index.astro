@@ -57,6 +57,18 @@ const videos = await getAllVideos();
   <div class='bg-slate-950'>
     <HeroSection client:load />
 
+    <!-- ══ MARQUEE TICKER SEPARATOR ══════════════════════════════════════════ -->
+    <div class='marquee-ticker border-y border-white/5 bg-[#050505] py-2.5 overflow-hidden relative'>
+      <div class='marquee-track flex whitespace-nowrap'>
+        <span class='marquee-content text-[10px] font-mono tracking-[0.3em] text-white/15 uppercase'>
+          ROADMAPS &bull; GUIDES &bull; VIDEOS &bull; DEVELOPMENT &bull; REACT &bull; DEVOPS &bull; AI/ML &bull; BACKEND &bull; FRONTEND &bull; SYSTEM DESIGN &bull; DATABASES &bull; SECURITY &bull;&nbsp;
+        </span>
+        <span class='marquee-content text-[10px] font-mono tracking-[0.3em] text-white/15 uppercase' aria-hidden="true">
+          ROADMAPS &bull; GUIDES &bull; VIDEOS &bull; DEVELOPMENT &bull; REACT &bull; DEVOPS &bull; AI/ML &bull; BACKEND &bull; FRONTEND &bull; SYSTEM DESIGN &bull; DATABASES &bull; SECURITY &bull;&nbsp;
+        </span>
+      </div>
+    </div>
+
     <!-- ══ PERCORSI PERSONALI (Local Roadmaps) ══════════════════════════════ -->
     <div class='relative bg-slate-950 py-20 overflow-visible z-30'>
       <div class='container relative'>
@@ -65,6 +77,18 @@ const videos = await getAllVideos();
     </div>
     <div class='container'>
       <MyRoadmapsList client:only='react' />
+    </div>
+
+    <!-- ══ MARQUEE TICKER SEPARATOR 2 ═══════════════════════════════════════ -->
+    <div class='marquee-ticker-reverse border-y border-white/5 bg-[#050505] py-2.5 overflow-hidden relative'>
+      <div class='marquee-track-reverse flex whitespace-nowrap'>
+        <span class='marquee-content-reverse text-[10px] font-mono tracking-[0.3em] text-white/10 uppercase'>
+          LEARN &bull; BUILD &bull; GROW &bull; EXPLORE &bull; MASTER &bull; CREATE &bull; INNOVATE &bull; DEPLOY &bull; SCALE &bull; OPTIMIZE &bull; DESIGN &bull; ITERATE &bull;&nbsp;
+        </span>
+        <span class='marquee-content-reverse text-[10px] font-mono tracking-[0.3em] text-white/10 uppercase' aria-hidden="true">
+          LEARN &bull; BUILD &bull; GROW &bull; EXPLORE &bull; MASTER &bull; CREATE &bull; INNOVATE &bull; DEPLOY &bull; SCALE &bull; OPTIMIZE &bull; DESIGN &bull; ITERATE &bull;&nbsp;
+        </span>
+      </div>
     </div>
 
     <FeaturedItems
@@ -99,8 +123,36 @@ const videos = await getAllVideos();
     />
 
     <div class='relative bg-[#050505] py-16 sm:py-20'>
-      <FeaturedVideoList heading='Videos' videos={videos.slice(0, 7)} />
+      <FeaturedVideoList heading='Videos' videos={videos.slice(0, 7)} client:load />
     </div>
   </div>
   <ChangelogBanner slot='changelog-banner' />
 </BaseLayout>
+
+<style>
+  /* ═══ MARQUEE ANIMATION (Forward) ═══ */
+  .marquee-track {
+    animation: marquee-scroll 30s linear infinite;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ═══ MARQUEE ANIMATION (Reverse) ═══ */
+  .marquee-track-reverse {
+    animation: marquee-scroll-reverse 35s linear infinite;
+  }
+  .marquee-track-reverse:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee-scroll-reverse {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+</style>
