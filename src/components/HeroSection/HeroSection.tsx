@@ -39,10 +39,10 @@ const floatingPills = [
 /*  Stats data                                                         */
 /* ------------------------------------------------------------------ */
 const stats = [
-  { value: 50,   suffix: '+', label: 'ROADMAPS' },
-  { value: 1000, suffix: '+', label: 'TOPICS' },
-  { value: 40,   suffix: '+', label: 'VIDEOS' },
-  { value: null, symbol: '∞', label: 'GROWTH' },
+  { value: 12,   suffix: '',  label: 'ROADMAPS' },
+  { value: 80,   suffix: '+', label: 'ARGOMENTI' },
+  { value: 40,   suffix: '+', label: 'VIDEO' },
+  { value: null, symbol: '∞', label: 'CRESCITA' },
 ];
 
 /* ------------------------------------------------------------------ */
