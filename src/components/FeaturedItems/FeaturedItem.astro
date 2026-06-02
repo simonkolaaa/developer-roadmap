@@ -21,40 +21,60 @@ const {
 
 <a
   class:list={[
-    'featured-item group relative flex w-full items-center justify-between border-b border-white/5 py-5 transition-all duration-300 hover:border-purple-500/25 featured-reveal opacity-0 translate-y-8 ease-[0.16,1,0.3,1]',
-    {
-      'opacity-40 upcoming-item': isUpcoming,
-    },
+    'featured-item group relative flex w-full items-center justify-between py-[18px] transition-all duration-300 featured-reveal opacity-0 translate-y-8 cursor-pointer',
+    { 'opacity-40 upcoming-item pointer-events-none': isUpcoming },
   ]}
   href={url}
+  style="border-bottom: 1px solid rgba(139,92,246,0.08);"
 >
-  <!-- Spotlight che segue il mouse -->
-  <div 
-    class="featured-spotlight absolute inset-0 -z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+  <!-- Mouse-follow spotlight -->
+  <div
+    class="featured-spotlight absolute inset-0 -z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-sm"
   ></div>
 
-  <!-- Linea di progresso animata al hover (da sinistra a destra) -->
-  <div class="absolute bottom-0 left-0 h-[1px] w-0 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-700 ease-out group-hover:w-full"></div>
-
-  <!-- Sfondo soft hover sfumato -->
-  <div 
-    class="absolute inset-0 bg-gradient-to-r from-blue-500/[0.02] to-purple-500/[0.02] -z-10 transition-transform duration-500 ease-out origin-left scale-x-0 group-hover:scale-x-100"
+  <!-- Bottom progress line (left → right on hover) -->
+  <div
+    class="absolute bottom-0 left-0 h-[1px] w-0 transition-all duration-700 ease-out group-hover:w-full"
+    style="background: linear-gradient(90deg, #8B5CF6, #22D3EE);"
   ></div>
 
-  <div class="flex items-center gap-5 z-20">
-    <!-- Indice numerico animato -->
-    <span class="featured-index text-[10px] font-mono text-white/15 group-hover:text-purple-400 transition-all duration-300 w-6 text-right tabular-nums hidden sm:block"></span>
+  <!-- Soft background sweep on hover -->
+  <div
+    class="absolute inset-0 -z-10 transition-transform duration-500 ease-out origin-left scale-x-0 group-hover:scale-x-100 rounded-sm"
+    style="background: linear-gradient(90deg, rgba(139,92,246,0.04), rgba(34,211,238,0.03));"
+  ></div>
 
-    <span class="text-lg md:text-xl font-light tracking-wide text-white/40 transition-all duration-500 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:tracking-wider uppercase font-orbitron">
+  <!-- Left cluster: index + text + badges -->
+  <div class="flex items-center gap-4 z-20">
+    <!-- Numeric index -->
+    <span
+      class="featured-index text-[10px] font-mono text-slate-700 group-hover:text-violet-400 transition-all duration-300 w-6 text-right tabular-nums hidden sm:block"
+    ></span>
+
+    <!-- Status dot -->
+    <span
+      class="h-1.5 w-1.5 rounded-full flex-shrink-0 transition-all duration-300 group-hover:scale-110 hidden sm:block"
+      style="background: rgba(100,116,139,0.35);"
+    ></span>
+
+    <!-- Title -->
+    <span
+      class="text-lg md:text-xl font-light tracking-wide transition-all duration-500 uppercase group-hover:tracking-wider"
+      style={`
+        font-family: 'Space Grotesk', sans-serif;
+        color: rgba(241,245,249,0.45);
+      `}
+      data-hover-gradient
+    >
       {text}
     </span>
 
     {
       isNew && (
-        <span class='flex items-center rounded-full bg-blue-500/10 px-2 py-0.5 text-[9px] font-mono text-blue-400 border border-blue-500/20 uppercase tracking-wider'>
-          <span class='mr-1.5 relative flex h-1.5 w-1.5'>
-            <span class='absolute inline-flex h-1.5 w-1.5 animate-ping rounded-full bg-blue-400 opacity-75' />
-            <span class='relative inline-flex h-1.5 w-1.5 rounded-full bg-blue-400' />
+        <span class='flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[9px] font-mono uppercase tracking-wider' style="background: rgba(34,211,238,0.08); border: 1px solid rgba(34,211,238,0.2); color: #22D3EE;">
+          <span class='relative flex h-1.5 w-1.5'>
+            <span class='absolute inline-flex h-1.5 w-1.5 animate-ping rounded-full opacity-75' style="background: #22D3EE;" />
+            <span class='relative inline-flex h-1.5 w-1.5 rounded-full' style="background: #22D3EE;" />
           </span>
           NEW
         </span>
@@ -63,26 +83,32 @@ const {
 
     {
       isUpcoming && (
-        <span class='flex items-center rounded-full bg-white/5 px-2 py-0.5 text-[9px] font-mono text-white/30 border border-white/5 uppercase tracking-wider'>
+        <span class='flex items-center rounded-full px-2 py-0.5 text-[9px] font-mono uppercase tracking-wider' style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.25);">
           UPCOMING
         </span>
       )
     }
   </div>
 
+  <!-- Right cluster: arrow + bookmark -->
   <div class="relative z-20 flex items-center gap-4">
-    <div class="flex h-7 w-7 items-center justify-center rounded-full border border-white/10 text-white/30 transition-all duration-500 group-hover:border-purple-500/40 group-hover:bg-purple-500/10 group-hover:text-purple-400 group-hover:rotate-[135deg] bg-black/40">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    <div
+      class="flex h-7 w-7 items-center justify-center rounded-full transition-all duration-500 group-hover:rotate-[135deg]"
+      style="border: 1px solid rgba(100,116,139,0.25); background: rgba(13,13,31,0.5); color: rgba(100,116,139,0.5);"
+      data-arrow
+    >
+      <!-- Arrow icon (Heroicons chevron-right) -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+      </svg>
     </div>
 
     {
       allowBookmark && (
-        <div class="relative z-30 opacity-30 group-hover:opacity-100 transition-opacity duration-300">
+        <div class="relative z-30 opacity-25 group-hover:opacity-100 transition-opacity duration-300">
           <MarkFavorite
             resourceId={url.split('/').pop()!}
-            resourceType={
-              url.includes('best-practices') ? 'best-practice' : 'roadmap'
-            }
+            resourceType={url.includes('best-practices') ? 'best-practice' : 'roadmap'}
             client:only='react'
           />
         </div>
@@ -90,15 +116,17 @@ const {
     }
   </div>
 
+  <!-- Progress background stripe -->
   <span
     data-progress
-    class='absolute top-0 bottom-0 left-0 -z-20 w-0 bg-white/[0.02] transition-[width] duration-300'
+    class='absolute top-0 bottom-0 left-0 -z-20 w-0 transition-[width] duration-300'
+    style="background: rgba(255,255,255,0.015);"
   ></span>
 </a>
 
 <script>
   function setupFeaturedItems() {
-    // Scroll reveal staggerato
+    // ── Scroll-reveal staggered ──
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry, i) => {
@@ -110,36 +138,65 @@ const {
               } else {
                 entry.target.classList.add('opacity-100', 'translate-y-0');
               }
-            }, i * 60);
+            }, i * 55);
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.05, rootMargin: '0px 0px -40px 0px' },
     );
+    document.querySelectorAll('.featured-reveal').forEach((el) => observer.observe(el));
 
-    document.querySelectorAll('.featured-reveal').forEach((el) => {
-      observer.observe(el);
-    });
-
-    // Indici numerici automatici per ogni lista
+    // ── Auto-numbering ──
     document.querySelectorAll('ul').forEach((ul) => {
       ul.querySelectorAll('.featured-index').forEach((el, i) => {
         (el as HTMLElement).textContent = String(i + 1).padStart(2, '0');
       });
     });
 
-    // Spotlight che segue il mouse su ogni featured item
+    // ── Mouse-follow spotlight ──
     document.querySelectorAll('.featured-item').forEach((item) => {
       const spotlight = item.querySelector('.featured-spotlight') as HTMLElement;
       if (!spotlight) return;
-
       item.addEventListener('mousemove', ((e: MouseEvent) => {
         const rect = (item as HTMLElement).getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        spotlight.style.background = `radial-gradient(300px circle at ${x}px ${y}px, rgba(168, 85, 247, 0.06), transparent 60%)`;
+        spotlight.style.background = `radial-gradient(280px circle at ${x}px ${y}px, rgba(139,92,246,0.07), transparent 65%)`;
       }) as EventListener);
+    });
+
+    // ── Hover: gradient text + arrow tint ──
+    document.querySelectorAll('.featured-item').forEach((item) => {
+      const titleEl = item.querySelector('[data-hover-gradient]') as HTMLElement;
+      const arrowEl  = item.querySelector('[data-arrow]') as HTMLElement;
+
+      item.addEventListener('mouseenter', () => {
+        if (titleEl) {
+          titleEl.style.background = 'linear-gradient(135deg, #A78BFA, #22D3EE)';
+          titleEl.style.webkitBackgroundClip = 'text';
+          titleEl.style.webkitTextFillColor  = 'transparent';
+          titleEl.style.backgroundClip       = 'text';
+        }
+        if (arrowEl) {
+          arrowEl.style.borderColor = 'rgba(139,92,246,0.45)';
+          arrowEl.style.background  = 'rgba(139,92,246,0.12)';
+          arrowEl.style.color       = '#A78BFA';
+        }
+      });
+      item.addEventListener('mouseleave', () => {
+        if (titleEl) {
+          titleEl.style.background           = '';
+          titleEl.style.webkitBackgroundClip = '';
+          titleEl.style.webkitTextFillColor  = 'rgba(241,245,249,0.45)';
+          titleEl.style.backgroundClip       = '';
+        }
+        if (arrowEl) {
+          arrowEl.style.borderColor = 'rgba(100,116,139,0.25)';
+          arrowEl.style.background  = 'rgba(13,13,31,0.5)';
+          arrowEl.style.color       = 'rgba(100,116,139,0.5)';
+        }
+      });
     });
   }
 

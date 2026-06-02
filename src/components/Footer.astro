@@ -1,54 +1,145 @@
 ---
-import AstroIcon from './AstroIcon.astro';
 ---
 
-<div class='bg-slate-900 py-6 pb-10 text-white sm:py-16'>
-  <div class='container'>
-    <div
-      class='flex flex-col items-center justify-between gap-8 md:flex-row md:items-start'
-    >
-      <div class='max-w-[425px] text-center md:text-left'>
-        <p class='text-md flex items-center justify-center md:justify-start'>
-          <a
-            class='inline-flex items-center text-xl font-bold tracking-tight text-white transition-colors hover:text-blue-400'
-            href='/'
+<footer style="background: #08081A; border-top: 1px solid rgba(139,92,246,0.12);">
+  <div class='container py-14 pb-10'>
+    <div class='flex flex-col gap-10 md:flex-row md:items-start md:justify-between'>
+
+      <!-- Brand column -->
+      <div class='max-w-[360px]'>
+        <!-- Logo -->
+        <a href='/' class='inline-flex items-center gap-2.5 group' aria-label='Home'>
+          <div
+            class="flex h-8 w-8 items-center justify-center rounded-lg transition-transform duration-300 group-hover:scale-110"
+            style="background: linear-gradient(135deg, #8B5CF6, #22D3EE);"
           >
-            <span
-              class='ml-2 bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent'
-              >Dev Roadmap & Notes</span
-            >
+            <svg width="14" height="14" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 2h3v3H2zM7 2h3v3H7zM2 7h3v3H2zM7 9.5L10 7" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 15px;">
+            <span style="color: #A78BFA;">Dev</span><span style="color: #94A3B8; font-weight: 300;">.Roadmaps</span>
+          </span>
+        </a>
+
+        <!-- Tagline -->
+        <p class='mt-4 text-sm leading-relaxed' style="color: #64748B; font-family: 'DM Sans', sans-serif;">
+          A curated collection of developer roadmaps, university notes and structured resources — built for learners who care about quality.
+        </p>
+
+        <!-- Social links -->
+        <div class='mt-6 flex items-center gap-3'>
+          <!-- GitHub -->
+          <a
+            href='https://github.com/simonkolaaa'
+            target='_blank'
+            rel='noopener noreferrer'
+            class='social-link flex h-8 w-8 items-center justify-center rounded-lg transition-all duration-200 cursor-pointer'
+            style="border: 1px solid rgba(139,92,246,0.15); background: rgba(139,92,246,0.06); color: #64748B;"
+            aria-label='GitHub profile'
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
           </a>
-        </p>
-        <p class='my-4 text-slate-400'>
-          A personal collection of development roadmaps, learning paths, and
-          study notes. Custom curated and maintained.
-        </p>
-        <div class='mt-6 text-sm text-gray-500'>
-          <p>
-            &copy; {new Date().getFullYear()} My Dev Roadmap
-          </p>
-          <p class='mt-2'>
-            Scopri di più su di me: <a
-              href='https://simonkolaaa.github.io'
-              target='_blank'
-              class='text-blue-400 transition-colors hover:text-blue-300'
-              >simonkolaaa.github.io</a
+
+          <!-- LinkedIn -->
+          <a
+            href='https://simonkolaaa.github.io'
+            target='_blank'
+            rel='noopener noreferrer'
+            class='social-link flex h-8 w-8 items-center justify-center rounded-lg transition-all duration-200 cursor-pointer'
+            style="border: 1px solid rgba(139,92,246,0.15); background: rgba(139,92,246,0.06); color: #64748B;"
+            aria-label='Personal website'
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Built with badges -->
+        <div class='mt-5 flex items-center gap-2 flex-wrap'>
+          <span class='text-[9px] font-mono tracking-widest uppercase' style="color: #334155;">Built with</span>
+          {['Astro', 'React', 'Tailwind'].map((tech) => (
+            <span
+              class='rounded px-2 py-0.5 text-[9px] font-mono uppercase tracking-wider'
+              style="background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.15); color: #7C3AED;"
             >
-          </p>
+              {tech}
+            </span>
+          ))}
         </div>
       </div>
 
-      <div class='flex flex-col items-center md:items-end'>
-        <p class='mb-4 font-semibold text-gray-300'>Navigation</p>
-        <a
-          class='mb-2 text-gray-400 transition-colors hover:text-white'
-          href='/roadmaps'>Roadmaps</a
-        >
-        <a
-          class='mb-2 text-gray-400 transition-colors hover:text-white'
-          href='/'>Home</a
-        >
+      <!-- Nav columns -->
+      <div class='flex flex-col sm:flex-row gap-10'>
+        <!-- Navigation -->
+        <div>
+          <p class='mb-4 text-[10px] font-mono tracking-[0.25em] uppercase' style="color: #475569;">Navigation</p>
+          <nav class='flex flex-col gap-2.5'>
+            {[
+              { href: '/',          label: 'Home'      },
+              { href: '/roadmaps',  label: 'Roadmaps'  },
+              { href: '/ai',        label: 'AI Generate'},
+              { href: '/about',     label: 'About'     },
+            ].map(({ href, label }) => (
+              <a
+                href={href}
+                class='footer-link text-sm transition-colors duration-200 cursor-pointer'
+                style="color: #475569; font-family: 'DM Sans', sans-serif;"
+              >
+                {label}
+              </a>
+            ))}
+          </nav>
+        </div>
+
+        <!-- Resources -->
+        <div>
+          <p class='mb-4 text-[10px] font-mono tracking-[0.25em] uppercase' style="color: #475569;">Resources</p>
+          <nav class='flex flex-col gap-2.5'>
+            {[
+              { href: '/best-practices', label: 'Best Practices' },
+              { href: '/videos',         label: 'Videos'         },
+              { href: '/guides',         label: 'Guides'         },
+            ].map(({ href, label }) => (
+              <a
+                href={href}
+                class='footer-link text-sm transition-colors duration-200 cursor-pointer'
+                style="color: #475569; font-family: 'DM Sans', sans-serif;"
+              >
+                {label}
+              </a>
+            ))}
+          </nav>
+        </div>
       </div>
     </div>
+
+    <!-- Bottom bar -->
+    <div
+      class='mt-10 flex flex-col sm:flex-row items-center justify-between gap-3 pt-6'
+      style="border-top: 1px solid rgba(139,92,246,0.08);"
+    >
+      <p class='text-[11px]' style="color: #334155; font-family: 'DM Sans', sans-serif;">
+        &copy; {new Date().getFullYear()} Dev.Roadmaps — Simon Kola. All rights reserved.
+      </p>
+      <p class='text-[11px]' style="color: #1E293B; font-family: 'DM Sans', sans-serif;">
+        Inspired by <a href='https://roadmap.sh' target='_blank' class='hover:text-slate-500 transition-colors'>roadmap.sh</a>
+      </p>
+    </div>
   </div>
-</div>
+</footer>
+
+<style>
+  .social-link:hover {
+    border-color: rgba(139, 92, 246, 0.45) !important;
+    background: rgba(139, 92, 246, 0.15) !important;
+    color: #A78BFA !important;
+    transform: translateY(-1px);
+  }
+  .footer-link:hover {
+    color: #A78BFA !important;
+  }
+</style>

@@ -22,11 +22,11 @@ export interface Props {
 }
 
 const {
-  title = 'My Dev Roadmap & Notes',
+  title = 'Dev.Roadmaps — Simon Kola',
   htmlClassName,
   bodyClassName,
-  description = 'Personal dev notes and roadmap',
-  keywords = ['roadmap', 'developer', 'notes'],
+  description = 'Curated developer roadmaps, university notes and structured resources for modern software development.',
+  keywords = ['roadmap', 'developer', 'learning', 'computer science', 'programming', 'notes'],
   noIndex = false,
 } = Astro.props;
 ---
@@ -47,12 +47,13 @@ const {
     <meta http-equiv='Content-Language' content='en' />
 
     <link rel='icon' href='/manifest/favicon.ico' type='image/x-icon' />
-    <meta name='theme-color' content='#0f172a' />
+    <meta name='theme-color' content='#0D0D1F' />
 
     <link rel='preconnect' href='https://fonts.googleapis.com' />
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+    <!-- Space Grotesk (headings) + DM Sans (body) — Tech Startup pairing -->
     <link
-      href='https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Rajdhani:wght@300;400;500;600;700&display=swap'
+      href='https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap'
       rel='stylesheet'
     />
 
